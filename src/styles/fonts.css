@@ -1,0 +1,6 @@
+/* フォント定義だけを別ファイルにして、描画を止めずに後から読み込む（Base.astro） */
+@import '@fontsource/noto-sans-jp/400.css';
+@import '@fontsource/noto-sans-jp/700.css';
+@import '@fontsource/inter-tight/latin-500.css';
+@import '@fontsource/inter-tight/latin-600.css';
+@import '@fontsource/inter-tight/latin-700.css';

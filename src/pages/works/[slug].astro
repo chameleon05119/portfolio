@@ -1,0 +1,77 @@
+---
+import { getImage } from 'astro:assets';
+import QRCode from 'qrcode';
+import Base from '../../layouts/Base.astro';
+import { works } from '../../data/works.mjs';
+
+export function getStaticPaths() {
+  return works.map((w, i) => ({ params: { slug: w.slug }, props: { index: i } }));
+}
+
+const { index } = Astro.props;
+const w = works[index];
+const base = import.meta.env.BASE_URL;
+const shots = import.meta.glob<{ default: ImageMetadata }>('../../assets/shots/*/*.jpg', { eager: true });
+const shot = (kind: string) => shots[`../../assets/shots/${w.shot}/${kind}.jpg`].default;
+
+const hero = await getImage({ src: shot('thumb'), widths: [640, 960, 1280], sizes: '(max-width: 1023px) 100vw, 820px', format: 'webp', quality: 75 });
+const pc = await getImage({ src: shot('pc'), width: 1280, format: 'webp' });
+const sp = await getImage({ src: shot('sp'), width: 390, format: 'webp' });
+const qr = await QRCode.toString(w.url, { type: 'svg', margin: 0, errorCorrectionLevel: 'M', color: { dark: '#1b2330', light: '#ffffff' } });
+const prev = works[index - 1];
+const next = works[index + 1];
+const no = String(index + 1).padStart(2, '0');
+---
+<Base title={w.name} description={w.summary}>
+  <main id="main" class="wrap detail">
+    <nav class="crumb" aria-label="パンくず"><a href={`${base}#works`}>作品</a><span aria-hidden="true">/</span><span>{w.name}</span></nav>
+
+    <div class="d-head">
+      <span class="num" aria-hidden="true">{no}</span>
+      <h1>{w.name}</h1>
+      <div class="meta">{w.tags.map((t) => <span>{t}</span>)}</div>
+      <p class="lead">{w.summary}</p>
+      <div class="d-quick">
+        <a class="btn primary" href={w.url} target="_blank" rel="noopener">サイトを見る<span class="visually-hidden">（新しいタブで開く）</span> <span class="arr" aria-hidden="true">↗</span></a>
+        {w.links?.[0] && <a class="btn" href={w.links[0][1]} target="_blank" rel="noopener">{w.links[0][0]}<span class="visually-hidden">（新しいタブで開く）</span> <span class="arr" aria-hidden="true">↗</span></a>}
+      </div>
+    </div>
+
+    <div class="d-grid">
+      <div class="d-main">
+        <img class="d-hero" src={hero.src} srcset={hero.srcSet.attribute} sizes={hero.attributes.sizes} width="1280" height="800" alt={`${w.name}のファーストビュー（PC 表示）`} fetchpriority="high" />
+
+        <h2 class="d-h">ポイント</h2>
+        <ol class="points">
+          {w.points.map(([title, body]) => <li><h3>{title}</h3><p>{body}</p></li>)}
+        </ol>
+
+        <h2 class="d-h">ページ全体</h2>
+        <p class="d-note">枠の中をスクロールすると、ページの下まで見られます。</p>
+        <div class="d-shots">
+          <figure><div class="scroller pc" tabindex="0" role="region" aria-label="PC 表示のページ全体（スクロールできます）"><img src={pc.src} width={pc.attributes.width} height={pc.attributes.height} alt={`${w.name}の PC 表示（ページ全体）`} loading="lazy" decoding="async" /></div><figcaption>PC（1280px）</figcaption></figure>
+          <figure><div class="scroller sp" tabindex="0" role="region" aria-label="スマホ表示のページ全体（スクロールできます）"><img src={sp.src} width={sp.attributes.width} height={sp.attributes.height} alt={`${w.name}のスマホ表示（ページ全体）`} loading="lazy" decoding="async" /></div><figcaption>スマホ（390px）</figcaption></figure>
+        </div>
+        {w.credit && <p class="d-note">{w.credit}</p>}
+      </div>
+
+      <aside class="d-side">
+        <table class="spec">
+          <tbody>{w.spec.map(([k, v]) => <tr><th scope="row">{k}</th><td>{v}</td></tr>)}</tbody>
+        </table>
+        <div class="d-btns">
+          <a class="btn primary" href={w.url} target="_blank" rel="noopener">サイトを見る<span class="visually-hidden">（新しいタブで開く）</span> <span class="arr" aria-hidden="true">↗</span></a>
+          {w.links?.map(([label, url]) => <a class="btn" href={url} target="_blank" rel="noopener">{label}<span class="visually-hidden">（新しいタブで開く）</span> <span class="arr" aria-hidden="true">↗</span></a>)}
+          <a class="btn" href={w.github} target="_blank" rel="noopener">GitHub（コード）<span class="visually-hidden">（新しいタブで開く）</span> <span class="arr" aria-hidden="true">↗</span></a>
+        </div>
+        <div class="d-qr"><div class="code" role="img" aria-label={`${w.name}の URL の QR コード`} set:html={qr} /><p>スマホのカメラで読み取ると、実機で確認できます</p></div>
+      </aside>
+    </div>
+
+    <nav class="pager" aria-label="ほかの作品">
+      {prev ? <a class="prev" href={`${base}works/${prev.slug}/`}><small>← 前の作品</small>{prev.name}</a> : <span />}
+      <a class="all" href={`${base}#works`}>作品一覧へ</a>
+      {next ? <a class="next" href={`${base}works/${next.slug}/`}><small>次の作品 →</small>{next.name}</a> : <span />}
+    </nav>
+  </main>
+</Base>

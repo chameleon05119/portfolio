@@ -1,0 +1,239 @@
+---
+import { getImage } from 'astro:assets';
+import QRCode from 'qrcode';
+import Base from '../layouts/Base.astro';
+import Mark from '../components/Mark.astro';
+import { works, categories } from '../data/works.mjs';
+import { profile } from '../data/profile.mjs';
+
+const base = import.meta.env.BASE_URL;
+const shots = import.meta.glob<{ default: ImageMetadata }>('../assets/shots/*/*.jpg', { eager: true });
+const shot = (id: string, kind: string) => shots[`../assets/shots/${id}/${kind}.jpg`].default;
+
+// 画像は WebP に変換。端末表示用は表示サイズの約2倍（PC 画面 ≒ 560px、iPhone ≒ 108px）
+const items = await Promise.all(works.map(async (w, i) => {
+  const thumb = await getImage({ src: shot(w.shot, 'thumb'), widths: [400, 640, 960], sizes: '(max-width: 600px) 100vw, (max-width: 1023px) 50vw, 260px', format: 'webp', quality: 72 });
+  const pc = await getImage({ src: shot(w.shot, 'pc'), width: 1120, format: 'webp' });
+  const sp = await getImage({ src: shot(w.shot, 'sp'), width: 240, format: 'webp' });
+  const qr = await QRCode.toString(w.url, { type: 'svg', margin: 0, errorCorrectionLevel: 'M', color: { dark: '#1b2330', light: '#ffffff' } });
+  return { ...w, no: String(i + 1).padStart(2, '0'), detail: `${base}works/${w.slug}/`, thumb, pc: pc.src, sp: sp.src, qr };
+}));
+const usedCategories = categories
+  .map((c) => ({ ...c, count: works.filter((w) => w.category === c.id).length }))
+  .filter((c) => c.count > 0);
+const first = items[0];
+const clientData = items.map(({ slug, name, tags, url, detail, pc, sp, qr }) => ({ slug, name, tags, url, detail, pc, sp, qr }));
+// ?type= で開いたとき、JS より先に CSS で絞り込んでおく（表示のずれを防ぐ）
+const filterCss = usedCategories.map((c) => `html[data-type="${c.id}"] .card:not([data-f="${c.id}"]){display:none}`).join('');
+const typeIds = JSON.stringify(usedCategories.map((c) => c.id));
+---
+<Base>
+  <style set:html={filterCss} is:inline></style>
+  <script is:inline define:vars={{ typeIds }}>
+    { const t = new URLSearchParams(location.search).get('type'); if (JSON.parse(typeIds).includes(t)) document.documentElement.dataset.type = t; }
+  </script>
+  <main id="main">
+  <div class="works-bg">
+    <div class="wrap">
+      <h1 class="visually-hidden">{profile.name} {profile.description}</h1>
+      <div class="works" id="works">
+        <div class="list">
+          <h2 class="visually-hidden">作品</h2>
+          <div class="filters" role="group" aria-label="種類で絞り込み" id="filters">
+            <button class="chip" type="button" data-f="all" aria-pressed="true">すべて<small>{works.length}<span class="visually-hidden">件</span></small></button>
+            {usedCategories.map((c) => <button class="chip" type="button" data-f={c.id} aria-pressed="false">{c.label}<small>{c.count}<span class="visually-hidden">件</span></small></button>)}
+          </div>
+          <div class="grid" id="grid">
+            {items.map((w, i) => (
+              <article class:list={['card', { 'is-active': i === 0 }]} data-id={w.slug} data-f={w.category}>
+                <span class="playing" aria-hidden="true">PLAYING</span>
+                <a class="thumb" href={w.detail} tabindex="-1" aria-hidden="true">
+                  <img src={w.thumb.src} srcset={w.thumb.srcSet.attribute} sizes={w.thumb.attributes.sizes} width="1280" height="800" alt="" loading={i < 4 ? 'eager' : 'lazy'} decoding="async" fetchpriority={i < 2 ? 'high' : 'auto'} />
+                </a>
+                <span class="num" aria-hidden="true">{w.no}</span>
+                <h3><a href={w.detail}>{w.name}</a></h3>
+                <div class="meta">{w.tags.map((t) => <span>{t}</span>)}</div>
+                <div class="acts">
+                  <a href={w.url} target="_blank" rel="noopener"><span class="visually-hidden">{w.name}の</span>サイトを見る<span class="visually-hidden">（新しいタブで開く）</span> <span aria-hidden="true">↗</span></a>
+                  <a href={w.detail}><span class="visually-hidden">{w.name}の</span>詳細</a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div class="stage" role="region" aria-label="選択中の作品のプレビュー">
+          <div class="mac" aria-hidden="true">
+            <div class="screen"><div class="vp" id="vpPc"><div class="feed" id="feedPc"><img src={first.pc} alt="" /></div></div></div>
+            <div class="base"></div>
+          </div>
+          <div class="below">
+            <div class="phone" aria-hidden="true"><div class="vp" id="vpSp"><div class="feed" id="feedSp"><img src={first.sp} alt="" /></div></div></div>
+            <div class="info" id="info">
+              <p class="ttl">{first.name}</p>
+              <div class="meta">{first.tags.map((t) => <span>{t}</span>)}</div>
+              <div class="btns">
+                <a class="btn primary" href={first.url} target="_blank" rel="noopener"><span class="visually-hidden">{first.name}の</span>サイトを見る<span class="visually-hidden">（新しいタブで開く）</span> <span class="arr" aria-hidden="true">↗</span></a>
+                <a class="btn" href={first.detail}><span class="visually-hidden">{first.name}の</span>詳細</a>
+              </div>
+            </div>
+            <div class="qr">
+              <div class="code" id="qr" role="img" aria-label={`${first.name}の URL の QR コード`} set:html={first.qr} />スマホで<br />実機チェック
+              <button class="pause" type="button" id="pause" aria-pressed="false">一時停止</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section class="s" id="service" aria-labelledby="service-h">
+      <div class="sh"><span class="en" aria-hidden="true">Service</span><h2 id="service-h">できること</h2></div>
+      <div class="cols">
+        <div class="svc"><span class="no" aria-hidden="true">01</span><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></div><h3>デザインからのコーディング</h3><p>Figma などのデザインカンプを、PC・スマホとも再現。カンプとの差を画像で確認して納品します。</p></div>
+        <div class="svc"><span class="no" aria-hidden="true">02</span><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></div><h3>スマホ対応・表示崩れ修正</h3><p>今の PC 表示は変えずに、スマホで崩れる箇所を修正。修正前後の報告書つき。</p></div>
+        <div class="svc"><span class="no" aria-hidden="true">03</span><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 13h8M8 16h5"/></svg></div><h3>LP・小規模サイト制作</h3><p>構成案から。写真・文章の素材があればデザインも対応します。</p></div>
+        <div class="svc"><span class="no" aria-hidden="true">04</span><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16v4zM13.5 6.5l4 4"/></svg></div><h3>小さな修正・更新</h3><p>文章・画像の差し替え、WordPress テーマの小修正など。</p></div>
+      </div>
+    </section>
+
+    <section class="s" id="about" aria-labelledby="about-h">
+      <div class="sh"><span class="en" aria-hidden="true">About</span><h2 id="about-h">プロフィール</h2></div>
+      <div class="about">
+        <div class="pic"><Mark size={96} /></div>
+        <div>
+          <p class="nm">{profile.name}<small>{profile.nameEn}</small></p>
+          <p>{profile.bio}</p>
+          <div class="stack">{profile.stack.map((s) => <span>{s}</span>)}</div>
+          <div class="links">
+            {profile.links.filter((l) => l.url).map((l) => (
+              <a class:list={['btn', { primary: l.primary }]} href={l.url} target="_blank" rel="noopener">{l.label}<span class="visually-hidden">（新しいタブで開く）</span> <span class="arr" aria-hidden="true">↗</span></a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  </main>
+
+  <script type="application/json" id="works-data" set:html={JSON.stringify(clientData)} />
+</Base>
+
+<script>
+  type Work = { slug: string; name: string; tags: string[]; url: string; detail: string; pc: string; sp: string; qr: string };
+  const works: Work[] = JSON.parse(document.getElementById('works-data')!.textContent!);
+  const $ = (id: string) => document.getElementById(id)!;
+  const grid = $('grid');
+  const stage = document.querySelector<HTMLElement>('.stage')!;
+  const pauseBtn = $('pause') as HTMLButtonElement;
+  const dev = [{ vp: $('vpPc'), feed: $('feedPc'), dist: 0 }, { vp: $('vpSp'), feed: $('feedSp'), dist: 0 }];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+
+  // スクロール量は画像の読み込み後とリサイズ時だけ測る（毎フレーム測らない）
+  const measure = () => { for (const d of dev) d.dist = Math.max(0, d.feed.getBoundingClientRect().height - d.vp.clientHeight); };
+
+  let current = works[0].slug;
+  let token = 0;
+  async function select(slug: string) {
+    if (slug === current) return;
+    current = slug;
+    const my = ++token;
+    const w = works.find((x) => x.slug === slug)!;
+    grid.querySelectorAll<HTMLElement>('.card').forEach((c) => c.classList.toggle('is-active', c.dataset.id === slug));
+    const name = esc(w.name);
+    $('info').innerHTML = `<p class="ttl">${name}</p><div class="meta">${w.tags.map((t) => `<span>${esc(t)}</span>`).join('')}</div><div class="btns"><a class="btn primary" href="${w.url}" target="_blank" rel="noopener"><span class="visually-hidden">${name}の</span>サイトを見る<span class="visually-hidden">（新しいタブで開く）</span> <span class="arr" aria-hidden="true">↗</span></a><a class="btn" href="${w.detail}"><span class="visually-hidden">${name}の</span>詳細</a></div>`;
+    const qr = $('qr');
+    qr.innerHTML = w.qr;
+    qr.setAttribute('aria-label', `${w.name}の URL の QR コード`);
+    // 新しい画像の読み込み・デコードが済んでから差し替える（白い画面を挟まない）
+    const imgs = [w.pc, w.sp].map((src) => { const img = new Image(); img.alt = ''; img.src = src; return img; });
+    await Promise.all(imgs.map((img) => img.decode().catch(() => {})));
+    if (my !== token) return; // 途中で別の作品が選ばれた
+    imgs.forEach((img, i) => dev[i].feed.replaceChildren(img));
+    measure();
+    restart();
+  }
+
+  /* 1画面ずつ動いて止まる。最初の画面を見せてから進み、最後まで行ったら戻るアニメーションなしで先頭へ */
+  const TIMING = { first: 1.2, move: 0.4, hold: 0.8, last: 1.2 }; // 秒
+  const inertia = (x: number) => 1 - (1 - x) ** 3; // 速く動き出して、ゆっくり止まる
+  let t0 = performance.now(), hover = false, userPaused = false, pauseStart = 0, shownP = 0;
+  const isPaused = () => hover || userPaused;
+  function restart() { t0 = performance.now(); shownP = 0; if (isPaused()) pauseStart = t0; }
+  function setPaused(next: () => void) {
+    const was = isPaused();
+    next();
+    const now = performance.now();
+    if (!was && isPaused()) pauseStart = now;
+    if (was && !isPaused()) t0 += now - pauseStart; // 止まっていた時間だけ後ろにずらす
+  }
+  function progress(now: number) {
+    const dist = dev[0].dist, screenH = dev[0].vp.clientHeight;
+    if (!dist || !screenH) return 0;
+    const { first, move, hold, last } = TIMING;
+    const n = Math.ceil(dist / (screenH * 0.8));
+    const T = first + n * move + (n - 1) * hold + last;
+    let x = ((now - t0) / 1000) % T;
+    if (x < first) return 0;
+    x -= first;
+    const k = Math.floor(x / (move + hold));
+    if (k >= n) return 1;
+    const y = x - k * (move + hold);
+    return Math.min(1, (k + inertia(Math.min(1, y / move))) / n);
+  }
+  let visible = false, raf = 0;
+  function tick(now: number) {
+    const p = reduce.matches ? 0 : isPaused() ? shownP : progress(now);
+    shownP = p;
+    for (const d of dev) d.feed.style.transform = `translateY(${-p * d.dist}px)`;
+    raf = visible ? requestAnimationFrame(tick) : 0;
+  }
+  // プレビューが画面に見えている間だけ動かす（スマホ幅では非表示なので動かない）
+  new IntersectionObserver(([e]) => {
+    visible = e.isIntersecting;
+    if (visible && !raf) { measure(); raf = requestAnimationFrame(tick); }
+  }).observe(stage);
+
+  for (const d of dev) {
+    d.vp.addEventListener('mouseenter', () => setPaused(() => (hover = true)));
+    d.vp.addEventListener('mouseleave', () => setPaused(() => (hover = false)));
+  }
+  pauseBtn.addEventListener('click', () => {
+    setPaused(() => (userPaused = !userPaused));
+    pauseBtn.setAttribute('aria-pressed', String(userPaused));
+    pauseBtn.textContent = userPaused ? '再生' : '一時停止';
+  });
+  addEventListener('resize', () => { setPaused(() => (hover = false)); measure(); });
+
+  // マウスを乗せて 0.12 秒で切り替え（右のボタンへ斜めに動かす途中で切り替わらないように）。離しても選択は残す
+  let timer = 0;
+  grid.addEventListener('mouseover', (e) => {
+    const c = (e.target as Element).closest<HTMLElement>('.card');
+    if (!c) return;
+    clearTimeout(timer);
+    timer = window.setTimeout(() => select(c.dataset.id!), 120);
+  });
+  grid.addEventListener('mouseleave', () => clearTimeout(timer));
+  grid.addEventListener('focusin', (e) => { const c = (e.target as Element).closest<HTMLElement>('.card'); if (c) select(c.dataset.id!); });
+
+  // 絞り込み（URL の ?type= にも反映して共有できるように）
+  const chips = [...document.querySelectorAll<HTMLButtonElement>('#filters .chip')];
+  function applyFilter(f: string) {
+    delete document.documentElement.dataset.type; // ここからは JS（hidden 属性）で絞り込む
+    chips.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.f === f)));
+    grid.querySelectorAll<HTMLElement>('.card').forEach((c) => (c.hidden = f !== 'all' && c.dataset.f !== f));
+    const firstCard = grid.querySelector<HTMLElement>('.card:not([hidden])');
+    if (firstCard) select(firstCard.dataset.id!);
+  }
+  chips.forEach((chip) => chip.addEventListener('click', () => {
+    const f = chip.dataset.f!;
+    applyFilter(f);
+    const url = new URL(location.href);
+    if (f === 'all') url.searchParams.delete('type'); else url.searchParams.set('type', f);
+    history.replaceState(null, '', url);
+  }));
+  const initial = document.documentElement.dataset.type;
+  if (initial) applyFilter(initial);
+</script>

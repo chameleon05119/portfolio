@@ -1,0 +1,10 @@
+---
+// 仮ロゴ（カメレオンの丸まった尻尾＋目）。マスコットができたら差し替える
+interface Props { class?: string; size?: number }
+const { class: cls = 'mark', size = 34 } = Astro.props;
+---
+<svg class={cls} width={size} height={size} viewBox="0 0 40 40" aria-hidden="true">
+  <circle cx="20" cy="20" r="19" fill="var(--accent)" />
+  <path d="M27 24.5a7.5 7.5 0 1 1-7.5-7.5 4.5 4.5 0 1 1-4.5 4.5" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" />
+  <circle cx="27.5" cy="13.5" r="2.2" fill="#fff" />
+</svg>

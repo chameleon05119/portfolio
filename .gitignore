@@ -1,4 +1,6 @@
 node_modules/
 dist/
+dist-hub/
 _site/
+.astro/
 .DS_Store

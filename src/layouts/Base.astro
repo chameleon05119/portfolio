@@ -1,0 +1,46 @@
+---
+// フォントは自前で配信し、定義の CSS は描画を止めないように後から読む（和文は 400・700 のみ）
+import fontsUrl from '../styles/fonts.css?url';
+import '../styles/global.css';
+import Mark from '../components/Mark.astro';
+import { profile } from '../data/profile.mjs';
+
+interface Props { title?: string; description?: string }
+const { title, description = `${profile.name}（${profile.nameEn}）の ${profile.description}。デザインカンプからのコーディング、スマホ対応・表示崩れ修正、LP 制作の作品を掲載しています。` } = Astro.props;
+const fullTitle = title ? `${title} | ${profile.name}` : `${profile.name} | ${profile.description}`;
+const base = import.meta.env.BASE_URL;
+---
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
+    <link rel="stylesheet" href={fontsUrl} media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href={fontsUrl} /></noscript>
+  </head>
+  <body>
+    <a class="skip" href="#main">本文へ移動</a>
+    <header>
+      <div class="wrap hd">
+        <a class="logo" href={base}>
+          <Mark />
+          <span><span class="name">{profile.nameEn}</span><span class="desc">{profile.description}</span></span>
+        </a>
+        <nav class="gnav" aria-label="サイト内">
+          <a href={`${base}#works`}><span>WORKS</span>作品</a>
+          <a href={`${base}#service`}><span>SERVICE</span>できること</a>
+          <a href={`${base}#about`}><span>ABOUT</span>プロフィール</a>
+        </nav>
+      </div>
+    </header>
+    <slot />
+    <footer><div class="wrap"><span>© {profile.name}</span><span>掲載作品はすべて架空のサイトです</span></div></footer>
+  </body>
+</html>
