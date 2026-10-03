@@ -31,4 +31,6 @@ npm run build:all    # 公開用の _site/ を作る（GitHub Actions も同じ�
 npm run shots        # 作品のスクリーンショットを撮り直す
 ```
 
+`sample-02` の写真は Google の画像生成 AI（Gemini）で作成したものです。
+
 `sample-01` のデザインカンプのデータは、配布元の規約によりこのリポジトリに含めていません（デザイン: [Codejump](https://code-jump.com/xd-public/) 練習用デザインカンプ「⑰ 応用編：ランディングページ／CSSアニメーション」）。

@@ -64,6 +64,6 @@ export const works = [
       ['修正報告書', SITE + 'sample-02/report/'],
       ['修正前のサイト', SITE + 'sample-02/before/'],
     ],
-    credit: '修正前のサイトは、よくある崩れを再現するために作った架空のものです',
+    credit: '修正前のサイトは、よくある崩れを再現するために作った架空のものです。写真は Google の画像生成 AI（Gemini）で作成しました',
   },
 ];
