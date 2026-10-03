@@ -20,8 +20,9 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<!-- フォントは描画を止めないように後から読み込む（読み込むまでは OS のフォントで表示） -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho+B1:wght@500;700&display=swap" media="print" onload="this.media='all'" />
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho+B1:wght@500;700&display=swap" /></noscript>
+<!-- フォントは描画を止めないように後から読み込む（読み込むまでは OS のフォントで表示）。
+     本文は OS のゴシック（ヒラギノ・游ゴシックなど）を使い、Web フォントは見出しの明朝と英字だけにして読み込みを減らす -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Shippori+Mincho+B1:wght@500;700&display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Shippori+Mincho+B1:wght@500;700&display=swap" /></noscript>
 <link rel="stylesheet" href="{{root}}assets/scss/style.scss" />
 <script src="{{root}}assets/js/main.js" defer onerror="document.documentElement.classList.remove('js')"></script>

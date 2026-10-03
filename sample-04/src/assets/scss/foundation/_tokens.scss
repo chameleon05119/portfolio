@@ -16,7 +16,7 @@
   --color-closed: #a8594a;
 
   // 文字
-  --font-base: 'Noto Sans JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+  --font-base: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', YuGothic, 'Noto Sans JP', Meiryo, sans-serif; // 本文は OS のフォント
   --font-head: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
   --font-en: 'Cormorant Garamond', 'Times New Roman', serif;
   --letter-spacing: 0.04em;
