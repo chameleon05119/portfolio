@@ -722,3 +722,9 @@
     color: var(--color-text-sub);
   }
 }
+
+// JS が動くときのフォームの出し分けは、描画前に付く .js クラスで行う（JS の実行後に切り替えると表示がずれるため）
+.js [data-no-js],
+html:not(.js) [data-js-only] {
+  display: none;
+}

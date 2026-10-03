@@ -161,8 +161,7 @@
     const confirmStep = document.querySelector('[data-step="confirm"]')
     const steps = document.querySelectorAll('.p-steps li')
     const summary = form.querySelector('.p-form__summary')
-    document.querySelectorAll('[data-js-only]').forEach((el) => (el.hidden = false))
-    document.querySelectorAll('[data-no-js]').forEach((el) => (el.hidden = true))
+    // フォームの表示・「JavaScript が必要です」の非表示は、描画前に付く .js クラスで CSS が切り替える
 
     // 採用ページから来たら種別を「採用について」にしておく
     const type = new URLSearchParams(location.search).get('type')
