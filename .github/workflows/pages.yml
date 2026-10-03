@@ -32,6 +32,7 @@ jobs:
           mkdir -p _site
           cp index.html _site/
           cp -R sample-01/dist _site/sample-01
+          cp -R sample-02 _site/sample-02
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site

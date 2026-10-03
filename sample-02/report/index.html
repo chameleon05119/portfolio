@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>こむぎ堂ベーカリー スマホ表示崩れ修正 報告書</title>
+<style>
+  :root {
+    --text: #1f2328; --sub: #59636e; --bg: #fff; --panel: #f6f8fa; --line: #d1d9e0;
+    --accent: #0969da; --bad: #cf222e; --good: #1a7f37;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --text: #e6edf3; --sub: #9198a1; --bg: #0d1117; --panel: #151b23; --line: #3d444d; --accent: #4493f8; --bad: #f85149; --good: #3fb950; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, -apple-system, "Hiragino Sans", sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); }
+  main { max-width: 1040px; margin: 0 auto; padding: 48px 16px 80px; }
+  header h1 { margin: 0 0 4px; font-size: clamp(22px, 4vw, 30px); line-height: 1.4; }
+  .date { margin: 0 0 24px; color: var(--sub); font-size: 14px; }
+  .lead { margin: 0 0 12px; font-size: 16px; }
+  .lead:last-of-type { margin-bottom: 24px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 40px; padding: 0; list-style: none; }
+  .links a { display: inline-block; padding: 8px 16px; border: 1px solid var(--line); border-radius: 6px; color: var(--accent); text-decoration: none; font-weight: 600; }
+  .block { margin: 0 0 40px; padding: 20px 24px; background: var(--panel); border-radius: 8px; }
+  .block h2 { margin: 0 0 8px; font-size: 18px; }
+  .block p { margin: 0 0 12px; }
+  .block ul { margin: 0; padding-left: 1.2em; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; background: var(--bg); }
+  th, td { padding: 8px 12px; border: 1px solid var(--line); text-align: left; }
+  .note { margin-top: 12px; font-size: 14px; color: var(--sub); }
+  code { font-size: 13px; overflow-wrap: anywhere; }
+  .toc { margin: 0 0 48px; padding-left: 1.6em; columns: 2 280px; column-gap: 40px; }
+  .toc li { break-inside: avoid; }
+  .toc li::marker { color: var(--sub); font-variant-numeric: tabular-nums; }
+  .toc a { color: var(--accent); }
+  .issue { margin: 0 0 56px; padding-top: 24px; border-top: 1px solid var(--line); }
+  .issue h2 { display: flex; gap: 12px; align-items: baseline; margin: 0 0 16px; font-size: 19px; line-height: 1.5; }
+  .num { flex: none; font-variant-numeric: tabular-nums; color: var(--accent); }
+  .facts { display: grid; gap: 8px; margin: 0 0 20px; }
+  .facts div { display: grid; grid-template-columns: 4.5em 1fr; gap: 12px; }
+  .facts dt { font-weight: 700; color: var(--sub); }
+  .facts dd { margin: 0; overflow-wrap: anywhere; }
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+  figure { margin: 0; }
+  figcaption { margin-bottom: 6px; font-size: 13px; font-weight: 700; }
+  figcaption.before { color: var(--bad); }
+  figcaption.after { color: var(--good); }
+  .compare img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 6px; }
+  footer { margin-top: 64px; color: var(--sub); font-size: 13px; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>こむぎ堂ベーカリー スマホ表示崩れ修正 報告書</h1>
+    <p class="date">2026-10-03</p>
+    <p class="lead">※ ポートフォリオ用のサンプルです。修正前のサイトは、よくある表示崩れを再現するために作成した架空の店舗のサイトです。</p>
+    <p class="lead">PC 向けに作られた既存サイト（固定幅 960px・float レイアウト）を、スマホ・タブレットに対応させました。PC（幅 960px 以上）の見た目は、長い URL の改行（1か所）を除いて変えていません。</p>
+    <ul class="links"><li><a href="../before/">修正前のページ</a></li><li><a href="../after/">修正後のページ</a></li></ul>
+  </header>
+
+  <section class="block">
+    <h2>対応範囲</h2>
+    <ul><li>対象: トップページ（index.html / css/style.css）</li><li>切り替え幅: 959px 以下をタブレット・スマホ、599px 以下をスマホとして調整。960px 以上（PC、iPad 横向きを含む）は従来どおりの表示</li><li>HTML の変更: viewport の追加／価格表のカード表示のため thead・tbody と各セルの項目名（data-label 属性）を追加／地図の大きさをインライン style から CSS へ移動</li><li>CSS の変更: 既存の記述は地図の大きさの移動のみ。末尾に「スマホ・タブレット対応」のブロックを追加（PC 用の指定をこのブロックで上書き）</li><li>確認環境: Google Chrome のスマホ・タブレット表示（エミュレーション）で 320 / 375 / 414 / 600 / 768 / 900 / 959px、PC 表示で 960 / 1024 / 1280 / 1440px。iOS Safari・Android の実機では未確認</li></ul>
+  </section>
+  
+      <section class="block">
+        <h2>PC 表示への影響</h2>
+        <p>修正前後のページ全体を PC の幅（PC の表示）で撮影し、ピクセル単位で比べました。意図して PC にも入れた修正（下記）を修正前にも当てた状態で比べています。</p>
+        <table>
+          <thead><tr><th>幅</th><th>変化したピクセル</th><th>ページの高さ</th></tr></thead>
+          <tbody><tr><td>960px</td><td>0%（0px）</td><td>4259 → 4259px</td></tr><tr><td>1024px</td><td>0%（0px）</td><td>4259 → 4259px</td></tr><tr><td>1280px</td><td>0%（0px）</td><td>4259 → 4259px</td></tr><tr><td>1440px</td><td>0%（0px）</td><td>4259 → 4259px</td></tr></tbody>
+        </table>
+        <p class="note">PC にも入れた修正: <code>body { overflow-wrap: break-word; }</code></p>
+      </section>
+
+  <ol class="toc"><li><a href="#issue-01-viewport">スマホで PC 表示がそのまま縮小され、文字が読めない</a></li><li><a href="#issue-02-header">ヘッダーのメニューが小さく、タップしにくい（タブレット・スマホ）</a></li><li><a href="#issue-03-hero">メインビジュアルの高さと背景の指定が、スマホ・タブレットで意図どおりに表示されない</a></li><li><a href="#issue-04-about">画像と文章の横並びが崩れる（スマホ・タブレット）</a></li><li><a href="#issue-05-price">価格表が横にはみ出し、内容が読めない</a></li><li><a href="#issue-06-sidebar">お知らせとサイドバーの2列が崩れ、URL が枠からはみ出す</a></li><li><a href="#issue-07-access">地図が画面からはみ出し、住所・メールアドレスが読めない</a></li><li><a href="#issue-08-form">フォームがはみ出し、入力しようとすると画面が拡大される</a></li><li><a href="#issue-09-footer">フッターのリンクが小さく、隣のリンクを押し間違える</a></li></ol>
+
+  
+      <article class="issue" id="issue-01-viewport">
+        <h2><span class="num">01</span>スマホで PC 表示がそのまま縮小され、文字が読めない</h2>
+        <dl class="facts">
+          <div><dt>原因</dt><dd>viewport の指定がなく、スマホのブラウザが幅 980px 以上の PC 表示として描画して縮小している</dd></div>
+          <div><dt>修正</dt><dd>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt; を追加し、959px 以下では固定幅（960px）をやめて画面幅に合わせて伸縮するよう変更</dd></div>
+          <div><dt>確認幅</dt><dd>375px</dd></div>
+        </dl>
+        <div class="compare">
+          <figure><figcaption class="before">修正前</figcaption><img src="shots/01-viewport-before.jpg" alt="修正前: スマホで PC 表示がそのまま縮小され、文字が読めない" loading="lazy"></figure>
+          <figure><figcaption class="after">修正後</figcaption><img src="shots/01-viewport-after.jpg" alt="修正後: スマホで PC 表示がそのまま縮小され、文字が読めないを直した表示" loading="lazy"></figure>
+        </div>
+      </article>
+
+      <article class="issue" id="issue-02-header">
+        <h2><span class="num">02</span>ヘッダーのメニューが小さく、タップしにくい（タブレット・スマホ）</h2>
+        <dl class="facts">
+          <div><dt>原因</dt><dd>固定高さ 80px のヘッダーに、ロゴ・メニュー5項目・電話番号を横並びで詰めている。メニューの文字は 13px で、PC 表示が縮小されるとさらに小さくなり、指で押せる大きさにならない。固定幅を外すだけでは、768px 前後で電話番号がヘッダーからはみ出す</dd></div>
+          <div><dt>修正</dt><dd>959px 以下ではヘッダーの固定をやめ（ロゴ・メニュー・電話番号を並べると高さが約160px になり、固定すると画面を圧迫するため）、メニューを高さ 44px のボタン状に並べる（タブレット5列・スマホ3列）</dd></div>
+          <div><dt>確認幅</dt><dd>768px</dd></div>
+        </dl>
+        <div class="compare">
+          <figure><figcaption class="before">修正前</figcaption><img src="shots/02-header-before.jpg" alt="修正前: ヘッダーのメニューが小さく、タップしにくい（タブレット・スマホ）" loading="lazy"></figure>
+          <figure><figcaption class="after">修正後</figcaption><img src="shots/02-header-after.jpg" alt="修正後: ヘッダーのメニューが小さく、タップしにくい（タブレット・スマホ）を直した表示" loading="lazy"></figure>
+        </div>
+      </article>
+
+      <article class="issue" id="issue-03-hero">
+        <h2><span class="num">03</span>メインビジュアルの高さと背景の指定が、スマホ・タブレットで意図どおりに表示されない</h2>
+        <dl class="facts">
+          <div><dt>原因</dt><dd>高さを画面の高さ（100vh）に固定したうえで、背景を固定表示（background-attachment: fixed）している。背景の固定表示は多くのスマホのブラウザで期待どおりに動かず、写真が意図より大きく拡大されて表示されることがある。修正前の画像は Chrome のスマホ表示での再現のため、背景の拡大は写っていない</dd></div>
+          <div><dt>修正</dt><dd>959px 以下では高さを内容に合わせ、背景の固定表示を解除</dd></div>
+          <div><dt>確認幅</dt><dd>375px</dd></div>
+        </dl>
+        <div class="compare">
+          <figure><figcaption class="before">修正前</figcaption><img src="shots/03-hero-before.jpg" alt="修正前: メインビジュアルの高さと背景の指定が、スマホ・タブレットで意図どおりに表示されない" loading="lazy"></figure>
+          <figure><figcaption class="after">修正後</figcaption><img src="shots/03-hero-after.jpg" alt="修正後: メインビジュアルの高さと背景の指定が、スマホ・タブレットで意図どおりに表示されないを直した表示" loading="lazy"></figure>
+        </div>
+      </article>
+
+      <article class="issue" id="issue-04-about">
+        <h2><span class="num">04</span>画像と文章の横並びが崩れる（スマホ・タブレット）</h2>
+        <dl class="facts">
+          <div><dt>原因</dt><dd>画像（幅 480px）と文章（幅 440px）を float で左右に並べている</dd></div>
+          <div><dt>修正</dt><dd>959px 以下では画像と文章を縦に並べ、画像は画面幅に収まるよう縮小（img に max-width: 100%）。画像はタブレット幅（768px）での表示</dd></div>
+          <div><dt>確認幅</dt><dd>768px</dd></div>
+        </dl>
+        <div class="compare">
+          <figure><figcaption class="before">修正前</figcaption><img src="shots/04-about-before.jpg" alt="修正前: 画像と文章の横並びが崩れる（スマホ・タブレット）" loading="lazy"></figure>
+          <figure><figcaption class="after">修正後</figcaption><img src="shots/04-about-after.jpg" alt="修正後: 画像と文章の横並びが崩れる（スマホ・タブレット）を直した表示" loading="lazy"></figure>
+        </div>
+      </article>
+
+      <article class="issue" id="issue-05-price">
+        <h2><span class="num">05</span>価格表が横にはみ出し、内容が読めない</h2>
+        <dl class="facts">
+          <div><dt>原因</dt><dd>表の幅が 960px 固定で、セル内の改行も禁止（white-space: nowrap）している</dd></div>
+          <div><dt>修正</dt><dd>599px 以下では1商品ずつのカード表示に切り替え、各セルに付けた項目名（data-label）を値の左に表示。タブレットでは表のまま画面幅に合わせ、セル内の改行を許可</dd></div>
+          <div><dt>確認幅</dt><dd>375px</dd></div>
+        </dl>
+        <div class="compare">
+          <figure><figcaption class="before">修正前</figcaption><img src="shots/05-price-before.jpg" alt="修正前: 価格表が横にはみ出し、内容が読めない" loading="lazy"></figure>
+          <figure><figcaption class="after">修正後</figcaption><img src="shots/05-price-after.jpg" alt="修正後: 価格表が横にはみ出し、内容が読めないを直した表示" loading="lazy"></figure>
+        </div>
+      </article>
+
+      <article class="issue" id="issue-06-sidebar">
+        <h2><span class="num">06</span>お知らせとサイドバーの2列が崩れ、URL が枠からはみ出す</h2>
+        <dl class="facts">
+          <div><dt>原因</dt><dd>本文（620px）とサイドバー（300px）を float で2列にしている。Instagram の長い URL は途中で改行されないため、PC でも枠からはみ出していた</dd></div>
+          <div><dt>修正</dt><dd>959px 以下ではサイドバーを本文の下へ。長い URL・メールアドレスは、収まらないときだけ途中で改行する（body に overflow-wrap: break-word。PC にも適用）</dd></div>
+          <div><dt>確認幅</dt><dd>375px</dd></div>
+        </dl>
+        <div class="compare">
+          <figure><figcaption class="before">修正前</figcaption><img src="shots/06-sidebar-before.jpg" alt="修正前: お知らせとサイドバーの2列が崩れ、URL が枠からはみ出す" loading="lazy"></figure>
+          <figure><figcaption class="after">修正後</figcaption><img src="shots/06-sidebar-after.jpg" alt="修正後: お知らせとサイドバーの2列が崩れ、URL が枠からはみ出すを直した表示" loading="lazy"></figure>
+        </div>
+      </article>
+
+      <article class="issue" id="issue-07-access">
+        <h2><span class="num">07</span>地図が画面からはみ出し、住所・メールアドレスが読めない</h2>
+        <dl class="facts">
+          <div><dt>原因</dt><dd>地図の大きさが HTML のインライン style で 600×400px に固定されている</dd></div>
+          <div><dt>修正</dt><dd>インライン style を CSS に移し、959px 以下では画面幅に合わせて縮小。住所は地図の下に表示</dd></div>
+          <div><dt>確認幅</dt><dd>375px</dd></div>
+        </dl>
+        <div class="compare">
+          <figure><figcaption class="before">修正前</figcaption><img src="shots/07-access-before.jpg" alt="修正前: 地図が画面からはみ出し、住所・メールアドレスが読めない" loading="lazy"></figure>
+          <figure><figcaption class="after">修正後</figcaption><img src="shots/07-access-after.jpg" alt="修正後: 地図が画面からはみ出し、住所・メールアドレスが読めないを直した表示" loading="lazy"></figure>
+        </div>
+      </article>
+
+      <article class="issue" id="issue-08-form">
+        <h2><span class="num">08</span>フォームがはみ出し、入力しようとすると画面が拡大される</h2>
+        <dl class="facts">
+          <div><dt>原因</dt><dd>表の幅 700px・入力欄の幅 480px が固定。また入力欄の文字が 13px で、iPhone（iOS Safari）は文字が 16px 未満の入力欄を選ぶと画面を自動で拡大する仕様のため、入力のたびに拡大・縮小が必要になる</dd></div>
+          <div><dt>修正</dt><dd>599px 以下では項目名を入力欄の上に置き、入力欄を画面幅に。959px 以下では入力欄の文字を 16px に</dd></div>
+          <div><dt>確認幅</dt><dd>375px</dd></div>
+        </dl>
+        <div class="compare">
+          <figure><figcaption class="before">修正前</figcaption><img src="shots/08-form-before.jpg" alt="修正前: フォームがはみ出し、入力しようとすると画面が拡大される" loading="lazy"></figure>
+          <figure><figcaption class="after">修正後</figcaption><img src="shots/08-form-after.jpg" alt="修正後: フォームがはみ出し、入力しようとすると画面が拡大されるを直した表示" loading="lazy"></figure>
+        </div>
+      </article>
+
+      <article class="issue" id="issue-09-footer">
+        <h2><span class="num">09</span>フッターのリンクが小さく、隣のリンクを押し間違える</h2>
+        <dl class="facts">
+          <div><dt>原因</dt><dd>11px の文字のリンクを「|」区切りで1行に並べており、タップできる高さが約11px</dd></div>
+          <div><dt>修正</dt><dd>959px 以下ではリンクの文字を 14px、タップ領域を高さ 44px 以上に。スマホでは1項目ずつ縦に並べる</dd></div>
+          <div><dt>確認幅</dt><dd>375px</dd></div>
+        </dl>
+        <div class="compare">
+          <figure><figcaption class="before">修正前</figcaption><img src="shots/09-footer-before.jpg" alt="修正前: フッターのリンクが小さく、隣のリンクを押し間違える" loading="lazy"></figure>
+          <figure><figcaption class="after">修正後</figcaption><img src="shots/09-footer-after.jpg" alt="修正後: フッターのリンクが小さく、隣のリンクを押し間違えるを直した表示" loading="lazy"></figure>
+        </div>
+      </article>
+
+  <section class="block"><h2>補足・ご提案</h2><ul><li>ヘッダーの固定（追従）は 959px 以下でやめています。ページ下部からメニューに戻るには上までスクロールが必要です。追従させたい場合は、ヘッダーを細くして固定する方法か、ハンバーガーメニュー（JavaScript を追加）をご提案できます</li><li>スマホの価格表はカード表示のため表の構造（thead・tbody）を display: block にしており、スクリーンリーダーでは表として読み上げられません。各セルの項目名は表示されるため内容は伝わりますが、表としての読み上げが必要な場合は ARIA 属性の追加で対応できます</li><li>960px 以上のタッチ端末（iPad の横向きなど）は PC と同じ表示です。入力欄の文字（13px）による拡大は iPad では起きにくいですが、気になる場合は PC の入力欄も 16px にすることをおすすめします</li><li>PC のフッターの文字（11px）とロゴの「BAKERY」（11px）は、PC の見た目を変えない方針のため変更していません。読みやすさのため 12px 以上への変更をおすすめします</li><li>実機（iPhone / Android）での最終確認をお願いします</li></ul></section>
+  <footer>※ ポートフォリオ用のサンプルです。「こむぎ堂ベーカリー」は架空の店舗で、修正前のサイトはよくある表示崩れを再現するために作成したものです。</footer>
+</main>
+</body>
+</html>
