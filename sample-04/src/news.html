@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- include: head.html -->
+    <title>お知らせ｜ひととき珈琲</title>
+    <meta name="description" content="ひととき珈琲からのお知らせ。季節のメニュー、定休日・営業時間の変更、お店のことなど。" />
+    <meta property="og:title" content="お知らせ｜ひととき珈琲" />
+    <meta property="og:description" content="季節のメニュー、定休日・営業時間の変更、お店のことなど。" />
+  </head>
+  <body data-page="news">
+    <!-- include: header.html -->
+    <main id="main">
+      <nav class="l-breadcrumb" aria-label="パンくずリスト"><div class="l-container"><ol><li><a href="./index.html">トップ</a></li><li aria-current="page">お知らせ</li></ol></div></nav>
+      <div class="l-page-head"><div class="l-container"><span class="l-page-head__en" aria-hidden="true">News</span><h1>お知らせ</h1></div></div>
+      <section class="c-section c-section--tight" aria-label="お知らせ一覧">
+        <div class="l-container l-container--narrow">
+          <div class="p-news-filter" role="group" aria-label="カテゴリで絞り込み" hidden>
+            <button type="button" data-cat="all" aria-pressed="true">すべて</button>
+            <button type="button" data-cat="menu" aria-pressed="false">メニュー</button>
+            <button type="button" data-cat="open" aria-pressed="false">営業</button>
+            <button type="button" data-cat="shop" aria-pressed="false">お店</button>
+          </div>
+          <p class="u-visually-hidden" role="status" data-news-status></p>
+          <ul class="c-news-list" data-news-list>
+            <li data-cat="menu"><a href="./news/2026-10-01.html"><time datetime="2026-10-01">2026.10.01</time><span class="c-category">メニュー</span><span class="c-news-list__title">10月の焼き菓子は、かぼちゃのスコーンです</span></a></li>
+            <li data-cat="open"><a href="./news/2026-09-20.html"><time datetime="2026-09-20">2026.09.20</time><span class="c-category">営業</span><span class="c-news-list__title">10月の定休日のお知らせ</span></a></li>
+            <li data-cat="shop"><a href="./news/2026-09-05.html"><time datetime="2026-09-05">2026.09.05</time><span class="c-category">お店</span><span class="c-news-list__title">本棚の本を入れ替えました</span></a></li>
+            <li data-cat="menu"><a href="./news/2026-08-25.html"><time datetime="2026-08-25">2026.08.25</time><span class="c-category">メニュー</span><span class="c-news-list__title">アイスコーヒーは9月29日までです</span></a></li>
+            <li data-cat="open"><a href="./news/2026-08-10.html"><time datetime="2026-08-10">2026.08.10</time><span class="c-category">営業</span><span class="c-news-list__title">夏季休業のお知らせ</span></a></li>
+          </ul>
+        </div>
+      </section>
+    </main>
+    <!-- include: footer.html -->
+  </body>
+</html>

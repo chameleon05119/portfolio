@@ -1,0 +1,77 @@
+@use '../foundation/mixins' as *;
+
+// セクション見出し（英字のイタリック＋日本語の見出し）
+.c-heading {
+  margin-bottom: 36px;
+
+  @include md {
+    margin-bottom: 52px;
+  }
+
+  &__en {
+    display: block;
+    font-family: var(--font-en);
+    font-style: italic;
+    font-size: rem(19);
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--color-accent-text);
+  }
+
+  h2 {
+    margin: 6px 0 0;
+    font-size: clamp(rem(24), 2.6vw, rem(32));
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  &--flush {
+    margin-bottom: 0;
+  }
+}
+
+.c-section {
+  padding-block: 88px;
+
+  @include md {
+    padding-block: 128px;
+  }
+
+  &--sub {
+    background: var(--color-bg-sub);
+  }
+
+  // 上の余白を詰める（直前のセクションと続けて見せる・パンくずの直後）
+  &--tight {
+    padding-top: 48px;
+  }
+
+  &--flush {
+    padding-top: 0;
+  }
+}
+
+// 写真をゆっくり拡大する枠（ホバー）
+.c-photo {
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s var(--ease-out);
+  }
+
+  @media (hover: hover) {
+    a:hover &,
+    button:hover & {
+      img {
+        transform: scale(1.04);
+      }
+    }
+  }
+}

@@ -1,0 +1,201 @@
+@use '../foundation/mixins' as *;
+
+.l-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgb(243 238 230 / 0.92);
+  backdrop-filter: blur(8px);
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    height: var(--header-height);
+    max-width: 1360px;
+    margin-inline: auto;
+    padding-inline: var(--container-padding);
+  }
+
+  &__nav {
+    display: none;
+    margin-left: auto;
+
+    @include lg {
+      display: flex;
+      gap: 32px;
+      font-size: rem(14);
+    }
+
+    a {
+      position: relative;
+      padding-block: 6px;
+      text-decoration: none;
+
+      // 小さな点（今いるページ・ホバー）
+      &::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: -2px;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: var(--color-accent);
+        transform: translateX(-50%) scale(0);
+        transition: transform var(--duration);
+      }
+
+      &:hover::after,
+      &[aria-current='page']::after {
+        transform: translateX(-50%) scale(1);
+      }
+    }
+  }
+
+  &__ig {
+    display: none;
+
+    @include lg {
+      display: grid;
+    }
+  }
+
+  &__menu {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    margin-left: auto;
+    border: 0;
+    background: none;
+    cursor: pointer;
+
+    @include lg {
+      display: none;
+    }
+
+    span {
+      position: relative;
+      width: 22px;
+      height: 1px;
+      background: transparent;
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 22px;
+        height: 1.5px;
+        background: var(--color-text);
+        transition: transform var(--duration);
+      }
+
+      &::before {
+        top: -4px;
+      }
+
+      &::after {
+        top: 4px;
+      }
+    }
+
+    &[aria-expanded='true'] span {
+      &::before {
+        transform: translateY(4px) rotate(30deg);
+      }
+
+      &::after {
+        transform: translateY(-4px) rotate(-30deg);
+      }
+    }
+  }
+}
+
+// Instagram の丸いボタン（ヘッダー・メニュー共通）
+.c-ig {
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px var(--color-border);
+  transition: background var(--duration);
+
+  &:hover {
+    background: var(--color-card);
+  }
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+// スマホ・タブレットのメニュー
+.l-drawer {
+  position: fixed;
+  inset: var(--header-height) 0 0;
+  z-index: 49;
+  overflow-y: auto;
+  padding: 24px var(--container-padding) 48px;
+  background: var(--color-bg);
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    opacity var(--duration),
+    visibility var(--duration);
+
+  // 開くときは表示状態をすぐ切り替える（フォーカスを移せるように）。閉じるときは消えてから非表示に
+  &.is-open {
+    visibility: visible;
+    opacity: 1;
+    transition:
+      opacity var(--duration),
+      visibility 0s;
+  }
+
+  @include lg {
+    display: none;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li a {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 16px 4px;
+    border-bottom: 1px solid var(--color-border);
+    font-family: var(--font-head);
+    font-size: rem(18);
+    text-decoration: none;
+
+    span {
+      margin-left: auto;
+      font-family: var(--font-en);
+      font-style: italic;
+      font-size: rem(16);
+      color: var(--color-accent-text);
+    }
+  }
+
+  &__info {
+    margin-top: 28px;
+    padding: 20px 22px;
+    border-radius: var(--radius);
+    background: var(--color-card);
+    font-size: rem(14);
+    line-height: 1.9;
+  }
+
+  .c-ig {
+    display: grid;
+    margin: 24px auto 0;
+  }
+}
