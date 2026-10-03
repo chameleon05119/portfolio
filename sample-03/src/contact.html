@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- include: head.html -->
+    <title>お問い合わせ｜株式会社 柊精工</title>
+    <meta name="description" content="加工のご相談・お見積り、採用についてのお問い合わせはこちらから。図面の添付もできます。" />
+    <meta property="og:title" content="お問い合わせ｜株式会社 柊精工" />
+    <meta property="og:description" content="加工のご相談・お見積り、採用についてのお問い合わせ。" />
+  </head>
+  <body data-page="contact">
+    <!-- include: header.html -->
+    <main id="main">
+      <div class="l-page-head"><div class="l-container"><span class="l-page-head__en" aria-hidden="true">Contact</span><h1>お問い合わせ</h1></div></div>
+      <nav class="l-breadcrumb" aria-label="パンくずリスト"><div class="l-container"><ol><li><a href="./index.html">トップ</a></li><li aria-current="page">お問い合わせ</li></ol></div></nav>
+
+      <section class="c-section" style="padding-top: 48px" aria-label="お問い合わせフォーム">
+        <div class="l-container l-container--narrow">
+          <ol class="p-steps" aria-label="お問い合わせの手順"><li aria-current="step">入力</li><li>確認</li><li>完了</li></ol>
+
+          <p class="p-form__tel">お急ぎの方はお電話で　<a href="tel:0000000000">0000-00-0000</a><br /><small>平日 8:30〜17:30</small></p>
+
+          <p class="p-form__noscript" data-no-js>このフォームは JavaScript を使っています。お手数ですが、JavaScript を有効にするか、お電話でお問い合わせください。</p>
+
+          <div data-step="input" data-js-only hidden>
+            <form class="p-form" data-contact-form novalidate>
+              <div class="p-form__summary" tabindex="-1" role="group" aria-labelledby="summary-title" hidden>
+                <h2 id="summary-title">入力内容をご確認ください</h2>
+                <ul></ul>
+              </div>
+
+              <fieldset class="p-form__row" aria-describedby="type-error">
+                <legend class="p-form__label"><span data-label="type">お問い合わせ種別</span><span class="p-form__req">必須</span></legend>
+                <div>
+                  <div class="p-form__choices">
+                    <label><input type="radio" name="type" value="estimate" id="type-first" />加工のご相談・お見積り</label>
+                    <label><input type="radio" name="type" value="recruit" />採用について</label>
+                    <label><input type="radio" name="type" value="other" />その他</label>
+                  </div>
+                  <p class="p-form__error" id="type-error"></p>
+                </div>
+              </fieldset>
+
+              <div class="p-form__row">
+                <label class="p-form__label" for="company"><span data-label="company">会社名</span><span class="p-form__opt">任意</span></label>
+                <div><input type="text" id="company" name="company" autocomplete="organization" /></div>
+              </div>
+
+              <div class="p-form__row">
+                <label class="p-form__label" for="name"><span data-label="name">お名前</span><span class="p-form__req">必須</span></label>
+                <div><input type="text" id="name" name="name" autocomplete="name" required aria-describedby="name-error" /><p class="p-form__error" id="name-error"></p></div>
+              </div>
+
+              <div class="p-form__row">
+                <label class="p-form__label" for="email"><span data-label="email">メールアドレス</span><span class="p-form__req">必須</span></label>
+                <div><input type="email" id="email" name="email" autocomplete="email" inputmode="email" required aria-describedby="email-hint email-error" /><p class="p-form__hint" id="email-hint">例: name@example.com</p><p class="p-form__error" id="email-error"></p></div>
+              </div>
+
+              <div class="p-form__row">
+                <label class="p-form__label" for="tel"><span data-label="tel">電話番号</span><span class="p-form__opt">任意</span></label>
+                <div><input type="tel" id="tel" name="tel" autocomplete="tel" inputmode="tel" aria-describedby="tel-error" /><p class="p-form__error" id="tel-error"></p></div>
+              </div>
+
+              <div class="p-form__row">
+                <label class="p-form__label" for="file"><span data-label="file">図面・資料の添付</span><span class="p-form__opt">任意</span></label>
+                <div><input type="file" id="file" name="file" accept=".pdf,.png,.jpg,.jpeg,.dxf" aria-describedby="file-hint file-error" /><p class="p-form__hint" id="file-hint">PDF・画像・DXF、10MB まで</p><p class="p-form__error" id="file-error"></p></div>
+              </div>
+
+              <div class="p-form__row">
+                <label class="p-form__label" for="message"><span data-label="message">お問い合わせ内容</span><span class="p-form__req">必須</span></label>
+                <div><textarea id="message" name="message" required aria-describedby="message-hint message-error"></textarea><p class="p-form__hint" id="message-hint">数量・材質・希望納期などがわかれば、あわせてお書きください。</p><p class="p-form__error" id="message-error"></p></div>
+              </div>
+
+              <div class="p-form__agree">
+                <label><input type="checkbox" name="agree" id="agree" aria-describedby="agree-error" /><span><a href="./privacy.html" target="_blank" rel="noopener">個人情報の取り扱い（新しいタブで開く）</a>に同意する</span></label>
+                <p class="p-form__error" id="agree-error"></p>
+              </div>
+
+              <div class="p-form__actions"><button class="c-button c-button--solid" type="submit">入力内容を確認する</button></div>
+            </form>
+          </div>
+
+          <div class="p-confirm" data-step="confirm" hidden>
+            <h2 tabindex="-1" style="font-size: 1.4rem; margin: 0 0 20px; text-align: center">入力内容の確認</h2>
+            <p style="text-align: center; color: var(--color-text-sub)">以下の内容で送信します。よろしければ「送信する」を押してください。</p>
+            <table class="c-table"><tbody></tbody></table>
+            <div class="p-form__actions">
+              <button class="c-button c-button--back" type="button" data-back>修正する</button>
+              <button class="c-button c-button--solid" type="button" data-send>送信する</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- include: footer.html -->
+  </body>
+</html>

@@ -1,0 +1,58 @@
+@use '../foundation/mixins' as *;
+
+// ページ末尾の「ご相談」ブロック（全ページ共通）
+.c-cta {
+  display: grid;
+  gap: 28px;
+  padding: 32px 20px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-sub);
+
+  @include md {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    padding: 56px 64px;
+  }
+
+  h2 {
+    margin: 8px 0 0;
+    font-size: clamp(rem(22), 2.4vw, rem(32));
+  }
+
+  p {
+    margin: 12px 0 0;
+    color: var(--color-text-sub);
+  }
+
+  &__ways {
+    display: grid;
+    gap: 14px;
+  }
+
+  &__tel {
+    padding: 16px 24px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: #fff;
+
+    small {
+      color: var(--color-text-sub);
+    }
+
+    a {
+      display: block;
+      font-family: var(--font-en);
+      font-size: rem(32);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      line-height: 1.2;
+      text-decoration: none;
+    }
+  }
+
+  .c-button {
+    padding: 18px;
+  }
+}

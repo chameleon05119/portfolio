@@ -1,0 +1,40 @@
+// デザイントークン（デザイン案 A「紺 × 明朝」2026-10-03 確定）
+:root {
+  // 色（文字と背景のコントラストはすべて 4.5:1 以上）
+  --color-navy: #1c2a48; // 紺（縦書きの面・ボタン・数字）
+  --color-navy-2: #2a3b5f; // 紺（ホバー）
+  --color-text: #1f2328;
+  --color-text-sub: #5b6270;
+  --color-bg: #fff;
+  --color-bg-sub: #f5f3ee; // 生成り（交互のセクション背景）
+  --color-border: #dedad0;
+  --color-accent: #a07a3c; // 真鍮色（線・輪郭の数字など装飾のみ）
+  --color-accent-text: #7d5d2a; // 真鍮色（文字に使う濃いめ）
+  --color-on-navy: #fff;
+  --color-on-navy-sub: #c9cfdc;
+  --color-on-navy-accent: #e2c48e;
+  --color-error: #b3261e;
+
+  // 文字
+  --font-base: 'Noto Sans JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+  --font-head: 'Shippori Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  --font-en: 'Cormorant Garamond', 'Times New Roman', serif;
+  --letter-spacing: 0.02em;
+
+  // レイアウト
+  --container-width: 1200px;
+  --container-padding: 20px;
+  --header-height: 64px;
+
+  // 角丸・動き
+  --radius-sm: 2px;
+  --duration: 0.3s;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --container-padding: 32px;
+    --header-height: 84px;
+  }
+}

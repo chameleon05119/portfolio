@@ -1,0 +1,547 @@
+@use '../foundation/mixins' as *;
+
+// ===== 最初の画面 =====
+.p-fv {
+  display: grid;
+
+  @include md {
+    grid-template-columns: minmax(260px, 30%) 1fr;
+    min-height: calc(100svh - var(--header-height));
+    max-height: 900px;
+  }
+
+  &__copy {
+    position: relative;
+    display: grid;
+    place-items: center;
+    order: 2;
+    padding: 48px 20px 64px;
+    overflow: hidden;
+    background: var(--color-navy);
+    color: var(--color-on-navy);
+
+    @include md {
+      order: 0;
+      padding: 48px 24px;
+    }
+
+    // 内側の細い罫
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 20px;
+      border: 1px solid rgb(255 255 255 / 0.18);
+      pointer-events: none;
+
+      @include md {
+        inset: 24px;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0;
+    writing-mode: vertical-rl;
+    font-size: clamp(rem(24), 2.6vw, rem(38));
+    letter-spacing: 0.22em;
+    line-height: 2;
+
+    span {
+      display: block;
+    }
+
+    // スマホでは2行（「六十余年の誠実を、」を省く）
+    .is-pc {
+      display: none;
+
+      @include md {
+        display: block;
+      }
+    }
+
+    .is-em {
+      color: var(--color-on-navy-accent);
+    }
+  }
+
+  // 1行ずつ下りてくる（JS が動くときだけ）
+  .js &__title span {
+    opacity: 0;
+    transform: translateY(-12px);
+    animation: fv-rise 1s var(--ease-out) forwards;
+
+    &:nth-child(2) {
+      animation-delay: 0.25s;
+    }
+
+    &:nth-child(3) {
+      animation-delay: 0.5s;
+    }
+  }
+
+  &__since {
+    position: absolute;
+    left: 40px;
+    bottom: 36px;
+    font-family: var(--font-en);
+    font-size: rem(13);
+    letter-spacing: 0.3em;
+    color: var(--color-on-navy-sub);
+  }
+
+  &__main {
+    display: contents;
+
+    @include md {
+      display: grid;
+      grid-template-rows: 1fr auto;
+      min-width: 0;
+    }
+  }
+
+  &__photo {
+    position: relative;
+    order: 1;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #cdd2db;
+
+    @include md {
+      order: 0;
+      aspect-ratio: auto;
+      min-height: 0;
+    }
+
+    img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      animation: fv-zoom 14s ease-out forwards;
+    }
+  }
+
+  &__info {
+    display: grid;
+    gap: 16px;
+    order: 3;
+    padding: 24px var(--container-padding);
+
+    @include md {
+      grid-template-columns: 1fr auto;
+      gap: 16px 40px;
+      align-items: center;
+      padding: 24px 40px;
+    }
+
+    p {
+      margin: 0;
+      word-break: auto-phrase; // 対応ブラウザでは文節で折り返す（「メーカーで／す。」のような1文字だけの折り返しを防ぐ）
+      text-wrap: pretty;
+    }
+  }
+
+  &__news {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+    align-items: center;
+    padding-top: 14px;
+    border-top: 1px solid var(--color-border);
+    font-size: rem(14.5);
+
+    @include md {
+      grid-column: 1 / -1;
+    }
+
+    b {
+      font-family: var(--font-en);
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      color: var(--color-accent-text);
+    }
+
+    time {
+      font-family: var(--font-en);
+      letter-spacing: 0.06em;
+      color: var(--color-text-sub);
+    }
+
+    a {
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .is-more {
+      margin-left: auto;
+      font-size: rem(13.5);
+      color: var(--color-text-sub);
+    }
+  }
+}
+
+@keyframes fv-rise {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fv-zoom {
+  from {
+    transform: scale(1.08);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+// ===== 私たちについて＋数字 =====
+.p-about {
+  display: grid;
+  gap: 40px;
+
+  @include md {
+    grid-template-columns: 1.1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+
+  p {
+    margin: 24px 0 32px;
+    color: var(--color-text-sub);
+  }
+
+  .c-heading {
+    margin: 0;
+  }
+}
+
+.p-numbers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  margin: 0;
+  border: 1px solid var(--color-border);
+  background: var(--color-border);
+
+  div {
+    padding: 20px 16px 18px;
+    background: #fff;
+
+    @include md {
+      padding: 28px 28px 24px;
+    }
+  }
+
+  dt {
+    font-size: rem(14);
+    color: var(--color-text-sub);
+  }
+
+  dd {
+    margin: 4px 0 0;
+    font-family: var(--font-en);
+    font-size: rem(40);
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--color-navy);
+
+    @include md {
+      font-size: rem(52);
+    }
+
+    small {
+      margin-left: 4px;
+      font-family: var(--font-base);
+      font-size: rem(14);
+      font-weight: 500;
+      color: var(--color-text);
+    }
+  }
+}
+
+// ===== 事業内容（3列のカード） =====
+.p-business {
+  display: grid;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include md {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  a {
+    display: block;
+    text-decoration: none;
+  }
+
+  figure {
+    margin: 0 0 20px;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: var(--radius-sm);
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s var(--ease-out);
+  }
+
+  a:hover img {
+    transform: scale(1.05);
+  }
+
+  &__no {
+    font-family: var(--font-en);
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--color-accent-text);
+  }
+
+  h3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2px 0 8px;
+    font-size: rem(22);
+
+    &::after {
+      content: '→';
+      font-family: var(--font-base);
+      font-size: rem(16);
+      color: var(--color-accent-text);
+      transition: transform var(--duration);
+    }
+  }
+
+  a:hover h3::after {
+    transform: translateX(4px);
+  }
+
+  p {
+    margin: 0;
+    color: var(--color-text-sub);
+    font-size: rem(15);
+  }
+}
+
+// ===== 3つの強み（写真と文章を左右交互） =====
+.p-strength {
+  display: grid;
+  gap: 56px;
+
+  @include md {
+    gap: 96px;
+  }
+
+  article {
+    display: grid;
+    gap: 28px;
+
+    @include md {
+      grid-template-columns: 1.15fr 1fr;
+      gap: 64px;
+      align-items: center;
+
+      &:nth-child(even) figure {
+        order: 2;
+      }
+    }
+  }
+
+  figure {
+    margin: 0;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: var(--radius-sm);
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__no {
+    display: block;
+    font-family: var(--font-en);
+    font-size: rem(64);
+    font-weight: 600;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--color-accent);
+
+    @include md {
+      font-size: rem(96);
+    }
+  }
+
+  h3 {
+    margin: 8px 0 16px;
+    font-size: clamp(rem(22), 2.2vw, rem(30));
+  }
+
+  p {
+    margin: 0;
+    color: var(--color-text-sub);
+  }
+}
+
+// ===== 加工事例（正方形のカード。スマホは横スクロール） =====
+.p-works {
+  display: grid;
+  grid-template-columns: repeat(4, 72%);
+  gap: 16px;
+  margin: 0;
+  padding: 0 0 8px;
+  overflow-x: auto;
+  list-style: none;
+  scroll-snap-type: x mandatory;
+
+  @include md {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    overflow: visible;
+  }
+
+  li {
+    scroll-snap-align: start;
+  }
+
+  figure {
+    margin: 0 0 14px;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: var(--radius-sm);
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s var(--ease-out);
+  }
+
+  li:hover img {
+    transform: scale(1.05);
+  }
+
+  h3 {
+    margin: 0 0 8px;
+    font-family: var(--font-base);
+    font-size: rem(16.5);
+  }
+}
+
+// ===== 主要設備（数字のタイル） =====
+.p-facility {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  background: var(--color-border);
+  list-style: none;
+
+  @include md {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  li {
+    padding: 28px 16px;
+    background: #fff;
+    text-align: center;
+
+    @include md {
+      padding: 32px 24px;
+    }
+  }
+
+  b {
+    display: block;
+    font-family: var(--font-en);
+    font-size: rem(44);
+    font-weight: 600;
+    line-height: 1;
+    color: var(--color-navy);
+
+    @include md {
+      font-size: rem(56);
+    }
+
+    small {
+      margin-left: 4px;
+      font-family: var(--font-base);
+      font-size: rem(16);
+      color: var(--color-text);
+    }
+  }
+
+  span {
+    display: block;
+    margin-top: 12px;
+    font-weight: 500;
+  }
+}
+
+// ===== 採用バナー =====
+.p-recruit-band {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  color: #fff;
+
+  img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+
+    @include md {
+      height: 380px;
+    }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(90deg, rgb(28 42 72 / 0.92) 30%, rgb(28 42 72 / 0.35));
+  }
+
+  &__in {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 24px;
+
+    @include md {
+      padding: 0 64px;
+    }
+  }
+
+  .c-heading__en {
+    color: var(--color-on-navy-accent);
+  }
+
+  h2 {
+    margin: 10px 0 28px;
+    font-size: clamp(rem(24), 2.6vw, rem(36));
+  }
+}

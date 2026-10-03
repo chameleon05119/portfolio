@@ -1,0 +1,724 @@
+@use '../foundation/mixins' as *;
+
+// ===== 2列（写真＋文章）の汎用レイアウト（会社案内・事業・採用） =====
+.p-split {
+  display: grid;
+  gap: 28px;
+
+  @include md {
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+
+    &--reverse > :first-child {
+      order: 2;
+    }
+  }
+
+  figure {
+    margin: 0;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: var(--radius-sm);
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  h2 {
+    margin: 0 0 16px;
+    font-size: clamp(rem(22), 2.4vw, rem(32));
+  }
+
+  p {
+    margin: 0 0 16px;
+    color: var(--color-text-sub);
+  }
+}
+
+.p-split + .p-split {
+  margin-top: 72px;
+
+  @include md {
+    margin-top: 96px;
+  }
+}
+
+.p-spec {
+  margin: 20px 0 0;
+  padding: 16px 20px;
+  border-left: 3px solid var(--color-accent);
+  background: var(--color-bg-sub);
+  font-size: rem(14.5);
+
+  dt {
+    font-weight: 700;
+  }
+
+  dd {
+    margin: 0 0 6px;
+    color: var(--color-text-sub);
+  }
+}
+
+// ===== 会社案内 =====
+.p-message {
+  display: grid;
+  gap: 32px;
+
+  @include md {
+    grid-template-columns: 360px 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  figure {
+    margin: 0;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: var(--radius-sm);
+    max-width: 360px;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  h3 {
+    margin: 0 0 20px;
+    font-size: clamp(rem(22), 2.4vw, rem(30));
+  }
+
+  p {
+    margin: 0 0 16px;
+  }
+
+  &__sign {
+    margin-top: 28px !important;
+    text-align: right;
+    font-family: var(--font-head);
+    font-size: rem(18);
+  }
+}
+
+// 沿革（年の縦線＋点）
+.p-history {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 10px;
+    bottom: 10px;
+    width: 1px;
+    background: var(--color-border);
+  }
+
+  li {
+    position: relative;
+    display: grid;
+    gap: 2px;
+    padding: 0 0 28px 36px;
+
+    @include md {
+      grid-template-columns: 7em 1fr;
+      gap: 24px;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 13px;
+      height: 13px;
+      border: 2px solid var(--color-accent);
+      border-radius: 50%;
+      background: #fff;
+    }
+  }
+
+  b {
+    font-family: var(--font-en);
+    font-size: rem(22);
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--color-navy);
+  }
+}
+
+.p-access {
+  display: grid;
+  gap: 28px;
+
+  @include md {
+    grid-template-columns: 1.4fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  &__map {
+    margin: 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background: #eef0ed;
+
+    svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    figcaption {
+      padding: 8px 12px;
+      font-size: rem(12.5);
+      color: var(--color-text-sub);
+      background: #fff;
+    }
+  }
+
+  dl {
+    margin: 0;
+  }
+
+  dt {
+    font-weight: 700;
+    margin-top: 12px;
+  }
+
+  dd {
+    margin: 0;
+    color: var(--color-text-sub);
+  }
+}
+
+// ===== 事業・技術 =====
+.p-anchors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  a {
+    display: inline-flex;
+    gap: 8px;
+    padding: 8px 16px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: #fff;
+    font-size: rem(14);
+    text-decoration: none;
+
+    &::after {
+      content: '↓';
+      color: var(--color-accent-text);
+    }
+
+    &:hover {
+      border-color: var(--color-navy);
+    }
+  }
+}
+
+.p-flow {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: flow;
+
+  @include md {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+
+  li {
+    position: relative;
+    padding: 20px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: #fff;
+    counter-increment: flow;
+
+    &::before {
+      content: '0' counter(flow);
+      display: block;
+      font-family: var(--font-en);
+      font-size: rem(28);
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--color-accent-text);
+    }
+  }
+
+  b {
+    display: block;
+    margin: 4px 0 6px;
+    font-family: var(--font-head);
+    font-size: rem(17);
+  }
+
+  span {
+    font-size: rem(14);
+    color: var(--color-text-sub);
+  }
+}
+
+// ===== お知らせ =====
+.p-news-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+
+  button {
+    padding: 8px 18px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: #fff;
+    color: var(--color-text);
+    font: inherit;
+    font-size: rem(14);
+    cursor: pointer;
+
+    &[aria-pressed='true'] {
+      border-color: var(--color-navy);
+      background: var(--color-navy);
+      color: #fff;
+    }
+  }
+}
+
+.p-article {
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    align-items: center;
+
+    time {
+      font-family: var(--font-en);
+      font-size: rem(16);
+      letter-spacing: 0.06em;
+      color: var(--color-text-sub);
+    }
+  }
+
+  h1 {
+    margin: 12px 0 32px;
+    font-size: clamp(rem(24), 3vw, rem(34));
+  }
+
+  figure {
+    margin: 0 0 32px;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    border-radius: var(--radius-sm);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__body {
+    h2 {
+      margin: 40px 0 12px;
+      padding-left: 14px;
+      border-left: 3px solid var(--color-accent);
+      font-size: rem(21);
+    }
+
+    ul {
+      padding-left: 1.4em;
+    }
+  }
+
+  &__pager {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 12px;
+    align-items: center;
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-border);
+    font-size: rem(14);
+
+    a {
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .is-next {
+      text-align: right;
+    }
+  }
+}
+
+// ===== 採用 =====
+.p-voices {
+  display: grid;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include md {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  figure {
+    margin: 0 0 16px;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: var(--radius-sm);
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  b {
+    display: block;
+    font-family: var(--font-head);
+    font-size: rem(18);
+  }
+
+  small {
+    color: var(--color-accent-text);
+  }
+
+  p {
+    margin: 8px 0 0;
+    color: var(--color-text-sub);
+    font-size: rem(15);
+  }
+}
+
+// タブ（募集要項の職種切替）
+.c-tabs {
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  &__tab {
+    padding: 10px 20px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: #fff;
+    color: var(--color-text);
+    font: inherit;
+    font-size: rem(15);
+    font-weight: 700;
+    cursor: pointer;
+
+    &[aria-selected='true'] {
+      border-color: var(--color-navy);
+      background: var(--color-navy);
+      color: #fff;
+    }
+  }
+
+  // JS が動かないときは全職種を見出しつきで並べる
+  &__panel h3 {
+    margin: 32px 0 12px;
+    font-size: rem(20);
+  }
+
+  .js &__panel h3 {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+}
+
+// ===== お問い合わせ =====
+.p-steps {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 0 40px;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+
+  li {
+    padding: 6px 16px;
+    border-radius: 99px;
+    background: var(--color-bg-sub);
+    color: var(--color-text-sub);
+    font-size: rem(13.5);
+    counter-increment: step;
+
+    &::before {
+      content: counter(step) ' ';
+      font-family: var(--font-en);
+      font-weight: 600;
+    }
+
+    &[aria-current='step'] {
+      background: var(--color-navy);
+      color: #fff;
+    }
+  }
+}
+
+.p-form {
+  &__tel {
+    margin-bottom: 32px;
+    padding: 16px 20px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-sub);
+    text-align: center;
+    font-size: rem(14.5);
+
+    a {
+      font-family: var(--font-en);
+      font-size: rem(24);
+      font-weight: 600;
+      text-decoration: none;
+    }
+  }
+
+  &__row {
+    display: grid;
+    gap: 8px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--color-border);
+
+    @include md {
+      grid-template-columns: 220px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    &:first-of-type {
+      border-top: 1px solid var(--color-border);
+    }
+  }
+
+  &__label {
+    padding-top: 10px;
+    font-weight: 700;
+  }
+
+  &__req,
+  &__opt {
+    margin-left: 8px;
+    padding: 1px 8px;
+    border-radius: var(--radius-sm);
+    font-size: rem(12);
+    font-weight: 700;
+    vertical-align: 1px;
+  }
+
+  &__req {
+    background: var(--color-navy);
+    color: #fff;
+  }
+
+  &__opt {
+    background: var(--color-bg-sub);
+    color: var(--color-text-sub);
+  }
+
+  input[type='text'],
+  input[type='email'],
+  input[type='tel'],
+  textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #b9b5aa;
+    border-radius: var(--radius-sm);
+    background: #fff;
+    color: var(--color-text);
+    font: inherit;
+
+    &:focus {
+      border-color: var(--color-navy);
+      outline: 2px solid rgb(28 42 72 / 0.25);
+      outline-offset: 0;
+    }
+
+    &[aria-invalid='true'] {
+      border-color: var(--color-error);
+      background: #fdf5f4;
+    }
+  }
+
+  textarea {
+    min-height: 180px;
+    resize: vertical;
+  }
+
+  fieldset {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  legend {
+    float: left;
+    padding: 0;
+  }
+
+  &__choices {
+    display: grid;
+    gap: 8px;
+    padding-top: 8px;
+
+    label {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      cursor: pointer;
+    }
+  }
+
+  input[type='radio'],
+  input[type='checkbox'] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--color-navy);
+  }
+
+  &__hint {
+    margin: 6px 0 0;
+    color: var(--color-text-sub);
+    font-size: rem(13);
+  }
+
+  &__error {
+    margin: 6px 0 0;
+    color: var(--color-error);
+    font-size: rem(14);
+    font-weight: 700;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  &__agree {
+    margin: 32px 0 0;
+    text-align: center;
+
+    label {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 32px;
+
+    .c-button {
+      min-width: 240px;
+      padding-block: 18px;
+    }
+  }
+
+  &__summary {
+    margin-bottom: 24px;
+    padding: 16px 20px;
+    border: 2px solid var(--color-error);
+    border-radius: var(--radius-sm);
+    background: #fdf5f4;
+
+    h2 {
+      margin: 0 0 8px;
+      font-family: var(--font-base);
+      font-size: rem(16);
+      color: var(--color-error);
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 1.4em;
+    }
+
+    a {
+      color: var(--color-error);
+      text-decoration: underline;
+    }
+  }
+
+  &__noscript {
+    padding: 16px 20px;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-sub);
+  }
+}
+
+.p-confirm {
+  .c-table td {
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+}
+
+.p-thanks {
+  text-align: center;
+
+  h2 {
+    margin: 0 0 16px;
+    font-size: clamp(rem(22), 2.6vw, rem(30));
+  }
+
+  p {
+    color: var(--color-text-sub);
+  }
+
+  &__demo {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 8px 16px;
+    border: 1px dashed var(--color-accent);
+    color: var(--color-accent-text);
+    font-size: rem(14);
+  }
+}
+
+// 個人情報の取り扱いなど、文章だけのページ
+.p-prose {
+  h2 {
+    margin: 40px 0 12px;
+    font-size: rem(20);
+  }
+
+  p,
+  li {
+    color: var(--color-text-sub);
+  }
+}

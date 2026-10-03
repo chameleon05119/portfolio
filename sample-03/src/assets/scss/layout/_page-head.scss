@@ -1,0 +1,67 @@
+@use '../foundation/mixins' as *;
+
+// 下層ページの見出し帯
+.l-page-head {
+  position: relative;
+  padding: 56px 0 48px;
+  background: var(--color-navy);
+  color: var(--color-on-navy);
+  overflow: hidden;
+
+  @include md {
+    padding: 88px 0 72px;
+  }
+
+  // 縦の細い罫（最初の画面の縦書きの面と同じあしらい）
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 16px;
+    border: 1px solid rgb(255 255 255 / 0.16);
+    pointer-events: none;
+  }
+
+  &__en {
+    display: block;
+    font-family: var(--font-en);
+    font-size: rem(15);
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-on-navy-accent);
+  }
+
+  h1 {
+    margin: 4px 0 0;
+    font-size: clamp(rem(28), 3.4vw, rem(42));
+  }
+}
+
+.l-breadcrumb {
+  padding-block: 14px;
+  font-size: rem(13);
+  color: var(--color-text-sub);
+
+  ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li + li::before {
+    content: '/';
+    margin-right: 10px;
+    color: var(--color-border);
+  }
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

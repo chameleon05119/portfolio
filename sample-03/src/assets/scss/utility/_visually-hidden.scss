@@ -1,0 +1,26 @@
+.u-visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+}
+
+// キーボードで Tab を押したときだけ現れる「本文へ移動」
+.u-skip {
+  position: fixed;
+  top: -60px;
+  left: 16px;
+  z-index: 100;
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  background: var(--color-navy);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+
+  &:focus {
+    top: 12px;
+  }
+}

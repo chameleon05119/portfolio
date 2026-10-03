@@ -1,0 +1,231 @@
+@use '../foundation/mixins' as *;
+
+.l-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgb(255 255 255 / 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-border);
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    height: var(--header-height);
+    max-width: 1360px;
+    margin-inline: auto;
+    padding-inline: var(--container-padding);
+  }
+
+  &__nav {
+    display: none;
+    margin-left: auto;
+
+    @include lg {
+      display: flex;
+      gap: 28px;
+      font-size: rem(15);
+      font-weight: 500;
+    }
+
+    a {
+      position: relative;
+      padding-block: 6px;
+      text-decoration: none;
+
+      &::after {
+        content: '';
+        position: absolute;
+        inset: auto 0 0;
+        height: 2px;
+        background: var(--color-accent);
+        transform: scaleX(0);
+        transition: transform var(--duration);
+      }
+
+      &:hover::after,
+      &[aria-current='page']::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+
+  &__tel {
+    display: none;
+    font-size: rem(12);
+    line-height: 1.3;
+    color: var(--color-text-sub);
+    text-align: right;
+
+    @include lg {
+      display: block;
+    }
+
+    a {
+      display: block;
+      font-family: var(--font-en);
+      font-size: rem(22);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--color-text);
+      text-decoration: none;
+    }
+  }
+
+  // .c-button より後に効かせるため、親のクラスを重ねて詳細度を上げる
+  & &__contact {
+    display: none;
+    flex: none;
+    margin-left: auto;
+    white-space: nowrap;
+
+    @include md {
+      display: inline-flex;
+    }
+
+    @include lg {
+      margin-left: 0;
+    }
+  }
+
+  &__menu {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    margin-left: auto;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: #fff;
+    cursor: pointer;
+
+    @include md {
+      margin-left: 0;
+    }
+
+    @include lg {
+      display: none;
+    }
+
+    span {
+      position: relative;
+      width: 20px;
+      height: 2px;
+      background: var(--color-navy);
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 20px;
+        height: 2px;
+        background: var(--color-navy);
+        transition: transform var(--duration);
+      }
+
+      &::before {
+        top: -7px;
+      }
+
+      &::after {
+        top: 7px;
+      }
+    }
+
+    &[aria-expanded='true'] span {
+      background: transparent;
+
+      &::before {
+        transform: translateY(7px) rotate(45deg);
+      }
+
+      &::after {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+    }
+  }
+}
+
+// スマホではヘッダーのロゴの英字を省いて1行に収める
+.l-header .l-logo__name small {
+  display: none;
+
+  @include md {
+    display: block;
+  }
+}
+
+// スマホ・タブレットのメニュー
+.l-drawer {
+  position: fixed;
+  inset: var(--header-height) 0 0;
+  z-index: 49;
+  overflow-y: auto;
+  padding: 24px var(--container-padding) 48px;
+  background: var(--color-bg);
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    opacity var(--duration),
+    visibility var(--duration);
+
+  // 開くときは表示状態をすぐ切り替える（フォーカスを移せるように）。閉じるときは消えてから非表示に
+  &.is-open {
+    visibility: visible;
+    opacity: 1;
+    transition:
+      opacity var(--duration),
+      visibility 0s;
+  }
+
+  @include lg {
+    display: none;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--color-border);
+  }
+
+  li a {
+    display: flex;
+    justify-content: space-between;
+    padding: 18px 4px;
+    border-bottom: 1px solid var(--color-border);
+    font-family: var(--font-head);
+    font-size: rem(18);
+    font-weight: 700;
+    text-decoration: none;
+
+    &::after {
+      content: '→';
+      color: var(--color-accent-text);
+    }
+  }
+
+  &__tel {
+    margin-top: 28px;
+    text-align: center;
+    color: var(--color-text-sub);
+    font-size: rem(13);
+
+    a {
+      display: block;
+      font-family: var(--font-en);
+      font-size: rem(28);
+      font-weight: 600;
+      color: var(--color-text);
+      text-decoration: none;
+    }
+  }
+
+  .c-button {
+    width: 100%;
+    margin-top: 16px;
+  }
+}

@@ -1,0 +1,20 @@
+// スクロールで表示されたらふわっと出す（JS が動くときだけ隠す。失敗したら main.js が全部表示する）
+.js .u-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.9s,
+    transform 0.9s var(--ease-out);
+
+  &.is-in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .u-reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
