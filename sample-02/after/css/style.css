@@ -88,7 +88,9 @@ a { color: #a0582a; }
 .hero {
   height: 100vh;
   padding-top: 80px;
-  background: url(../images/hero.jpg) center center / cover no-repeat fixed;
+  background:
+    linear-gradient(90deg, rgba(40, 25, 15, 0.7) 0%, rgba(40, 25, 15, 0.45) 45%, rgba(40, 25, 15, 0) 75%),
+    url(../images/hero.jpg) center center / cover no-repeat fixed;
   box-sizing: border-box;
 }
 .hero-inner {
@@ -452,6 +454,10 @@ body {
     grid-template-columns: repeat(3, 1fr);
   }
 
+  /* 文字が写真の全幅にかかるので、写真全体を暗くして読みやすく */
+  .hero {
+    background-image: linear-gradient(rgba(40, 25, 15, 0.55), rgba(40, 25, 15, 0.55)), url(../images/hero.jpg);
+  }
   .hero-inner {
     padding-top: 56px;
     padding-bottom: 56px;
