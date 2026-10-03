@@ -195,6 +195,11 @@ const typeIds = JSON.stringify(usedCategories.map((c) => c.id));
     visible = e.isIntersecting;
     if (visible && !raf) { measure(); raf = requestAnimationFrame(tick); }
   }).observe(stage);
+  // 最初に表示している画像は HTML に入っているので、読み込みが終わった時点で測り直す（回線が遅いと 0 のままになるのを防ぐ）
+  for (const d of dev) {
+    const img = d.feed.querySelector('img');
+    if (img && !img.complete) img.addEventListener('load', () => { measure(); restart(); }, { once: true });
+  }
 
   for (const d of dev) {
     d.vp.addEventListener('mouseenter', () => setPaused(() => (hover = true)));
