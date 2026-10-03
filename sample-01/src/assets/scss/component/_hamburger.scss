@@ -1,0 +1,85 @@
+@use '../foundation/mixins' as *;
+
+// 開くと3本線が×に変わる
+// 線は absolute で置くので、配置する側で position（fixed / relative など）を指定する
+.c-hamburger {
+  width: 75px;
+  height: 75px;
+  background-color: var(--color-primary);
+
+  @include md {
+    width: 100px;
+    height: 100px;
+  }
+
+  // 赤背景の上でも見えるよう白で、画面端で切れないよう内側に描く
+  &:focus-visible {
+    outline-color: var(--color-on-primary);
+    outline-offset: -6px;
+  }
+
+  // JS が動かないと開かないので出さない
+  html:not(.js) & {
+    display: none;
+  }
+}
+
+.c-hamburger__line {
+  position: absolute;
+  left: 50%;
+  width: 35px;
+  height: 2px;
+  background-color: var(--color-on-primary);
+  transform: translateX(-50%);
+  transition:
+    transform var(--duration),
+    opacity var(--duration),
+    top var(--duration);
+
+  @include md {
+    width: 50px;
+  }
+
+  &:nth-child(1) {
+    top: 25px;
+
+    @include md {
+      top: 35px;
+    }
+  }
+
+  &:nth-child(2) {
+    top: 36px;
+
+    @include md {
+      top: 49px;
+    }
+  }
+
+  &:nth-child(3) {
+    top: 47px;
+
+    @include md {
+      top: 63px;
+    }
+  }
+}
+
+.c-hamburger[aria-expanded='true'] {
+  .c-hamburger__line:nth-child(1),
+  .c-hamburger__line:nth-child(3) {
+    top: calc(50% - 1px);
+  }
+
+  .c-hamburger__line:nth-child(1) {
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  .c-hamburger__line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .c-hamburger__line:nth-child(3) {
+    transform: translateX(-50%) rotate(-45deg);
+  }
+}

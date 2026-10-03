@@ -1,0 +1,120 @@
+@use '../foundation/mixins' as *;
+
+.p-voice {
+  margin-top: 80px;
+
+  @include md {
+    margin-top: 120px;
+  }
+}
+
+.p-voice__list {
+  display: grid;
+  row-gap: 40px;
+  margin-top: 40px;
+
+  @include md {
+    row-gap: 60px;
+    margin-top: 80px;
+  }
+}
+
+// SP: ふきだし → 人物の縦並び / PC: 人物とふきだしの横並び（2件目は左右反転）
+.p-voice__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include md {
+    flex-direction: row;
+    align-items: flex-start;
+    width: fit-content;
+  }
+}
+
+.p-voice__item--reverse {
+  @include md {
+    flex-direction: row-reverse;
+    margin-left: auto;
+  }
+}
+
+.p-voice__person {
+  width: 120px;
+  margin-top: 30px;
+  text-align: center;
+
+  @include md {
+    flex-shrink: 0;
+    margin-top: 0;
+  }
+}
+
+.p-voice__avatar {
+  border-radius: 50%;
+  background-color: var(--color-avatar);
+}
+
+.p-voice__name {
+  display: grid;
+  margin-top: 10px;
+  font-size: 12px;
+  line-height: 1.15;
+
+  @include md {
+    margin-top: 9px;
+  }
+}
+
+.p-voice__comment {
+  --tail-top: 85px; // PC でふきだしの三角を置く位置（ふきだし上端から。カンプ値）
+
+  position: relative;
+  order: -1;
+  width: 100%;
+  padding: 20px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-bubble);
+  line-height: 1.5;
+
+  // ふきだしの三角
+  &::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    border-style: solid;
+    border-width: 15px 15px 0;
+    border-color: var(--color-bubble) transparent transparent;
+    transform: translateX(-50%);
+  }
+
+  @include md {
+    order: 0;
+    width: 516px;
+    margin-left: 25px;
+
+    &::after {
+      top: var(--tail-top);
+      left: auto;
+      right: 100%;
+      border-width: 15px 15px 15px 0;
+      border-color: transparent var(--color-bubble) transparent transparent;
+      transform: none;
+    }
+  }
+}
+
+.p-voice__item--reverse .p-voice__comment {
+  @include md {
+    margin-right: 23px;
+    margin-left: 0;
+
+    &::after {
+      right: auto;
+      left: calc(100% - 2px);
+      border-width: 15px 0 15px 15px;
+      border-color: transparent transparent transparent var(--color-bubble);
+    }
+  }
+}

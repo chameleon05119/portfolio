@@ -1,0 +1,17 @@
+{
+  "name": "sample-01",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "sass": "^1.105.1",
+    "vite": "^8.3.2"
+  },
+  "volta": {
+    "node": "24.21.0"
+  }
+}

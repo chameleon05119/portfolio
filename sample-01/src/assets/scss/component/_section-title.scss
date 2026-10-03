@@ -1,0 +1,30 @@
+@use '../foundation/mixins' as *;
+
+// 見出しの下に短い線が付く、セクション共通の見出し
+.c-section-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.15;
+  text-align: center;
+
+  @include md {
+    font-size: 36px;
+  }
+
+  // Figma は線をその座標を中心に描くので、太さの半分ずつ上下に食い込ませて合わせる
+  &::after {
+    content: '';
+    width: 80px;
+    height: 3px;
+    margin-block: -1.5px;
+    background-color: currentColor;
+
+    @include md {
+      width: 100px;
+    }
+  }
+}

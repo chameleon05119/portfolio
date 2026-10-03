@@ -1,0 +1,27 @@
+// デザイントークン（カンプ lp_17 から抽出）
+:root {
+  // 色
+  --color-text: #333;
+  --color-bg: #fff;
+  --color-primary: #ff2a2a;
+  --color-primary-dark: #7a051c;
+  --color-on-primary: #fff;
+  --color-bubble: #e9f1fb;
+  --color-avatar: #ccc;
+  --color-footer: #e8e8e8;
+
+  // 文字。カンプは Arial 指定で、和文はブラウザ標準のゴシックに任せる
+  --font-base: Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+  --letter-spacing: 0.1em;
+
+  // レイアウト
+  --container-width: 860px;
+  --container-padding: 16px;
+
+  // 角丸・動き
+  --radius-sm: 10px;
+  --radius-md: 15px;
+  --radius-lg: 20px;
+  --duration: 0.3s;
+  --duration-reveal: 0.8s;
+}

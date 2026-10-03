@@ -1,0 +1,71 @@
+@use '../foundation/mixins' as *;
+
+.l-footer {
+  padding-block: 60px 18px;
+  background-color: var(--color-footer);
+
+  @include md {
+    padding-block: 60px 20px;
+  }
+}
+
+.l-footer__nav {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 30px;
+
+  @include md {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.l-footer__heading {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.15;
+
+  @include md {
+    font-size: 16px;
+  }
+}
+
+.l-footer__list {
+  display: grid;
+  row-gap: 3px;
+  margin-top: 10px;
+  padding-left: 10px;
+  font-size: 12px;
+  line-height: 1.15;
+
+  @include md {
+    font-size: 14px;
+  }
+
+  a {
+    @media (hover: hover) {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.l-footer__copyright {
+  margin-top: 60px;
+  font-size: 10px;
+  line-height: 1.15;
+  text-align: center;
+}
+
+// ポートフォリオ公開用の注記（カンプにはない）
+.l-footer__note {
+  margin-top: 8px;
+  padding-inline: var(--container-padding);
+  font-size: 10px;
+  line-height: 1.5;
+  text-align: center;
+
+  a {
+    text-decoration: underline;
+  }
+}

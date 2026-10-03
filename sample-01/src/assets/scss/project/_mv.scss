@@ -1,0 +1,104 @@
+@use '../foundation/mixins' as *;
+
+.p-mv {
+  position: relative;
+  padding-top: 100px;
+}
+
+// 写真の縁を白くぼかす（カンプの inner shadow 0 0 20 20 #fff）
+.p-mv__image {
+  position: relative;
+  display: block;
+  aspect-ratio: 375 / 300;
+
+  @include md {
+    aspect-ratio: 16 / 9;
+  }
+
+  // 文字を写真に重ねるのは 1024px 以上。それより狭いと暗い黒板に文字がかかって読みにくいので縦に積む
+  @include lg {
+    width: 75%;
+    margin-left: auto;
+    aspect-ratio: 1050 / 720;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 20px 20px var(--color-bg);
+  }
+}
+
+.p-mv__body {
+  padding: 10px 16px 0;
+
+  @include md {
+    padding-inline: 40px;
+  }
+
+  @include lg {
+    position: absolute;
+    // 写真の高さ(75vw × 720/1050)の 280/720 の位置。カンプ幅 1400 で 380px
+    top: calc(100px + 20vw);
+    left: 10%;
+    // カンプ幅 1400 での比率（464/1400）を保ったまま縮める
+    width: clamp(300px, 33.15vw, 464px);
+    padding: 0;
+  }
+}
+
+.p-mv__title {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: calc(47 / 28);
+  text-shadow: 0 4px 6px var(--color-bg);
+  animation: mv-slide-in 1s ease-out both;
+
+  @include md {
+    font-size: 36px;
+  }
+
+  @include lg {
+    // ボタンの幅に縛られず文字の長さで広がる。長い文章は画面幅の 45% で折り返す
+    width: max-content;
+    max-width: 45vw;
+    font-size: clamp(34px, 3.29vw, 46px);
+    line-height: 1.6;
+  }
+}
+
+.p-mv__button {
+  margin-top: 10px;
+  animation: mv-fade-up 0.8s ease-out 0.5s both;
+
+  // 白文字×赤は 3.73:1。大きい文字（24px 以上）の基準 3:1 を満たすよう、SP の 375px 以上と PC では 24px を保つ
+  @include md {
+    max-width: 464px;
+    font-size: 24px;
+  }
+
+  @include lg {
+    margin-top: 30px;
+  }
+}
+
+@keyframes mv-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+}
+
+@keyframes mv-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}

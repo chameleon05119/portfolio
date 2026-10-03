@@ -1,0 +1,109 @@
+@use '../foundation/mixins' as *;
+
+// 全画面のメニュー。フェードで開き、項目が上から順に降りてくる
+.p-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 101;
+  overflow-y: auto;
+  padding: 110px 20px 40px;
+  color: var(--color-on-primary);
+  background-color: var(--color-primary);
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--duration),
+    visibility var(--duration);
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.p-menu__logo {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: 100px;
+
+  @include md {
+    top: 40px;
+    left: 50px;
+  }
+}
+
+.p-menu__list {
+  display: grid;
+  row-gap: 20px;
+  line-height: 1.15;
+}
+
+.p-menu__link,
+.p-menu__button {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.p-menu__link {
+  display: inline-block;
+
+  @media (hover: hover) {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// 枠線が右下にずれて重なるボタン。ホバーで重なりが揃う
+.p-menu__button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+  height: 48px;
+  margin: 40px auto 0;
+  border: 1px solid currentColor;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border: 1px solid currentColor;
+    transform: translate(6px, 6px);
+    transition: transform var(--duration);
+  }
+
+  @media (hover: hover) {
+    &:hover::before {
+      transform: none;
+    }
+  }
+}
+
+.p-menu__list > li,
+.p-menu__button {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition:
+    opacity var(--duration),
+    transform var(--duration);
+
+  .p-menu.is-open & {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@for $i from 1 through 4 {
+  .p-menu.is-open .p-menu__list > li:nth-child(#{$i}) {
+    transition-delay: #{0.1s * $i};
+  }
+}
+
+.p-menu.is-open .p-menu__button {
+  transition-delay: 0.4s;
+}

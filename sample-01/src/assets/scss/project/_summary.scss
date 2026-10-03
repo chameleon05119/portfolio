@@ -1,0 +1,63 @@
+@use '../foundation/mixins' as *;
+
+.p-summary {
+  margin-top: 80px;
+  padding-block: 60px;
+  background-color: var(--color-footer);
+  background-image: image-set(url('../../images/bg-circle.webp') type('image/webp'), url('../../images/bg-circle.png') type('image/png'));
+  background-size: 700px;
+
+  @include md {
+    margin-top: 120px;
+  }
+}
+
+.p-summary__grid {
+  display: grid;
+  row-gap: 32px;
+  margin-top: 40px;
+
+  @include md {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 40px;
+    margin-top: 80px;
+  }
+}
+
+.p-summary__card {
+  padding: 30px;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg);
+
+  @include md {
+    padding: 60px;
+  }
+}
+
+.p-summary__title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.15;
+  text-align: center;
+
+  @include md {
+    font-size: 28px;
+    line-height: 1;
+  }
+}
+
+.p-summary__en {
+  display: block;
+  margin-top: 15px;
+  font-size: 16px;
+  line-height: 1.15;
+
+  @include md {
+    font-size: 18px;
+    line-height: 1;
+  }
+}
+
+.p-summary__text {
+  margin-top: 30px;
+}

@@ -1,0 +1,26 @@
+// スクロールして画面に入ったら表示するアニメーション
+// JS が動く環境（html.js）でだけ隠すので、JS が無効でも内容は見える
+.js .js-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity var(--duration-reveal),
+    transform var(--duration-reveal);
+
+  &[data-reveal='slide-right'] {
+    transform: translateX(-60px);
+  }
+
+  &[data-reveal='slide-left'] {
+    transform: translateX(60px);
+  }
+
+  &[data-reveal='zoom'] {
+    transform: scale(0.85);
+  }
+
+  &.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}

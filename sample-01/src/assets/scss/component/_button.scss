@@ -1,0 +1,66 @@
+@use '../foundation/mixins' as *;
+
+.c-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-on-primary);
+  background-color: var(--color-primary);
+  transition:
+    transform var(--duration),
+    box-shadow var(--duration);
+}
+
+// 下に濃い赤の厚みがあるボタン。押すと沈む
+.c-button--arrow {
+  position: relative;
+  height: 58px;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 5px 0 var(--color-primary-dark);
+  font-size: min(24px, 6.4vw); // 375px で 24px。狭い画面で矢印と重ならないよう縮める
+  line-height: 1.15;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 34px;
+    width: 16px;
+    height: 16px;
+    border-top: 3px solid currentColor;
+    border-right: 3px solid currentColor;
+    transform: translateY(-50%) rotate(45deg);
+    transition: right var(--duration);
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      transform: translateY(3px);
+      box-shadow: 0 2px 0 var(--color-primary-dark);
+
+      &::after {
+        right: 26px;
+      }
+    }
+  }
+}
+
+.c-button--pill {
+  min-height: 58px;
+  padding-block: 15px;
+  border-radius: 40px;
+  font-size: min(24px, 6.4vw);
+  font-weight: 700;
+  line-height: 1;
+  -webkit-text-stroke: 0.5px currentColor;
+
+  @include md {
+    font-size: 28px;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+}

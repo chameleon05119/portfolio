@@ -1,0 +1,37 @@
+@use '../foundation/mixins' as *;
+
+.p-entry {
+  margin-block: 80px;
+  text-align: center;
+
+  @include md {
+    margin-block: 120px;
+  }
+}
+
+.p-entry__title {
+  // カンプでは SP の見出しだけ左右にはみ出している（347px）。ブラウザは行末にも字間を足すので、その分も広げる
+  margin-inline: -4px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.5;
+
+  @include md {
+    margin-inline: 0;
+    font-size: 32px;
+    line-height: 1.15;
+  }
+}
+
+.p-entry__text {
+  margin-top: 5px;
+
+  @include md {
+    font-size: 18px;
+    line-height: 1.15;
+  }
+}
+
+.p-entry__button {
+  margin-top: 40px;
+}
