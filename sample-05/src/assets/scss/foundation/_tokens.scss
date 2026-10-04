@@ -1,0 +1,51 @@
+// デザイントークン（デザイン案 A「信頼ネイビー（白 × 紺〜青 × ライム）」2026-10-04 確定）
+:root {
+  // 色（文字と背景のコントラストはすべて 4.5:1 以上。黒は使わず、いちばん濃い色でも紺）
+  --color-text: #16233b;
+  --color-text-sub: #56627a;
+  --color-bg: #fff;
+  --color-bg-sub: #f2f5fa; // 交互のセクション・フッター
+  --color-card: #fff;
+  --color-border: #dde3ec;
+  --color-primary: #1d4ed8; // ボタン・アイコン
+  --color-primary-hover: #1a43bd;
+  --color-on-primary: #fff;
+  --color-primary-text: #1d43b8; // 白地の上の英字ラベル・数字
+  --color-primary-soft: #eaf0fd; // アイコンの丸・タグの背景
+  --color-accent: #d4f25a; // ライム（紺の上のボタン・バッジ）
+  --color-on-accent: #16233b;
+  --color-error: #c2262d;
+  --gradient-panel: linear-gradient(135deg, #17306f 0%, #1d3f8f 55%, #2552b8 100%); // 最初の画面・最後の CTA
+  --color-on-panel: #fff;
+  --color-on-panel-sub: #c9d5f2;
+
+  // 文字
+  --font-base: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', YuGothic, 'Noto Sans JP', Meiryo, sans-serif; // 本文は OS のフォント
+  --font-head: 'Zen Kaku Gothic New', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+  --font-num: 'Inter', 'Helvetica Neue', Arial, sans-serif; // 数字・英字ラベル
+  --letter-spacing: 0.02em;
+
+  // レイアウト
+  --container-width: 1120px;
+  --container-padding: 20px;
+  --header-height: 60px;
+  --section-space: 72px;
+
+  // 角丸・影・動き
+  --radius-sm: 8px;
+  --radius: 12px;
+  --radius-panel: 20px;
+  --radius-pill: 999px;
+  --shadow: 0 12px 32px -16px rgb(22 35 59 / 0.25);
+  --shadow-app: 0 30px 60px -24px rgb(10 20 50 / 0.5);
+  --duration: 0.25s;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --container-padding: 40px;
+    --header-height: 72px;
+    --section-space: 104px;
+  }
+}

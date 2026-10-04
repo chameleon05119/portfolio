@@ -1,0 +1,31 @@
+@use '../foundation/mixins' as *;
+
+.c-section-head {
+  margin-bottom: 36px;
+  text-align: center;
+
+  @include md {
+    margin-bottom: 52px;
+  }
+
+  // 英字の小さなラベル（PROBLEM・FEATURES など）
+  &__en {
+    margin-bottom: 8px;
+    font-family: var(--font-num);
+    font-size: rem(13);
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--color-primary-text);
+  }
+
+  h2 {
+    font-size: clamp(rem(24), 3vw, rem(36));
+    font-weight: 900;
+    text-wrap: balance;
+  }
+
+  > p:not([class]) {
+    margin-top: 14px;
+    color: var(--color-text-sub);
+  }
+}

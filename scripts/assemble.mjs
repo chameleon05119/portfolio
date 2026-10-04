@@ -4,6 +4,7 @@
 //   _site/sample-02/  ← sample-02 をそのまま
 //   _site/sample-03/  ← sample-03 を Vite でビルドしたもの
 //   _site/sample-04/  ← sample-04 を Vite でビルドしたもの
+//   _site/sample-05/  ← sample-05 を Vite でビルドしたもの
 import { cp, rm } from 'node:fs/promises';
 import { execSync } from 'node:child_process';
 
@@ -25,4 +26,8 @@ await cp('sample-03/dist', '_site/sample-03', { recursive: true });
 run('npm ci --no-audit --no-fund', 'sample-04');
 run('npm run build', 'sample-04');
 await cp('sample-04/dist', '_site/sample-04', { recursive: true });
+
+run('npm ci --no-audit --no-fund', 'sample-05');
+run('npm run build', 'sample-05');
+await cp('sample-05/dist', '_site/sample-05', { recursive: true });
 console.log('assembled _site/');

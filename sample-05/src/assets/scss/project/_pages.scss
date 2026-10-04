@@ -1,0 +1,81 @@
+@use '../foundation/mixins' as *;
+
+// ===== 送信完了 =====
+.p-thanks {
+  max-width: 640px;
+  margin-inline: auto;
+  padding-bottom: var(--section-space);
+  text-align: center;
+
+  &__icon {
+    display: grid;
+    place-items: center;
+    width: 88px;
+    height: 88px;
+    margin: 0 auto 24px;
+    border-radius: 50%;
+    background: var(--color-primary-soft);
+    color: var(--color-primary-text);
+
+    svg {
+      width: 44px;
+      height: 44px;
+    }
+  }
+
+  h1 {
+    font-size: clamp(rem(22), 2.6vw, rem(30));
+    font-weight: 900;
+  }
+
+  .c-button {
+    max-width: 100%;
+    white-space: normal;
+  }
+
+  > p {
+    margin-block: 16px 28px;
+    color: var(--color-text-sub);
+  }
+
+  &__demo {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: rem(13.5);
+  }
+
+  &__back {
+    color: var(--color-primary-text);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+// ===== 個人情報の取り扱いなど、文章だけのページ =====
+.p-doc-text {
+  padding-bottom: var(--section-space);
+
+  &__demo {
+    padding: 14px 18px;
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-sub);
+    font-size: rem(14);
+  }
+
+  h2 {
+    margin: 40px 0 10px;
+    font-size: rem(19);
+  }
+
+  p {
+    color: var(--color-text-sub);
+  }
+
+  a {
+    color: var(--color-primary-text);
+    text-decoration: underline;
+  }
+}

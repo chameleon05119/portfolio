@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- include: head.html -->
+    <title>資料ダウンロード・お申し込み | ギジレコ（デモサイト）</title>
+    <meta name="description" content="ギジレコのサービス資料のダウンロード・無料トライアル・導入のご相談はこちら。※ ポートフォリオ用のデモのため、実際には送信されません。" />
+    <meta property="og:title" content="資料ダウンロード・お申し込み | ギジレコ（デモサイト）" />
+    <meta property="og:description" content="ギジレコのサービス資料のダウンロード・導入のご相談はこちら。" />
+  </head>
+  <body data-page="download">
+    <!-- include: icons.html -->
+    <!-- include: header-simple.html -->
+    <main id="main">
+      <div class="l-page-head">
+        <div class="l-container">
+          <p class="c-section-head__en">DOWNLOAD / APPLY</p>
+          <h1>資料ダウンロード・<wbr />お申し込み</h1>
+        </div>
+      </div>
+      <div class="l-container">
+        <ol class="p-steps-bar" aria-label="お申し込みの手順">
+          <li aria-current="step"><span>1</span>入力</li>
+          <li><span>2</span>確認</li>
+          <li><span>3</span>完了</li>
+        </ol>
+        <div class="p-form-layout">
+          <aside class="p-doc" aria-labelledby="doc-title">
+            <div class="p-doc__cover" aria-hidden="true">
+              <span class="p-doc__logo"><svg viewBox="0 0 34 34"><use href="#i-logo" /></svg>ギジレコ</span>
+              <b>3分でわかる<br />ギジレコ</b>
+              <span>サービス紹介資料</span>
+            </div>
+            <h2 id="doc-title">3分でわかる ギジレコ<small>PDF・3ページ</small></h2>
+            <ul>
+              <li><svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-check" /></svg>ギジレコでできること</li>
+              <li><svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-check" /></svg>導入事例と効果</li>
+              <li><svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-check" /></svg>料金プラン・セキュリティ</li>
+            </ul>
+            <p class="p-doc__note">送信後すぐにダウンロードできます。</p>
+          </aside>
+
+          <div class="p-form-area">
+            <p class="p-form__noscript" data-no-js>このフォームは JavaScript を使っています。お手数ですが、JavaScript を有効にしてご利用ください。</p>
+
+            <div data-step="input" data-js-only>
+              <p class="p-form__demo">※ デモサイトのため、入力した内容は送信・保存されません。</p>
+              <form class="p-form" data-request-form novalidate>
+                <div class="p-form__summary" tabindex="-1" role="group" aria-labelledby="summary-title" hidden>
+                  <h2 id="summary-title">入力内容をご確認ください</h2>
+                  <ul></ul>
+                </div>
+
+                <fieldset class="p-form__row" aria-describedby="type-error">
+                  <legend class="p-form__label"><span data-label="type">ご用件</span><span class="p-form__req">必須</span></legend>
+                  <div>
+                    <div class="p-form__choices">
+                      <label><input type="radio" name="type" value="download" id="type-first" checked />資料ダウンロード</label>
+                      <label><input type="radio" name="type" value="trial" />無料トライアルのお申し込み</label>
+                      <label><input type="radio" name="type" value="contact" />導入のご相談・お問い合わせ</label>
+                    </div>
+                    <p class="p-form__error" id="type-error"></p>
+                  </div>
+                </fieldset>
+
+                <div class="p-form__row">
+                  <label class="p-form__label" for="company"><span data-label="company">会社名</span><span class="p-form__req">必須</span></label>
+                  <div><input type="text" id="company" name="company" autocomplete="organization" required aria-describedby="company-error" /><p class="p-form__error" id="company-error"></p></div>
+                </div>
+
+                <div class="p-form__row p-form__row--half">
+                  <div>
+                    <label class="p-form__label" for="name"><span data-label="name">お名前</span><span class="p-form__req">必須</span></label>
+                    <input type="text" id="name" name="name" autocomplete="name" required aria-describedby="name-error" /><p class="p-form__error" id="name-error"></p>
+                  </div>
+                  <div>
+                    <label class="p-form__label" for="dept"><span data-label="dept">部署・役職</span><span class="p-form__opt">任意</span></label>
+                    <input type="text" id="dept" name="dept" autocomplete="organization-title" />
+                  </div>
+                </div>
+
+                <div class="p-form__row">
+                  <label class="p-form__label" for="email"><span data-label="email">メールアドレス（会社）</span><span class="p-form__req">必須</span></label>
+                  <div><input type="email" id="email" name="email" autocomplete="email" inputmode="email" required aria-describedby="email-hint email-error" /><p class="p-form__hint" id="email-hint">例: name@example.co.jp</p><p class="p-form__error" id="email-error"></p></div>
+                </div>
+
+                <div class="p-form__row">
+                  <label class="p-form__label" for="tel"><span data-label="tel">電話番号</span><span class="p-form__opt">任意</span></label>
+                  <div><input type="tel" id="tel" name="tel" autocomplete="tel" inputmode="tel" aria-describedby="tel-error" /><p class="p-form__error" id="tel-error"></p></div>
+                </div>
+
+                <div class="p-form__row">
+                  <label class="p-form__label" for="size"><span data-label="size">従業員数</span><span class="p-form__req">必須</span></label>
+                  <div>
+                    <select id="size" name="size" required aria-describedby="size-error">
+                      <option value="">選んでください</option>
+                      <option>1〜9 名</option>
+                      <option>10〜49 名</option>
+                      <option>50〜299 名</option>
+                      <option>300〜999 名</option>
+                      <option>1,000 名以上</option>
+                    </select>
+                    <p class="p-form__error" id="size-error"></p>
+                  </div>
+                </div>
+
+                <div class="p-form__row" data-message-row>
+                  <label class="p-form__label" for="message"><span data-label="message">ご相談内容</span><span class="p-form__opt" data-message-badge>任意</span></label>
+                  <div><textarea id="message" name="message" aria-describedby="message-hint message-error"></textarea><p class="p-form__hint" id="message-hint">ご利用予定の人数や、気になっている点などをお書きください。</p><p class="p-form__error" id="message-error"></p></div>
+                </div>
+
+                <div class="p-form__agree">
+                  <label><input type="checkbox" name="agree" id="agree" aria-describedby="agree-error" /><span><a href="./privacy.html" target="_blank" rel="noopener">個人情報の取り扱い（新しいタブで開く）</a>に同意する</span></label>
+                  <p class="p-form__error" id="agree-error"></p>
+                </div>
+
+                <div class="p-form__actions"><button class="c-button c-button--lg" type="submit">入力内容を確認する<svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-arrow" /></svg></button></div>
+              </form>
+            </div>
+
+            <div data-step="confirm" hidden>
+              <h2 class="p-form__confirm-title" tabindex="-1">入力内容の確認</h2>
+              <p>以下の内容で送信します。よろしければ「送信する」を押してください。</p>
+              <table class="p-form__table"><tbody></tbody></table>
+              <div class="p-form__actions">
+                <button class="c-button c-button--ghost c-button--lg" type="button" data-back>修正する</button>
+                <button class="c-button c-button--lg" type="button" data-send>送信する</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- include: footer.html -->
+  </body>
+</html>

@@ -1,0 +1,7 @@
+// SVG アイコンの定義（<symbol>）を置く入れ物。画面には出さない
+.u-icons {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}

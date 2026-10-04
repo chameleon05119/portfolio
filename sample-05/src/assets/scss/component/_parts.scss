@@ -1,0 +1,76 @@
+@use '../foundation/mixins' as *;
+
+// 小さな部品（アイコンの丸・タグ・アバター・AI ラベル・担当者）
+
+.c-icon {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  background: var(--color-primary-soft);
+  color: var(--color-primary-text);
+
+  svg {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+.c-tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary-soft);
+  color: var(--color-primary-text);
+  font-size: rem(12);
+  font-weight: 700;
+}
+
+.c-avatar {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: rem(10.5);
+  font-weight: 700;
+  letter-spacing: 0;
+
+  // 画面イメージの中の人。文字は飾り（aria-hidden の中）なので色はイメージ優先
+  &--a {
+    background: #5b5bd6;
+  }
+
+  &--b {
+    background: #0a6f9c;
+  }
+
+  &--c {
+    background: #b45309;
+  }
+}
+
+.c-ai {
+  padding: 1px 7px;
+  border-radius: 6px;
+  background: var(--color-primary);
+  color: #fff;
+  font-family: var(--font-num);
+  font-size: rem(10.5);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.c-who {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  color: var(--color-text-sub);
+  font-size: rem(11);
+  white-space: nowrap;
+}

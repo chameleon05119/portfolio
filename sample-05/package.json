@@ -1,0 +1,24 @@
+{
+  "name": "sample-05-gijireco",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "figma": "node scripts/figma-fetch.mjs",
+    "images": "node scripts/images.mjs",
+    "compare": "node scripts/compare.mjs"
+  },
+  "volta": {
+    "node": "24.21.0"
+  },
+  "devDependencies": {
+    "pixelmatch": "^7.2.0",
+    "playwright": "^1.63.0",
+    "pngjs": "^7.0.0",
+    "sass": "^1.105.1",
+    "sharp": "^0.35.5",
+    "vite": "^8.3.2"
+  }
+}

@@ -6,7 +6,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "build:all": "astro build && node scripts/assemble.mjs",
-    "preview": "npm run build:all && npx --yes serve _site -l 4321",
+    "preview": "npm run build:all && npx --yes http-server _site -p 4321 -c-1",
     "shots": "node scripts/shots.mjs",
     "og": "node scripts/og.mjs"
   },

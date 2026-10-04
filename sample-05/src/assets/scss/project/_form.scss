@@ -1,0 +1,472 @@
+@use '../foundation/mixins' as *;
+
+// ===== 入力 → 確認 → 完了の手順 =====
+.p-steps-bar {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 40px;
+
+  &--top {
+    margin-top: 56px;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px 6px 8px;
+    border-radius: var(--radius-pill);
+    background: var(--color-bg-sub);
+    color: var(--color-text-sub);
+    font-size: rem(13.5);
+    font-weight: 700;
+
+    span {
+      display: grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #fff;
+      font-family: var(--font-num);
+      font-size: rem(12);
+    }
+
+    &[aria-current='step'] {
+      background: var(--color-primary);
+      color: #fff;
+
+      span {
+        color: var(--color-primary-text);
+      }
+    }
+  }
+}
+
+// ===== 左に資料の中身、右にフォーム =====
+.p-form-layout {
+  display: grid;
+  gap: 32px;
+  padding-bottom: var(--section-space);
+
+  @include lg {
+    grid-template-columns: 340px 1fr;
+    align-items: start;
+    gap: 56px;
+  }
+}
+
+.p-doc {
+  // スマホ・タブレットでは表紙を小さくして横に並べ、フォームまでのスクロールを短くする
+  display: grid;
+  grid-template-columns: 112px 1fr;
+  gap: 4px 16px;
+  align-items: start;
+  padding: 16px;
+  border-radius: var(--radius);
+  background: var(--color-bg-sub);
+
+  @include lg {
+    display: block;
+    padding: 24px;
+  }
+
+  @include lg {
+    position: sticky;
+    top: calc(var(--header-height) + 24px);
+  }
+
+  // 資料の表紙（CSS で組む）
+  &__cover {
+    grid-row: span 3;
+    display: grid;
+    align-content: center;
+    gap: 6px;
+    aspect-ratio: 3 / 4;
+    padding: 10px;
+    font-size: rem(9);
+    border-radius: var(--radius-sm);
+    background: var(--gradient-panel);
+    box-shadow: var(--shadow);
+    color: #fff;
+
+    @include lg {
+      aspect-ratio: 4 / 3;
+      padding: 24px;
+      font-size: rem(13);
+    }
+
+    b {
+      font-family: var(--font-head);
+      font-size: rem(13);
+      font-weight: 900;
+      line-height: 1.35;
+
+      @include lg {
+        font-size: rem(24);
+      }
+    }
+
+    > span:last-child {
+      color: var(--color-accent);
+      font-weight: 700;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
+    font-weight: 700;
+
+    @include lg {
+      margin-bottom: 8px;
+    }
+
+    svg {
+      width: 14px;
+      height: 14px;
+      color: rgb(255 255 255 / 0.25);
+
+      @include lg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  h2 {
+    font-size: rem(16);
+
+    @include lg {
+      margin-top: 20px;
+      font-size: rem(18);
+    }
+
+    small {
+      display: block;
+      color: var(--color-text-sub);
+      font-family: var(--font-base);
+      font-size: rem(13);
+      font-weight: 400;
+    }
+  }
+
+  ul {
+    display: grid;
+    gap: 2px;
+    font-size: rem(13.5);
+
+    @include lg {
+      gap: 6px;
+      margin-top: 12px;
+      font-size: rem(14.5);
+    }
+  }
+
+  li {
+    display: flex;
+    gap: 8px;
+
+    svg {
+      flex: none;
+      width: 18px;
+      height: 18px;
+      margin-top: 4px;
+      color: var(--color-primary-text);
+    }
+  }
+
+  &__note {
+    grid-column: 1 / -1;
+    margin-top: 8px;
+    color: var(--color-text-sub);
+    font-size: rem(13);
+  }
+}
+
+// ===== フォーム =====
+.p-form {
+  &__demo {
+    margin-bottom: 20px;
+    padding: 10px 14px;
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-sub);
+    font-size: rem(13.5);
+  }
+
+  &__row {
+    display: grid;
+    gap: 8px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--color-border);
+
+    @include md {
+      grid-template-columns: 236px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    &:first-of-type {
+      border-top: 1px solid var(--color-border);
+    }
+
+    // お名前と部署・役職を横に並べる（ラベルはそれぞれの上）
+    &--half {
+      @include md {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .p-form__label {
+        display: block;
+        margin-bottom: 8px;
+        padding-top: 0;
+      }
+    }
+
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  &__label {
+    padding-top: 10px;
+    font-weight: 700;
+  }
+
+  &__req,
+  &__opt {
+    margin-left: 8px;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: rem(12);
+    font-weight: 700;
+    vertical-align: 1px;
+  }
+
+  &__req {
+    background: var(--color-primary);
+    color: #fff;
+  }
+
+  &__opt {
+    background: var(--color-bg-sub);
+    color: var(--color-text-sub);
+  }
+
+  input[type='text'],
+  input[type='email'],
+  input[type='tel'],
+  select,
+  textarea {
+    width: 100%;
+    min-height: 48px;
+    padding: 11px 14px;
+    border: 1px solid #b4bccb;
+    border-radius: var(--radius-sm);
+    background: #fff;
+    color: var(--color-text);
+    font-size: rem(16); // iOS で入力時に拡大されないよう 16px 以上
+
+    &:focus {
+      border-color: var(--color-primary);
+      outline: 3px solid rgb(29 78 216 / 0.2);
+      outline-offset: 0;
+    }
+
+    &[aria-invalid='true'] {
+      border-color: var(--color-error);
+      background: #fdf4f4;
+    }
+  }
+
+  select {
+    appearance: none;
+    padding-right: 40px;
+    background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2356627a' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center / 18px;
+
+    &[aria-invalid='true'] {
+      background-color: #fdf4f4;
+    }
+  }
+
+  textarea {
+    min-height: 160px;
+    resize: vertical;
+  }
+
+  fieldset {
+    border: 0;
+  }
+
+  legend {
+    float: left;
+  }
+
+  &__choices {
+    display: grid;
+    gap: 10px;
+    padding-top: 8px;
+
+    // 横に並べ、入りきらなければ折り返す（1つの選択肢の中では折り返さない）
+    @include md {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 24px;
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+  }
+
+  input[type='radio'],
+  input[type='checkbox'] {
+    flex: none;
+    width: 20px;
+    height: 20px;
+    accent-color: var(--color-primary);
+  }
+
+  &__hint {
+    margin-top: 6px;
+    color: var(--color-text-sub);
+    font-size: rem(13);
+  }
+
+  &__error {
+    margin-top: 6px;
+    color: var(--color-error);
+    font-size: rem(14);
+    font-weight: 700;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  &__agree {
+    margin-top: 32px;
+    text-align: center;
+
+    label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-align: left;
+    }
+
+    a {
+      color: var(--color-primary-text);
+      text-decoration: underline;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 32px;
+
+    .c-button {
+      min-width: 240px;
+    }
+  }
+
+  &__summary {
+    margin-bottom: 24px;
+    padding: 16px 20px;
+    border: 2px solid var(--color-error);
+    border-radius: var(--radius-sm);
+    background: #fdf4f4;
+
+    h2 {
+      margin-bottom: 8px;
+      font-family: var(--font-base);
+      font-size: rem(16);
+      color: var(--color-error);
+    }
+
+    ul {
+      padding-left: 1.4em;
+      list-style: disc;
+    }
+
+    a {
+      color: var(--color-error);
+      text-decoration: underline;
+    }
+  }
+
+  &__confirm-title {
+    margin-bottom: 8px;
+    font-size: rem(22);
+  }
+
+  &__table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    border-top: 1px solid var(--color-border);
+
+    th,
+    td {
+      display: block;
+      padding: 12px 4px;
+      text-align: left;
+      vertical-align: top;
+
+      @include md {
+        display: table-cell;
+        padding: 16px 8px;
+      }
+    }
+
+    th {
+      padding-bottom: 0;
+      font-weight: 700;
+
+      @include md {
+        width: 200px;
+        padding-bottom: 16px;
+      }
+    }
+
+    td {
+      border-bottom: 1px solid var(--color-border);
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    tr {
+      @include md {
+        border-bottom: 1px solid var(--color-border);
+
+        td {
+          border-bottom: 0;
+        }
+      }
+    }
+  }
+
+  &__noscript {
+    padding: 16px 20px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-sub);
+  }
+}
+
+// フォームは JavaScript で動かす。動かない環境では案内だけ出す（描画前に付く .js で切り替えて、表示のずれを防ぐ）
+.js [data-no-js],
+html:not(.js) [data-js-only] {
+  display: none;
+}
