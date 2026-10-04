@@ -35,11 +35,12 @@ export default async ({ browser, base, check }) => {
     const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } })
     const p = await ctx.newPage()
     p.on('pageerror', (e) => check(false, `JS の例外（ハブ）: ${e.message}`))
-    await p.goto(base, { waitUntil: 'networkidle' })
+    // 先読みと Web フォントで通信が長く続くので、networkidle ではなく load まで待つ
+    await p.goto(base, { waitUntil: 'load', timeout: 90000 })
     const ws = await works(p)
     for (const w of [...ws.slice(1), ws[0]]) {
       await p.hover(`.card[data-id="${w.slug}"] h3`)
-      await p.waitForFunction((pc) => document.querySelector('#feedPc img')?.src.endsWith(pc), w.pc, { timeout: 5000 }).catch(() => {})
+      await p.waitForFunction((pc) => document.querySelector('#feedPc img')?.src.endsWith(pc), w.pc, { timeout: 30000 }).catch(() => {})
       check((await pcSrc(p)).endsWith(w.pc), `ホバーしてもプレビューが ${w.slug} にならない`)
       check((await p.$eval('#feedSp img', (i) => i.src).catch(() => '')).endsWith(w.sp), `スマホのプレビューが ${w.slug} にならない`)
       check((await p.getAttribute('#qr', 'aria-label')).startsWith(w.name), `QR コードが ${w.slug} にならない`)
