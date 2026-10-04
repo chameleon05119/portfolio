@@ -33,6 +33,7 @@
 ```bash
 npm ci
 npm run dev          # 作品集の開発サーバー
+npm run preview      # 公開用の _site/ を組み立てて http://localhost:4321/portfolio/ で確認
 npm run build:all    # 公開用の _site/ を作る（GitHub Actions も同じ手順）
 npm run shots        # 作品のスクリーンショットを撮り直す
 ```

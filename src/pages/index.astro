@@ -13,8 +13,8 @@ const shot = (id: string, kind: string) => shots[`../assets/shots/${id}/${kind}.
 // 画像は WebP に変換。端末表示用は表示サイズの約2倍（PC 画面 ≒ 560px、iPhone ≒ 108px）
 const items = await Promise.all(works.map(async (w, i) => {
   const thumb = await getImage({ src: shot(w.shot, 'thumb'), widths: [400, 640, 960], sizes: '(max-width: 600px) 100vw, (max-width: 1023px) 50vw, 260px', format: 'webp', quality: 72 });
-  const pc = await getImage({ src: shot(w.shot, 'pc'), width: 1120, format: 'webp' });
-  const sp = await getImage({ src: shot(w.shot, 'sp'), width: 240, format: 'webp' });
+  const pc = await getImage({ src: shot(w.shot, 'pc'), width: 1120, format: 'webp', quality: 70 });
+  const sp = await getImage({ src: shot(w.shot, 'sp'), width: 240, format: 'webp', quality: 70 });
   const qr = await QRCode.toString(w.url, { type: 'svg', margin: 0, errorCorrectionLevel: 'M', color: { dark: '#1b2330', light: '#ffffff' } });
   return { ...w, no: String(i + 1).padStart(2, '0'), detail: `${base}works/${w.slug}/`, thumb, pc: pc.src, sp: sp.src, qr };
 }));
@@ -134,6 +134,28 @@ const typeIds = JSON.stringify(usedCategories.map((c) => c.id));
   // スクロール量は画像の読み込み後とリサイズ時だけ測る（毎フレーム測らない）
   const measure = () => { for (const d of dev) d.dist = Math.max(0, d.feed.getBoundingClientRect().height - d.vp.clientHeight); };
 
+  // プレビュー画像（ページ全体の長い画像）は重いので、読み込み・デコード済みのものを作品ごとに持っておく
+  type Shots = { pc: HTMLImageElement; sp: HTMLImageElement; ready: Promise<void> };
+  const cache = new Map<string, Shots>();
+  function load(w: Work, priority: 'high' | 'low'): Shots {
+    let s = cache.get(w.slug);
+    if (!s) {
+      const make = (src: string) => { const img = new Image(); img.alt = ''; img.fetchPriority = priority; img.src = src; return img; };
+      const pc = make(w.pc), sp = make(w.sp);
+      s = { pc, sp, ready: Promise.all([pc, sp].map((img) => img.decode().catch(() => {}))).then(() => {}) };
+      cache.set(w.slug, s);
+    } else if (priority === 'high') {
+      // 先読み中のものをホバーしたら優先度を上げる
+      s.pc.fetchPriority = s.sp.fetchPriority = 'high';
+    }
+    return s;
+  }
+  // 最初の作品は HTML に入っている画像をそのまま使う
+  {
+    const [pc, sp] = dev.map((d) => d.feed.querySelector('img')!);
+    cache.set(works[0].slug, { pc, sp, ready: Promise.all([pc, sp].map((img) => img.decode().catch(() => {}))).then(() => {}) });
+  }
+
   let current = works[0].slug;
   let token = 0;
   async function select(slug: string) {
@@ -147,14 +169,36 @@ const typeIds = JSON.stringify(usedCategories.map((c) => c.id));
     const qr = $('qr');
     qr.innerHTML = w.qr;
     qr.setAttribute('aria-label', `${w.name}の URL の QR コード`);
-    // 新しい画像の読み込み・デコードが済んでから差し替える（白い画面を挟まない）
-    const imgs = [w.pc, w.sp].map((src) => { const img = new Image(); img.alt = ''; img.src = src; return img; });
-    await Promise.all(imgs.map((img) => img.decode().catch(() => {})));
+    const shots = load(w, 'high');
+    const done = await Promise.race([shots.ready.then(() => true), new Promise<boolean>((r) => setTimeout(() => r(false), 60))]);
     if (my !== token) return; // 途中で別の作品が選ばれた
-    imgs.forEach((img, i) => dev[i].feed.replaceChildren(img));
+    if (!done) {
+      // まだ読み込み中: 前の作品を出したままにせず、カードのサムネイル（最初の1画面と同じ絵）をすぐ出し、読み込み中の印を付ける
+      const thumb = grid.querySelector<HTMLImageElement>(`.card[data-id="${slug}"] .thumb img`);
+      const ph = new Image(); ph.alt = ''; ph.src = thumb?.currentSrc || thumb?.src || '';
+      dev[0].feed.replaceChildren(ph);
+      dev[1].feed.replaceChildren();
+      measure(); // サムネイルは画面と同じ縦横比なので動かない（前の作品の移動量を残さない）
+      restart();
+      stage.classList.add('is-loading');
+      await shots.ready;
+      if (my !== token) return;
+    }
+    stage.classList.remove('is-loading');
+    dev[0].feed.replaceChildren(shots.pc);
+    dev[1].feed.replaceChildren(shots.sp);
     measure();
     restart();
   }
+
+  // ページの読み込みが終わったら、残りの作品のプレビュー画像を裏で1つずつ先読みしておく（PC 幅でプレビューが見えるときだけ）
+  addEventListener('load', () => {
+    const idle = (fn: () => void) => ('requestIdleCallback' in window ? requestIdleCallback(fn, { timeout: 1500 }) : setTimeout(fn, 300));
+    idle(async () => {
+      if (!stage.offsetParent) return;
+      for (const w of works.slice(1)) await load(w, 'low').ready;
+    });
+  });
 
   /* 1画面ずつ動いて止まる。最初の画面を見せてから進み、最後まで行ったら戻るアニメーションなしで先頭へ */
   const TIMING = { first: 1.2, move: 0.4, hold: 0.8, last: 1.2 }; // 秒
