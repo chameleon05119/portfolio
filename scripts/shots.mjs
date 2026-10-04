@@ -26,7 +26,8 @@ async function settle(page) {
 }
 
 for (const w of targets) {
-  const url = base ? w.url.replace(SITE, base) : w.url;
+  // shotUrl があればそちらを撮る（公開 URL が入口ページだけの作品。例: WordPress テーマ）
+  const url = w.shotUrl ?? (base ? w.url.replace(SITE, base) : w.url);
   const dir = new URL(`../src/assets/shots/${w.shot}/`, import.meta.url);
   await mkdir(dir, { recursive: true });
 

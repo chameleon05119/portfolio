@@ -1,0 +1,43 @@
+// デザイントークン（デザイン案 B「しっとり（ラテ色 × 焦げ茶 × 明朝）」2026-10-04 確定）
+:root {
+  // 色（文字と背景のコントラストはすべて 4.5:1 以上。黒は使わず、いちばん濃い色でも焦げ茶）
+  --color-text: #2f2622;
+  --color-text-sub: #6b5d55;
+  --color-bg: #f3eee6; // 生成り
+  --color-bg-sub: #e7ddcf; // ラテ色（交互のセクション）
+  --color-card: #fbf8f3;
+  --color-border: #d9cdbd;
+  --color-accent: #8c5a3c; // 装飾（線・点）
+  --color-accent-text: #7a4a30; // 英字ラベル・価格
+  --color-button: #4a352b; // 焦げ茶
+  --color-button-hover: #5e4437;
+  --color-on-button: #f7efe4;
+  --color-open: #5f8a4d;
+  --color-closed: #a8594a;
+
+  // 文字
+  --font-base: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', YuGothic, 'Noto Sans JP', Meiryo, sans-serif; // 本文は OS のフォント
+  --font-head: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  --font-en: 'Cormorant Garamond', 'Times New Roman', serif;
+  --letter-spacing: 0.04em;
+
+  // レイアウト
+  --container-width: 1080px;
+  --container-padding: 20px;
+  --header-height: 64px;
+
+  // 角丸・影・動き
+  --radius-sm: 2px;
+  --radius: 4px;
+  --radius-arch: 999px 999px var(--radius) var(--radius); // アーチ形の写真
+  --shadow: 0 14px 36px -20px rgb(74 53 43 / 0.45);
+  --duration: 0.3s;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --container-padding: 40px;
+    --header-height: 84px;
+  }
+}

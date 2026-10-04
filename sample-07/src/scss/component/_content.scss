@@ -1,0 +1,136 @@
+@use '../foundation/mixins' as *;
+
+// 投稿・固定ページの本文（ブロックエディターで書いた内容）
+// 公開ページの .p-article__body と、編集画面（editor-style.scss）の両方で使う
+@mixin entry-content {
+  > * + * {
+    margin-top: 1.4em;
+  }
+
+  h2 {
+    margin-top: 2em;
+    padding-left: 14px;
+    border-left: 2px solid var(--color-accent);
+    font-size: rem(20);
+  }
+
+  h3 {
+    margin-top: 1.8em;
+    font-size: rem(18);
+  }
+
+  ul,
+  ol {
+    padding-left: 1.4em;
+  }
+
+  a {
+    color: var(--color-accent-text);
+    text-underline-offset: 3px;
+  }
+
+  // 本文中の画像（記事上部の写真のような切り抜きはしない）
+  figure {
+    margin-inline: 0;
+    aspect-ratio: auto;
+  }
+
+  img {
+    border-radius: var(--radius);
+  }
+
+  figcaption {
+    margin-top: 8px;
+    font-size: rem(13);
+    color: var(--color-text-sub);
+    text-align: center;
+  }
+
+  .aligncenter {
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .alignleft {
+    float: left;
+    margin: 0.4em 1.5em 1em 0;
+  }
+
+  .alignright {
+    float: right;
+    margin: 0.4em 0 1em 1.5em;
+  }
+
+  blockquote {
+    margin-inline: 0;
+    padding: 4px 0 4px 20px;
+    border-left: 2px solid var(--color-border);
+    color: var(--color-text-sub);
+  }
+
+  hr {
+    margin-block: 2.4em;
+    border: 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: rem(14);
+
+    th,
+    td {
+      padding: 10px 12px;
+      border: 1px solid var(--color-border);
+      text-align: left;
+    }
+
+    th {
+      background: var(--color-bg-sub);
+      font-weight: 500;
+    }
+  }
+
+  // ブロックのボタン
+  .wp-block-button__link {
+    display: inline-block;
+    padding: 12px 32px;
+    border-radius: var(--radius-sm);
+    background: var(--color-button);
+    color: var(--color-on-button);
+    text-decoration: none;
+
+    &:hover {
+      background: var(--color-button-hover);
+    }
+  }
+
+  // 色パレット（inc/setup.php で選べる色だけ）
+  .has-ink-color {
+    color: var(--color-text);
+  }
+
+  .has-accent-color {
+    color: var(--color-accent-text);
+  }
+
+  .has-bg-background-color {
+    background-color: var(--color-bg);
+  }
+
+  .has-bg-sub-background-color {
+    background-color: var(--color-bg-sub);
+  }
+
+  .has-background {
+    padding: 1em 1.4em;
+    border-radius: var(--radius);
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}

@@ -1,0 +1,30 @@
+// 投稿の編集画面（ブロックエディター）用。公開ページと同じ文字・色・本文の書式で表示する
+// WordPress が .editor-styles-wrapper の中だけに効くよう書き換えて読み込む（inc/setup.php の add_editor_style）
+@use 'foundation/tokens';
+@use 'foundation/mixins' as *;
+@use 'component/content' as *;
+
+body {
+  font-family: var(--font-base);
+  font-size: rem(16);
+  line-height: 2;
+  letter-spacing: var(--letter-spacing);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+:where(h1, h2, h3, h4) {
+  font-family: var(--font-head);
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0.08em;
+}
+
+// 本文の幅を公開ページ（.l-container--narrow）に合わせる
+.wp-block {
+  max-width: 800px;
+}
+
+.is-root-container {
+  @include entry-content;
+}

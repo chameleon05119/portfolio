@@ -1,0 +1,15 @@
+/*
+Theme Name: ひととき珈琲
+Theme URI: https://chameleon05119.github.io/portfolio/sample-07/
+Author: カメレオンワークス
+Author URI: https://chameleon05119.github.io/portfolio/
+Description: 架空の喫茶店「ひととき珈琲」のクラシックテーマ（デモ）。お知らせは投稿、メニューは「メニュー」、営業時間・定休日・臨時休業は「お店の情報」から更新できます。
+Version: 1.0.0
+Requires at least: 6.5
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+/* 見た目は assets/css/style.css（src/scss からビルド）。このファイルはテーマの情報だけを書く
+   日本語専用のテーマのため、文言は翻訳関数（__() など）を通さず直接書いている */

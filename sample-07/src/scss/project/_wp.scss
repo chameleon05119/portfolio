@@ -1,0 +1,108 @@
+@use '../foundation/mixins' as *;
+@use '../component/content' as *;
+
+// WordPress 化で増えた部分（sample-04 の静的版にはないもの）
+
+// ===== ログイン中の管理バー =====
+// 管理バーの高さぶんヘッダー・スマホメニューを下げる（600px 未満の管理バーはスクロールで消えるので下げない）
+@media (min-width: 600px) {
+  .admin-bar {
+    --admin-bar: 46px;
+
+    .l-header {
+      top: var(--admin-bar);
+    }
+
+    .l-drawer {
+      top: calc(var(--header-height) + var(--admin-bar));
+    }
+
+    .p-menu-nav {
+      top: calc(var(--header-height) + var(--admin-bar));
+    }
+  }
+
+  html:has(.admin-bar) {
+    scroll-padding-top: calc(var(--header-height) + 46px + 16px);
+  }
+}
+
+@media (min-width: 783px) {
+  .admin-bar {
+    --admin-bar: 32px;
+  }
+
+  html:has(.admin-bar) {
+    scroll-padding-top: calc(var(--header-height) + 32px + 16px);
+  }
+}
+
+// ===== お知らせのカテゴリ（カテゴリ別一覧へのリンク） =====
+.p-news-filter a {
+  padding: 8px 20px;
+  border-radius: var(--radius-sm);
+  box-shadow: inset 0 0 0 1px var(--color-border);
+  font-size: rem(14);
+  line-height: 1.6;
+  text-decoration: none;
+
+  &:hover {
+    background: var(--color-card);
+  }
+
+  &[aria-current='page'] {
+    background: var(--color-button);
+    color: var(--color-on-button);
+    box-shadow: none;
+  }
+}
+
+// 記事のカテゴリはカテゴリ別一覧へのリンク
+a.c-category {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// ===== ページ送り =====
+.c-pagination {
+  margin-top: 40px;
+
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .page-numbers {
+    display: grid;
+    place-items: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0 12px;
+    border-radius: var(--radius-sm);
+    font-size: rem(14);
+    text-decoration: none;
+
+    &:is(a):hover {
+      background: var(--color-card);
+    }
+
+    &.current {
+      background: var(--color-button);
+      color: var(--color-on-button);
+    }
+  }
+}
+
+// ===== 記事 =====
+.p-article__pager > :last-child {
+  justify-self: end;
+}
+
+.p-article__body {
+  @include entry-content;
+}

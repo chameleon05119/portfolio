@@ -1,0 +1,265 @@
+@use '../foundation/mixins' as *;
+
+// ===== メニューページ =====
+// 分類へのページ内リンク。ヘッダーの下に固定し、今見ている分類を色で示す
+.p-menu-nav {
+  position: sticky;
+  top: var(--header-height);
+  z-index: 10;
+  margin-top: 32px;
+  background: rgb(243 238 230 / 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-border);
+
+  ul {
+    display: flex;
+    gap: 8px;
+    max-width: calc(var(--container-width) + var(--container-padding) * 2);
+    margin-inline: auto;
+    padding: 12px var(--container-padding);
+    overflow-x: auto;
+    scrollbar-width: none;
+    list-style: none;
+
+    @include md {
+      justify-content: center;
+    }
+  }
+
+  a {
+    display: block;
+    padding: 6px 18px;
+    border-radius: var(--radius-sm);
+    box-shadow: inset 0 0 0 1px var(--color-border);
+    font-size: rem(14);
+    white-space: nowrap;
+    text-decoration: none;
+    transition:
+      background var(--duration),
+      color var(--duration);
+
+    &:hover {
+      background: var(--color-card);
+    }
+
+    &[aria-current='true'] {
+      background: var(--color-button);
+      color: var(--color-on-button);
+      box-shadow: none;
+    }
+  }
+}
+
+.p-menu-section {
+  padding-block: 64px;
+  scroll-margin-top: calc(var(--header-height) + 64px);
+
+  @include md {
+    padding-block: 96px;
+  }
+
+  & + & {
+    border-top: 1px solid var(--color-border);
+  }
+
+  &__inner {
+    display: grid;
+    gap: 32px;
+
+    @include md {
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+      gap: 64px;
+    }
+  }
+
+  // 写真を左右交互に
+  &--reverse &__photo {
+    @include md {
+      order: -1;
+    }
+  }
+
+  &__photo {
+    aspect-ratio: 4 / 3;
+
+    @include md {
+      position: sticky;
+      top: calc(var(--header-height) + 88px);
+      aspect-ratio: 4 / 5;
+    }
+  }
+
+  &__note {
+    margin-top: 16px;
+    color: var(--color-text-sub);
+    font-size: rem(13);
+  }
+}
+
+// 品名と価格を点線でつなぐ、喫茶店らしいメニュー表
+.p-menu-list {
+  list-style: none;
+
+  li {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  &__name {
+    font-family: var(--font-head);
+    font-size: rem(17);
+    font-weight: 500;
+
+    small {
+      display: block;
+      font-family: var(--font-base);
+      font-size: rem(13);
+      font-weight: 400;
+      color: var(--color-text-sub);
+    }
+  }
+
+  // 点線は見た目だけ（読み上げでは「品名 価格」と続けて読まれる）
+  &__dots {
+    flex: 1;
+    min-width: 24px;
+    border-bottom: 1px dotted var(--color-text-sub);
+    transform: translateY(-5px);
+  }
+
+  &__price {
+    flex: none;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+}
+
+// テイクアウト可・ICE 可などの小さな印
+.c-mark {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 0 6px;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  color: var(--color-accent-text);
+  font-family: var(--font-base);
+  font-size: rem(12);
+  font-weight: 500;
+  line-height: 1.6;
+  vertical-align: 2px;
+}
+
+.p-menu-guide {
+  padding: 28px 30px;
+  border-radius: var(--radius);
+  background: var(--color-card);
+  font-size: rem(14);
+
+  h2 {
+    margin-bottom: 8px;
+    font-size: rem(18);
+  }
+
+  ul {
+    padding-left: 1.2em;
+  }
+}
+
+// ===== お知らせ一覧の絞り込み =====
+.p-news-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+
+  button {
+    padding: 8px 20px;
+    border: 0;
+    border-radius: var(--radius-sm);
+    box-shadow: inset 0 0 0 1px var(--color-border);
+    background: transparent;
+    color: var(--color-text);
+    font: inherit;
+    font-size: rem(14);
+    cursor: pointer;
+
+    &:hover {
+      background: var(--color-card);
+    }
+
+    &[aria-pressed='true'] {
+      background: var(--color-button);
+      color: var(--color-on-button);
+      box-shadow: none;
+    }
+  }
+}
+
+// ===== お知らせの記事 =====
+.p-article {
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    align-items: center;
+
+    time {
+      font-size: rem(14);
+      color: var(--color-text-sub);
+    }
+  }
+
+  h1 {
+    margin: 12px 0 32px;
+    font-size: clamp(rem(24), 3vw, rem(32));
+  }
+
+  figure {
+    margin: 0 0 32px;
+    aspect-ratio: 3 / 2;
+  }
+
+  &__body {
+    > * + * {
+      margin-top: 1.4em;
+    }
+
+    h2 {
+      margin-top: 2em;
+      padding-left: 14px;
+      border-left: 2px solid var(--color-accent);
+      font-size: rem(20);
+    }
+
+    ul {
+      padding-left: 1.4em;
+    }
+  }
+
+  &__pager {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 12px;
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 1px solid var(--color-border);
+    font-size: rem(14);
+
+    a:not(.c-button) {
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    > :last-child {
+      text-align: right;
+    }
+  }
+}

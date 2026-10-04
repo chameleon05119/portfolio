@@ -1,0 +1,62 @@
+@use '../foundation/mixins' as *;
+
+// 下層ページの見出し（中央に英字＋見出し。下に細い線）
+.l-page-head {
+  padding: 48px 0 8px;
+  text-align: center;
+
+  @include md {
+    padding: 80px 0 16px;
+  }
+
+  &__en {
+    display: block;
+    font-family: var(--font-en);
+    font-style: italic;
+    font-size: rem(20);
+    font-weight: 600;
+    color: var(--color-accent-text);
+  }
+
+  h1 {
+    margin: 2px 0 0;
+    font-size: clamp(rem(28), 3.2vw, rem(38));
+  }
+
+  p {
+    margin-top: 12px;
+    color: var(--color-text-sub);
+    font-size: rem(14);
+  }
+}
+
+.l-breadcrumb {
+  padding-block: 14px;
+  font-size: rem(13);
+  color: var(--color-text-sub);
+
+  ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li + li::before {
+    content: '/';
+    margin-right: 10px;
+    color: var(--color-border);
+  }
+
+  a {
+    display: inline-block;
+    padding-block: 3px;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
