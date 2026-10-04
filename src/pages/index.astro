@@ -191,9 +191,10 @@ const typeIds = JSON.stringify(usedCategories.map((c) => c.id));
     restart();
   }
 
-  // ページの読み込みが終わったら、残りの作品のプレビュー画像を裏で1つずつ先読みしておく（PC 幅でプレビューが見えるときだけ）
-  addEventListener('load', () => {
-    const idle = (fn: () => void) => ('requestIdleCallback' in window ? requestIdleCallback(fn, { timeout: 1500 }) : setTimeout(fn, 300));
+  // 最初の作品のプレビューが出たら、残りの作品のプレビュー画像を裏で1つずつ先読みしておく（PC 幅でプレビューが見えるときだけ）。
+  // ページの load を待つと、Web フォントなどの読み込みが終わるまで始まらず、回線が遅いと先読みが間に合わない
+  cache.get(works[0].slug)!.ready.then(() => {
+    const idle = (fn: () => void) => ('requestIdleCallback' in window ? requestIdleCallback(fn, { timeout: 1000 }) : setTimeout(fn, 200));
     idle(async () => {
       if (!stage.offsetParent) return;
       for (const w of works.slice(1)) await load(w, 'low').ready;
