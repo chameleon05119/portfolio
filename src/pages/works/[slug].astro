@@ -2,7 +2,7 @@
 import { getImage } from 'astro:assets';
 import QRCode from 'qrcode';
 import Base from '../../layouts/Base.astro';
-import { works } from '../../data/works.mjs';
+import { works, dateJa } from '../../data/works.mjs';
 
 export function getStaticPaths() {
   return works.map((w, i) => ({ params: { slug: w.slug }, props: { index: i } }));
@@ -57,7 +57,10 @@ const no = String(index + 1).padStart(2, '0');
 
       <aside class="d-side">
         <table class="spec">
-          <tbody>{w.spec.map(([k, v]) => <tr><th scope="row">{k}</th><td>{v}</td></tr>)}</tbody>
+          <tbody>
+            {w.spec.map(([k, v]) => <tr><th scope="row">{k}</th><td>{v}</td></tr>)}
+            <tr><th scope="row">公開</th><td><time datetime={w.published}>{dateJa(w.published)}</time></td></tr>
+          </tbody>
         </table>
         <div class="d-btns">
           <a class="btn primary" href={w.url} target="_blank" rel="noopener">サイトを見る<span class="visually-hidden">（新しいタブで開く）</span> <span class="arr" aria-hidden="true">↗</span></a>

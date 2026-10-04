@@ -3,7 +3,7 @@ import { getImage } from 'astro:assets';
 import QRCode from 'qrcode';
 import Base from '../layouts/Base.astro';
 import Mark from '../components/Mark.astro';
-import { works, categories } from '../data/works.mjs';
+import { works, categories, dateDot } from '../data/works.mjs';
 import { profile } from '../data/profile.mjs';
 
 const base = import.meta.env.BASE_URL;
@@ -53,6 +53,7 @@ const typeIds = JSON.stringify(usedCategories.map((c) => c.id));
                 <span class="num" aria-hidden="true">{w.no}</span>
                 <h3><a href={w.detail}>{w.name}</a></h3>
                 <div class="meta">{w.tags.map((t) => <span>{t}</span>)}</div>
+                <p class="date"><time datetime={w.published}>{dateDot(w.published)}</time> 公開</p>
                 <div class="acts">
                   <a href={w.url} target="_blank" rel="noopener"><span class="visually-hidden">{w.name}の</span>サイトを見る<span class="visually-hidden">（新しいタブで開く）</span> <span aria-hidden="true">↗</span></a>
                   <a href={w.detail}><span class="visually-hidden">{w.name}の</span>詳細</a>
@@ -91,10 +92,12 @@ const typeIds = JSON.stringify(usedCategories.map((c) => c.id));
     <section class="s" id="service" aria-labelledby="service-h">
       <div class="sh"><span class="en" aria-hidden="true">Service</span><h2 id="service-h">できること</h2></div>
       <div class="cols">
-        <div class="svc"><span class="no" aria-hidden="true">01</span><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></div><h3>デザインからのコーディング</h3><p>Figma などのデザインカンプを、PC・スマホとも再現。カンプとの差を画像で確認して納品します。</p></div>
-        <div class="svc"><span class="no" aria-hidden="true">02</span><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></div><h3>スマホ対応・表示崩れ修正</h3><p>今の PC 表示は変えずに、スマホで崩れる箇所を修正。修正前後の報告書つき。</p></div>
-        <div class="svc"><span class="no" aria-hidden="true">03</span><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 13h8M8 16h5"/></svg></div><h3>LP・小規模サイト制作</h3><p>構成案から。写真・文章の素材があればデザインも対応します。</p></div>
-        <div class="svc"><span class="no" aria-hidden="true">04</span><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16v4zM13.5 6.5l4 4"/></svg></div><h3>小さな修正・更新</h3><p>文章・画像の差し替え、WordPress テーマの小修正など。</p></div>
+        <div class="svc"><span class="no" aria-hidden="true">01</span><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></div><h3>デザインからのコーディング</h3><p>Figma などのデザインカンプを、PC・スマホとも再現。カンプとの差を画像で確かめてから納品します。</p></div>
+        <div class="svc"><span class="no" aria-hidden="true">02</span><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 13h8M8 16h5"/></svg></div><h3>LP・小規模サイト制作</h3><p>構成案から。写真・文章の素材があればデザインも対応します。</p></div>
+        <div class="svc"><span class="no" aria-hidden="true">03</span><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 3 7.5l9 4.5 9-4.5L12 3z"/><path d="m3 12 9 4.5 9-4.5M3 16.5 12 21l9-4.5"/></svg></div><h3>WordPress テーマ制作</h3><p>デザインや今の HTML サイトを WordPress のテーマに。お知らせやメニューを、管理画面から更新できるようにします。</p></div>
+        <div class="svc"><span class="no" aria-hidden="true">04</span><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3.5 17.5a1.8 1.8 0 0 0 2.5 2.5l5.8-5.8a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.5-.5-.5-2.5 2.6-2.6z"/></svg></div><h3>WordPress の修正・カスタマイズ</h3><p>表示崩れ、デザインの調整、ページの追加など。作業の前にバックアップを取ってから手を入れます。</p></div>
+        <div class="svc"><span class="no" aria-hidden="true">05</span><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></div><h3>スマホ対応・表示崩れ修正</h3><p>今の PC 表示は変えずに、スマホで崩れる箇所を修正。修正前後の報告書つき。</p></div>
+        <div class="svc"><span class="no" aria-hidden="true">06</span><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16v4zM13.5 6.5l4 4"/></svg></div><h3>小さな修正・更新</h3><p>文章・画像の差し替えなど、小さな作業からお気軽にご相談ください。</p></div>
       </div>
     </section>
 
@@ -104,7 +107,8 @@ const typeIds = JSON.stringify(usedCategories.map((c) => c.id));
         <div class="pic"><Mark size={96} /></div>
         <div>
           <p class="nm">{profile.name}<small>{profile.nameEn}</small></p>
-          <p>{profile.bio}</p>
+          {profile.bio.map((t) => <p>{t}</p>)}
+          <p class="avail">{profile.availability}</p>
           <div class="stack">{profile.stack.map((s) => <span>{s}</span>)}</div>
           <div class="links">
             {profile.links.filter((l) => l.url).map((l) => (

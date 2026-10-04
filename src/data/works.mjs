@@ -13,10 +13,18 @@ export const categories = [
   { id: 'fix', label: '修正' },
 ];
 
+/** 公開日の表示（'2026-10-04' → '2026.10.04' / '2026年10月4日'） */
+export const dateDot = (ymd) => ymd.replaceAll('-', '.');
+export const dateJa = (ymd) => {
+  const [y, m, d] = ymd.split('-').map(Number);
+  return `${y}年${m}月${d}日`;
+};
+
 export const works = [
   {
     slug: 'hiiragi-seiko-corporate',
     shot: 's03',
+    published: '2026-10-03', // 公開日（作品集に載せた日）
     name: '中小企業コーポレートサイト（製造業）',
     category: 'corp',
     tags: ['コーポレート', '12ページ', 'フォーム'],
@@ -42,6 +50,7 @@ export const works = [
   {
     slug: 'hitotoki-coffee-cafe',
     shot: 's04',
+    published: '2026-10-04', // 公開日（作品集に載せた日）
     name: 'カフェ・喫茶店サイト',
     category: 'shop',
     tags: ['店舗', '3ページ＋お知らせ', '営業カレンダー'],
@@ -67,6 +76,7 @@ export const works = [
   {
     slug: 'hitotoki-coffee-wordpress',
     shot: 's07',
+    published: '2026-10-04', // 公開日（作品集に載せた日）
     // スクショは WordPress の画面を撮る（公開 URL は Playground の入口ページのため）。
     // 撮るときは sample-07 で `PORT=9402 LOGIN=0 npm run dev` を起動しておく
     shotUrl: 'http://127.0.0.1:9402/',
@@ -97,6 +107,7 @@ export const works = [
   {
     slug: 'gijireco-saas-lp',
     shot: 's05',
+    published: '2026-10-04', // 公開日（作品集に載せた日）
     name: 'サービス紹介 LP（BtoB SaaS）',
     category: 'lp',
     tags: ['LP', '料金表', '資料請求フォーム'],
@@ -122,6 +133,7 @@ export const works = [
   {
     slug: 'miserupo-sns-lp',
     shot: 's06',
+    published: '2026-10-04', // 公開日（作品集に載せた日）
     name: 'サービス紹介 LP（店舗向け SNS 集客ツール）',
     category: 'lp',
     tags: ['LP', 'シミュレーター', 'モーダルフォーム'],
@@ -147,6 +159,7 @@ export const works = [
   {
     slug: 'english-school-lp',
     shot: 's01',
+    published: '2026-10-03', // 公開日（作品集に載せた日）
     name: '英会話スクール LP',
     category: 'lp',
     tags: ['LP', 'カンプ再現', 'アニメーション'],
@@ -173,6 +186,7 @@ export const works = [
   {
     slug: 'bakery-mobile-fix',
     shot: 's02',
+    published: '2026-10-03', // 公開日（作品集に載せた日）
     name: 'ベーカリーサイトのスマホ対応修正',
     category: 'fix',
     tags: ['修正', 'スマホ対応', '修正報告書'],

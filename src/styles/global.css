@@ -62,6 +62,7 @@
   .card h3 a { text-decoration:none; }
   .meta { display:flex; flex-wrap:wrap; gap:6px; font-size:13px; color:var(--sub); }
   .meta span { background:var(--accent-soft); color:color-mix(in srgb, var(--accent) 80%, var(--text)); border-radius:4px; padding:2px 9px; }
+  .date { margin:8px 0 0; font-size:13px; color:var(--sub); letter-spacing:.04em; }
   .acts { display:flex; gap:20px; margin-top:12px; font-size:14px; }
   .acts a { color:var(--sub); text-decoration:none; border-bottom:1px solid var(--line); transition:color .2s, border-color .2s; }
   .acts a:hover { color:var(--accent); border-color:var(--accent); }
@@ -104,7 +105,7 @@
   .sh .en { font-size:52px; font-weight:700; line-height:1; color:var(--text); letter-spacing:-.01em; }
   .sh h2 { font-size:16px; font-weight:500; color:var(--sub); margin:0; }
   .sh::after { content:""; flex:1; height:1px; background:var(--line); align-self:center; }
-  .cols { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+  .cols { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
   .svc { background:var(--surface); border-radius:var(--radius-lg); padding:28px 24px 26px; box-shadow:var(--shadow); position:relative; overflow:hidden; }
   .svc .ic { width:44px; height:44px; border-radius:12px; background:var(--accent-soft); color:var(--accent); display:grid; place-items:center; margin-bottom:18px; }
   .svc .ic svg { width:22px; height:22px; }
@@ -117,6 +118,7 @@
   .about .nm { font-size:26px; font-weight:700; margin:0; }
   .about .nm small { display:block; font:500 15px/1.4 var(--font-en); color:var(--accent); letter-spacing:.06em; margin-top:2px; }
   .about p { margin:16px 0 0; color:var(--sub); font-size:16px; }
+  .about p.avail { margin-top:12px; font-size:14px; color:var(--text); }
   .about p.nm { margin:0; color:var(--text); }
   .about .stack { display:flex; flex-wrap:wrap; gap:6px; margin-top:14px; }
   .about .stack span { font:500 13.5px/1 var(--font-en); border:1px solid var(--line); border-radius:99px; padding:6px 12px; }
