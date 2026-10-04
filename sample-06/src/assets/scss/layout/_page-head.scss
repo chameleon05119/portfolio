@@ -1,0 +1,16 @@
+@use '../foundation/mixins' as *;
+
+.l-page-head {
+  padding: 48px 0 32px;
+  text-align: center;
+
+  @include md {
+    padding: 72px 0 40px;
+  }
+
+  h1 {
+    font-size: clamp(rem(24), 3vw, rem(34));
+    font-weight: 900;
+    word-break: keep-all; // <wbr> の位置でだけ折り返す
+  }
+}

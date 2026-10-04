@@ -1,0 +1,44 @@
+@use '../foundation/mixins' as *;
+
+.c-section-head {
+  margin-bottom: 36px;
+  text-align: center;
+
+  @include md {
+    margin-bottom: 52px;
+  }
+
+  // 英字の小さなラベル（ABOUT・FEATURES など）。水色の丸いタグ
+  &__en {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 3px 14px;
+    border-radius: var(--radius-pill);
+    background: var(--tag-sky-bg);
+    color: var(--tag-sky);
+    font-family: var(--font-num);
+    font-size: rem(13);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+
+  h2 {
+    font-size: clamp(rem(25), 2.8vw, rem(36));
+    font-weight: 700;
+    text-wrap: balance;
+  }
+
+  > p:not([class]) {
+    margin-top: 12px;
+    color: var(--color-text-sub);
+  }
+
+  &--left {
+    margin-bottom: 20px;
+    text-align: left;
+
+    @include md {
+      margin-bottom: 24px;
+    }
+  }
+}

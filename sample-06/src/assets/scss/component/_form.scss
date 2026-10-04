@@ -1,0 +1,162 @@
+@use '../foundation/mixins' as *;
+
+.c-form {
+  &__field {
+    margin-bottom: 18px;
+    padding: 0;
+    border: 0;
+
+    > label,
+    > legend {
+      display: flex;
+      align-items: center;
+      margin-bottom: 6px;
+      font-size: rem(14);
+      font-weight: 700;
+    }
+
+    input[type='text'],
+    input[type='email'],
+    textarea {
+      width: 100%;
+      min-height: 48px;
+      padding: 10px 14px;
+      border: 1.5px solid var(--color-border-input);
+      border-radius: 12px;
+      background: #fbfdff;
+      font-size: rem(16); // iOS で入力時に拡大されないように 16px 以上
+      transition:
+        border-color var(--duration),
+        box-shadow var(--duration);
+
+      // 輪郭線（base の :focus-visible）に、水色の影を足す
+      &:focus {
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 4px rgb(63 182 234 / 0.3);
+      }
+
+      &[aria-invalid='true'] {
+        border-color: var(--color-error);
+      }
+    }
+
+    textarea {
+      resize: vertical;
+    }
+  }
+
+  &__req,
+  &__opt {
+    margin-left: 8px;
+    padding: 1px 7px;
+    border-radius: 5px;
+    font-size: rem(11);
+    font-weight: 700;
+  }
+
+  &__req {
+    background: var(--color-strong);
+    color: #fff;
+  }
+
+  &__opt {
+    background: var(--color-bg-sub);
+    color: var(--color-text-sub);
+  }
+
+  // エラー文（空のときは高さを取らない）
+  &__error {
+    color: var(--color-error);
+    font-size: rem(13);
+    font-weight: 700;
+
+    &:not(:empty) {
+      margin-top: 6px;
+
+      &::before {
+        content: '! ';
+      }
+    }
+  }
+
+  // JS が動かない環境だけの案内
+  &__nojs {
+    margin-bottom: 10px;
+    color: var(--color-text-sub);
+    font-size: rem(13);
+
+    .js & {
+      display: none;
+    }
+  }
+
+  &__agree {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: rem(14);
+    font-weight: 600;
+    cursor: pointer;
+
+    input {
+      flex: none;
+      width: 22px;
+      height: 22px;
+      accent-color: var(--color-primary);
+    }
+
+    a {
+      color: var(--color-primary);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+  }
+}
+
+// 丸いボタン型の選択肢（ラジオ・チェックボックス）
+.c-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  label {
+    position: relative;
+    cursor: pointer;
+  }
+
+  input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 6px 16px;
+    border-radius: var(--radius-pill);
+    box-shadow: inset 0 0 0 1.5px var(--color-border-input);
+    font-size: rem(14);
+    font-weight: 700;
+    transition:
+      background-color var(--duration),
+      color var(--duration);
+  }
+
+  input:checked + span {
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+    box-shadow: none;
+  }
+
+  input:focus-visible + span {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+
+  [data-invalid] & span {
+    box-shadow: inset 0 0 0 1.5px var(--color-error);
+  }
+}

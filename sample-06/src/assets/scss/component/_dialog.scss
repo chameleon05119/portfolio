@@ -1,0 +1,161 @@
+@use '../foundation/mixins' as *;
+
+// 無料登録などのモーダル（<dialog> を showModal で開く。背面の操作・フォーカスはブラウザが閉じ込める）
+.c-dialog {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: var(--color-card);
+  color: var(--color-text);
+  overscroll-behavior: contain;
+
+  // 上の色の帯
+  &::before {
+    content: '';
+    display: block;
+    height: 6px;
+    background: var(--gradient);
+  }
+
+  @include md {
+    width: min(560px, calc(100% - 48px));
+    height: auto;
+    max-height: calc(100% - 48px);
+    margin: auto;
+    border-radius: var(--radius-panel);
+    box-shadow: 0 40px 80px -30px rgb(23 42 79 / 0.5);
+  }
+
+  &::backdrop {
+    background: rgb(23 42 79 / 0.45);
+    backdrop-filter: blur(3px);
+  }
+
+  &[open] {
+    animation: c-dialog-in 0.3s var(--ease-out);
+  }
+
+  &__inner {
+    padding: 28px 20px 32px;
+
+    @include md {
+      padding: 32px 36px 36px;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 18px;
+    right: 14px;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--color-bg-sub);
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    &:hover {
+      background: var(--color-border);
+    }
+  }
+
+  &__title {
+    padding-right: 48px;
+    font-size: rem(22);
+    font-weight: 700;
+  }
+
+  &__lead {
+    margin-top: 4px;
+    color: var(--color-text-sub);
+    font-size: rem(14);
+  }
+
+  &__steps {
+    display: flex;
+    gap: 8px;
+    margin: 18px 0 22px;
+    font-size: rem(12);
+    font-weight: 700;
+
+    li {
+      padding: 3px 12px;
+      border-radius: var(--radius-pill);
+      background: var(--color-bg-sub);
+      color: var(--color-text-sub);
+    }
+
+    [aria-current='step'] {
+      background: var(--color-primary);
+      color: var(--color-on-primary);
+    }
+  }
+
+  &__done {
+    text-align: center;
+
+    .c-dialog__steps {
+      justify-content: center;
+      margin-top: 4px;
+    }
+
+    h2 {
+      font-size: rem(22);
+      font-weight: 700;
+    }
+
+    > p {
+      margin-top: 10px;
+      color: var(--color-text-sub);
+    }
+
+    .c-button {
+      margin-top: 24px;
+    }
+  }
+
+  &__ok {
+    display: grid;
+    place-items: center;
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    background: var(--gradient);
+    color: #fff;
+
+    svg {
+      width: 36px;
+      height: 36px;
+    }
+  }
+
+  & &__demo {
+    display: inline-block;
+    padding: 6px 14px;
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: rem(13);
+  }
+}
+
+// 開いている間は後ろのページをスクロールさせない
+html:has(.c-dialog[open]) {
+  overflow: hidden;
+}
+
+@keyframes c-dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+}

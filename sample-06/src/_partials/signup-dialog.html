@@ -1,0 +1,70 @@
+<!-- 無料登録・資料ダウンロード・ご相談のモーダル（1 つのダイアログを、押したボタンに合わせて切り替える）
+     command / commandfor で、JS が動かない環境でも開ける（その場合は「無料で始める」の内容で開く）。
+     デモサイトのため実際には送信しない。本番では送信先（フォームサービスや MA ツール）につなぐ -->
+<dialog class="c-dialog" id="signup" aria-labelledby="signup-title" data-dialog>
+  <button class="c-dialog__close" type="button" aria-label="閉じる" commandfor="signup" command="close"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-close" /></svg></button>
+  <div class="c-dialog__inner">
+    <div data-dialog-step="input">
+      <h2 class="c-dialog__title" id="signup-title" data-mode-text="title">30 日間、無料でためす</h2>
+      <p class="c-dialog__lead" data-mode-text="lead">クレジットカードの登録は不要です。</p>
+      <ol class="c-dialog__steps" aria-label="お申し込みの手順">
+        <li aria-current="step">1 お店の情報</li>
+        <li>2 完了</li>
+      </ol>
+      <form class="c-form" data-signup-form>
+        <div class="c-form__field">
+          <label for="f-shop">お店の名前<span class="c-form__req">必須</span></label>
+          <input type="text" id="f-shop" name="shop" autocomplete="organization" required aria-describedby="f-shop-error" autofocus />
+          <p class="c-form__error" id="f-shop-error" aria-live="polite"></p>
+        </div>
+        <fieldset class="c-form__field" aria-describedby="f-kind-error">
+          <legend>業種<span class="c-form__req">必須</span></legend>
+          <div class="c-chips">
+            <label><input type="radio" name="kind" value="カフェ・飲食" required /><span>カフェ・飲食</span></label>
+            <label><input type="radio" name="kind" value="美容室・サロン" /><span>美容室・サロン</span></label>
+            <label><input type="radio" name="kind" value="パン屋・菓子店" /><span>パン屋・菓子店</span></label>
+            <label><input type="radio" name="kind" value="教室・スクール" /><span>教室・スクール</span></label>
+            <label><input type="radio" name="kind" value="その他" /><span>その他</span></label>
+          </div>
+          <p class="c-form__error" id="f-kind-error" aria-live="polite"></p>
+        </fieldset>
+        <div class="c-form__field">
+          <label for="f-email">メールアドレス<span class="c-form__req">必須</span></label>
+          <input type="email" id="f-email" name="email" autocomplete="email" inputmode="email" required aria-describedby="f-email-error" />
+          <p class="c-form__error" id="f-email-error" aria-live="polite"></p>
+        </div>
+        <fieldset class="c-form__field" data-mode-only="trial">
+          <legend>いま使っている SNS<span class="c-form__opt">複数選べます</span></legend>
+          <div class="c-chips">
+            <label><input type="checkbox" name="sns" value="Instagram" /><span>Instagram</span></label>
+            <label><input type="checkbox" name="sns" value="TikTok" /><span>TikTok</span></label>
+            <label><input type="checkbox" name="sns" value="LINE" /><span>LINE</span></label>
+            <label><input type="checkbox" name="sns" value="まだない" /><span>まだない</span></label>
+          </div>
+        </fieldset>
+        <div class="c-form__field" data-mode-only="consult" hidden>
+          <label for="f-message">ご相談内容<span class="c-form__opt">任意</span></label>
+          <textarea id="f-message" name="message" rows="4" placeholder="例：Instagram を始めたばかりで、何を投稿すればいいか知りたい"></textarea>
+        </div>
+        <div class="c-form__field">
+          <label class="c-form__agree"><input type="checkbox" name="agree" required aria-describedby="f-agree-error" /><span><a href="{{root}}privacy.html" target="_blank" rel="noopener">個人情報の取り扱い<span class="u-visually-hidden">（新しいタブで開きます）</span></a>に同意する</span><span class="c-form__req">必須</span></label>
+          <p class="c-form__error" id="f-agree-error" aria-live="polite"></p>
+        </div>
+        <!-- JS が動かない環境では送信させない（デモのため送信先がなく、入力内容が URL に載らないように） -->
+        <p class="c-form__nojs" data-nojs>デモサイトのため、JavaScript が動かない環境では送信できません。</p>
+        <button class="c-button c-button--lg c-button--block" type="submit" data-mode-text="submit" disabled>無料で始める</button>
+      </form>
+    </div>
+    <div class="c-dialog__done" data-dialog-step="done" hidden>
+      <ol class="c-dialog__steps" aria-label="お申し込みの手順">
+        <li>1 お店の情報</li>
+        <li aria-current="step">2 完了</li>
+      </ol>
+      <span class="c-dialog__ok" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-check" /></svg></span>
+      <h2 id="signup-done-title" tabindex="-1" data-mode-text="doneTitle">ご登録ありがとうございます</h2>
+      <p data-mode-text="doneText">確認メールをお送りしました。メール内のボタンから設定を始めてください。</p>
+      <p class="c-dialog__demo">デモサイトのため、実際にはメールは送信されません。</p>
+      <button class="c-button c-button--ghost" type="button" commandfor="signup" command="close">閉じる</button>
+    </div>
+  </div>
+</dialog>

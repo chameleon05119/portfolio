@@ -1,0 +1,68 @@
+// デザイントークン（デザイン案 A「スカイ・ポップ（白 × 水色 × ピンク、ボタンは紺）」2026-10-04 確定）
+:root {
+  // 色（文字と背景のコントラストは 4.5:1 以上。水色・ピンク・黄は飾りと大きな数字だけに使う）
+  --color-text: #172a4f;
+  --color-text-sub: #56668a;
+  --color-bg: #fff;
+  --color-bg-sub: #f0f8fd; // 交互のセクション・フッター
+  --color-card: #fff;
+  --color-border: #dde8f3;
+  --color-border-input: #7b8aa8; // 入力欄・選択肢の枠（白地で 3:1 以上）
+  --color-primary: #1f3a8a; // ボタン（紺）
+  --color-primary-hover: #1a3178;
+  --color-on-primary: #fff;
+  --color-sky: #3fb6ea;
+  --color-pink: #ff4f87;
+  --color-yellow: #ffc93c;
+  --color-number: #e8336f; // 大きな数字（太字 24px 以上でだけ使う）
+  --color-strong: #c81e5a; // 小さい強調文字・英字ラベル
+  --color-error: #c81e3a;
+  --gradient: linear-gradient(90deg, #3fb6ea, #7f8cff 55%, #ff4f87); // ロゴ・線・飾り
+  --gradient-fv:
+    radial-gradient(40% 55% at 92% 18%, #d6f0fc 0%, transparent 70%),
+    radial-gradient(35% 50% at 70% 95%, #ffe1ec 0%, transparent 70%),
+    radial-gradient(30% 40% at 4% 10%, #e7f6fd 0%, transparent 70%), #fff;
+
+  // タグ（背景と文字の組み。機能のカテゴリ・投稿先など）
+  --tag-sky-bg: #e3f4fc;
+  --tag-sky: #0b6e99;
+  --tag-pink-bg: #ffe6ef;
+  --tag-pink: #b3164c;
+  --tag-yellow-bg: #fff4d6;
+  --tag-yellow: #8a5a00;
+  --tag-violet-bg: #ebeeff;
+  --tag-violet: #3b46b8;
+  --tag-green-bg: #e2f6e9;
+  --tag-green: #17703a;
+
+  // 文字
+  --font-base: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', YuGothic, 'Noto Sans JP', Meiryo, sans-serif; // 本文は OS のフォント
+  --font-head: 'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+  --font-num: 'Outfit', 'Helvetica Neue', Arial, sans-serif; // 数字・英字ラベル
+  --letter-spacing: 0.03em;
+
+  // レイアウト
+  --container-width: 1120px;
+  --container-padding: 20px;
+  --header-height: 60px;
+  --section-space: 72px;
+
+  // 角丸・影・動き
+  --radius-sm: 10px;
+  --radius: 22px;
+  --radius-panel: 32px;
+  --radius-pill: 999px;
+  --shadow: 0 18px 40px -22px rgb(23 42 79 / 0.35);
+  --shadow-card: 0 0 0 1px var(--color-border), 0 12px 30px -24px rgb(23 42 79 / 0.35);
+  --shadow-device: 0 30px 60px -30px rgb(23 42 79 / 0.45);
+  --duration: 0.25s;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --container-padding: 40px;
+    --header-height: 72px;
+    --section-space: 104px;
+  }
+}

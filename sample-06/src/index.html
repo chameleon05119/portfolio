@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- include: head.html -->
+    <title>ミセルポ | カフェ・美容室・小さなお店の SNS 集客ツール（デモサイト）</title>
+    <meta name="description" content="写真を1枚選ぶだけ。AI が投稿文の案を作り、Instagram・TikTok・LINE へまとめて予約投稿、来店につながったかまで分かる SNS 集客ツール「ミセルポ」（ポートフォリオ用の架空のサービスです）。" />
+    <meta property="og:title" content="ミセルポ | 小さなお店の SNS 集客ツール（デモサイト）" />
+    <meta property="og:description" content="AI で投稿づくり、まとめて予約投稿、来店につながった投稿が分かる。ポートフォリオ用の架空のサービスです。" />
+  </head>
+  <body data-page="top">
+    <!-- include: icons.html -->
+    <!-- include: header.html -->
+    <main id="main">
+      <!-- ===== 最初の画面 ===== -->
+      <section class="p-fv" aria-labelledby="fv-title">
+        <div class="l-container p-fv__grid">
+          <div class="p-fv__copy">
+            <p class="p-fv__chip"><span aria-hidden="true"></span>カフェ・美容室・小さなお店の SNS 集客ツール</p>
+            <h1 class="p-fv__title" id="fv-title"><span class="u-nw">投稿は、<em>AI</em> と</span><span class="u-nw">一緒に。</span><br /><span class="u-nw">お客さんは、</span><span class="u-nw"><em>SNS</em> から。</span></h1>
+            <p class="p-fv__lead">写真を 1 枚選ぶだけ。投稿文の案づくりから、Instagram・TikTok・LINE への予約投稿、来店につながったかの分析まで、ミセルポがまとめて引き受けます。</p>
+            <dl class="p-fv__nums">
+              <div><dt>導入店舗数</dt><dd><span data-count="4800">4,800</span><small>店</small></dd></div>
+              <div><dt>投稿にかかる時間</dt><dd>1/5</dd></div>
+              <div><dt>継続率</dt><dd><span data-count="97">97</span><small>%</small></dd></div>
+            </dl>
+            <div class="p-fv__buttons">
+              <button class="c-button c-button--lg" type="button" data-open="trial" commandfor="signup" command="show-modal">30 日無料で始める<span class="c-button__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-arrow" /></svg></span></button>
+              <button class="c-button c-button--ghost c-button--lg" type="button" data-open="doc" commandfor="signup" command="show-modal">資料ダウンロード</button>
+            </div>
+            <p class="p-fv__note">※ クレジットカードの登録は不要です。数値はすべて架空です。</p>
+          </div>
+
+          <!-- 管理画面とスマホの画面のイメージ（HTML/CSS で組んだ飾り。内容は本文で説明しているので読み上げない） -->
+          <div class="p-devices" aria-hidden="true">
+            <span class="p-devices__deco p-devices__deco--1"></span>
+            <span class="p-devices__deco p-devices__deco--2"></span>
+            <span class="p-devices__deco p-devices__deco--3"></span>
+            <div class="p-pc">
+              <div class="p-pc__bar"><i></i><i></i><i></i></div>
+              <div class="p-pc__body">
+                <div class="p-pc__side"><i></i><i></i><i></i><i></i></div>
+                <div class="p-pc__main">
+                  <p class="p-pc__head">今月のふりかえり<span>10月1日〜31日</span></p>
+                  <div class="p-pc__kpis">
+                    <div>表示回数<b>24,180</b><em>+38%</em></div>
+                    <div>保存数<b>1,206</b><em>+52%</em></div>
+                    <div>道順の表示<b>342</b><em>+21%</em></div>
+                  </div>
+                  <div class="p-pc__chart">
+                    <i style="--h: 30%; --i: 0"></i><i style="--h: 45%; --i: 1"></i><i style="--h: 38%; --i: 2"></i><i style="--h: 60%; --i: 3"></i><i style="--h: 52%; --i: 4"></i><i class="is-hot" style="--h: 92%; --i: 5"></i><i style="--h: 66%; --i: 6"></i><i style="--h: 58%; --i: 7"></i><i style="--h: 74%; --i: 8"></i><i style="--h: 63%; --i: 9"></i><i class="is-hot" style="--h: 84%; --i: 10"></i><i style="--h: 70%; --i: 11"></i>
+                  </div>
+                  <div class="p-pc__cal">
+                    <span class="is-sky"></span><span></span><span class="is-pink"></span><span></span><span class="is-yellow"></span><span class="is-sky"></span><span></span><span class="is-pink"></span><span class="is-sky"></span><span></span><span class="is-yellow"></span><span></span><span class="is-pink"></span><span class="is-sky"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="p-phone">
+              <div class="p-phone__screen">
+                <span class="p-phone__notch"></span>
+                <div class="p-phone__feed" data-feed>
+                  <div class="c-post"><p class="c-post__who"><i></i>hitotoki_coffee</p><div class="c-post__ph c-post__ph--cafe"><svg viewBox="0 0 24 24"><use href="#i-cup" /></svg></div><p class="c-post__cap"><b>今日のおすすめ</b> 秋のかぼちゃタルト、焼きあがりました</p></div>
+                  <div class="c-post"><p class="c-post__who"><i></i>salon_mint</p><div class="c-post__ph c-post__ph--salon"><svg viewBox="0 0 24 24"><use href="#i-scissors" /></svg></div><p class="c-post__cap"><b>空き情報</b> 本日 15 時から 1 枠あります</p></div>
+                  <div class="c-post"><p class="c-post__who"><i></i>pan_komugi</p><div class="c-post__ph c-post__ph--bakery"><svg viewBox="0 0 24 24"><use href="#i-bread" /></svg></div><p class="c-post__cap"><b>焼きたて</b> 11 時にクロワッサンが並びます</p></div>
+                  <div class="c-post"><p class="c-post__who"><i></i>atelier_iroha</p><div class="c-post__ph c-post__ph--school"><svg viewBox="0 0 24 24"><use href="#i-school" /></svg></div><p class="c-post__cap"><b>体験会</b> 11 月の無料体験、受付中です</p></div>
+                </div>
+              </div>
+            </div>
+            <div class="p-devices__toast"><i><svg viewBox="0 0 24 24"><use href="#i-check" /></svg></i><span>3 つの SNS に予約しました<small>明日 7:30 に投稿されます</small></span></div>
+          </div>
+        </div>
+
+        <div class="p-logos">
+          <p class="p-logos__lead">カフェ・美容室・パン屋・教室など、街のお店で使われています</p>
+          <button class="p-logos__pause" type="button" data-motion-toggle hidden>動きを止める</button>
+          <div class="p-logos__marquee">
+            <div class="p-logos__track">
+              <ul class="p-logos__list">
+                <li>ひととき珈琲</li>
+                <li class="is-en">salon mint</li>
+                <li class="is-en">PAN KOMUGI</li>
+                <li class="is-serif">こども絵画教室 いろは</li>
+                <li>ネイル ルポ</li>
+                <li class="is-en">Bistro Hanare</li>
+                <li class="is-serif">整体院 ゆるり</li>
+                <li>洋菓子 シュクレ</li>
+                <li>花屋 つぼみ</li>
+                <li class="is-en">Yoga Room Sora</li>
+              </ul>
+              <!-- 途切れずに流すための複製（読み上げない） -->
+              <ul class="p-logos__list" aria-hidden="true">
+                <li>ひととき珈琲</li>
+                <li class="is-en">salon mint</li>
+                <li class="is-en">PAN KOMUGI</li>
+                <li class="is-serif">こども絵画教室 いろは</li>
+                <li>ネイル ルポ</li>
+                <li class="is-en">Bistro Hanare</li>
+                <li class="is-serif">整体院 ゆるり</li>
+                <li>洋菓子 シュクレ</li>
+                <li>花屋 つぼみ</li>
+                <li class="is-en">Yoga Room Sora</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== ミセルポとは ===== -->
+      <section class="p-section" aria-labelledby="about-title">
+        <div class="l-container">
+          <div class="c-section-head u-reveal">
+            <p class="c-section-head__en">ABOUT</p>
+            <h2 id="about-title">ミセルポとは</h2>
+            <p>「作る・投稿する・振り返る」を、1 つの画面で。</p>
+          </div>
+          <div class="p-flow u-reveal">
+            <div class="p-flow__shop">
+              <span class="p-flow__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-shop" /></svg></span>
+              <p><b>お店</b>写真を選ぶだけ</p>
+            </div>
+            <span class="p-flow__arrow" aria-hidden="true"></span>
+            <div class="p-flow__hub">
+              <p class="l-logo"><svg viewBox="0 0 34 34" aria-hidden="true"><use href="#i-logo" /></svg><span>ミセルポ</span></p>
+              <ol class="p-flow__steps">
+                <li><span>01</span>AI で<br />作る</li>
+                <li><span>02</span>まとめて<br />投稿</li>
+                <li><span>03</span>効果を<br />見る</li>
+              </ol>
+            </div>
+            <span class="p-flow__arrow" aria-hidden="true"></span>
+            <div class="p-flow__sns">
+              <p class="u-visually-hidden">投稿先</p>
+              <ul>
+                <li class="is-ig">Instagram</li>
+                <li class="is-tt">TikTok</li>
+                <li class="is-line">LINE</li>
+                <li class="is-map">Google マップ</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 3つの特徴 ===== -->
+      <section class="p-section p-section--sub" id="feature" aria-labelledby="feature-title">
+        <div class="l-container">
+          <div class="c-section-head u-reveal">
+            <p class="c-section-head__en">FEATURES</p>
+            <h2 id="feature-title">ミセルポの 3 つの特徴</h2>
+          </div>
+
+          <article class="p-point u-reveal">
+            <div class="p-point__text">
+              <p class="p-point__no" aria-hidden="true">01</p>
+              <h3><span class="u-nw">写真 1 枚で、</span><span class="u-nw">投稿文は AI におまかせ</span></h3>
+              <p>お店の雰囲気や言葉づかいを覚えて、ハッシュタグつきの文章案を 3 つ。選んで少し直すだけで投稿できます。</p>
+              <dl class="p-point__kpi">
+                <div><dt>1 投稿の作成時間</dt><dd>30分 → 5分</dd></div>
+              </dl>
+            </div>
+            <div class="p-point__vis" aria-hidden="true">
+              <div class="p-ai">
+                <p class="p-ai__label"><i></i>AI が 3 つの案を作りました</p>
+                <div class="p-ai__photo c-post__ph c-post__ph--cafe"><svg viewBox="0 0 24 24"><use href="#i-cup" /></svg></div>
+                <div class="p-ai__opts">
+                  <p class="is-on"><small>案 1・やさしい</small>今年もかぼちゃの季節。ほっくり甘いタルトが焼きあがりました。#ひととき珈琲</p>
+                  <p><small>案 2・短く</small>秋限定、かぼちゃタルト始めました。</p>
+                  <p><small>案 3・お知らせ</small>10/5 から数量限定で販売します。</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="p-point p-point--reverse u-reveal">
+            <div class="p-point__text">
+              <p class="p-point__no" aria-hidden="true">02</p>
+              <h3><span class="u-nw">いちばん見られる時間に、</span><span class="u-nw">まとめて予約投稿</span></h3>
+              <p>Instagram・TikTok・LINE に一度に。フォロワーがいちばん多く見ている時間を、自動で選びます。</p>
+              <dl class="p-point__kpi">
+                <div><dt>表示回数</dt><dd>2.4倍</dd></div>
+                <div><dt>投稿の手間</dt><dd>3回 → 1回</dd></div>
+              </dl>
+            </div>
+            <div class="p-point__vis" aria-hidden="true">
+              <div class="p-week">
+                <div>月<span class="is-ig">7:30<br />朝のおすすめ</span></div>
+                <div>火</div>
+                <div class="is-best">水<span class="is-ig">12:00<br />ランチ</span><span class="is-line">LINE<br />クーポン</span></div>
+                <div>木<span class="is-tt">TikTok<br />焼く動画</span></div>
+                <div>金<span class="is-ig">18:00<br />週末案内</span></div>
+                <div class="is-best">土<span class="is-ig">9:00<br />新作</span><span class="is-tt">TikTok</span></div>
+                <div>日</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="p-point u-reveal">
+            <div class="p-point__text">
+              <p class="p-point__no" aria-hidden="true">03</p>
+              <h3><span class="u-nw">「来店につながった投稿」が</span><span class="u-nw">ひと目でわかる</span></h3>
+              <p>いいねの数だけでなく、予約・道順の表示・クーポン利用まで投稿ごとに集計。次に何を出せばいいかも提案します。</p>
+              <dl class="p-point__kpi">
+                <div><dt>SNS 経由の予約</dt><dd>+38%</dd></div>
+              </dl>
+            </div>
+            <div class="p-point__vis" aria-hidden="true">
+              <div class="p-bars">
+                <p>かぼちゃタルト<i style="--w: 92%"></i><b>48件</b></p>
+                <p>雨の日の空席<i style="--w: 64%"></i><b>31件</b></p>
+                <p>店内の様子<i style="--w: 40%"></i><b>19件</b></p>
+                <p>スタッフ紹介<i style="--w: 22%"></i><b>9件</b></p>
+              </div>
+              <p class="p-bars__tip"><i></i><span><b>次のおすすめ：</b>焼き菓子の投稿は土曜の朝が反応がよいです。新作を土曜 9 時に出しましょう。</span></p>
+            </div>
+          </article>
+          <p class="p-section__note">※ 数値はすべて架空です。</p>
+        </div>
+      </section>
+
+      <!-- ===== 業種ごとの使い方（タブ） ===== -->
+      <section class="p-section" id="usecase" aria-labelledby="usecase-title">
+        <div class="l-container">
+          <div class="c-section-head u-reveal">
+            <p class="c-section-head__en">USE CASE</p>
+            <h2 id="usecase-title">業種ごとの使い方</h2>
+          </div>
+          <!-- JS が動かない環境ではタブを出さず、4 業種を縦に並べて見せる -->
+          <div class="p-tabs" data-tabs>
+            <div class="p-tabs__list u-reveal" role="tablist" aria-label="業種" hidden>
+              <button role="tab" type="button" id="tab-cafe" aria-controls="panel-cafe" aria-selected="true">カフェ・飲食</button>
+              <button role="tab" type="button" id="tab-salon" aria-controls="panel-salon" aria-selected="false" tabindex="-1">美容室・サロン</button>
+              <button role="tab" type="button" id="tab-bakery" aria-controls="panel-bakery" aria-selected="false" tabindex="-1">パン屋・菓子店</button>
+              <button role="tab" type="button" id="tab-school" aria-controls="panel-school" aria-selected="false" tabindex="-1">教室・スクール</button>
+            </div>
+
+            <div class="p-usecase" role="tabpanel" id="panel-cafe" aria-labelledby="tab-cafe">
+              <div class="c-post c-post--lg"><p class="c-post__who"><i></i>hitotoki_coffee</p><img class="c-post__img" src="./assets/images/post-cafe-640w.webp" srcset="./assets/images/post-cafe-320w.webp 320w, ./assets/images/post-cafe-640w.webp 640w" sizes="(min-width: 768px) 300px, 260px" alt="カプチーノとケーキの写真" width="640" height="640" loading="lazy" decoding="async" /><p class="c-post__cap"><b>雨の日限定</b> 本日はお席に余裕があります。ドリンク 50 円引きです。</p></div>
+              <div class="p-usecase__text">
+                <h3>カフェ・飲食店なら</h3>
+                <ol>
+                  <li>今日のおすすめを、毎朝自動で投稿</li>
+                  <li>雨の日は「空いてます」投稿を AI が提案</li>
+                  <li>Google マップで道順を見た人の数を確認</li>
+                </ol>
+                <p class="p-usecase__result"><small>導入 3 か月の平均（架空）</small>平日ランチの来店 <b>+18%</b></p>
+              </div>
+            </div>
+            <div class="p-usecase" role="tabpanel" id="panel-salon" aria-labelledby="tab-salon">
+              <div class="c-post c-post--lg"><p class="c-post__who"><i></i>salon_mint</p><img class="c-post__img" src="./assets/images/post-salon-640w.webp" srcset="./assets/images/post-salon-320w.webp 320w, ./assets/images/post-salon-640w.webp 640w" sizes="(min-width: 768px) 300px, 260px" alt="美容室でヘアカットをしている写真" width="640" height="640" loading="lazy" decoding="async" /><p class="c-post__cap"><b>空き情報</b> 本日 15 時から 1 枠あります。プロフィールのリンクから予約できます。</p></div>
+              <div class="p-usecase__text">
+                <h3>美容室・サロンなら</h3>
+                <ol>
+                  <li>当日の空き枠を自動で投稿</li>
+                  <li>スタイル写真から投稿文とタグを作成</li>
+                  <li>どの投稿から予約が入ったかを確認</li>
+                </ol>
+                <p class="p-usecase__result"><small>導入 3 か月の平均（架空）</small>当日予約 <b>+24%</b></p>
+              </div>
+            </div>
+            <div class="p-usecase" role="tabpanel" id="panel-bakery" aria-labelledby="tab-bakery">
+              <div class="c-post c-post--lg"><p class="c-post__who"><i></i>pan_komugi</p><img class="c-post__img" src="./assets/images/post-bakery-640w.webp" srcset="./assets/images/post-bakery-320w.webp 320w, ./assets/images/post-bakery-640w.webp 640w" sizes="(min-width: 768px) 300px, 260px" alt="焼きたてのクロワッサンが並ぶ写真" width="640" height="640" loading="lazy" decoding="async" /><p class="c-post__cap"><b>焼きたて</b> 11 時にクロワッサンが並びます。</p></div>
+              <div class="p-usecase__text">
+                <h3>パン屋・菓子店なら</h3>
+                <ol>
+                  <li>焼きあがり時間に合わせて予約投稿</li>
+                  <li>売り切れのお知らせを LINE にも同時に</li>
+                  <li>新作の反応を投稿ごとに比べる</li>
+                </ol>
+                <p class="p-usecase__result"><small>導入 3 か月の平均（架空）</small>午前中の来店 <b>+15%</b></p>
+              </div>
+            </div>
+            <div class="p-usecase" role="tabpanel" id="panel-school" aria-labelledby="tab-school">
+              <div class="c-post c-post--lg"><p class="c-post__who"><i></i>atelier_iroha</p><img class="c-post__img" src="./assets/images/post-school-640w.webp" srcset="./assets/images/post-school-320w.webp 320w, ./assets/images/post-school-640w.webp 640w" sizes="(min-width: 768px) 300px, 260px" alt="水彩絵の具で絵を描く子どもの手元の写真" width="640" height="640" loading="lazy" decoding="async" /><p class="c-post__cap"><b>体験会</b> 11 月の無料体験、受付中です。</p></div>
+              <div class="p-usecase__text">
+                <h3>教室・スクールなら</h3>
+                <ol>
+                  <li>レッスンの様子を週 2 回、自動で投稿</li>
+                  <li>体験会の案内を SNS と LINE に一度に</li>
+                  <li>投稿から体験申込みが何件来たかを確認</li>
+                </ol>
+                <p class="p-usecase__result"><small>導入 3 か月の平均（架空）</small>体験申込み <b>+30%</b></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 資料バナー ===== -->
+      <section class="p-banner-wrap" aria-labelledby="banner-title">
+        <div class="l-container">
+          <div class="p-banner u-reveal">
+            <div class="p-banner__cover" aria-hidden="true"><small>MISERUPO GUIDE</small><b>3 分でわかる<br />ミセルポ</b></div>
+            <div>
+              <h2 id="banner-title">3 分でわかる ミセルポ</h2>
+              <p>機能・料金・お店の事例を 1 冊にまとめました。スタッフとの相談にもどうぞ。</p>
+            </div>
+            <button class="c-button c-button--lg" type="button" data-open="doc" commandfor="signup" command="show-modal">資料ダウンロード</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 効果シミュレーター ===== -->
+      <section class="p-section" id="sim" aria-labelledby="sim-title">
+        <div class="l-container">
+          <div class="c-section-head u-reveal">
+            <p class="c-section-head__en">SIMULATION</p>
+            <h2 id="sim-title"><span class="u-nw">あなたのお店だと、</span><span class="u-nw">どれくらい？</span></h2>
+            <p>業種と今の状況を選ぶと、1 か月の目安がわかります。</p>
+          </div>
+          <!-- JS が動かない環境では、入力欄を出さずに例（カフェ・800 人・週 3 回）の結果だけを見せる -->
+          <div class="p-sim u-reveal" data-sim>
+            <form class="p-sim__inputs" hidden>
+              <fieldset class="p-sim__field">
+                <legend>業種</legend>
+                <div class="p-sim__seg">
+                  <label><input type="radio" name="kind" value="1" checked /><span>カフェ・飲食</span></label>
+                  <label><input type="radio" name="kind" value="0.8" /><span>美容室</span></label>
+                  <label><input type="radio" name="kind" value="1.15" /><span>パン屋</span></label>
+                  <label><input type="radio" name="kind" value="0.65" /><span>教室</span></label>
+                </div>
+              </fieldset>
+              <div class="p-sim__field">
+                <label for="sim-followers">今のフォロワー数 <output for="sim-followers" data-out="followers">800 人</output></label>
+                <input type="range" id="sim-followers" name="followers" min="100" max="5000" step="100" value="800" />
+              </div>
+              <div class="p-sim__field">
+                <label for="sim-posts">週に投稿したい回数 <output for="sim-posts" data-out="posts">3 回</output></label>
+                <input type="range" id="sim-posts" name="posts" min="1" max="7" step="1" value="3" />
+              </div>
+            </form>
+            <div class="p-sim__result">
+              <p class="p-sim__example" data-sim-example>例：カフェ・フォロワー 800 人・週 3 回投稿の場合</p>
+              <dl>
+                <div><dt>1 か月で見込める表示回数</dt><dd><span data-result="reach">11,900</span><small> 回</small></dd></div>
+                <div><dt>浮く作業時間</dt><dd><span data-result="time">5.4</span><small> 時間/月</small></dd></div>
+              </dl>
+              <p class="p-sim__note">※ 架空の計算式による目安です</p>
+              <p class="u-visually-hidden" aria-live="polite" data-sim-status></p>
+              <button class="c-button" type="button" data-open="trial" commandfor="signup" command="show-modal">無料で始める</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== サポート ===== -->
+      <section class="p-section p-section--sub" aria-labelledby="support-title">
+        <div class="l-container">
+          <div class="p-support u-reveal">
+            <div>
+              <div class="c-section-head c-section-head--left">
+                <p class="c-section-head__en">SUPPORT</p>
+                <h2 id="support-title">SNS が苦手でも、<br />大丈夫です。</h2>
+              </div>
+              <p>初期設定は、専任スタッフが画面を見ながら一緒に。毎月の振り返りレポートで「次の一手」もお伝えします。</p>
+              <p class="p-support__sat">サポート満足度 <b><span data-count="98">98</span>%</b><small>（※架空）</small></p>
+            </div>
+            <figure class="p-support__photo"><img src="./assets/images/support-960w.webp" srcset="./assets/images/support-480w.webp 480w, ./assets/images/support-960w.webp 960w" sizes="(min-width: 1024px) 528px, 90vw" alt="スタッフがノートパソコンの画面を見せながら、お店の人に説明している様子" width="960" height="720" loading="lazy" decoding="async" /></figure>
+          </div>
+          <ul class="p-staff u-reveal" aria-label="サポートスタッフ（架空）">
+            <li><span aria-hidden="true">佐</span>佐藤</li>
+            <li><span aria-hidden="true">中</span>中村</li>
+            <li><span aria-hidden="true">高</span>高橋</li>
+            <li><span aria-hidden="true">伊</span>伊藤</li>
+            <li><span aria-hidden="true">山</span>山本</li>
+            <li><span aria-hidden="true">小</span>小林</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ===== 機能一覧 ===== -->
+      <section class="p-section" id="func" aria-labelledby="func-title">
+        <div class="l-container">
+          <div class="c-section-head u-reveal">
+            <p class="c-section-head__en">FUNCTIONS</p>
+            <h2 id="func-title">機能一覧</h2>
+          </div>
+          <div class="p-func u-reveal">
+            <div class="p-func__group is-sky"><h3>作る</h3><ul><li>AI 投稿文</li><li>ハッシュタグ提案</li><li>画像の切り抜き・文字入れ</li><li>テンプレート</li></ul></div>
+            <div class="p-func__group is-pink"><h3>投稿する</h3><ul><li>まとめて予約投稿</li><li>おすすめ時間の自動選択</li><li>投稿カレンダー</li><li>スタッフの承認</li></ul></div>
+            <div class="p-func__group is-yellow"><h3>振り返る</h3><ul><li>投稿ごとの効果</li><li>来店・予約の計測</li><li>月次レポート</li><li>近くのお店との比較</li></ul></div>
+            <div class="p-func__group is-violet"><h3>広げる</h3><ul><li>口コミの収集</li><li>クーポン発行</li><li>近くのインフルエンサー探し</li><li>LINE 友だち集め</li></ul></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 料金（比較表） ===== -->
+      <section class="p-section p-section--sub" id="price" aria-labelledby="price-title">
+        <div class="l-container">
+          <div class="c-section-head u-reveal">
+            <p class="c-section-head__en">PRICING</p>
+            <h2 id="price-title">料金プラン</h2>
+            <p>初期費用 0 円。最初の 30 日間は無料です（価格は架空です）。</p>
+          </div>
+          <p class="p-price__hint" aria-hidden="true">横にスクロールできます<svg viewBox="0 0 24 24"><use href="#i-arrow" /></svg></p>
+          <!-- スマホでは表を横にスクロールし、左の項目名の列は固定する。キーボードでもスクロールできるよう tabindex を付ける -->
+          <div class="p-price u-reveal" tabindex="0" role="region" aria-label="料金プランの比較表（横にスクロールできます）">
+            <table>
+              <caption class="u-visually-hidden">プランごとの月額料金と機能の比較</caption>
+              <thead>
+                <tr>
+                  <th scope="col"><span class="u-visually-hidden">項目</span></th>
+                  <th scope="col">フリー<span class="p-price__amount">¥0</span></th>
+                  <th scope="col" class="is-pop"><span class="p-price__badge">いちばん人気</span>ベーシック<span class="p-price__amount">¥2,980<small>/月</small></span></th>
+                  <th scope="col">プロ<span class="p-price__amount">¥6,980<small>/月</small></span></th>
+                  <th scope="col">複数店舗<span class="p-price__amount p-price__amount--text">お見積り</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">つなげる SNS</th><td>1 つ</td><td class="is-pop">3 つ</td><td>無制限</td><td>無制限</td></tr>
+                <tr><th scope="row">予約投稿</th><td>月 10 件</td><td class="is-pop">無制限</td><td>無制限</td><td>無制限</td></tr>
+                <tr><th scope="row">AI 投稿文</th><td>月 10 回</td><td class="is-pop">月 100 回</td><td>無制限</td><td>無制限</td></tr>
+                <tr><th scope="row">来店・予約の計測</th><td class="is-no">なし</td><td class="is-pop is-ok">あり</td><td class="is-ok">あり</td><td class="is-ok">あり</td></tr>
+                <tr><th scope="row">月次レポート</th><td class="is-no">なし</td><td class="is-pop is-ok">あり</td><td class="is-ok">あり（担当者の解説つき）</td><td class="is-ok">あり</td></tr>
+                <tr><th scope="row">店舗ごとの管理</th><td class="is-no">なし</td><td class="is-pop is-no">なし</td><td class="is-no">なし</td><td class="is-ok">あり</td></tr>
+                <tr class="p-price__actions">
+                  <th scope="row"><span class="u-visually-hidden">お申し込み</span></th>
+                  <td><button class="c-button c-button--ghost c-button--sm" type="button" data-open="trial" commandfor="signup" command="show-modal">無料で始める</button></td>
+                  <td class="is-pop"><button class="c-button c-button--sm" type="button" data-open="trial" commandfor="signup" command="show-modal">30 日無料でためす</button></td>
+                  <td><button class="c-button c-button--ghost c-button--sm" type="button" data-open="trial" commandfor="signup" command="show-modal">30 日無料でためす</button></td>
+                  <td><button class="c-button c-button--ghost c-button--sm" type="button" data-open="consult" commandfor="signup" command="show-modal">相談する</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 導入事例（スライダー） ===== -->
+      <section class="p-section" id="case" aria-labelledby="case-title">
+        <div class="l-container">
+          <div class="c-section-head u-reveal">
+            <p class="c-section-head__en">CASE STUDY</p>
+            <h2 id="case-title">導入事例</h2>
+          </div>
+          <!-- 自動では進めない。JS が動かない環境では横スクロールで見られる -->
+          <div class="p-cases u-reveal" role="region" aria-roledescription="カルーセル" aria-label="導入事例のスライド" data-slider>
+            <div class="p-cases__track" data-slider-track>
+              <article class="p-case" aria-roledescription="スライド" aria-label="1 件目（全 3 件）：カフェ">
+                <figure class="p-case__photo"><img src="./assets/images/case-cafe-960w.webp" srcset="./assets/images/case-cafe-480w.webp 480w, ./assets/images/case-cafe-960w.webp 960w" sizes="(min-width: 1024px) 440px, 84vw" alt="カフェの店内に立つ店主" width="960" height="720" loading="lazy" decoding="async" /></figure>
+                <div class="p-case__body">
+                  <p class="p-case__who">カフェ（席数 24）・東京都</p>
+                  <h3>「閉店後に投稿を考える時間が、なくなりました」</h3>
+                  <p>以前は週 2 回がやっと。いまは毎朝自動で投稿されて、平日の来店が増えました。</p>
+                  <dl class="p-case__nums"><div><dt>フォロワー</dt><dd>620 → <b>2,100</b></dd></div><div><dt>投稿にかける時間</dt><dd>週 3 時間 → <b>30 分</b></dd></div></dl>
+                </div>
+              </article>
+              <article class="p-case" aria-roledescription="スライド" aria-label="2 件目（全 3 件）：美容室">
+                <figure class="p-case__photo"><img src="./assets/images/case-salon-960w.webp" srcset="./assets/images/case-salon-480w.webp 480w, ./assets/images/case-salon-960w.webp 960w" sizes="(min-width: 1024px) 440px, 84vw" alt="美容室の店内でお客さまの髪を整えるスタイリスト" width="960" height="720" loading="lazy" decoding="async" /></figure>
+                <div class="p-case__body">
+                  <p class="p-case__who">美容室（スタッフ 4 名）・大阪府</p>
+                  <h3>「空き枠の投稿だけで、当日予約が埋まるように」</h3>
+                  <p>キャンセルが出たらすぐ投稿。スタッフ全員で同じ画面を見られるのも助かっています。</p>
+                  <dl class="p-case__nums"><div><dt>当日予約</dt><dd>月 12 件 → <b>29 件</b></dd></div><div><dt>投稿の担当</dt><dd>店長だけ → <b>全員</b></dd></div></dl>
+                </div>
+              </article>
+              <article class="p-case" aria-roledescription="スライド" aria-label="3 件目（全 3 件）：こども絵画教室">
+                <figure class="p-case__photo"><img src="./assets/images/case-school-960w.webp" srcset="./assets/images/case-school-480w.webp 480w, ./assets/images/case-school-960w.webp 960w" sizes="(min-width: 1024px) 440px, 84vw" alt="絵画教室で絵を描く子どもたち" width="960" height="720" loading="lazy" decoding="async" /></figure>
+                <div class="p-case__body">
+                  <p class="p-case__who">こども絵画教室・福岡県</p>
+                  <h3>「どの投稿で体験に来てくれたか、やっと分かった」</h3>
+                  <p>作品の投稿がいちばん反応がいいと分かり、内容を絞れるようになりました。</p>
+                  <dl class="p-case__nums"><div><dt>体験申込み</dt><dd>月 4 件 → <b>11 件</b></dd></div><div><dt>入会率</dt><dd>40% → <b>55%</b></dd></div></dl>
+                </div>
+              </article>
+            </div>
+            <div class="p-cases__ctrl" data-slider-ctrl hidden>
+              <button class="p-cases__nav" type="button" data-slider-prev aria-label="前の事例"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow" /></svg></button>
+              <div class="p-cases__dots">
+                <button type="button" aria-label="事例 1" aria-current="true"></button>
+                <button type="button" aria-label="事例 2"></button>
+                <button type="button" aria-label="事例 3"></button>
+              </div>
+              <button class="p-cases__nav" type="button" data-slider-next aria-label="次の事例"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow" /></svg></button>
+            </div>
+          </div>
+          <p class="p-section__note">※ お店・数値はすべて架空です。</p>
+        </div>
+      </section>
+
+      <!-- ===== よくある質問 ===== -->
+      <section class="p-section p-section--sub" id="faq" aria-labelledby="faq-title">
+        <div class="l-container">
+          <div class="c-section-head u-reveal">
+            <p class="c-section-head__en">FAQ</p>
+            <h2 id="faq-title">よくある質問</h2>
+          </div>
+          <div class="p-faq u-reveal">
+            <details open>
+              <summary><span class="p-faq__q" aria-hidden="true">Q</span>SNS をやったことがなくても使えますか？</summary>
+              <p class="p-faq__a">はい。アカウントづくりから、専任スタッフが一緒に設定します。</p>
+            </details>
+            <details>
+              <summary><span class="p-faq__q" aria-hidden="true">Q</span>AI が書いた文章は、そのまま投稿されますか？</summary>
+              <p class="p-faq__a">いいえ。必ずお店の方が確認・修正してから予約されます。</p>
+            </details>
+            <details>
+              <summary><span class="p-faq__q" aria-hidden="true">Q</span>無料期間が終わると、自動で課金されますか？</summary>
+              <p class="p-faq__a">お支払い方法を登録するまで課金されません。登録しなければフリープランに切り替わります。</p>
+            </details>
+            <details>
+              <summary><span class="p-faq__q" aria-hidden="true">Q</span>スマホだけで使えますか？</summary>
+              <p class="p-faq__a">はい。スマホのブラウザから、すべての機能が使えます。</p>
+            </details>
+            <details>
+              <summary><span class="p-faq__q" aria-hidden="true">Q</span>複数のスタッフで使えますか？</summary>
+              <p class="p-faq__a">ベーシック以上のプランで、スタッフごとのログインと投稿前の承認を設定できます。</p>
+            </details>
+            <details>
+              <summary><span class="p-faq__q" aria-hidden="true">Q</span>途中で解約できますか？</summary>
+              <p class="p-faq__a">いつでも管理画面から解約できます。解約金はかかりません。</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 最後の CTA ===== -->
+      <section class="p-section" aria-labelledby="cta-title">
+        <div class="l-container">
+          <div class="p-cta u-reveal" data-last-cta>
+            <h2 id="cta-title">まずは 30 日、<span class="u-nw">無料でためしてみませんか？</span></h2>
+            <div class="p-cta__cards">
+              <div class="p-cta__card">
+                <h3>資料を見る</h3>
+                <p>機能と料金を 1 冊で</p>
+                <button class="c-button c-button--ghost" type="button" data-open="doc" commandfor="signup" command="show-modal">資料ダウンロード</button>
+              </div>
+              <div class="p-cta__card p-cta__card--main">
+                <h3>無料で始める</h3>
+                <p>メールアドレスだけで 1 分</p>
+                <button class="c-button c-button--lg" type="button" data-open="trial" commandfor="signup" command="show-modal">30 日無料で始める<span class="c-button__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-arrow" /></svg></span></button>
+              </div>
+              <div class="p-cta__card">
+                <h3>相談する</h3>
+                <p>オンラインで 30 分、使い方をご案内</p>
+                <button class="c-button c-button--ghost" type="button" data-open="consult" commandfor="signup" command="show-modal">相談を申し込む</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- include: footer.html -->
+
+    <!-- スマホだけ、最初の画面を過ぎたら画面下に出す -->
+    <div class="l-fixed-cta" data-fixed-cta>
+      <button class="c-button c-button--ghost" type="button" data-open="doc" commandfor="signup" command="show-modal">資料</button>
+      <button class="c-button" type="button" data-open="trial" commandfor="signup" command="show-modal">30 日無料で始める</button>
+    </div>
+
+    <!-- include: signup-dialog.html -->
+  </body>
+</html>

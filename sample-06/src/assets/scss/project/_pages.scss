@@ -1,0 +1,30 @@
+@use '../foundation/mixins' as *;
+
+// ===== 個人情報の取り扱いなど、文章だけのページ =====
+.p-doc-text {
+  padding-bottom: var(--section-space);
+
+  &__demo {
+    padding: 14px 18px;
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-sub);
+    font-size: rem(14);
+  }
+
+  h2 {
+    margin: 40px 0 10px;
+    font-size: rem(19);
+  }
+
+  p {
+    color: var(--color-text-sub);
+  }
+
+  a,
+  &__link {
+    color: var(--color-primary);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
