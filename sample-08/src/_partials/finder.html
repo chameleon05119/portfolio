@@ -1,0 +1,37 @@
+<!-- 症状から探す。部位・症状・病名のデータは data.js、動きは main.js（initFinder） -->
+<div class="p-finder u-reveal" id="symptom" data-finder>
+  <div class="p-finder__map" data-finder-map data-finder-ui hidden aria-hidden="true">
+    <svg viewBox="0 0 240 420" aria-hidden="true">
+      <g fill="currentColor">
+        <circle cx="120" cy="40" r="28" />
+        <rect x="108" y="64" width="24" height="18" rx="8" />
+        <rect x="72" y="78" width="96" height="140" rx="22" />
+        <rect x="44" y="92" width="26" height="118" rx="13" transform="rotate(8,57,92)" />
+        <rect x="170" y="92" width="26" height="118" rx="13" transform="rotate(-8,183,92)" />
+        <ellipse cx="44" cy="226" rx="13" ry="18" />
+        <ellipse cx="196" cy="226" rx="13" ry="18" />
+        <rect x="86" y="206" width="32" height="170" rx="14" />
+        <rect x="122" y="206" width="32" height="170" rx="14" />
+        <ellipse cx="98" cy="396" rx="20" ry="11" />
+        <ellipse cx="142" cy="396" rx="20" ry="11" />
+      </g>
+    </svg>
+  </div>
+  <div class="p-finder__panel">
+    <div class="c-heading">
+      <span class="c-heading__en">SYMPTOMS</span>
+      <h2>気になる症状から探す</h2>
+      <p data-finder-ui hidden>からだの場所を押すか、下のボタンで選んでください。</p>
+    </div>
+    <p data-finder-fallback>部位ごとの主な病気は、<a href="{{root}}medical.html#parts">診療内容のページ</a>でご覧いただけます。</p>
+    <div data-finder-ui hidden>
+      <p class="p-finder__label" id="finder-part-label">① 場所 <span>1 つ選ぶ（矢印キーでも選べます）</span></p>
+      <div class="c-chips" role="group" aria-labelledby="finder-part-label" data-finder-parts></div>
+      <p class="p-finder__label" id="finder-sym-label">② 症状 <span>いくつでも</span></p>
+      <div class="c-chips" role="group" aria-labelledby="finder-sym-label" data-finder-syms></div>
+      <div class="p-finder__result" data-finder-result></div>
+      <p class="p-finder__note">※ 目安です。気になる症状があれば、お気軽に受診してください。</p>
+    </div>
+  </div>
+  <p class="u-visually-hidden" role="status" data-finder-status></p>
+</div>

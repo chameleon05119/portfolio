@@ -1,0 +1,55 @@
+@use '../foundation/mixins' as *;
+
+// 丸い選択ボタン（症状から探す・お知らせの絞り込み）
+.c-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.c-chip {
+  min-height: 40px;
+  padding: 6px 16px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-card);
+  font-size: rem(14.5);
+  line-height: 1.5;
+  transition:
+    background var(--duration),
+    border-color var(--duration);
+
+  &:hover {
+    border-color: var(--color-primary);
+  }
+
+  &[aria-pressed='true'],
+  &[aria-checked='true'] {
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+    font-weight: 700;
+  }
+
+  // いくつでも選べるもの（チェックの印を付ける）
+  &--check[aria-pressed='true']::before {
+    content: '✓ ';
+  }
+}
+
+// お知らせなどのカテゴリのラベル
+.c-tag {
+  display: inline-block;
+  min-width: 5.5em;
+  padding: 1px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--color-bg-sub);
+  font-size: rem(12);
+  font-weight: 700;
+  text-align: center;
+
+  &--closed {
+    background: var(--color-primary-soft);
+    color: var(--color-primary-text);
+  }
+}

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- include: head.html -->
+    <title>お知らせ｜つむぎ整形外科（デモ）</title>
+    <meta name="description" content="つむぎ整形外科からのお知らせ。休診日、予防接種、検査などのご案内。（ポートフォリオ用の架空のクリニックです）" />
+    <meta property="og:title" content="お知らせ｜つむぎ整形外科（デモサイト）" />
+    <meta property="og:description" content="つむぎ整形外科からのお知らせ。休診日、予防接種、検査などのご案内。（ポートフォリオ用の架空のクリニックです）" />
+  </head>
+  <body data-page="news">
+    <!-- include: header.html -->
+
+    <main id="main">
+      <div class="l-page-head">
+        <div class="l-container">
+          <span class="l-page-head__en" aria-hidden="true">NEWS</span>
+          <h1>お知らせ</h1>
+        </div>
+      </div>
+      <nav class="l-breadcrumb" aria-label="パンくずリスト"><div class="l-container"><ol><li><a href="./index.html">トップ</a></li><li aria-current="page">お知らせ</li></ol></div></nav>
+
+      <section class="c-section c-section--tight" aria-label="お知らせ一覧">
+        <div class="l-container l-container--narrow">
+          <div class="c-chips p-news-filter" role="group" aria-label="種類で絞り込み" hidden>
+            <button class="c-chip" type="button" data-cat="all" aria-pressed="true">すべて</button>
+            <button class="c-chip" type="button" data-cat="closed" aria-pressed="false">休診</button>
+            <button class="c-chip" type="button" data-cat="vaccine" aria-pressed="false">予防接種</button>
+            <button class="c-chip" type="button" data-cat="info" aria-pressed="false">お知らせ</button>
+          </div>
+          <p class="u-visually-hidden" role="status" data-news-status></p>
+          <ul class="c-news-list" data-news-list>
+            <li data-cat="closed"><a href="./news/2026-10-01.html"><time datetime="2026-10-01">2026.10.01</time><span class="c-tag c-tag--closed">休診</span><span class="c-news-list__title">10月17日（土）臨時休診のお知らせ</span></a></li>
+            <li data-cat="vaccine"><a href="./news/2026-09-20.html"><time datetime="2026-09-20">2026.09.20</time><span class="c-tag">予防接種</span><span class="c-news-list__title">インフルエンザ予防接種の予約を始めました</span></a></li>
+            <li data-cat="info"><a href="./news/2026-09-01.html"><time datetime="2026-09-01">2026.09.01</time><span class="c-tag">お知らせ</span><span class="c-news-list__title">骨密度検査の予約枠を増やしました</span></a></li>
+            <li data-cat="closed"><a href="./news/2026-08-05.html"><time datetime="2026-08-05">2026.08.05</time><span class="c-tag c-tag--closed">休診</span><span class="c-news-list__title">夏季休診のお知らせ</span></a></li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <!-- include: footer.html -->
+  </body>
+</html>

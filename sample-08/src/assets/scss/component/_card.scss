@@ -1,0 +1,93 @@
+@use '../foundation/mixins' as *;
+
+// 白いカード（枠線＋角丸。リンクならホバーで浮く）
+.c-card {
+  display: block;
+  padding: 22px 24px;
+  border-radius: var(--radius);
+  background: var(--color-card);
+  box-shadow: var(--shadow-line);
+  text-decoration: none;
+  transition:
+    transform var(--duration),
+    box-shadow var(--duration);
+
+  @at-root a#{&}:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      var(--shadow-line),
+      var(--shadow);
+  }
+}
+
+// 線画アイコンのカード（診療内容）
+.c-icon-card {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 8px;
+  padding: 22px 10px 18px;
+  border-radius: var(--radius);
+  background: var(--color-card);
+  box-shadow: var(--shadow-line);
+  font-weight: 700;
+  font-size: rem(14.5);
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    transform var(--duration),
+    box-shadow var(--duration);
+
+  @include md {
+    padding: 28px 12px 22px;
+    font-size: rem(16);
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      var(--shadow-line),
+      var(--shadow);
+  }
+
+  svg {
+    width: 56px;
+    height: 56px;
+    color: var(--color-primary);
+
+    @include md {
+      width: 72px;
+      height: 72px;
+    }
+  }
+}
+
+.c-grid {
+  display: grid;
+  gap: 12px;
+
+  &--2 {
+    @include md {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+  }
+
+  &--3 {
+    @include md {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+  }
+
+  &--4 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+
+    @include md {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+  }
+}

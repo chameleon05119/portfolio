@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- include: head.html -->
+    <title>つむぎ整形外科｜〇〇駅の整形外科・リハビリテーション科（デモ）</title>
+    <meta name="description" content="〇〇駅から徒歩5分の整形外科・リハビリテーション科「つむぎ整形外科」。腰や肩の痛み、しびれ、けが、骨粗しょう症のご相談に。Web予約・順番受付ができます。（ポートフォリオ用の架空のクリニックです）" />
+    <meta property="og:title" content="つむぎ整形外科（デモサイト）" />
+    <meta property="og:description" content="整形外科・リハビリテーション科のクリニックのデモサイトです。" />
+    <link rel="preload" as="image" href="assets/images/mv-sp-600w.webp" imagesrcset="assets/images/mv-sp-600w.webp 600w, assets/images/mv-sp-900w.webp 900w" imagesizes="100vw" media="(max-width: 767px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="assets/images/mv-pc-1200w.webp" imagesrcset="assets/images/mv-pc-1200w.webp 1200w, assets/images/mv-pc-1800w.webp 1800w, assets/images/mv-pc-2400w.webp 2400w" imagesizes="96vw" media="(min-width: 768px)" fetchpriority="high" />
+  </head>
+  <body data-page="home">
+    <!-- include: header.html -->
+
+    <main id="main">
+      <!-- ===== 最初の画面 ===== -->
+      <section class="p-fv">
+        <div class="p-fv__photo">
+          <picture>
+            <source media="(min-width: 768px)" srcset="assets/images/mv-pc-1200w.webp 1200w, assets/images/mv-pc-1800w.webp 1800w, assets/images/mv-pc-2400w.webp 2400w" sizes="96vw" width="2400" height="1200" />
+            <img src="assets/images/mv-sp-600w.webp" srcset="assets/images/mv-sp-600w.webp 600w, assets/images/mv-sp-900w.webp 900w" sizes="100vw" width="600" height="750" alt="明るい待合スペースで、スタッフが患者さんと向き合って話している" fetchpriority="high" />
+          </picture>
+          <div class="p-fv__bubble">
+            <h1>からだの<br /><em>「困った」</em>を、<br />いっしょに。</h1>
+          </div>
+          <p class="p-fv__lead">〇〇駅から徒歩 5 分。<b>整形外科</b>と<b>リハビリテーション科</b>のクリニックです。痛み・しびれ・けがのご相談をどうぞ。</p>
+        </div>
+
+        <div class="p-fv__hours">
+          <div class="c-tabs" role="tablist" aria-label="診療時間と担当医">
+            <button type="button" role="tab" id="tab-time" aria-controls="panel-time" aria-selected="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12,7 v5 l3,2" /></svg>診療時間</button>
+            <button type="button" role="tab" id="tab-doctor" aria-controls="panel-doctor" aria-selected="false" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4" /><path d="M4,21 c1,-4 4,-6 8,-6 s7,2 8,6" /></svg>担当医</button>
+          </div>
+          <div class="p-fv__hours-body">
+            <p class="c-today" data-today hidden><span>今日は</span><span class="c-today__date" data-today-date></span><span class="c-badge" data-today-status></span><small data-today-note></small></p>
+            <div role="tabpanel" id="panel-time" aria-labelledby="tab-time" tabindex="0">
+              <div data-hours="time"><p>午前 9:00〜12:00（月・火・水・金・土）<br />午後 15:00〜18:30（月・火・水・金）</p></div>
+              <p class="c-hours-note">休診：<span data-clinic-text="closed">木曜・土曜午後・日曜・祝日</span> ／ <span data-clinic-text="last">受付は終了の 15 分前まで</span></p>
+            </div>
+            <div role="tabpanel" id="panel-doctor" aria-labelledby="tab-doctor" tabindex="0">
+              <div data-hours="doctor"><p>院長が月・火（午前）・水・金を担当します。</p></div>
+              <p class="c-hours-note">佐倉医師・高梨医師は非常勤です</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 初めての方へ・予約・お知らせ ===== -->
+      <section class="c-section c-section--sub p-top-info">
+        <div class="l-container">
+          <div class="c-grid c-grid--2 u-reveal">
+            <a class="c-card p-quick" href="first.html">
+              <span class="p-quick__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7,3 h7 l4,4 v14 H7 z M14,3 v4 h4 M10,12 h5 M10,16 h5" /></svg></span>
+              <span class="p-quick__text"><b>初めての方へ</b>受診の流れ・持ち物・問診票</span>
+              <span class="p-quick__arrow" aria-hidden="true"></span>
+            </a>
+            <a class="c-card p-quick" href="first.html#reserve" data-reserve>
+              <span class="p-quick__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3" /><path d="M10,18 h4 M9,9 l2,2 4,-4" /></svg></span>
+              <span class="p-quick__text"><b>Web 予約・順番受付</b>24 時間受付。今の待ち人数もわかります</span>
+              <span class="p-quick__arrow" aria-hidden="true"></span>
+            </a>
+          </div>
+
+          <div class="p-top-news u-reveal">
+            <div class="c-heading c-heading--flush">
+              <span class="c-heading__en">NEWS</span>
+              <h2>お知らせ</h2>
+              <a class="c-button c-button--ghost c-button--sm c-button--arrow" href="news.html">一覧を見る</a>
+            </div>
+            <ul class="c-news-list">
+              <li><a href="news/2026-10-01.html"><time datetime="2026-10-01">2026.10.01</time><span class="c-tag c-tag--closed">休診</span><span class="c-news-list__title">10月17日（土）臨時休診のお知らせ</span></a></li>
+              <li><a href="news/2026-09-20.html"><time datetime="2026-09-20">2026.09.20</time><span class="c-tag">予防接種</span><span class="c-news-list__title">インフルエンザ予防接種の予約を始めました</span></a></li>
+              <li><a href="news/2026-09-01.html"><time datetime="2026-09-01">2026.09.01</time><span class="c-tag">お知らせ</span><span class="c-news-list__title">骨密度検査の予約枠を増やしました</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 診療内容・症状から探す ===== -->
+      <section class="c-section c-section--sub c-section--flush" id="medical">
+        <div class="l-container">
+          <div class="c-heading c-heading--center u-reveal">
+            <span class="c-heading__en">MEDICAL</span>
+            <h2>診療内容</h2>
+            <p>からだの痛み・しびれ・けがのご相談は、お気軽にどうぞ。</p>
+          </div>
+          <div class="c-grid c-grid--4 u-reveal">
+            <a class="c-icon-card" href="medical.html#back"><svg viewBox="0 0 72 72" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M36,8 V64" /><rect x="28" y="14" width="16" height="7" rx="3" /><rect x="28" y="25" width="16" height="7" rx="3" /><rect x="28" y="36" width="16" height="7" rx="3" /><rect x="28" y="47" width="16" height="7" rx="3" /><path d="M18,40 c-4,0 -6,3 -6,6 M54,40 c4,0 6,3 6,6" opacity=".5" /></svg>腰痛・肩こり</a>
+            <a class="c-icon-card" href="medical.html#knee"><svg viewBox="0 0 72 72" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M30,6 V28 c0,4 2,6 6,6 s6,-2 6,-6 V6 M30,66 V44 c0,-4 2,-6 6,-6 s6,2 6,6 V66" /><circle cx="36" cy="36" r="4" /><path d="M50,30 l6,-4 M50,42 l6,4 M22,30 l-6,-4 M22,42 l-6,4" opacity=".5" /></svg>関節の痛み</a>
+            <a class="c-icon-card" href="medical.html#injury"><svg viewBox="0 0 72 72" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18,18 L54,54" /><circle cx="16" cy="13" r="5" /><circle cx="13" cy="20" r="5" /><circle cx="56" cy="59" r="5" /><circle cx="59" cy="52" r="5" /><path d="M34,34 l6,-2 -2,6" opacity=".5" /></svg>骨折・ねんざ・打撲</a>
+            <a class="c-icon-card" href="medical.html#sports"><svg viewBox="0 0 72 72" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="42" cy="12" r="5" /><path d="M26,28 l10,-8 8,6 8,2 M36,20 l-4,18 10,8 v14 M32,38 l-10,6 -6,10" /><circle cx="58" cy="56" r="7" opacity=".5" /></svg>スポーツのけが</a>
+            <a class="c-icon-card" href="medical.html#osteoporosis"><svg viewBox="0 0 72 72" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M28,10 h16 v8 c-3,2 -3,4 0,6 v24 c-3,2 -3,4 0,6 v8 H28 v-8 c3,-2 3,-4 0,-6 V24 c3,-2 3,-4 0,-6 z" /><path d="M33,30 h2 M38,36 h2 M33,42 h2" opacity=".5" /></svg>骨粗しょう症</a>
+            <a class="c-icon-card" href="medical.html#children"><svg viewBox="0 0 72 72" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="36" cy="22" r="10" /><path d="M32,22 h.5 M40,22 h.5 M33,26 c2,1.5 4,1.5 6,0 M22,62 c0,-10 6,-18 14,-18 s14,8 14,18" /><path d="M28,13 c2,-4 6,-5 8,-5" opacity=".5" /></svg>こどもの整形外科</a>
+            <a class="c-icon-card" href="medical.html#hand"><svg viewBox="0 0 72 72" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M26,64 V38 l-7,-9 c-2,-3 2,-6 5,-3 l4,5 V14 c0,-3 5,-3 5,0 v14 V10 c0,-3 5,-3 5,0 v18 V12 c0,-3 5,-3 5,0 v16 V18 c0,-3 5,-3 5,0 v24 c0,12 -6,22 -16,22 z" /><path d="M58,22 l4,-3 M58,30 h5 M56,14 l2,-4" opacity=".5" /></svg>手・指のしびれ</a>
+            <a class="c-icon-card" href="medical.html#accident"><svg viewBox="0 0 72 72" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10,46 V36 l6,-12 h40 l6,12 v10 z M10,46 v6 h8 v-6 M54,46 v6 h8 v-6" /><circle cx="20" cy="38" r="3" /><circle cx="52" cy="38" r="3" /><path d="M22,24 l4,-8 h20 l4,8" opacity=".5" /></svg>交通事故・労災</a>
+          </div>
+
+          <!-- include: finder.html -->
+        </div>
+      </section>
+
+      <!-- ===== 特徴 ===== -->
+      <section class="c-section" id="feature">
+        <div class="l-container">
+          <div class="c-heading c-heading--center u-reveal">
+            <span class="c-heading__en">FEATURES</span>
+            <h2>つむぎ整形外科の特徴</h2>
+          </div>
+          <div class="c-grid c-grid--2 u-reveal">
+            <div class="c-card p-feature">
+              <span class="c-photo"><img src="assets/images/feat-web-480w.webp" srcset="assets/images/feat-web-480w.webp 480w, assets/images/feat-web-960w.webp 960w" sizes="(min-width: 768px) 220px, 120px" width="480" height="360" alt="スタッフがタブレットを見せながら説明している" loading="lazy" /></span>
+              <div><h3>Web 予約・順番受付</h3><p>来院前にスマホで予約・順番受付ができます。今の待ち人数もわかるので、来院する時間の目安にできます。</p></div>
+            </div>
+            <div class="c-card p-feature">
+              <span class="c-photo"><img src="assets/images/feat-rehab-480w.webp" srcset="assets/images/feat-rehab-480w.webp 480w, assets/images/feat-rehab-960w.webp 960w" sizes="(min-width: 768px) 220px, 120px" width="480" height="360" alt="理学療法士が肩のストレッチを手伝っている" loading="lazy" /></span>
+              <div><h3>理学療法士 <span class="u-num">6</span> 名のリハビリ</h3><p>医師の指示のもと、理学療法士が一人ひとりの体の状態に合わせて運動を組み立てます。</p></div>
+            </div>
+            <div class="c-card p-feature">
+              <span class="c-photo"><img src="assets/images/feat-dxa-480w.webp" srcset="assets/images/feat-dxa-480w.webp 480w, assets/images/feat-dxa-960w.webp 960w" sizes="(min-width: 768px) 220px, 120px" width="480" height="360" alt="医師が患者さんの腕の動きを確かめている" loading="lazy" /></span>
+              <div><h3>骨密度検査（DXA 法）</h3><p>腰と太ももの骨で測る検査です。骨粗しょう症の早期発見と、治療の効果の確認に使います。</p></div>
+            </div>
+            <div class="c-card p-feature">
+              <span class="c-photo"><img src="assets/images/feat-access-480w.webp" srcset="assets/images/feat-access-480w.webp 480w, assets/images/feat-access-960w.webp 960w" sizes="(min-width: 768px) 220px, 120px" width="480" height="360" alt="明るく広い待合室" loading="lazy" /></span>
+              <div><h3>駐車場 <span class="u-num">20</span> 台・バリアフリー</h3><p>車いす・ベビーカーのまま院内に入れます。多目的トイレもあります。</p></div>
+            </div>
+          </div>
+          <div class="c-buttons p-feature-links u-reveal">
+            <a class="c-button c-button--ghost c-button--arrow" href="rehab.html">リハビリテーションについて</a>
+            <a class="c-button c-button--ghost c-button--arrow" href="doctor.html">医師・スタッフ紹介</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== アクセス ===== -->
+      <section class="c-section c-section--sub" id="access">
+        <div class="l-container">
+          <div class="c-heading c-heading--center u-reveal">
+            <span class="c-heading__en">ACCESS</span>
+            <h2>アクセス・診療時間</h2>
+          </div>
+          <div class="p-access u-reveal">
+            <div class="p-access__map">
+              <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g stroke="#fff" stroke-width="14" fill="none"><path d="M-10,190 H410 M140,-10 V310 M300,-10 L240,310" /></g><g stroke="#fff" stroke-width="5" fill="none" opacity=".75"><path d="M-10,90 H410 M60,-10 V310 M-10,250 H410" /></g><rect x="290" y="150" width="70" height="26" rx="13" fill="#fff" /><text x="325" y="168" text-anchor="middle" font-size="13" fill="#6e5d50">〇〇駅</text><circle cx="160" cy="166" r="13" fill="#bb510c" /><circle cx="160" cy="166" r="4.5" fill="#fff" /></svg>
+              <a class="c-button c-button--sm" href="https://www.google.com/maps" target="_blank" rel="noopener">Google マップで開く<span class="u-visually-hidden">（新しいタブで開く）</span></a>
+            </div>
+            <div>
+              <dl class="p-access__list">
+                <div><dt>住所</dt><dd>〒000-0000 〇〇県〇〇市つむぎ町 1-2-3</dd></div>
+                <div><dt>電車</dt><dd>〇〇線「〇〇駅」東口から徒歩 5 分</dd></div>
+                <div><dt>バス</dt><dd>「つむぎ町」バス停からすぐ</dd></div>
+                <div><dt>駐車場</dt><dd>20 台（無料）</dd></div>
+                <div><dt>電話</dt><dd><a class="u-num" href="tel:0000000000">000-000-0000</a></dd></div>
+              </dl>
+              <div class="p-access__hours" data-hours="time" data-hours-today="false"><p>午前 9:00〜12:00（月・火・水・金・土）<br />午後 15:00〜18:30（月・火・水・金）</p></div>
+              <p class="c-hours-note">休診：<span data-clinic-text="closed">木曜・土曜午後・日曜・祝日</span></p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- include: footer.html -->
+  </body>
+</html>

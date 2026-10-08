@@ -1,0 +1,162 @@
+@use '../foundation/mixins' as *;
+
+.l-footer {
+  padding: 64px 0 32px;
+  background: var(--color-bg-deep);
+  font-size: rem(14);
+
+  // スマホは画面下の予約バーに隠れないよう余白を足す
+  @media (max-width: 767px) {
+    padding-bottom: 100px;
+  }
+
+  &__inner {
+    display: grid;
+    gap: 32px;
+
+    @include md {
+      grid-template-columns: 1.2fr 1fr;
+      gap: 48px;
+    }
+  }
+
+  address {
+    margin-top: 16px;
+    font-style: normal;
+    line-height: 1.9;
+  }
+
+  &__hours {
+    display: grid;
+    gap: 2px;
+    margin-top: 12px;
+
+    div {
+      display: flex;
+      gap: 12px;
+    }
+
+    dt {
+      font-weight: 700;
+      color: var(--color-primary-text);
+    }
+
+    dd {
+      margin: 0;
+    }
+  }
+
+  &__nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 24px;
+    align-content: start;
+
+    a {
+      padding-block: 6px;
+      text-decoration: none;
+
+      &:hover {
+        color: var(--color-primary-text);
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__copy {
+    display: grid;
+    gap: 4px;
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid rgb(58 43 32 / 0.12);
+    color: var(--color-text-sub);
+    font-size: rem(12.5);
+
+    small {
+      font-size: inherit;
+    }
+  }
+}
+
+// ロゴ（ヘッダー・フッター共通）。オレンジの丸＋院名
+.l-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+
+  svg {
+    flex: none;
+    width: 36px;
+    height: 36px;
+    color: var(--color-primary);
+
+    @include md {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &__name {
+    white-space: nowrap;
+    font-family: var(--font-head);
+    font-size: rem(17);
+    font-weight: 900;
+    line-height: 1.3;
+    letter-spacing: 0.08em;
+
+    @include md {
+      font-size: rem(20);
+    }
+
+    small {
+      display: block;
+      font-family: var(--font-base);
+      font-size: rem(11);
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--color-text-sub);
+    }
+  }
+}
+
+// スマホだけ画面下に固定する予約バー
+.l-fixbar {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 40;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: 6px;
+  padding: 8px 8px calc(8px + env(safe-area-inset-bottom));
+  background: rgb(255 255 255 / 0.95);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid var(--color-border);
+
+  @include md {
+    display: none;
+  }
+
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 7px 4px;
+    border-radius: var(--radius-sm);
+    background: var(--color-primary-soft);
+    font-size: rem(12);
+    font-weight: 700;
+    text-decoration: none;
+
+    &:first-child {
+      background: var(--color-primary);
+      color: var(--color-on-primary);
+    }
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}

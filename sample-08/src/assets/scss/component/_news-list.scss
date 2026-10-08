@@ -1,0 +1,58 @@
+@use '../foundation/mixins' as *;
+
+.c-news-list {
+  border-top: 1px solid var(--color-border);
+
+  li {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  a {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    gap: 4px 14px;
+    align-items: center;
+    padding: 16px 4px;
+    text-decoration: none;
+    transition: background var(--duration);
+
+    @include md {
+      grid-template-columns: 110px 100px 1fr auto;
+      padding: 18px 8px;
+
+      &::after {
+        content: '→';
+        color: var(--color-primary-text);
+        transition: transform var(--duration);
+      }
+    }
+
+    &:hover {
+      background: color-mix(in srgb, var(--color-bg-sub) 70%, transparent);
+    }
+
+    &:hover .c-news-list__title {
+      color: var(--color-primary-text);
+      text-decoration: underline;
+    }
+
+    &:hover::after {
+      transform: translateX(4px);
+    }
+  }
+
+  time {
+    font-family: var(--font-en);
+    font-size: rem(14);
+    font-weight: 500;
+    color: var(--color-text-sub);
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+
+    @include md {
+      grid-column: auto;
+    }
+  }
+}

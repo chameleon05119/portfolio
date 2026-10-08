@@ -1,0 +1,169 @@
+@use '../foundation/mixins' as *;
+
+// 診療時間・担当医の表（main.js が data.js から作る）
+.c-hours {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; // 曜日の列の幅をそろえる
+  font-size: rem(14);
+
+  // 左の見出し列の幅（診療時間は「15:00〜18:30」が 1 行に入る幅）
+  thead tr > :first-child {
+    width: 8.6em;
+  }
+
+  &--doctor thead tr > :first-child {
+    width: 3.6em;
+  }
+
+  th,
+  td {
+    padding: 8px 2px;
+    border-bottom: 1px dashed var(--color-border);
+    text-align: center;
+    font-weight: 400;
+  }
+
+  thead th {
+    font-size: rem(13);
+    font-weight: 700;
+  }
+
+  tbody th {
+    padding-left: 4px;
+    text-align: left;
+    white-space: nowrap;
+    font-weight: 700;
+    font-size: rem(13);
+  }
+
+  .is-on {
+    color: var(--color-primary-text);
+    font-size: rem(15);
+  }
+
+  .is-off {
+    color: var(--color-closed);
+  }
+
+  .is-name {
+    font-size: rem(12.5);
+    line-height: 1.4;
+  }
+
+  .is-today {
+    background: var(--color-today);
+  }
+
+  thead .is-today {
+    border-radius: 8px 8px 0 0;
+  }
+
+  .is-sun {
+    color: var(--color-primary-text);
+  }
+
+  @include md {
+    font-size: rem(15);
+
+    tbody th {
+      font-size: rem(14);
+    }
+  }
+}
+
+.c-hours-note {
+  margin-top: 8px;
+  font-size: rem(12.5);
+  color: var(--color-text-sub);
+}
+
+// 今日の受付状況
+.c-today {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 12px;
+  margin-bottom: 8px;
+  font-size: rem(14);
+
+  &__date {
+    font-family: var(--font-head);
+    font-size: rem(17);
+    font-weight: 700;
+  }
+
+  small {
+    color: var(--color-text-sub);
+    font-size: rem(13);
+  }
+}
+
+.c-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  font-size: rem(13);
+  font-weight: 700;
+
+  &::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+
+  // このあと受付（昼休みなど）
+  &[data-state='wait'] {
+    background: var(--color-primary-soft);
+    color: var(--color-primary-text);
+  }
+
+  // 休診・受付終了
+  &[data-state='closed'] {
+    background: var(--color-closed);
+  }
+}
+
+// タブ（診療時間／担当医）。JS が動かないときはタブを出さず、両方の表を並べる
+html:not(.js) .c-tabs {
+  display: none;
+}
+
+.c-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--color-border);
+
+  button {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px;
+    background: var(--color-bg-sub);
+    font-size: rem(14);
+    font-weight: 700;
+    transition: background var(--duration);
+
+    &[aria-selected='true'] {
+      background: var(--color-card);
+      color: var(--color-primary-text);
+      box-shadow: inset 0 -3px 0 var(--color-primary);
+    }
+
+    &:hover {
+      background: var(--color-card);
+    }
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}

@@ -1,0 +1,46 @@
+// デザイントークン（デザイン案 A「やさしいオレンジ（白 × オレンジ × クリーム）」2026-10-05 確定）
+:root {
+  // 色（文字と背景のコントラストはすべて 4.5:1 以上。黒は使わず、いちばん濃い色でも焦げ茶）
+  --color-text: #3a2b20;
+  --color-text-sub: #6e5d50;
+  --color-bg: #ffffff;
+  --color-bg-sub: #fdf5ec; // クリーム（交互のセクション）
+  --color-bg-deep: #fbe9d6; // フッター・人体図・地図
+  --color-card: #ffffff;
+  --color-border: #efe1d2;
+  --color-primary: #bb510c; // ボタン・アイコン・選択中（白文字 4.89:1）
+  --color-primary-hover: #a4460a;
+  --color-primary-text: #a4460a; // 白・クリームの上の強調文字・英字ラベル
+  --color-primary-soft: #fde3cc;
+  --color-on-primary: #ffffff;
+  --color-today: #ffe2c2; // 時間表の今日の列
+  --color-closed: #7a6a5e; // 休診・受付終了
+
+  // 文字
+  --font-base: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', YuGothic, 'Noto Sans JP', Meiryo, sans-serif; // 本文は OS のフォント
+  --font-head: 'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', 'Hiragino Sans', sans-serif;
+  --font-en: 'Outfit', 'Helvetica Neue', Arial, sans-serif;
+  --letter-spacing: 0.04em;
+
+  // レイアウト
+  --container-width: 1120px;
+  --container-padding: 16px;
+  --header-height: 64px;
+
+  // 角丸・影・動き
+  --radius-sm: 10px;
+  --radius: 20px;
+  --radius-panel: 32px;
+  --radius-pill: 999px;
+  --shadow: 0 14px 34px -18px rgb(187 81 12 / 0.35);
+  --shadow-line: 0 0 0 1px var(--color-border);
+  --duration: 0.25s;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --container-padding: 40px;
+    --header-height: 80px;
+  }
+}

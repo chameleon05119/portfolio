@@ -1,0 +1,213 @@
+@use '../foundation/mixins' as *;
+
+// 症状から探す（からだの図＋場所・症状のボタン＋結果）
+.p-finder {
+  display: grid;
+  gap: 8px;
+  margin-top: 48px;
+  padding: 28px 16px;
+  border-radius: var(--radius-panel);
+  background: var(--color-card);
+  box-shadow: var(--shadow-line);
+
+  @include md {
+    grid-template-columns: 280px 1fr;
+    gap: 48px;
+    margin-top: 64px;
+    padding: 44px;
+  }
+
+  // JS が動かないとき（図とボタンを出さない）は 1 列
+  &:has(.p-finder__map[hidden]) {
+    grid-template-columns: 1fr;
+  }
+
+  .c-heading {
+    margin-bottom: 20px;
+  }
+
+  &__map {
+    position: relative;
+    width: 180px;
+    margin: 0 auto;
+    color: var(--color-bg-deep);
+
+    @include md {
+      width: 240px;
+      align-self: center;
+    }
+
+    svg {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  // からだの図の上の丸（マウス・タッチ用。キーボード・読み上げでは「場所」のボタンを使う）。
+  // 押せる大きさ（44px）を確保し、見た目の丸は内側に描く
+  &__spot {
+    position: absolute;
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      transition:
+        background var(--duration),
+        transform var(--duration);
+    }
+
+    // 輪
+    &::before {
+      inset: 6px;
+      border: 2px solid var(--color-primary);
+      background: rgb(255 255 255 / 0.75);
+    }
+
+    // 中の点
+    &::after {
+      inset: 15px;
+      background: var(--color-primary);
+      opacity: 0.4;
+    }
+
+    &:hover::before {
+      transform: scale(1.12);
+    }
+
+    &.is-selected {
+      &::before {
+        background: var(--color-primary);
+      }
+
+      &::after {
+        inset: 17px;
+        background: var(--color-on-primary);
+        opacity: 1;
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        &::before {
+          animation: finder-pulse 1.8s ease-out infinite;
+        }
+      }
+    }
+  }
+
+  &__label {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin: 20px 0 8px;
+    font-weight: 700;
+    font-size: rem(14.5);
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    span {
+      font-size: rem(12.5);
+      font-weight: 400;
+      color: var(--color-text-sub);
+    }
+  }
+
+  &__result {
+    margin-top: 24px;
+    padding: 18px 16px;
+    border-radius: var(--radius);
+    background: var(--color-bg-sub);
+    min-height: 140px;
+
+    @include md {
+      padding: 20px 24px;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      font-size: rem(15.5);
+
+      .u-num {
+        margin: 0 2px 0 8px;
+        font-size: rem(22);
+        color: var(--color-primary-text);
+      }
+    }
+
+    ul {
+      display: grid;
+      gap: 6px;
+
+      @include md {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px 14px;
+      }
+    }
+
+    li {
+      animation: finder-in 0.3s both;
+    }
+
+    li > * {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 9px 14px;
+      border-radius: var(--radius-sm);
+      background: var(--color-card);
+      font-weight: 700;
+      font-size: rem(14.5);
+    }
+
+    // 詳しいページがある病名はリンク（矢印付き）
+    a {
+      text-decoration: none;
+      color: var(--color-primary-text);
+
+      &::after {
+        content: '詳しく →';
+        flex: none;
+        font-size: rem(12.5);
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__empty {
+    color: var(--color-text-sub);
+  }
+
+  &__note {
+    margin-top: 10px;
+    font-size: rem(12.5);
+    color: var(--color-text-sub);
+  }
+}
+
+@keyframes finder-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgb(187 81 12 / 0.45);
+  }
+
+  100% {
+    box-shadow: 0 0 0 12px rgb(187 81 12 / 0);
+  }
+}
+
+@keyframes finder-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}

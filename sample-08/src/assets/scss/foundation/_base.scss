@@ -1,0 +1,70 @@
+@use 'mixins' as *;
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 16px);
+}
+
+body {
+  font-family: var(--font-base);
+  font-size: rem(15);
+  line-height: 1.85;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+
+  @include md {
+    font-size: rem(16);
+  }
+}
+
+// em の letter-spacing は宣言した要素で px に計算されてから継承される。
+// body にだけ書くと見出しも本文と同じ px 幅になるので、各要素で指定し直す
+:where(body, body *) {
+  letter-spacing: var(--letter-spacing);
+}
+
+:where(h1, h2, h3, h4) {
+  font-family: var(--font-head);
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.06em;
+}
+
+// hidden 属性は、display を指定したクラスより優先する（JS で出し分ける要素が CSS で見えてしまわないように）
+[hidden] {
+  display: none !important;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+// 数字・時刻・英字ラベル
+.u-num {
+  font-family: var(--font-en);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0s !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
