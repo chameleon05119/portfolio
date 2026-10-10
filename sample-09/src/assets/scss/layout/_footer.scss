@@ -1,0 +1,64 @@
+@use '../foundation/mixins' as *;
+
+.l-footer {
+  margin-top: var(--section-space);
+  padding: 56px 0 28px;
+  background: var(--color-bg-sub);
+  font-size: rem(14);
+
+  &__cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px 24px;
+
+    @include md {
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+    }
+  }
+
+  &__about {
+    grid-column: 1 / -1;
+
+    @include md {
+      grid-column: auto;
+    }
+
+    p {
+      margin-top: 14px;
+      color: var(--color-text-sub);
+      font-size: rem(13.5);
+    }
+  }
+
+  &__demo {
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
+    background: #fff;
+  }
+
+  &__head {
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+
+  ul {
+    display: grid;
+    gap: 8px;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  &__copy {
+    margin-top: 48px;
+    text-align: center;
+    color: var(--color-text-sub);
+  }
+}
+
+// 下層ページ（フォームなど）の最後は、フッターとの間を詰める
+main:has(.p-doc-text) + .l-footer {
+  margin-top: 0;
+}

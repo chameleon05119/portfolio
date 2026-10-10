@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- include: head.html -->
+    <title>ボキコツ｜1日15分、スマホで学ぶオンライン簿記講座【3日間無料体験】（デモサイト）</title>
+    <meta name="description" content="通勤電車や昼休みのスキマ時間で、簿記3級から2級まで。1本15分の講義動画、間違えた問題の自動復習、24時間以内に返ってくる質問を、スマホ1台で。まずは3日間の無料体験から。（ポートフォリオ用のデモサイトです）" />
+    <meta property="og:title" content="ボキコツ｜1日15分、スマホで学ぶオンライン簿記講座（デモサイト）" />
+    <meta property="og:description" content="通勤電車や昼休みのスキマ時間で、簿記3級から2級まで。まずは3日間の無料体験から。" />
+  </head>
+  <body data-page="top">
+    <!-- include: icons.html -->
+    <!-- include: header.html -->
+    <main id="main">
+      <!-- ===== 最初の画面 ===== -->
+      <section class="p-fv" id="fv" data-section="fv" aria-labelledby="fv-title">
+        <!-- キャンペーンの帯。締切は data-deadline（ISO 形式の日時）。デモでは「今月末」にしている。締切を過ぎると main.js が通常価格に戻す -->
+        <p class="p-fv__campaign" data-campaign data-deadline="month-end">
+          <span class="p-fv__campaign-label">秋の応援キャンペーン</span>
+          <span><strong data-deadline-text>今月末</strong>までのお申し込みで、受講料 <strong class="p-fv__campaign-off">20%OFF</strong></span>
+          <span class="p-fv__campaign-left" data-deadline-left hidden></span>
+        </p>
+        <div class="l-container p-fv__inner">
+          <div class="p-fv__body">
+            <p class="p-fv__lead">忙しい社会人のための オンライン簿記講座</p>
+            <h1 class="p-fv__title" id="fv-title"><span class="p-fv__marker">1日15分</span>、スマホで。<br />働きながら<span class="u-nw">簿記2級。</span></h1>
+            <p class="p-fv__text">通勤電車や昼休みのスキマ時間で、3級から2級まで。講義動画・問題演習・質問が、スマホ 1 台で完結します。</p>
+            <ul class="p-fv__points">
+              <li><svg aria-hidden="true"><use href="#i-play" /></svg>1本15分の講義動画</li>
+              <li><svg aria-hidden="true"><use href="#i-repeat" /></svg>間違えた問題を自動で復習</li>
+              <li><svg aria-hidden="true"><use href="#i-chat" /></svg>質問は24時間以内に回答</li>
+            </ul>
+            <div class="p-fv__cta">
+              <a class="c-button c-button--cta c-button--lg" href="#trial" data-cta="fv">
+                まずは3日間、無料でためす
+                <span class="c-button__arrow"><svg aria-hidden="true"><use href="#i-arrow" /></svg></span>
+              </a>
+              <p class="p-fv__micro">1分で登録・クレジットカードの登録は不要です</p>
+            </div>
+            <dl class="p-fv__stats">
+              <div><dt>受講生</dt><dd><span class="p-fv__num">12,400</span>人<sup>※</sup></dd></div>
+              <div><dt>講義動画</dt><dd><span class="p-fv__num">180</span>本</dd></div>
+              <div><dt>質問への回答</dt><dd><span class="p-fv__num">24</span>時間以内</dd></div>
+            </dl>
+            <p class="p-fv__note">※ 2026年9月末時点の累計（架空の数値です）</p>
+          </div>
+
+          <!-- スマホの画面イメージ（HTML/CSS で組んでいる。画像ではないので文言を直しやすく、拡大してもぼやけない） -->
+          <div class="p-fv__visual" aria-hidden="true">
+            <div class="c-phone">
+              <div class="c-phone__screen">
+                <div class="c-phone__bar"><span>9:41</span><span>ボキコツ</span></div>
+                <div class="c-lesson">
+                  <div class="c-lesson__video">
+                    <span class="c-lesson__chapter">3級 第4章</span>
+                    <span class="c-lesson__play"><svg><use href="#i-play" /></svg></span>
+                    <span class="c-lesson__sub">「現金」と「普通預金」は、どちらも資産です</span>
+                    <span class="c-lesson__progress"><span></span></span>
+                  </div>
+                  <p class="c-lesson__title">預金の仕訳をおぼえよう</p>
+                  <p class="c-lesson__meta"><span>15:00</span><span>1.5倍速</span><span>字幕</span></p>
+                </div>
+                <div class="c-quiz">
+                  <p class="c-quiz__q"><span>Q</span>現金 50,000 円を普通預金に預け入れた。</p>
+                  <table class="c-quiz__table">
+                    <tr><th>借方</th><th>貸方</th></tr>
+                    <tr><td class="c-quiz__answer">普通預金 50,000</td><td class="c-quiz__answer">現金 50,000</td></tr>
+                  </table>
+                  <p class="c-quiz__result"><svg><use href="#i-check" /></svg>正解！ 連続 5 問</p>
+                </div>
+              </div>
+            </div>
+            <div class="p-fv__badge p-fv__badge--today">
+              <span class="p-fv__badge-ring"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" /><circle class="is-bar" cx="20" cy="20" r="16" /></svg><svg class="p-fv__badge-check"><use href="#i-check" /></svg></span>
+              <span><small>今日の学習</small>15分 達成</span>
+            </div>
+            <div class="p-fv__badge p-fv__badge--streak"><span class="p-fv__badge-num">12</span><span><small>連続</small>学習日</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== お悩み ===== -->
+      <section class="p-worry" id="worry" data-section="worry" aria-labelledby="worry-title">
+        <div class="l-container">
+          <h2 class="p-worry__title" id="worry-title">簿記の勉強、こんなことで<br class="u-sp-only" />止まっていませんか？</h2>
+          <ul class="p-worry__list">
+            <li class="u-reveal"><svg aria-hidden="true"><use href="#i-check" /></svg><span>仕事が終わると疲れて、<strong>机に向かう気力が残っていない</strong></span></li>
+            <li class="u-reveal"><svg aria-hidden="true"><use href="#i-check" /></svg><span>市販のテキストを買ったけれど、<strong>分厚くて第2章で止まった</strong></span></li>
+            <li class="u-reveal"><svg aria-hidden="true"><use href="#i-check" /></svg><span>わからないところを<strong>聞ける人がいない</strong></span></li>
+            <li class="u-reveal"><svg aria-hidden="true"><use href="#i-check" /></svg><span>通学講座は、<strong>時間も受講料も</strong>合わない</span></li>
+          </ul>
+          <p class="p-worry__answer u-reveal">
+            <span class="p-worry__answer-small">そのお悩み、</span>
+            <span>「まとまった時間」がなくても<br class="u-sp-only" />解決できます。</span>
+          </p>
+        </div>
+      </section>
+
+      <!-- ===== 特長 ===== -->
+      <section class="p-feature" id="feature" data-section="feature" aria-labelledby="feature-title">
+        <div class="l-container">
+          <div class="c-section-head">
+            <p class="c-section-head__en">FEATURE</p>
+            <h2 class="c-section-head__title" id="feature-title">スキマ時間だけで進める、<br class="u-sp-only" />3つの仕組み</h2>
+          </div>
+          <ol class="p-feature__list">
+            <li class="p-feature__item u-reveal">
+              <div class="p-feature__body">
+                <p class="p-feature__no">01</p>
+                <h3>1本15分の講義動画。<br />通勤電車の中で1回分。</h3>
+                <p>講義は 1 本 15 分にそろえ、1 本で 1 つの論点が終わるように作っています。倍速・字幕つきなので、音を出せない電車の中でも見られます。</p>
+              </div>
+              <div class="p-feature__ui p-feature__ui--speed" aria-hidden="true">
+                <div class="c-mini">
+                  <p class="c-mini__head">再生速度</p>
+                  <p class="c-mini__chips"><span>1.0x</span><span>1.25x</span><span class="is-on">1.5x</span><span>2.0x</span></p>
+                  <p class="c-mini__sub">字幕 <span class="c-mini__toggle"></span></p>
+                  <p class="c-mini__line"><span style="--w: 62%"></span></p>
+                  <p class="c-mini__meta"><span>9:18</span><span>15:00</span></p>
+                </div>
+              </div>
+            </li>
+            <li class="p-feature__item u-reveal">
+              <div class="p-feature__body">
+                <p class="p-feature__no">02</p>
+                <h3>間違えた問題だけ、<br />忘れたころにもう一度。</h3>
+                <p>演習は 1 問 30 秒ほど。間違えた問題は「復習リスト」に入り、翌日・3 日後・1 週間後に自動で出題されます。何を復習するか、自分で考えなくて大丈夫です。</p>
+              </div>
+              <div class="p-feature__ui" aria-hidden="true">
+                <div class="c-mini">
+                  <p class="c-mini__head">今日の復習 <span class="c-mini__count">3問</span></p>
+                  <ul class="c-mini__review">
+                    <li><span class="c-mini__tag">昨日まちがえた</span>売掛金の回収</li>
+                    <li><span class="c-mini__tag">3日前</span>手形の受け取り</li>
+                    <li><span class="c-mini__tag c-mini__tag--ok">1週間前</span>減価償却（定額法）</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="p-feature__item u-reveal">
+              <div class="p-feature__body">
+                <p class="p-feature__no">03</p>
+                <h3>わからないところは、<br />その場でスマホから質問。</h3>
+                <p>問題の画面から、そのまま講師に質問できます。回答は 24 時間以内（土日・祝日も）。ほかの受講生の質問と回答も読めるので、つまずきやすい所を先回りできます。</p>
+              </div>
+              <div class="p-feature__ui" aria-hidden="true">
+                <div class="c-mini c-mini--chat">
+                  <p class="c-mini__bubble c-mini__bubble--me">貸倒引当金の「差額補充法」がよくわかりません…</p>
+                  <p class="c-mini__bubble">今ある残高と、必要な額の「差」だけ足す方法です。図で説明しますね！</p>
+                  <p class="c-mini__time">講師から 2時間後に回答</p>
+                </div>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ===== 1日の使い方 ===== -->
+      <section class="p-day" id="day" data-section="day" aria-labelledby="day-title">
+        <div class="l-container">
+          <div class="c-section-head">
+            <p class="c-section-head__en">ONE DAY</p>
+            <h2 class="c-section-head__title" id="day-title">受講生の、ある1日の勉強時間</h2>
+            <p class="c-section-head__lead">会社員の受講生に多い使い方です。合計 25 分、机に向かう時間はゼロ。</p>
+          </div>
+          <ol class="p-day__list">
+            <li class="u-reveal"><time>7:40</time><div><h3>通勤電車で、講義を1本</h3><p>1.5 倍速なら 10 分。乗り換えの前に見終わります。</p></div><span class="p-day__min">15分</span></li>
+            <li class="u-reveal"><time>12:30</time><div><h3>昼休みに、演習を10問</h3><p>朝の講義の内容をすぐに解いて、記憶に残します。</p></div><span class="p-day__min">5分</span></li>
+            <li class="u-reveal"><time>22:00</time><div><h3>寝る前に、復習リストを3問</h3><p>アプリが選んだ問題だけ。考えずに始められます。</p></div><span class="p-day__min">5分</span></li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ===== カリキュラム ===== -->
+      <section class="p-curriculum" id="curriculum" data-section="curriculum" aria-labelledby="curriculum-title">
+        <div class="l-container">
+          <div class="c-section-head">
+            <p class="c-section-head__en">CURRICULUM</p>
+            <h2 class="c-section-head__title" id="curriculum-title">3級の基礎から、2級の合格まで</h2>
+          </div>
+          <div class="p-curriculum__cols">
+            <div class="p-curriculum__card u-reveal">
+              <h3><span class="p-curriculum__level">3級</span>簿記のきほん<small>講義 60本・演習 600問・約40時間</small></h3>
+              <ol>
+                <li>簿記のしくみと仕訳のルール</li>
+                <li>現金・預金・小口現金</li>
+                <li>商品の売買と売掛金・買掛金</li>
+                <li>手形・電子記録債権</li>
+                <li>固定資産と減価償却</li>
+                <li>決算整理と精算表・財務諸表</li>
+              </ol>
+            </div>
+            <div class="p-curriculum__card u-reveal">
+              <h3><span class="p-curriculum__level p-curriculum__level--2">2級</span>商業簿記・工業簿記<small>講義 120本・演習 1,400問・約120時間</small></h3>
+              <ol>
+                <li>株式会社の会計と税金</li>
+                <li>リース・外貨・税効果会計</li>
+                <li>連結会計（はじめての人向けに図解）</li>
+                <li>工業簿記のしくみと費目別計算</li>
+                <li>部門別・個別・総合原価計算</li>
+                <li>標準原価計算と CVP 分析</li>
+              </ol>
+            </div>
+          </div>
+          <p class="p-curriculum__note">どちらのコースも、ネット試験と同じ画面で解ける模擬試験（各 5 回分）つきです。</p>
+        </div>
+      </section>
+
+      <!-- ===== 学習プランの目安 ===== -->
+      <section class="p-plan" id="plan" data-section="plan" aria-labelledby="plan-title">
+        <div class="l-container">
+          <div class="c-section-head">
+            <p class="c-section-head__en">STUDY PLAN</p>
+            <h2 class="c-section-head__title" id="plan-title">あなたのペースだと、<br class="u-sp-only" />いつ終わる？</h2>
+            <p class="c-section-head__lead">目指す級と、1日に使える時間を選ぶと、カリキュラムを1周できる時期の目安が出ます。</p>
+          </div>
+          <div class="p-plan__box" data-plan-sim>
+            <!-- JS が動かないときは入力欄を出さず、例の結果だけを見せる -->
+            <form class="p-plan__form" hidden>
+              <fieldset class="p-plan__field">
+                <legend>目指す級</legend>
+                <div class="c-chips">
+                  <label><input type="radio" name="level" value="3" data-hours="40" /><span>3級</span></label>
+                  <label><input type="radio" name="level" value="2" data-hours="120" checked /><span>2級</span></label>
+                  <label><input type="radio" name="level" value="3-2" data-hours="160" /><span>3級から2級まで</span></label>
+                </div>
+              </fieldset>
+              <div class="p-plan__field">
+                <label for="plan-min">1日の学習時間 <output data-out="min">30 分</output></label>
+                <input id="plan-min" name="min" type="range" min="15" max="90" step="15" value="30" />
+              </div>
+              <div class="p-plan__field">
+                <label for="plan-days">1週間に学習する日 <output data-out="days">5 日</output></label>
+                <input id="plan-days" name="days" type="range" min="3" max="7" step="1" value="5" />
+              </div>
+            </form>
+            <div class="p-plan__result">
+              <p class="p-plan__result-head">カリキュラムを1周できる目安</p>
+              <p class="p-plan__result-main"><span class="p-plan__weeks" data-result="weeks">48</span><span class="p-plan__unit">週間</span></p>
+              <p class="p-plan__result-date">今日から始めると <strong data-result="date">2027年9月ごろ</strong></p>
+              <p class="p-plan__example" data-plan-example>2級を、1日30分・週5日で進めた場合の例です。</p>
+              <p class="p-plan__note">※ 講義と演習の標準的な時間（3級 約40時間・2級 約120時間）から出した目安です。ネット試験は、ほぼ毎日受験できます。</p>
+              <a class="c-button c-button--cta c-button--block" href="#trial" data-cta="plan">このペースで無料体験をはじめる</a>
+              <p class="u-visually-hidden" role="status" data-plan-status></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 受講生の声 ===== -->
+      <section class="p-voice" id="voice" data-section="voice" aria-labelledby="voice-title">
+        <div class="l-container">
+          <div class="c-section-head">
+            <p class="c-section-head__en">VOICE</p>
+            <h2 class="c-section-head__title" id="voice-title">受講生の声</h2>
+          </div>
+          <ul class="p-voice__list">
+            <li class="p-voice__card u-reveal">
+              <p class="p-voice__tag">3級 合格</p>
+              <h3>経理への異動が決まり、<wbr />ゼロから<wbr />2か月で</h3>
+              <p>営業から経理に移ることになり、あわてて始めました。通勤の往復で講義を 2 本見るのを日課にして、2 か月でネット試験に合格。仕訳の意味がわかった状態で異動できたのが大きかったです。</p>
+              <p class="p-voice__who"><span class="p-voice__avatar p-voice__avatar--a" aria-hidden="true"></span>Kさん（29歳・メーカー勤務）</p>
+            </li>
+            <li class="p-voice__card u-reveal">
+              <p class="p-voice__tag">2級 合格</p>
+              <h3>子どもが寝たあとの<wbr />15分だけで、<wbr />2級まで</h3>
+              <p>まとまった時間はまったく取れませんでしたが、寝かしつけのあとに復習リストを解くだけは続けられました。工業簿記で止まったときも、質問の回答が図つきでわかりやすかったです。</p>
+              <p class="p-voice__who"><span class="p-voice__avatar p-voice__avatar--b" aria-hidden="true"></span>Mさん（34歳・事務職・育休から復帰）</p>
+            </li>
+            <li class="p-voice__card u-reveal">
+              <p class="p-voice__tag">2級 合格</p>
+              <h3>転職の書類に<wbr />書ける資格が<wbr />ほしくて</h3>
+              <p>独学で一度落ちてから受講しました。間違えた問題だけが何度も出てくるので、苦手な連結会計を集中してつぶせました。2 級を取ってから、経理職の書類選考が通るようになりました。</p>
+              <p class="p-voice__who"><span class="p-voice__avatar p-voice__avatar--c" aria-hidden="true"></span>Tさん（26歳・販売職から経理職へ）</p>
+            </li>
+          </ul>
+          <p class="p-voice__note">※ ポートフォリオ用のデモのため、受講生の声は架空のものです。</p>
+        </div>
+      </section>
+
+      <!-- ===== 講師 ===== -->
+      <section class="p-teacher" id="teacher" data-section="teacher" aria-labelledby="teacher-title">
+        <div class="l-container">
+          <div class="p-teacher__inner u-reveal">
+            <!-- 講師は架空の人物なので、写真ではなくイラストにしている -->
+            <svg class="p-teacher__illust" viewBox="0 0 200 200" aria-hidden="true">
+              <clipPath id="teacher-clip"><circle cx="100" cy="100" r="100" /></clipPath>
+              <g clip-path="url(#teacher-clip)">
+              <circle cx="100" cy="100" r="100" fill="#ffe9b0" />
+              <path d="M38 200c4-38 30-58 62-58s58 20 62 58z" fill="#0b6e4f" />
+              <path d="M86 140h28l-14 18z" fill="#fff" />
+              <rect x="88" y="118" width="24" height="26" rx="8" fill="#f2c4a3" />
+              <path d="M58 92c0-36 20-56 44-56s42 18 42 54c0 22-6 40-12 48H70c-8-10-12-26-12-46z" fill="#3a2a24" />
+              <ellipse cx="100" cy="96" rx="32" ry="36" fill="#f6d2b6" />
+              <path d="M68 86c6-20 22-30 40-28 12 2 22 12 24 26-16-2-30-8-38-18-6 10-14 16-26 20z" fill="#3a2a24" />
+              <circle cx="88" cy="98" r="3.4" fill="#2a1d18" /><circle cx="112" cy="98" r="3.4" fill="#2a1d18" />
+              <rect x="77" y="90" width="21" height="16" rx="6" fill="none" stroke="#2a1d18" stroke-width="2.4" /><rect x="102" y="90" width="21" height="16" rx="6" fill="none" stroke="#2a1d18" stroke-width="2.4" /><path d="M98 97h4" stroke="#2a1d18" stroke-width="2.4" />
+              <path d="M92 114c5 4 11 4 16 0" fill="none" stroke="#c0605a" stroke-width="2.6" stroke-linecap="round" />
+              <circle cx="80" cy="110" r="5" fill="#f4a9a0" opacity=".5" /><circle cx="120" cy="110" r="5" fill="#f4a9a0" opacity=".5" />
+              </g>
+            </svg>
+            <div class="p-teacher__body">
+              <p class="c-section-head__en">TEACHER</p>
+              <h2 id="teacher-title">講師　<span class="p-teacher__name">森田 彩</span><small>税理士・簿記講師歴 12 年</small></h2>
+              <p>通学の簿記講座で 12 年、のべ 3,000 人以上に教えてきました。社会人の受講生がつまずくのは、内容の難しさよりも「勉強を続ける時間がないこと」。だからボキコツの講義は、1 本 15 分で必ず区切りがつくように作り直しました。</p>
+              <p class="p-teacher__msg">「1日30分を続ければ、3級なら3か月ほどで届きます。いっしょに続けましょう。」</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 受講料 ===== -->
+      <section class="p-price" id="price" data-section="price" aria-labelledby="price-title">
+        <div class="l-container">
+          <div class="c-section-head">
+            <p class="c-section-head__en">PRICE</p>
+            <h2 class="c-section-head__title" id="price-title">受講料</h2>
+            <p class="c-section-head__lead" data-campaign-only><strong class="p-price__deadline"><span data-deadline-text>今月末</span>まで</strong>のお申し込みで、すべてのコースが 20%OFF です。</p>
+          </div>
+          <ul class="p-price__list">
+            <li class="p-price__card u-reveal">
+              <h3>3級コース</h3>
+              <p class="p-price__desc">はじめて簿記を学ぶ方に</p>
+              <p class="p-price__normal" data-campaign-only>通常 <s>9,800円</s></p>
+              <p class="p-price__value"><span data-price="7840" data-normal="9800">7,840</span><small>円（税込）</small></p>
+              <ul class="p-price__inc">
+                <li>講義動画 60本</li>
+                <li>演習 600問・模擬試験 5回</li>
+                <li>質問 20回まで</li>
+                <li>受講期間 6か月</li>
+              </ul>
+              <a class="c-button c-button--ghost c-button--block" href="#trial" data-cta="price" data-plan="3">3級で無料体験</a>
+            </li>
+            <li class="p-price__card p-price__card--best u-reveal">
+              <p class="p-price__ribbon">いちばん選ばれています</p>
+              <h3>3級＋2級 セット</h3>
+              <p class="p-price__desc">3級から2級まで、まとめて</p>
+              <p class="p-price__normal" data-campaign-only>通常 <s>46,800円</s></p>
+              <p class="p-price__value"><span data-price="37440" data-normal="46800">37,440</span><small>円（税込）</small></p>
+              <ul class="p-price__inc">
+                <li>講義動画 180本</li>
+                <li>演習 2,000問・模擬試験 10回</li>
+                <li>質問 無制限</li>
+                <li>受講期間 18か月</li>
+              </ul>
+              <a class="c-button c-button--cta c-button--block" href="#trial" data-cta="price" data-plan="3-2">セットで無料体験</a>
+            </li>
+            <li class="p-price__card u-reveal">
+              <h3>2級コース</h3>
+              <p class="p-price__desc">3級を持っている方に</p>
+              <p class="p-price__normal" data-campaign-only>通常 <s>39,800円</s></p>
+              <p class="p-price__value"><span data-price="31840" data-normal="39800">31,840</span><small>円（税込）</small></p>
+              <ul class="p-price__inc">
+                <li>講義動画 120本</li>
+                <li>演習 1,400問・模擬試験 5回</li>
+                <li>質問 50回まで</li>
+                <li>受講期間 12か月</li>
+              </ul>
+              <a class="c-button c-button--ghost c-button--block" href="#trial" data-cta="price" data-plan="2">2級で無料体験</a>
+            </li>
+          </ul>
+          <p class="p-price__note">分割払い（最大 12 回）もご利用いただけます。無料体験のあとに、そのまま有料コースへ切り替えられます（体験中の学習の記録も引き継がれます）。</p>
+        </div>
+      </section>
+
+      <!-- ===== 比較 ===== -->
+      <section class="p-compare" id="compare" data-section="compare" aria-labelledby="compare-title">
+        <div class="l-container">
+          <div class="c-section-head">
+            <p class="c-section-head__en">COMPARE</p>
+            <h2 class="c-section-head__title" id="compare-title">ほかの学び方と比べると</h2>
+          </div>
+          <!-- スマホでは横にスクロールする。左の項目名の列は固定 -->
+          <div class="p-compare__scroll" tabindex="0" role="region" aria-labelledby="compare-title">
+            <table class="p-compare__table">
+              <caption class="u-visually-hidden">ボキコツ・通学講座・独学（市販のテキスト）の比較</caption>
+              <thead>
+                <tr><td></td><th scope="col" class="is-us">ボキコツ</th><th scope="col">通学講座</th><th scope="col">独学</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">受講料の目安<br />（2級まで）</th><td class="is-us"><span class="p-compare__mark is-good" aria-hidden="true">◎</span>3.7万円〜</td><td><span class="p-compare__mark" aria-hidden="true">△</span>10〜15万円</td><td><span class="p-compare__mark is-good" aria-hidden="true">◎</span>1万円前後</td></tr>
+                <tr><th scope="row">勉強する時間・場所</th><td class="is-us"><span class="p-compare__mark is-good" aria-hidden="true">◎</span>いつでも・スマホで</td><td><span class="p-compare__mark" aria-hidden="true">△</span>決まった曜日に教室へ</td><td><span class="p-compare__mark" aria-hidden="true">○</span>机に向かう時間が必要</td></tr>
+                <tr><th scope="row">わからないとき</th><td class="is-us"><span class="p-compare__mark is-good" aria-hidden="true">◎</span>24時間以内に講師が回答</td><td><span class="p-compare__mark" aria-hidden="true">○</span>授業の前後に質問</td><td><span class="p-compare__mark" aria-hidden="true">×</span>自分で調べる</td></tr>
+                <tr><th scope="row">復習の管理</th><td class="is-us"><span class="p-compare__mark is-good" aria-hidden="true">◎</span>間違えた問題を自動で出題</td><td><span class="p-compare__mark" aria-hidden="true">△</span>自分で管理</td><td><span class="p-compare__mark" aria-hidden="true">△</span>自分で管理</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="p-compare__hint" aria-hidden="true">横にスクロールできます →</p>
+          <p class="p-compare__note">※ 通学講座・独学の費用は一般的な目安です。</p>
+        </div>
+      </section>
+
+      <!-- ===== よくある質問 ===== -->
+      <section class="p-faq" id="faq" data-section="faq" aria-labelledby="faq-title">
+        <div class="l-container l-container--narrow">
+          <div class="c-section-head">
+            <p class="c-section-head__en">FAQ</p>
+            <h2 class="c-section-head__title" id="faq-title">よくある質問</h2>
+          </div>
+          <div class="p-faq__list">
+            <details class="c-faq">
+              <summary>無料体験のあと、自動で有料になりませんか？</summary>
+              <div class="c-faq__body"><p>なりません。無料体験ではクレジットカードの登録がないため、3日間が終わると自動で終了します。続けたい方だけ、体験の画面からコースを選んでお申し込みください。</p></div>
+            </details>
+            <details class="c-faq">
+              <summary>パソコンでも勉強できますか？</summary>
+              <div class="c-faq__body"><p>はい。スマホ・タブレット・パソコンのどれでも、同じアカウントで続きから学習できます。模擬試験は、本番と同じくパソコンで解くのがおすすめです。</p></div>
+            </details>
+            <details class="c-faq">
+              <summary>簿記の知識がまったくなくても大丈夫ですか？</summary>
+              <div class="c-faq__body"><p>大丈夫です。3級コースは「借方・貸方」の意味から始まります。受講生の約 7 割が、簿記を初めて学ぶ方です（架空の数値です）。</p></div>
+            </details>
+            <details class="c-faq">
+              <summary>受講期間内に終わらなかったら、どうなりますか？</summary>
+              <div class="c-faq__body"><p>受講期間の終了前に、3 か月単位で延長できます（各コース 1,980 円・税込）。学習の記録はそのまま引き継がれます。</p></div>
+            </details>
+            <details class="c-faq">
+              <summary>試験の申し込みも、ボキコツでできますか？</summary>
+              <div class="c-faq__body"><p>試験のお申し込みは、受験者ご本人が試験の運営団体のサイトから行います。申し込みの手順は、講座の中の「受験ガイド」で画面つきで案内しています。</p></div>
+            </details>
+            <details class="c-faq">
+              <summary>会社の研修として、まとめて申し込めますか？</summary>
+              <div class="c-faq__body"><p>はい。5 名以上の法人申し込みでは、受講状況を確認できる管理画面と請求書払いをご用意しています。無料体験のフォームの「お申し込みのきっかけ」で「会社の研修」を選んでください。</p></div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 無料体験の申し込み ===== -->
+      <section class="p-trial" id="trial" data-section="trial" data-last-cta aria-labelledby="trial-title">
+        <div class="l-container">
+          <div class="p-trial__inner">
+            <div class="p-trial__intro">
+              <p class="c-section-head__en">FREE TRIAL</p>
+              <h2 class="p-trial__title" id="trial-title">まずは3日間、<br />無料でためしてください</h2>
+              <p>講義も演習も、有料コースと同じものをお使いいただけます。合わなければ、そのままで終了します。</p>
+              <ul class="p-trial__gets">
+                <li><svg aria-hidden="true"><use href="#i-play" /></svg><span>講義動画 <strong>3本</strong></span></li>
+                <li><svg aria-hidden="true"><use href="#i-repeat" /></svg><span>演習問題 <strong>50問</strong></span></li>
+                <li><svg aria-hidden="true"><use href="#i-chat" /></svg><span>講師への質問 <strong>1回</strong></span></li>
+              </ul>
+              <p class="p-trial__gift" data-campaign-only><svg aria-hidden="true"><use href="#i-gift" /></svg><span><span data-deadline-text>今月末</span>までに有料コースへ切り替えると、受講料が 20%OFF になります</span></p>
+            </div>
+
+            <form class="p-trial__form c-form" id="trial-form" data-trial-form novalidate>
+              <p class="c-form__nojs">このデモのフォームは、JavaScript が有効なときだけ動きます。</p>
+              <div class="c-form__field">
+                <label for="f-name">お名前<span class="c-form__req">必須</span></label>
+                <input id="f-name" name="name" type="text" autocomplete="name" aria-describedby="f-name-error" />
+                <p class="c-form__error" id="f-name-error"></p>
+              </div>
+              <div class="c-form__field">
+                <label for="f-email">メールアドレス<span class="c-form__req">必須</span></label>
+                <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" aria-describedby="f-email-hint f-email-error" />
+                <p class="c-form__hint" id="f-email-hint">体験用のログイン URL をお送りします</p>
+                <p class="c-form__error" id="f-email-error"></p>
+              </div>
+              <fieldset class="c-form__field" aria-describedby="f-level-error">
+                <legend>目指す級<span class="c-form__req">必須</span></legend>
+                <div class="c-chips">
+                  <label><input type="radio" name="level" value="3" /><span>3級</span></label>
+                  <label><input type="radio" name="level" value="2" /><span>2級</span></label>
+                  <label><input type="radio" name="level" value="3-2" /><span>3級から2級まで</span></label>
+                  <label><input type="radio" name="level" value="undecided" /><span>まだ決めていない</span></label>
+                </div>
+                <p class="c-form__error" id="f-level-error"></p>
+              </fieldset>
+              <div class="c-form__field">
+                <label for="f-reason">お申し込みのきっかけ<span class="c-form__opt">任意</span></label>
+                <div class="c-form__select">
+                  <select id="f-reason" name="reason">
+                    <option value="">選んでください</option>
+                    <option value="career">転職・就職に活かしたい</option>
+                    <option value="work">今の仕事で必要になった</option>
+                    <option value="training">会社の研修</option>
+                    <option value="other">そのほか</option>
+                  </select>
+                </div>
+              </div>
+              <div class="c-form__field">
+                <label class="c-form__agree"><input type="checkbox" name="agree" aria-describedby="f-agree-error" /><span><a href="privacy.html" target="_blank" rel="noopener">個人情報の取り扱い<span class="u-visually-hidden">（新しいタブで開く）</span></a>に同意する</span></label>
+                <p class="c-form__error" id="f-agree-error"></p>
+              </div>
+              <button class="c-button c-button--cta c-button--lg c-button--block" type="submit" disabled>
+                無料体験をはじめる
+                <span class="c-button__arrow"><svg aria-hidden="true"><use href="#i-arrow" /></svg></span>
+              </button>
+              <p class="c-form__micro">クレジットカードの登録は不要です。体験が終わっても、自動で有料になることはありません。</p>
+              <p class="c-form__demo">デモのため、入力した内容は送信・保存されません。</p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- スマホだけ、最初の画面を過ぎたら画面下に出す -->
+    <div class="l-fixed-cta" data-fixed-cta>
+      <p class="l-fixed-cta__text" data-campaign-only><span data-deadline-text>今月末</span>まで 20%OFF</p>
+      <a class="c-button c-button--cta" href="#trial" data-cta="fixed">無料で3日間ためす</a>
+    </div>
+
+    <!-- include: footer.html -->
+  </body>
+</html>

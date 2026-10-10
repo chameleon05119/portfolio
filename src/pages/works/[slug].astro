@@ -53,6 +53,18 @@ const no = String(index + 1).padStart(2, '0');
           <figure><div class="scroller sp" tabindex="0" role="region" aria-label="スマホ表示のページ全体（スクロールできます）"><img src={sp.src} width={sp.attributes.width} height={sp.attributes.height} alt={`${w.name}のスマホ表示（ページ全体）`} loading="lazy" decoding="async" /></div><figcaption>スマホ（390px）</figcaption></figure>
         </div>
         {w.credit && <p class="d-note">{w.credit}</p>}
+
+        {w.gallery && (
+          <>
+            <h2 class="d-h">{w.gallery.title}</h2>
+            {w.gallery.note && <p class="d-note">{w.gallery.note}</p>}
+            <ul class="d-gallery">
+              {w.gallery.items.map(([src, width, height, label]) => (
+                <li class={width <= 320 ? 'is-small' : ''}><img src={`${base}${src}`} width={width} height={height} alt={`${w.gallery.title}（${label}）`} loading="lazy" decoding="async" /><span>{label}</span></li>
+              ))}
+            </ul>
+          </>
+        )}
       </div>
 
       <aside class="d-side">

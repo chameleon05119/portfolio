@@ -1,0 +1,1262 @@
+@use '../foundation/mixins' as *;
+
+// セクションの上下の余白（交互の背景色はセクションごとに指定）
+.p-worry,
+.p-feature,
+.p-day,
+.p-curriculum,
+.p-plan,
+.p-voice,
+.p-teacher,
+.p-price,
+.p-compare,
+.p-faq,
+.p-trial {
+  padding-block: var(--section-space);
+}
+
+// ===== 最初の画面 =====
+.p-fv {
+  overflow: hidden;
+  background:
+    radial-gradient(45% 60% at 95% 20%, #dff1e8 0%, transparent 70%),
+    radial-gradient(30% 45% at 70% 100%, #fff1c9 0%, transparent 70%),
+    linear-gradient(180deg, #fff, #f7fbf9);
+
+  // キャンペーンの帯
+  &__campaign {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 4px 12px;
+    padding: 8px var(--container-padding);
+    background: var(--color-primary-deep);
+    color: #fff;
+    font-size: rem(13);
+    font-weight: 700;
+    text-align: center;
+
+    @include md {
+      font-size: rem(14);
+    }
+
+    strong {
+      color: var(--color-yellow);
+    }
+  }
+
+  &__campaign-label {
+    padding: 0 10px;
+    border-radius: var(--radius-pill);
+    background: var(--color-yellow);
+    color: var(--color-text);
+    font-size: rem(12);
+  }
+
+  &__campaign-off {
+    font-family: var(--font-num);
+    font-size: 1.2em;
+  }
+
+  &__campaign-left {
+    font-family: var(--font-num);
+  }
+
+  &__inner {
+    display: grid;
+    gap: 40px;
+    padding-block: 36px 72px;
+
+    @include md {
+      padding-block: 56px 80px;
+    }
+
+    @include lg {
+      grid-template-columns: 1fr 380px;
+      align-items: center;
+      gap: 48px;
+    }
+  }
+
+  &__lead {
+    display: inline-block;
+    margin-bottom: 14px;
+    padding: 4px 14px;
+    border-radius: var(--radius-pill);
+    background: #fff;
+    box-shadow: 0 0 0 1.5px var(--color-primary) inset;
+    color: var(--color-primary);
+    font-size: rem(13);
+    font-weight: 700;
+
+    @include md {
+      font-size: rem(14);
+    }
+  }
+
+  &__title {
+    font-size: clamp(rem(31), 6.4vw, rem(54));
+    font-weight: 900;
+    line-height: 1.38;
+    letter-spacing: 0.02em;
+  }
+
+  // 黄色のマーカー（文字の下半分に引く）
+  &__marker {
+    color: var(--color-primary);
+    background: linear-gradient(transparent 62%, var(--color-marker) 62%, var(--color-marker) 92%, transparent 92%);
+  }
+
+  &__text {
+    max-width: 34em;
+    margin-top: 18px;
+    color: var(--color-text-sub);
+    font-size: rem(15);
+
+    @include md {
+      font-size: rem(17);
+    }
+  }
+
+  &__points {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 22px;
+
+    li {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px 6px 10px;
+      border-radius: var(--radius-pill);
+      background: #fff;
+      box-shadow: var(--shadow-card);
+      font-size: rem(13.5);
+      font-weight: 700;
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
+      color: var(--color-primary);
+    }
+  }
+
+  &__cta {
+    margin-top: 28px;
+
+    @media (max-width: 767px) {
+      .c-button {
+        width: 100%;
+      }
+    }
+  }
+
+  &__micro {
+    margin-top: 14px;
+    color: var(--color-text-sub);
+    font-size: rem(13);
+
+    @media (max-width: 767px) {
+      text-align: center;
+    }
+  }
+
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    max-width: 520px;
+    margin-top: 28px;
+
+    div {
+      padding: 10px 6px;
+      border-radius: var(--radius-sm);
+      background: rgb(255 255 255 / 0.8);
+      box-shadow: var(--shadow-card);
+      text-align: center;
+    }
+
+    dt {
+      color: var(--color-text-sub);
+      font-size: rem(12);
+      font-weight: 700;
+    }
+
+    dd {
+      font-size: rem(12);
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    sup {
+      font-size: rem(10);
+    }
+  }
+
+  &__num {
+    margin-right: 2px;
+    color: var(--color-primary);
+    font-family: var(--font-num);
+    font-size: rem(22);
+    font-weight: 800;
+    letter-spacing: 0;
+
+    @include md {
+      font-size: rem(30);
+    }
+  }
+
+  &__note {
+    margin-top: 8px;
+    color: var(--color-text-sub);
+    font-size: rem(11.5);
+  }
+
+  // スマホの画面イメージと、周りに浮かぶ札
+  &__visual {
+    position: relative;
+    justify-self: center;
+    padding-inline: 40px;
+
+    @include lg {
+      padding-inline: 0;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 8% -6% 4%;
+      z-index: -1;
+      border-radius: 50%;
+      background: radial-gradient(closest-side, #cfeadc, transparent);
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: var(--shadow);
+    font-size: rem(14);
+    font-weight: 800;
+    line-height: 1.3;
+    animation: p-fv-float 5s ease-in-out infinite;
+
+    small {
+      display: block;
+      color: var(--color-text-sub);
+      font-size: rem(11);
+    }
+
+    // 画面の大事な部分（問題・答え）に重ならないよう、動画の左上と端末の下に置く
+    &--today {
+      top: 14%;
+      left: 0;
+
+      @include lg {
+        left: -72px;
+      }
+    }
+
+    &--streak {
+      right: 0;
+      bottom: -22px;
+      animation-delay: -2.5s;
+
+      @include lg {
+        right: -48px;
+      }
+    }
+  }
+
+  // 学習時間のリング（読み込み時に 1 周する）
+  &__badge-ring {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+
+    svg:first-child {
+      position: absolute;
+      inset: 0;
+      transform: rotate(-90deg);
+    }
+
+    circle {
+      fill: none;
+      stroke: var(--color-border);
+      stroke-width: 5;
+
+      &.is-bar {
+        stroke: var(--color-primary);
+        stroke-linecap: round;
+        stroke-dasharray: 101;
+        animation: p-fv-ring 1.6s 0.4s var(--ease-out) both;
+      }
+    }
+  }
+
+  &__badge-check {
+    width: 18px;
+    height: 18px;
+    color: var(--color-primary);
+  }
+
+  &__badge-num {
+    color: var(--color-cta);
+    font-family: var(--font-num);
+    font-size: rem(30);
+    font-weight: 800;
+    line-height: 1;
+  }
+}
+
+@keyframes p-fv-float {
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes p-fv-ring {
+  from {
+    stroke-dashoffset: 101;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+// ===== お悩み =====
+.p-worry {
+  background: var(--color-cream);
+
+  &__title {
+    font-size: clamp(rem(22), 3vw, rem(30));
+    font-weight: 900;
+    text-align: center;
+  }
+
+  &__list {
+    display: grid;
+    gap: 12px;
+    max-width: 720px;
+    margin: 32px auto 0;
+
+    @include md {
+      grid-template-columns: 1fr 1fr;
+      max-width: none;
+      gap: 16px;
+    }
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 18px 20px;
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: var(--shadow-card);
+      font-weight: 600;
+    }
+
+    svg {
+      flex: none;
+      width: 26px;
+      height: 26px;
+      margin-top: 1px;
+      padding: 4px;
+      border-radius: 6px;
+      background: var(--color-primary);
+      color: #fff;
+    }
+
+    strong {
+      background: linear-gradient(transparent 65%, var(--color-marker) 65%);
+    }
+  }
+
+  // 下向きの三角で「解決」へつなぐ
+  &__answer {
+    position: relative;
+    margin-top: 56px;
+    color: var(--color-primary);
+    font-family: var(--font-head);
+    font-size: clamp(rem(22), 3vw, rem(30));
+    font-weight: 900;
+    line-height: 1.5;
+    text-align: center;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border: 16px solid transparent;
+      border-top: 18px solid var(--color-primary);
+      border-bottom: 0;
+      transform: translateX(-50%);
+    }
+  }
+
+  &__answer-small {
+    display: block;
+    color: var(--color-text);
+    font-size: 0.65em;
+  }
+}
+
+// ===== 特長 =====
+.p-feature {
+  &__list {
+    display: grid;
+    gap: 48px;
+
+    @include md {
+      gap: 72px;
+    }
+  }
+
+  &__item {
+    display: grid;
+    gap: 24px;
+    align-items: center;
+
+    @include md {
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+
+      // 2 つ目は左右を入れ替える
+      &:nth-child(even) .p-feature__ui {
+        order: -1;
+      }
+    }
+  }
+
+  &__no {
+    color: var(--color-yellow);
+    font-family: var(--font-num);
+    font-size: rem(56);
+    font-weight: 800;
+    line-height: 1;
+    -webkit-text-stroke: 1.5px var(--color-primary);
+  }
+
+  h3 {
+    margin: 10px 0 14px;
+    font-size: clamp(rem(21), 2.6vw, rem(28));
+    font-weight: 900;
+  }
+
+  &__body > p:last-child {
+    color: var(--color-text-sub);
+  }
+
+  &__ui {
+    display: grid;
+    place-items: center;
+    padding: 36px 24px;
+    border-radius: var(--radius-panel);
+    background:
+      radial-gradient(60% 70% at 85% 15%, #fff1c9, transparent 70%),
+      var(--color-bg-sub);
+  }
+}
+
+// ===== 1日の使い方 =====
+.p-day {
+  background: var(--color-bg-sub);
+
+  &__list {
+    position: relative;
+    display: grid;
+    gap: 16px;
+    max-width: 760px;
+    margin-inline: auto;
+
+    // 時刻をつなぐ縦線
+    &::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      bottom: 20px;
+      left: 31px;
+      width: 2px;
+      background: repeating-linear-gradient(var(--color-primary) 0 6px, transparent 6px 12px);
+
+      @include md {
+        left: 39px;
+      }
+    }
+
+    li {
+      position: relative;
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 4px 16px;
+      align-items: center;
+      padding: 16px 20px 16px 0;
+      border-radius: var(--radius);
+
+      @include md {
+        grid-template-columns: 80px 1fr auto;
+        gap: 24px;
+      }
+    }
+
+    time {
+      display: grid;
+      place-items: center;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      color: #fff;
+      font-family: var(--font-num);
+      font-size: rem(17);
+      font-weight: 800;
+      box-shadow: 0 0 0 6px var(--color-bg-sub);
+
+      @include md {
+        width: 80px;
+        height: 80px;
+        font-size: rem(21);
+      }
+    }
+
+    h3 {
+      font-size: rem(18);
+      font-weight: 900;
+
+      @include md {
+        font-size: rem(21);
+      }
+    }
+
+    p {
+      color: var(--color-text-sub);
+      font-size: rem(14);
+    }
+  }
+
+  &__min {
+    grid-column: 2;
+    justify-self: start;
+    padding: 2px 14px;
+    border-radius: var(--radius-pill);
+    background: #fff;
+    color: var(--color-primary);
+    font-weight: 800;
+    box-shadow: var(--shadow-card);
+
+    @include md {
+      grid-column: 3;
+      font-size: rem(18);
+    }
+  }
+}
+
+// ===== カリキュラム =====
+.p-curriculum {
+  &__cols {
+    display: grid;
+    gap: 20px;
+
+    @include md {
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+  }
+
+  &__card {
+    padding: 28px 24px;
+    border-radius: var(--radius-panel);
+    background: var(--color-card);
+    box-shadow: var(--shadow-card);
+
+    @include md {
+      padding: 36px;
+    }
+
+    h3 {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2px 14px;
+      align-items: center;
+      font-size: rem(20);
+      font-weight: 900;
+    }
+
+    small {
+      grid-column: 2;
+      color: var(--color-text-sub);
+      font-family: var(--font-base);
+      font-size: rem(13);
+      font-weight: 700;
+    }
+
+    ol {
+      display: grid;
+      gap: 8px;
+      margin-top: 20px;
+      counter-reset: chapter;
+    }
+
+    li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      background: var(--color-bg-sub);
+      font-size: rem(14.5);
+      font-weight: 600;
+      counter-increment: chapter;
+
+      &::before {
+        content: counter(chapter, decimal-leading-zero);
+        color: var(--color-primary);
+        font-family: var(--font-num);
+        font-weight: 800;
+      }
+    }
+  }
+
+  &__level {
+    grid-row: span 2;
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: var(--color-primary);
+    color: #fff;
+    font-size: rem(18);
+
+    &--2 {
+      background: var(--color-primary-deep);
+      box-shadow: 0 0 0 3px var(--color-yellow) inset;
+    }
+  }
+
+  &__note {
+    margin-top: 24px;
+    color: var(--color-text-sub);
+    font-size: rem(14);
+    text-align: center;
+  }
+}
+
+// ===== 学習プランの目安 =====
+.p-plan {
+  background: var(--color-bg-sub);
+
+  &__box {
+    display: grid;
+    overflow: hidden;
+    border-radius: var(--radius-panel);
+    background: #fff;
+    box-shadow: var(--shadow-card);
+
+    @include md {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &__form {
+    display: grid;
+    gap: 26px;
+    padding: 28px 22px;
+
+    @include md {
+      padding: 40px;
+    }
+  }
+
+  &__field {
+    padding: 0;
+    border: 0;
+
+    > legend,
+    > label {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      width: 100%;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    output {
+      color: var(--color-primary);
+      font-family: var(--font-num);
+      font-size: rem(22);
+      font-weight: 800;
+    }
+
+    input[type='range'] {
+      width: 100%;
+      height: 32px;
+      accent-color: var(--color-primary);
+    }
+  }
+
+  &__result {
+    padding: 28px 22px;
+    background: var(--color-primary-deep);
+    color: #fff;
+    text-align: center;
+
+    @include md {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .c-button {
+      margin-top: 20px;
+    }
+  }
+
+  // JS が動かないときは結果の欄だけが見えるので、横いっぱいに広げる
+  &__form[hidden] + &__result {
+    grid-column: 1 / -1;
+  }
+
+  &__result-head {
+    font-weight: 700;
+  }
+
+  &__result-main {
+    margin-top: 4px;
+  }
+
+  &__weeks {
+    color: var(--color-yellow);
+    font-family: var(--font-num);
+    font-size: rem(72);
+    font-weight: 800;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__unit {
+    margin-left: 6px;
+    font-size: rem(20);
+    font-weight: 700;
+  }
+
+  &__result-date {
+    margin-top: 6px;
+    font-size: rem(16);
+
+    strong {
+      font-size: rem(19);
+    }
+  }
+
+  &__example {
+    margin-top: 8px;
+    font-size: rem(13);
+  }
+
+  &__note {
+    margin-top: 14px;
+    color: #cfe4da;
+    font-size: rem(12);
+    text-align: left;
+  }
+}
+
+// ===== 受講生の声 =====
+.p-voice {
+  &__list {
+    display: grid;
+    gap: 20px;
+
+    @include lg {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    padding: 26px 24px;
+    border-radius: var(--radius-panel);
+    background: var(--color-card);
+    box-shadow: var(--shadow-card);
+
+    h3 {
+      margin: 12px 0 10px;
+      font-size: rem(18);
+      font-weight: 900;
+      word-break: keep-all; // <wbr> の位置でだけ折り返す
+    }
+
+    > p:not([class]) {
+      color: var(--color-text-sub);
+      font-size: rem(14.5);
+    }
+  }
+
+  &__tag {
+    align-self: flex-start;
+    padding: 2px 12px;
+    border-radius: var(--radius-pill);
+    background: var(--color-cream);
+    box-shadow: 0 0 0 1.5px var(--color-yellow) inset;
+    color: #7a4b00;
+    font-size: rem(13);
+    font-weight: 800;
+  }
+
+  &__who {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: 18px;
+    font-size: rem(13.5);
+    font-weight: 700;
+  }
+
+  // 顔の代わりの、色の違う丸いアイコン
+  &__avatar {
+    flex: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 50% 38%, #fff 0 22%, transparent 23%),
+      radial-gradient(ellipse 60% 45% at 50% 100%, #fff 0 98%, transparent 100%),
+      var(--avatar);
+
+    &--a {
+      --avatar: #6aa892;
+    }
+
+    &--b {
+      --avatar: #e2a04a;
+    }
+
+    &--c {
+      --avatar: #7c8fc9;
+    }
+  }
+
+  &__note {
+    margin-top: 18px;
+    color: var(--color-text-sub);
+    font-size: rem(12.5);
+    text-align: center;
+  }
+}
+
+// ===== 講師 =====
+.p-teacher {
+  padding-top: 0;
+
+  &__inner {
+    display: grid;
+    gap: 24px;
+    justify-items: center;
+    padding: 32px 24px;
+    border-radius: var(--radius-panel);
+    background: var(--color-cream);
+
+    @include md {
+      grid-template-columns: 220px 1fr;
+      gap: 48px;
+      align-items: center;
+      padding: 48px 56px;
+    }
+  }
+
+  &__illust {
+    width: 180px;
+    height: 180px;
+
+    @include md {
+      width: 220px;
+      height: 220px;
+    }
+  }
+
+  h2 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 12px;
+    margin-bottom: 14px;
+    font-size: rem(16);
+    font-weight: 700;
+
+    small {
+      width: 100%;
+      color: var(--color-text-sub);
+      font-family: var(--font-base);
+      font-size: rem(13);
+    }
+  }
+
+  &__name {
+    font-size: rem(28);
+    font-weight: 900;
+  }
+
+  &__body > p:not([class]) {
+    color: var(--color-text-sub);
+  }
+
+  &__msg {
+    margin-top: 16px;
+    padding: 14px 18px;
+    border-left: 4px solid var(--color-primary);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    background: #fff;
+    font-weight: 700;
+  }
+}
+
+// ===== 受講料 =====
+.p-price {
+  background: var(--color-cream);
+
+  &__deadline {
+    color: var(--color-price);
+  }
+
+  &__list {
+    display: grid;
+    gap: 20px;
+    max-width: 480px;
+    margin-inline: auto;
+
+    @include lg {
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
+      max-width: none;
+    }
+  }
+
+  &__card {
+    position: relative;
+    padding: 28px 24px;
+    border-radius: var(--radius-panel);
+    background: #fff;
+    box-shadow: var(--shadow-card);
+    text-align: center;
+
+    h3 {
+      font-size: rem(21);
+      font-weight: 900;
+    }
+
+    // おすすめのプランを目立たせる（スマホでは先頭に出す）
+    &--best {
+      order: -1;
+      padding-top: 40px;
+      box-shadow:
+        0 0 0 3px var(--color-cta),
+        var(--shadow);
+
+      @include lg {
+        order: 0;
+        padding-block: 52px 36px;
+      }
+    }
+  }
+
+  &__ribbon {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    padding: 4px 16px;
+    border-radius: var(--radius-pill);
+    background: var(--color-cta);
+    color: #fff;
+    font-size: rem(13);
+    font-weight: 800;
+    white-space: nowrap;
+    transform: translateX(-50%);
+  }
+
+  &__desc {
+    color: var(--color-text-sub);
+    font-size: rem(14);
+  }
+
+  &__normal {
+    margin-top: 14px;
+    color: var(--color-text-sub);
+    font-size: rem(14);
+  }
+
+  &__value {
+    color: var(--color-price);
+    font-family: var(--font-num);
+    font-size: rem(44);
+    font-weight: 800;
+    line-height: 1.2;
+
+    small {
+      margin-left: 4px;
+      color: var(--color-text);
+      font-family: var(--font-base);
+      font-size: rem(13);
+      font-weight: 700;
+    }
+
+    // キャンペーンが終わったら通常価格を黒で出す
+    [data-campaign-ended] & {
+      color: var(--color-text);
+    }
+  }
+
+  &__inc {
+    display: grid;
+    gap: 6px;
+    margin: 18px 0 22px;
+    padding: 16px;
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-sub);
+    font-size: rem(14);
+    font-weight: 600;
+    text-align: left;
+
+    li {
+      display: flex;
+      gap: 8px;
+
+      &::before {
+        content: '';
+        flex: none;
+        width: 16px;
+        height: 9px;
+        margin-top: 7px;
+        border-bottom: 2.5px solid var(--color-primary);
+        border-left: 2.5px solid var(--color-primary);
+        transform: rotate(-45deg) scale(0.8);
+      }
+    }
+  }
+
+  &__note {
+    max-width: 44em;
+    margin: 28px auto 0;
+    color: var(--color-text-sub);
+    font-size: rem(13.5);
+    text-align: center;
+  }
+}
+
+// ===== 比較 =====
+.p-compare {
+  &__scroll {
+    overflow-x: auto;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+  }
+
+  &__table {
+    width: 100%;
+    min-width: 640px;
+    border-collapse: collapse;
+    background: #fff;
+    font-size: rem(14);
+
+    th,
+    td {
+      padding: 14px 12px;
+      border-bottom: 1px solid var(--color-border);
+      text-align: center;
+    }
+
+    thead th {
+      font-family: var(--font-head);
+      font-size: rem(16);
+    }
+
+    tbody th {
+      position: sticky;
+      left: 0;
+      z-index: 1;
+      width: 9.5em;
+      background: var(--color-bg-sub);
+      font-size: rem(13);
+      text-align: left;
+    }
+
+    thead td {
+      position: sticky;
+      left: 0;
+      background: #fff;
+    }
+
+    tr:last-child > * {
+      border-bottom: 0;
+    }
+
+    .is-us {
+      background: #eef8f3;
+      font-weight: 700;
+    }
+
+    thead .is-us {
+      background: var(--color-primary);
+      color: #fff;
+    }
+  }
+
+  &__mark {
+    display: block;
+    color: var(--color-text-sub);
+    font-size: rem(20);
+    line-height: 1.3;
+
+    &.is-good {
+      color: var(--color-cta);
+    }
+  }
+
+  &__hint {
+    margin-top: 10px;
+    color: var(--color-text-sub);
+    font-size: rem(12.5);
+    font-weight: 700;
+    text-align: center;
+
+    @media (min-width: 720px) {
+      display: none; // 表が収まる幅では出さない
+    }
+  }
+
+  &__note {
+    margin-top: 12px;
+    color: var(--color-text-sub);
+    font-size: rem(12.5);
+    text-align: right;
+  }
+}
+
+// ===== よくある質問 =====
+.p-faq {
+  background: var(--color-bg-sub);
+}
+
+// ===== 無料体験の申し込み =====
+.p-trial {
+  background:
+    radial-gradient(40% 50% at 0% 0%, #138a64 0%, transparent 70%),
+    var(--color-primary-deep);
+
+  &__inner {
+    display: grid;
+    gap: 32px;
+
+    @include lg {
+      grid-template-columns: 1fr 480px;
+      gap: 56px;
+      align-items: start;
+    }
+  }
+
+  &__intro {
+    color: #fff;
+
+    .c-section-head__en {
+      color: var(--color-yellow);
+    }
+
+    > p:not([class]) {
+      margin-top: 14px;
+      color: #d7ebe2;
+    }
+  }
+
+  &__title {
+    font-size: clamp(rem(26), 3.4vw, rem(38));
+    font-weight: 900;
+  }
+
+  &__gets {
+    display: grid;
+    gap: 10px;
+    margin-top: 24px;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      background: rgb(255 255 255 / 0.1);
+      font-weight: 700;
+    }
+
+    svg {
+      width: 22px;
+      height: 22px;
+      color: var(--color-yellow);
+    }
+
+    strong {
+      color: var(--color-yellow);
+      font-family: var(--font-num);
+      font-size: rem(22);
+    }
+  }
+
+  &__gift {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 14px 16px;
+    border-radius: var(--radius-sm);
+    background: var(--color-yellow);
+    color: var(--color-text);
+    font-size: rem(14);
+    font-weight: 700;
+
+    svg {
+      flex: none;
+      width: 22px;
+      height: 22px;
+      color: var(--color-cta);
+    }
+  }
+
+  &__form {
+    padding: 28px 22px;
+    border-radius: var(--radius-panel);
+    background: #fff;
+    box-shadow: 0 30px 60px -30px rgb(0 0 0 / 0.5);
+
+    @include md {
+      padding: 36px;
+    }
+  }
+}
+
+// 申し込みのあとはフッターまでの余白を詰める
+main:has(.p-trial:last-child) ~ .l-footer {
+  margin-top: 0;
+}
+
+// 動きを減らす設定では浮かぶ札・リングを止める
+@media (prefers-reduced-motion: reduce) {
+  .p-fv__badge,
+  .p-fv__badge-ring circle.is-bar {
+    animation: none;
+  }
+}

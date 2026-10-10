@@ -1,0 +1,156 @@
+@use '../foundation/mixins' as *;
+
+// 特長の横に置く、小さなアプリの画面（HTML/CSS で組んでいる）
+.c-mini {
+  width: 100%;
+  max-width: 320px;
+  padding: 18px;
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: var(--shadow-card);
+  font-size: rem(13);
+  line-height: 1.5;
+
+  &__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    font-weight: 700;
+  }
+
+  &__count {
+    padding: 0 10px;
+    border-radius: var(--radius-pill);
+    background: var(--color-price);
+    color: #fff;
+    font-size: rem(12);
+  }
+
+  &__chips {
+    display: flex;
+    gap: 6px;
+
+    span {
+      flex: 1;
+      padding: 6px 0;
+      border-radius: 8px;
+      background: var(--color-bg-sub);
+      font-family: var(--font-num);
+      font-weight: 700;
+      text-align: center;
+
+      &.is-on {
+        background: var(--color-primary);
+        color: #fff;
+      }
+    }
+  }
+
+  &__sub {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 14px;
+    font-weight: 700;
+  }
+
+  // オンのスイッチ
+  &__toggle {
+    position: relative;
+    width: 40px;
+    height: 24px;
+    border-radius: 12px;
+    background: var(--color-primary);
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      right: 3px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #fff;
+    }
+  }
+
+  &__line {
+    height: 6px;
+    margin-top: 16px;
+    border-radius: 3px;
+    background: var(--color-border);
+
+    span {
+      display: block;
+      width: var(--w);
+      height: 100%;
+      border-radius: 3px;
+      background: var(--color-primary);
+    }
+  }
+
+  &__meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4px;
+    color: var(--color-text-sub);
+    font-family: var(--font-num);
+    font-size: rem(12);
+    font-weight: 700;
+  }
+
+  &__review {
+    display: grid;
+    gap: 8px;
+
+    li {
+      display: grid;
+      gap: 2px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: var(--color-bg-sub);
+      font-weight: 700;
+    }
+  }
+
+  &__tag {
+    justify-self: start;
+    padding: 0 8px;
+    border-radius: 5px;
+    background: #fde3e4;
+    color: #a3141e;
+    font-size: rem(11);
+
+    &--ok {
+      background: #e2f3ea;
+      color: var(--color-primary-deep);
+    }
+  }
+
+  // 質問と回答の吹き出し
+  &--chat {
+    display: grid;
+    gap: 10px;
+  }
+
+  &__bubble {
+    max-width: 85%;
+    padding: 10px 12px;
+    border-radius: 14px 14px 14px 4px;
+    background: var(--color-bg-sub);
+
+    &--me {
+      justify-self: end;
+      border-radius: 14px 14px 4px;
+      background: var(--color-primary);
+      color: #fff;
+    }
+  }
+
+  &__time {
+    color: var(--color-text-sub);
+    font-size: rem(11.5);
+    font-weight: 700;
+  }
+}

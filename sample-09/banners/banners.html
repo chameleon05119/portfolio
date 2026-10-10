@@ -1,0 +1,688 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ボキコツ 広告バナーの元データ</title>
+    <!-- 広告バナーの元データ。render.mjs が .banner を 1 枚ずつ PNG に書き出す（このファイル自体は公開しない）
+         訴求 A = 時間（1日15分・スマホで）／訴求 B = 価格（期間限定 20%OFF）。同じサイズで A/B を比べられるように 2 案ずつ作る
+         文言・色を変えたら `npm run banners` で全サイズを作り直す -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@700;800&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=block" />
+    <style>
+      :root {
+        --text: #1d2b3a;
+        --sub: #536273;
+        --green: #0b6e4f;
+        --green-deep: #0a4f3b;
+        --cta: #c74800;
+        --cta-shadow: #8a3200;
+        --yellow: #ffc83d;
+        --marker: #ffe066;
+        --cream: #fff8e6;
+        --red: #d1242f;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: 40px;
+        padding: 40px;
+        background: #ccc;
+        font-family: 'Zen Kaku Gothic New', sans-serif;
+        color: var(--text);
+        font-feature-settings: 'palt';
+        -webkit-font-smoothing: antialiased;
+      }
+      .banner {
+        position: relative;
+        overflow: hidden;
+        flex: none;
+      }
+      .num {
+        font-family: 'Barlow', sans-serif;
+        font-weight: 800;
+        letter-spacing: 0;
+      }
+      .mk {
+        background: linear-gradient(transparent 60%, var(--marker) 60%, var(--marker) 92%, transparent 92%);
+        color: var(--green);
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.4em;
+        font-weight: 900;
+        letter-spacing: 0.04em;
+      }
+      .logo svg {
+        width: 1.5em;
+        height: 1.5em;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5em;
+        border-radius: 999px;
+        background: var(--cta);
+        color: #fff;
+        font-weight: 900;
+        white-space: nowrap;
+      }
+      .btn::after {
+        content: '';
+        width: 0.5em;
+        height: 0.5em;
+        border-top: 0.16em solid #fff;
+        border-right: 0.16em solid #fff;
+        transform: rotate(45deg);
+      }
+
+      /* ===== 訴求 A（時間）: 白〜ミントの背景に、スマホの画面と大きなコピー ===== */
+      .a {
+        background:
+          radial-gradient(50% 60% at 95% 10%, #d7eee2 0%, transparent 70%),
+          radial-gradient(40% 50% at 10% 100%, #fff1c9 0%, transparent 70%),
+          #fff;
+      }
+      .phone {
+        position: absolute;
+        border-radius: 13%/6.5%;
+        background: #16212c;
+        box-shadow: 0 30px 60px -30px rgb(10 79 59 / 0.6);
+      }
+      .phone .scr {
+        position: absolute;
+        inset: 3.5%;
+        overflow: hidden;
+        border-radius: 10%/5%;
+        background: #f6f8f7;
+      }
+      .phone .vid {
+        height: 38%;
+        background:
+          radial-gradient(60% 80% at 20% 10%, rgb(255 200 61 / 0.35), transparent 60%),
+          linear-gradient(135deg, #0a4f3b, #0b6e4f 60%, #138a64);
+        display: grid;
+        place-items: center;
+      }
+      .phone .play {
+        width: 22%;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: #fff;
+        position: relative;
+      }
+      .phone .play::after {
+        content: '';
+        position: absolute;
+        left: 38%;
+        top: 28%;
+        border-left: solid var(--green);
+        border-top: solid transparent;
+        border-bottom: solid transparent;
+        border-width: 0.9em 0 0.55em 0;
+        border-left-width: 0.95em;
+        border-top-width: 0.55em;
+      }
+      .phone .bar {
+        height: 3%;
+        background: #dce7e1;
+      }
+      .phone .bar span {
+        display: block;
+        width: 62%;
+        height: 100%;
+        background: var(--yellow);
+      }
+      .phone .card {
+        margin: 6%;
+        padding: 6%;
+        border-radius: 8%;
+        background: #fff;
+        box-shadow: 0 0 0 1px #dce7e1;
+      }
+      .phone .line {
+        height: 0.5em;
+        margin: 0.5em 0;
+        border-radius: 0.25em;
+        background: #e6efea;
+      }
+      .phone .ok {
+        display: flex;
+        align-items: center;
+        gap: 0.4em;
+        color: var(--green);
+        font-weight: 900;
+      }
+      .phone .ok i {
+        display: inline-block;
+        width: 1.2em;
+        height: 1.2em;
+        border-radius: 50%;
+        background: var(--green);
+        position: relative;
+      }
+      .phone .ok i::after {
+        content: '';
+        position: absolute;
+        left: 30%;
+        top: 22%;
+        width: 25%;
+        height: 45%;
+        border-right: 0.16em solid #fff;
+        border-bottom: 0.16em solid #fff;
+        transform: rotate(45deg);
+      }
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35em;
+        border-radius: 999px;
+        background: #fff;
+        box-shadow: 0 0 0 0.1em var(--green) inset;
+        color: var(--green);
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
+      /* ===== 訴求 B（価格）: 深緑の背景に黄色の数字 ===== */
+      .b {
+        background:
+          radial-gradient(45% 60% at 0% 0%, #138a64 0%, transparent 70%),
+          var(--green-deep);
+        color: #fff;
+      }
+      .b .off {
+        color: var(--yellow);
+        line-height: 0.9;
+      }
+      .b .tag {
+        display: inline-block;
+        border-radius: 999px;
+        background: var(--yellow);
+        color: var(--text);
+        font-weight: 900;
+        white-space: nowrap;
+      }
+      .b .price {
+        font-weight: 700;
+      }
+      .b .price .num {
+        color: var(--yellow);
+      }
+      .b .ring {
+        position: absolute;
+        border-radius: 50%;
+        border: solid rgb(255 255 255 / 0.08);
+      }
+
+      /* ---------- 1080 × 1080（Instagram・Facebook のフィード） ---------- */
+      .s1080 {
+        width: 1080px;
+        height: 1080px;
+      }
+      .a.s1080 .logo {
+        position: absolute;
+        top: 64px;
+        left: 72px;
+        font-size: 40px;
+      }
+      .a.s1080 .lead {
+        position: absolute;
+        top: 170px;
+        left: 72px;
+        font-size: 40px;
+        font-weight: 700;
+        color: var(--sub);
+      }
+      .a.s1080 h1 {
+        position: absolute;
+        top: 236px;
+        left: 66px;
+        font-size: 116px;
+        font-weight: 900;
+        line-height: 1.28;
+        letter-spacing: 0.01em;
+      }
+      .a.s1080 .chips {
+        position: absolute;
+        top: 600px;
+        left: 72px;
+        display: grid;
+        gap: 18px;
+        font-size: 34px;
+      }
+      .a.s1080 .chip {
+        padding: 10px 26px;
+      }
+      .a.s1080 .phone {
+        right: 70px;
+        top: 540px;
+        width: 330px;
+        height: 640px;
+        transform: rotate(6deg);
+        font-size: 22px;
+      }
+      .a.s1080 .btn {
+        position: absolute;
+        left: 72px;
+        bottom: 80px;
+        height: 120px;
+        padding: 0 64px;
+        font-size: 46px;
+        box-shadow: 0 10px 0 var(--cta-shadow);
+      }
+
+      .b.s1080 .ring.r1 {
+        width: 900px;
+        height: 900px;
+        right: -300px;
+        top: -300px;
+        border-width: 90px;
+      }
+      .b.s1080 .logo {
+        position: absolute;
+        top: 64px;
+        left: 72px;
+        font-size: 40px;
+      }
+      .b.s1080 .tag {
+        position: absolute;
+        top: 190px;
+        left: 72px;
+        padding: 8px 32px;
+        font-size: 44px;
+      }
+      .b.s1080 .lead {
+        position: absolute;
+        top: 300px;
+        left: 72px;
+        font-size: 64px;
+        font-weight: 900;
+        line-height: 1.4;
+      }
+      .b.s1080 .off {
+        position: absolute;
+        top: 470px;
+        left: 60px;
+        font-size: 300px;
+      }
+      .b.s1080 .off small {
+        font-size: 150px;
+      }
+      .b.s1080 .price {
+        position: absolute;
+        top: 790px;
+        left: 72px;
+        font-size: 40px;
+      }
+      .b.s1080 .price .num {
+        font-size: 64px;
+      }
+      .b.s1080 .btn {
+        position: absolute;
+        right: 72px;
+        bottom: 80px;
+        height: 110px;
+        padding: 0 56px;
+        font-size: 42px;
+        box-shadow: 0 10px 0 var(--cta-shadow);
+      }
+
+      /* ---------- 1200 × 628（Facebook・X のリンク、Google の横長） ---------- */
+      .s1200 {
+        width: 1200px;
+        height: 628px;
+      }
+      .a.s1200 .logo {
+        position: absolute;
+        top: 44px;
+        left: 60px;
+        font-size: 32px;
+      }
+      .a.s1200 .lead {
+        position: absolute;
+        top: 126px;
+        left: 60px;
+        font-size: 30px;
+        font-weight: 700;
+        color: var(--sub);
+      }
+      .a.s1200 h1 {
+        position: absolute;
+        top: 172px;
+        left: 56px;
+        font-size: 70px;
+        font-weight: 900;
+        line-height: 1.3;
+      }
+      .a.s1200 .btn {
+        position: absolute;
+        left: 60px;
+        bottom: 60px;
+        height: 92px;
+        padding: 0 48px;
+        font-size: 36px;
+        box-shadow: 0 8px 0 var(--cta-shadow);
+      }
+      .a.s1200 .phone {
+        right: 70px;
+        top: 70px;
+        width: 270px;
+        height: 560px;
+        transform: rotate(6deg);
+        font-size: 19px;
+      }
+      .a.s1200 .chips {
+        position: absolute;
+        left: 60px;
+        top: 384px;
+        display: flex;
+        gap: 12px;
+        font-size: 24px;
+        z-index: 1;
+      }
+      .a.s1200 .chip {
+        padding: 6px 18px;
+        box-shadow:
+          0 0 0 0.1em var(--green) inset,
+          0 10px 20px -10px rgb(0 0 0 / 0.3);
+      }
+
+      .b.s1200 .ring.r1 {
+        width: 760px;
+        height: 760px;
+        right: -220px;
+        top: -260px;
+        border-width: 70px;
+      }
+      .b.s1200 .logo {
+        position: absolute;
+        top: 44px;
+        left: 60px;
+        font-size: 32px;
+      }
+      .b.s1200 .tag {
+        position: absolute;
+        top: 140px;
+        left: 60px;
+        padding: 6px 26px;
+        font-size: 34px;
+      }
+      .b.s1200 .lead {
+        position: absolute;
+        top: 222px;
+        left: 60px;
+        font-size: 52px;
+        font-weight: 900;
+        line-height: 1.4;
+      }
+      .b.s1200 .off {
+        position: absolute;
+        top: 170px;
+        right: 70px;
+        font-size: 200px;
+      }
+      .b.s1200 .off small {
+        font-size: 96px;
+      }
+      .b.s1200 .price {
+        position: absolute;
+        top: 400px;
+        left: 60px;
+        font-size: 30px;
+      }
+      .b.s1200 .price .num {
+        font-size: 48px;
+      }
+      .b.s1200 .btn {
+        position: absolute;
+        right: 70px;
+        bottom: 60px;
+        height: 92px;
+        padding: 0 48px;
+        font-size: 36px;
+        box-shadow: 0 8px 0 var(--cta-shadow);
+      }
+
+      /* ---------- 300 × 250（Google ディスプレイのレクタングル） ---------- */
+      .s300 {
+        width: 300px;
+        height: 250px;
+      }
+      .a.s300 .logo {
+        position: absolute;
+        top: 14px;
+        left: 16px;
+        font-size: 15px;
+      }
+      .a.s300 h1 {
+        position: absolute;
+        top: 48px;
+        left: 14px;
+        font-size: 31px;
+        font-weight: 900;
+        line-height: 1.3;
+      }
+      .a.s300 .sub {
+        position: absolute;
+        top: 136px;
+        left: 16px;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--sub);
+      }
+      .a.s300 .phone {
+        right: -6px;
+        top: 34px;
+        width: 92px;
+        height: 178px;
+        transform: rotate(8deg);
+        font-size: 6px;
+      }
+      .a.s300 .btn {
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        height: 46px;
+        font-size: 17px;
+        box-shadow: 0 4px 0 var(--cta-shadow);
+      }
+
+      .b.s300 .ring.r1 {
+        width: 260px;
+        height: 260px;
+        right: -90px;
+        top: -90px;
+        border-width: 28px;
+      }
+      .b.s300 .logo {
+        position: absolute;
+        top: 14px;
+        left: 16px;
+        font-size: 15px;
+      }
+      .b.s300 .tag {
+        position: absolute;
+        top: 50px;
+        left: 16px;
+        padding: 2px 12px;
+        font-size: 14px;
+      }
+      .b.s300 .lead {
+        position: absolute;
+        top: 76px;
+        left: 16px;
+        font-size: 19px;
+        font-weight: 900;
+        line-height: 1.35;
+      }
+      .b.s300 .off {
+        position: absolute;
+        top: 100px;
+        left: 14px;
+        font-size: 62px;
+      }
+      .b.s300 .off small {
+        font-size: 30px;
+      }
+      .b.s300 .price {
+        position: absolute;
+        top: 162px;
+        left: 16px;
+        font-size: 13px;
+      }
+      .b.s300 .price .num {
+        font-size: 20px;
+      }
+      .b.s300 .btn {
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        bottom: 14px;
+        height: 42px;
+        font-size: 17px;
+        box-shadow: 0 4px 0 var(--cta-shadow);
+      }
+
+      /* ---------- 320 × 100（スマホのラージバナー） ---------- */
+      .s320 {
+        width: 320px;
+        height: 100px;
+      }
+      .s320 .logo {
+        position: absolute;
+        top: 10px;
+        left: 12px;
+        font-size: 12px;
+      }
+      .a.s320 h1 {
+        position: absolute;
+        top: 32px;
+        left: 11px;
+        font-size: 21px;
+        font-weight: 900;
+        line-height: 1.3;
+      }
+      .s320 .btn {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        height: 40px;
+        padding: 0 14px;
+        font-size: 13px;
+        transform: translateY(-50%);
+        box-shadow: 0 3px 0 var(--cta-shadow);
+      }
+      .b.s320 .off {
+        position: absolute;
+        top: 30px;
+        left: 12px;
+        font-size: 52px;
+      }
+      .b.s320 .off small {
+        font-size: 24px;
+      }
+      .b.s320 .lead {
+        position: absolute;
+        top: 36px;
+        left: 136px;
+        font-size: 13px;
+        font-weight: 900;
+        line-height: 1.4;
+      }
+      .b.s320 .ring.r1 {
+        width: 140px;
+        height: 140px;
+        right: -40px;
+        top: -40px;
+        border-width: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <symbol id="logo" viewBox="0 0 36 36"><rect width="36" height="36" rx="10" fill="#0b6e4f" /><path d="M10 11h10.5a4.5 4.5 0 0 1 0 9H10zm0 9h12a4.5 4.5 0 0 1 0 9H10z" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round" /><circle cx="27.5" cy="10" r="3.5" fill="#ffc83d" /></symbol>
+      <symbol id="logo-w" viewBox="0 0 36 36"><rect width="36" height="36" rx="10" fill="#fff" /><path d="M10 11h10.5a4.5 4.5 0 0 1 0 9H10zm0 9h12a4.5 4.5 0 0 1 0 9H10z" fill="none" stroke="#0b6e4f" stroke-width="3" stroke-linejoin="round" /><circle cx="27.5" cy="10" r="3.5" fill="#ffc83d" /></symbol>
+    </svg>
+
+    <!-- 訴求 A（時間） -->
+    <div class="banner a s1080" data-name="a-1080x1080">
+      <p class="logo"><svg><use href="#logo" /></svg>ボキコツ</p>
+      <p class="lead">忙しい社会人のオンライン簿記講座</p>
+      <h1><span class="mk">1日15分</span>、<br />スマホで。<br />働きながら<br />簿記2級。</h1>
+      <div class="phone"><div class="scr"><div class="vid"><span class="play"></span></div><div class="bar"><span></span></div><div class="card"><div class="line"></div><div class="line" style="width: 70%"></div><div class="line" style="width: 85%"></div><p class="ok"><i></i>正解！</p></div></div></div>
+      <a class="btn">3日間 無料でためす</a>
+    </div>
+
+    <div class="banner a s1200" data-name="a-1200x628">
+      <p class="logo"><svg><use href="#logo" /></svg>ボキコツ</p>
+      <p class="lead">忙しい社会人のオンライン簿記講座</p>
+      <h1><span class="mk">1日15分</span>、スマホで。<br />働きながら簿記2級。</h1>
+      <div class="phone"><div class="scr"><div class="vid"><span class="play"></span></div><div class="bar"><span></span></div><div class="card"><div class="line"></div><div class="line" style="width: 70%"></div><div class="line" style="width: 85%"></div><p class="ok"><i></i>正解！</p></div></div></div>
+      <div class="chips"><span class="chip">▶ 1本15分の講義</span><span class="chip">↻ 自動で復習</span></div>
+      <a class="btn">3日間 無料でためす</a>
+    </div>
+
+    <div class="banner a s300" data-name="a-300x250">
+      <p class="logo"><svg><use href="#logo" /></svg>ボキコツ</p>
+      <h1><span class="mk">1日15分</span>で<br />簿記2級へ。</h1>
+      <p class="sub">通勤電車で学ぶ<br />オンライン講座</p>
+      <div class="phone"><div class="scr"><div class="vid"><span class="play"></span></div><div class="bar"><span></span></div><div class="card"><div class="line"></div><div class="line" style="width: 70%"></div><p class="ok"><i></i>正解</p></div></div></div>
+      <a class="btn">3日間 無料でためす</a>
+    </div>
+
+    <div class="banner a s320" data-name="a-320x100">
+      <p class="logo"><svg><use href="#logo" /></svg>ボキコツ</p>
+      <h1><span class="mk">1日15分</span>、<br />スマホで簿記。</h1>
+      <a class="btn">無料でためす</a>
+    </div>
+
+    <!-- 訴求 B（価格） -->
+    <div class="banner b s1080" data-name="b-1080x1080">
+      <span class="ring r1"></span>
+      <p class="logo"><svg><use href="#logo-w" /></svg>ボキコツ</p>
+      <p class="tag">期間限定キャンペーン</p>
+      <p class="lead">オンライン簿記講座の<br />受講料が</p>
+      <p class="off num">20<small>%OFF</small></p>
+      <p class="price">3級コース <span class="num">7,840</span> 円〜（税込）</p>
+      <a class="btn">まずは無料体験</a>
+    </div>
+
+    <div class="banner b s1200" data-name="b-1200x628">
+      <span class="ring r1"></span>
+      <p class="logo"><svg><use href="#logo-w" /></svg>ボキコツ</p>
+      <p class="tag">期間限定キャンペーン</p>
+      <p class="lead">オンライン簿記講座の<br />受講料が</p>
+      <p class="off num">20<small>%OFF</small></p>
+      <p class="price">3級コース <span class="num">7,840</span> 円〜（税込）</p>
+      <a class="btn">まずは無料体験</a>
+    </div>
+
+    <div class="banner b s300" data-name="b-300x250">
+      <span class="ring r1"></span>
+      <p class="logo"><svg><use href="#logo-w" /></svg>ボキコツ</p>
+      <p class="tag">期間限定</p>
+      <p class="lead">簿記講座が</p>
+      <p class="off num">20<small>%OFF</small></p>
+      <p class="price">3級 <span class="num">7,840</span> 円〜（税込）</p>
+      <a class="btn">まずは無料体験</a>
+    </div>
+
+    <div class="banner b s320" data-name="b-320x100">
+      <span class="ring r1"></span>
+      <p class="logo"><svg><use href="#logo-w" /></svg>ボキコツ</p>
+      <p class="off num">20<small>%OFF</small></p>
+      <p class="lead">簿記講座<br />期間限定</p>
+      <a class="btn">無料体験</a>
+    </div>
+  </body>
+</html>

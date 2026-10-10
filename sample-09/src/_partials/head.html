@@ -1,0 +1,33 @@
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- ポートフォリオ用のデモのため検索に載せない。本番では noindex を外し、og:url・canonical（絶対 URL）を入れる -->
+<meta name="robots" content="noindex" />
+<meta name="theme-color" content="#0b6e4f" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="ボキコツ（デモサイト）" />
+<!-- 共有時の画像。og:image は絶対 URL が必要なので、公開先が決まったらドメインを書き換える -->
+<meta property="og:image" content="https://chameleon05119.github.io/portfolio/sample-09/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="628" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="{{root}}favicon.svg" />
+<script>
+  // JS が動く環境の目印。アニメーションで要素を隠すときは .js 配下に限定する（描画前に付けてちらつきを防ぐ）
+  // main.js が読み込めなかったとき（アップロード漏れ・ブロックなど）に本文が隠れたままにならないよう、3秒で外す
+  document.documentElement.classList.add('js')
+  setTimeout(function () {
+    if (!window.siteReady) document.documentElement.classList.remove('js')
+  }, 3000)
+</script>
+<!-- 計測（Google タグ マネージャー）。本番ではコンテナ ID を入れてこのコメントを外す。
+     イベントは main.js が window.dataLayer に送る（一覧は README の「計測」）
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<!-- フォントは描画を止めないように後から読み込む（読み込むまでは OS のフォントで表示）。
+     本文は OS のゴシックを使い、Web フォントは見出しと数字だけにして読み込みを減らす -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@700;800&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@700;800&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" /></noscript>
+<link rel="stylesheet" href="{{root}}assets/scss/style.scss" />
+<script src="{{root}}assets/js/main.js" defer onerror="document.documentElement.classList.remove('js')"></script>
