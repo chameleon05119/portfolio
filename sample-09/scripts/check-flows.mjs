@@ -13,11 +13,12 @@ export default async ({ browser, base, check }) => {
   // --- LP（スマホ）: 追従ボタン → フォーム → 完了ページのコンバージョン ---
   {
     const p = await page()
-    await p.goto(base + 'index.html?utm_source=instagram&utm_medium=paid_social&utm_campaign=test&utm_content=a-1080x1080', { waitUntil: 'networkidle' })
+    // 締切前の日付として開く（?now はデモ用の日時の上書き）。utm_term にメールアドレスを入れ、計測に入らないことも確かめる
+    await p.goto(base + 'index.html?now=2026-10-20T12:00:00%2B09:00&utm_source=instagram&utm_medium=paid_social&utm_campaign=test&utm_content=a-1080x1080&utm_term=a%40b.com', { waitUntil: 'networkidle' })
     check(!(await visible(p, '.l-header__nav')) && !(await visible(p, '.l-header__actions')), 'スマホのヘッダーにナビ・ボタンが出ている')
     // キャンペーンの締切が日付になり、残り日数が出る
     check(/\d+月\d+日/.test(await p.textContent('.p-fv__campaign [data-deadline-text]')), 'キャンペーンの締切が日付にならない')
-    check(await visible(p, '[data-deadline-left]'), '締切までの残り日数が出ない')
+    check((await p.textContent('[data-deadline-left]')) === 'あと 11 日', `締切までの残り日数が正しくない: ${await p.textContent('[data-deadline-left]')}`)
 
     const fix = p.locator('[data-fixed-cta]')
     check(!(await fix.evaluate((el) => el.classList.contains('is-shown'))), '追従ボタンが最初の画面で出ている')
@@ -61,7 +62,7 @@ export default async ({ browser, base, check }) => {
     await p.waitForLoadState('networkidle')
     const lead = await events(p, 'generate_lead')
     check(
-      lead.length === 1 && lead[0].course_level === '2' && lead[0].utm_source === 'instagram' && lead[0].utm_content === 'a-1080x1080',
+      lead.length === 1 && lead[0].course_level === '2' && lead[0].utm_source === 'instagram' && lead[0].utm_content === 'a-1080x1080' && !('utm_term' in lead[0]),
       `完了ページの generate_lead が正しくない: ${JSON.stringify(lead)}`,
     )
     check((await p.textContent('[data-thanks-level-name]')) === '2級', '完了ページに選んだ級が出ない')
@@ -93,16 +94,24 @@ export default async ({ browser, base, check }) => {
     check(plan.length === 1 && plan[0].course_level === '3-2', `plan_select が正しくない: ${JSON.stringify(plan)}`)
     check((await p.locator('.p-debug__item').count()) > 0, '確認パネルにイベントが出ない')
 
+    // 受講期間を超えるペース（2級・15分・週3日 = 160 週）では案内が出る
+    await p.locator('#plan').scrollIntoViewIfNeeded()
+    await p.locator('#plan-min').fill('15')
+    await p.locator('#plan-days').fill('3')
+    check(await visible(p, '[data-plan-warn]'), '受講期間を超えるペースなのに案内が出ない')
+    await p.waitForTimeout(1500)
+    const simBefore = (await events(p, 'plan_simulate')).length
     // 学習プラン: 3級・60分・週7日 → 40時間 ÷ 7時間 = 6 週間
     await p.locator('#plan').scrollIntoViewIfNeeded()
     await p.locator('.p-plan .c-chips label', { hasText: /^3級$/ }).click()
     await p.locator('#plan-min').fill('60')
     await p.locator('#plan-days').fill('7')
+    check(!(await visible(p, '[data-plan-warn]')), '受講期間に収まるのに案内が出ている')
     check((await p.textContent('[data-result="weeks"]')) === '6', `学習プランの週数が正しくない: ${await p.textContent('[data-result="weeks"]')}`)
     check((await p.textContent('[data-out="min"]')) === '60 分', '1日の学習時間の表示が変わらない')
     await p.waitForTimeout(1500)
     const sim = await events(p, 'plan_simulate')
-    check(sim.length === 1 && sim[0].weeks === 6, `plan_simulate が操作のあと 1 回だけ送られない: ${JSON.stringify(sim)}`)
+    check(sim.length === simBefore + 1 && sim.at(-1).weeks === 6, `plan_simulate が操作のあと 1 回だけ送られない: ${JSON.stringify(sim)}`)
     check((await p.textContent('[data-plan-status]')).includes('6 週間'), '学習プランの結果が読み上げ用に伝わらない')
 
     // FAQ の開閉と計測
@@ -126,16 +135,11 @@ export default async ({ browser, base, check }) => {
   {
     const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } })
     const p = await ctx.newPage()
-    // 締切（今月末）の翌月 1 日として開く代わりに、締切に過去の日時を入れて確かめる
-    await p.route('**/index.html', async (route) => {
-      const res = await route.fetch()
-      const body = (await res.text()).replace('data-deadline="month-end"', 'data-deadline="2020-01-31T23:59:59+09:00"')
-      await route.fulfill({ response: res, body })
-    })
-    await p.goto(base + 'index.html', { waitUntil: 'networkidle' })
+    await p.goto(base + 'index.html?now=2026-11-01T00:00:00%2B09:00', { waitUntil: 'networkidle' })
     check(!(await visible(p, '[data-campaign]')), '締切を過ぎてもキャンペーンの帯が出ている')
     check(!(await visible(p, '.p-price [data-campaign-only]')), '締切を過ぎても通常価格の打ち消し線が出ている')
     check((await p.textContent('[data-price="7840"]')) === '9,800', '締切を過ぎても 3級がキャンペーン価格のまま')
+    check((await p.textContent('[data-normal-text]')) === '4.7万円〜', '締切を過ぎても比較表がキャンペーン価格のまま')
     await ctx.close()
   }
 

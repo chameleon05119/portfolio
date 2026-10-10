@@ -6,7 +6,6 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "images": "node scripts/images.mjs",
     "banners": "node banners/render.mjs"
   },
   "volta": {
@@ -15,7 +14,6 @@
   "devDependencies": {
     "playwright": "^1.63.0",
     "sass": "^1.105.1",
-    "sharp": "^0.35.5",
     "vite": "^8.3.2"
   }
 }

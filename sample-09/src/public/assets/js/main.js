@@ -44,7 +44,9 @@
   function initUtm() {
     const params = new URLSearchParams(location.search)
     const keys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term']
-    const utm = Object.fromEntries(keys.filter((k) => params.get(k)).map((k) => [k, params.get(k).slice(0, 100)]))
+    // 値は英数字と - _ . だけを許す（URL に紛れ込んだメールアドレスなどの個人情報を計測に送らないため）
+    const safe = (v) => (/^[\w\-.]{1,50}$/.test(v) ? v : null)
+    const utm = Object.fromEntries(keys.map((k) => [k, safe(params.get(k) || '')]).filter(([, v]) => v))
     if (Object.keys(utm).length) store.set('bk_utm', utm)
   }
 
@@ -79,7 +81,7 @@
     return {
       log(payload) {
         list.querySelector('.p-debug__empty')?.remove()
-        const { event, ...params } = payload
+        const { event, eventCallback, eventTimeout, ...params } = payload
         const item = document.createElement('div')
         item.className = 'p-debug__item'
         const name = document.createElement('b')
@@ -153,25 +155,32 @@
   }
 
   // ===== キャンペーンの締切 =====
-  // data-deadline に締切の日時（例: 2026-10-31T23:59:59+09:00）を書く。
-  // デモでは "month-end"（今月末の 23:59）にしている。締切を過ぎたら、キャンペーンの表示を消して通常価格に戻す
+  // data-deadline に締切の日時（例: 2026-10-31T23:59:59+09:00）を書く。帯・受講料・フォーム横・追従ボタンの日付はここから入れる。
+  // 締切を過ぎたら、キャンペーンの表示を消して通常価格に戻す（終わったキャンペーンの価格を出したままにしない）。
+  // デモ用: URL に ?now=2026-11-01 のように付けると、その日時として表示を確かめられる
   function initCampaign() {
     const source = document.querySelector('[data-deadline]')
     if (!source) return
-    const value = source.dataset.deadline
-    const now = new Date()
-    const deadline = value === 'month-end' ? new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59) : new Date(value)
+    const deadline = new Date(source.dataset.deadline)
+    const override = new URLSearchParams(location.search).get('now')
+    const now = override && !Number.isNaN(new Date(override).getTime()) ? new Date(override) : new Date()
     if (Number.isNaN(deadline.getTime())) return
 
     if (now > deadline) {
       document.body.setAttribute('data-campaign-ended', '')
       document.querySelectorAll('[data-campaign], [data-campaign-only]').forEach((el) => (el.hidden = true))
       document.querySelectorAll('[data-price]').forEach((el) => (el.textContent = Number(el.dataset.normal).toLocaleString('ja-JP')))
+      document.querySelectorAll('[data-normal-text]').forEach((el) => (el.textContent = el.dataset.normalText))
       return
     }
-    const week = ['日', '月', '火', '水', '木', '金', '土']
-    const label = `${deadline.getMonth() + 1}月${deadline.getDate()}日（${week[deadline.getDay()]}）`
-    document.querySelectorAll('[data-deadline-text]').forEach((el) => (el.textContent = label))
+    // 日付は締切のタイムゾーン（日本時間）で表示する
+    const parts = Object.fromEntries(
+      new Intl.DateTimeFormat('ja-JP', { timeZone: 'Asia/Tokyo', month: 'numeric', day: 'numeric', weekday: 'short' })
+        .formatToParts(deadline)
+        .map((p) => [p.type, p.value]),
+    )
+    document.querySelectorAll('[data-deadline-text]').forEach((el) => (el.textContent = `${parts.month}月${parts.day}日（${parts.weekday}）`))
+    document.querySelectorAll('[data-deadline-short]').forEach((el) => (el.textContent = `${parts.month}/${parts.day}`))
     // 残りの日数（当日は「本日まで」）
     const left = document.querySelector('[data-deadline-left]')
     if (left) {
@@ -250,6 +259,7 @@
     const weeksEl = root.querySelector('[data-result="weeks"]')
     const dateEl = root.querySelector('[data-result="date"]')
     const status = root.querySelector('[data-plan-status]')
+    const warn = root.querySelector('[data-plan-warn]')
     form.hidden = false // JS が動かないときは入力欄を出さず、例の結果だけを見せる
     root.querySelector('[data-plan-example]').hidden = true
     form.addEventListener('submit', (e) => e.preventDefault())
@@ -271,11 +281,16 @@
       const date = `${end.getFullYear()}年${end.getMonth() + 1}月ごろ`
       weeksEl.textContent = weeks
       dateEl.textContent = date
+      // 受講期間（6・12・18 か月）に収まらないペースなら、そう伝える
+      const months = Number(level.dataset.months)
+      const over = weeks > Math.floor((months * 52) / 12)
+      warn.hidden = !over
+      if (over) warn.textContent = `このペースだと受講期間（${months}か月）を超えます。1日の時間か日数を増やすか、期間の延長（3か月ごと）をご利用ください。`
       if (!user) return
       // スライダーを動かしている間は読み上げ・計測をせず、止まってから 1 回だけにする
       clearTimeout(announceTimer)
       clearTimeout(trackTimer)
-      announceTimer = setTimeout(() => (status.textContent = `約 ${weeks} 週間、${date}にカリキュラムを1周できます`), 600)
+      announceTimer = setTimeout(() => (status.textContent = `約 ${weeks} 週間、${date}にカリキュラムを1周できます。${over ? warn.textContent : ''}`), 600)
       trackTimer = setTimeout(
         () => track('plan_simulate', { course_level: level.value, minutes_per_day: min, days_per_week: days, weeks }),
         1200,
@@ -342,11 +357,18 @@
         return
       }
       const level = form.querySelector('input[name="level"]:checked').value
-      track('form_submit', { form_id: 'trial', course_level: level })
       // デモのため送信しない（名前・メールアドレスはどこにも保存しない）。
       // 完了ページでコンバージョンを 1 回だけ送るための印として、級だけを残す
       store.set('bk_lead', { level })
-      location.href = 'thanks.html'
+      // GTM がタグを送り終えてから移る（eventCallback）。GTM がないときや遅いときは 0.5 秒で移る
+      let moved = false
+      const go = () => {
+        if (moved) return
+        moved = true
+        location.href = 'thanks.html'
+      }
+      track('form_submit', { form_id: 'trial', course_level: level, eventCallback: go, eventTimeout: 500 })
+      setTimeout(go, 500)
     })
   }
 
@@ -358,10 +380,13 @@
     const lead = store.get('bk_lead')
     if (!lead) return
     store.remove('bk_lead')
-    const names = { 3: '3級', 2: '2級', '3-2': '3級', undecided: '3級' }
+    // 3級から2級までの人は 3級から。まだ決めていない人には級の案内を出さない
+    const names = { 3: '3級', 2: '2級', '3-2': '3級' }
     const wrap = document.querySelector('[data-thanks-level]')
-    wrap.querySelector('[data-thanks-level-name]').textContent = names[lead.level] || '3級'
-    wrap.hidden = false
+    if (names[lead.level]) {
+      wrap.querySelector('[data-thanks-level-name]').textContent = names[lead.level]
+      wrap.hidden = false
+    }
     track('generate_lead', { form_id: 'trial', course_level: lead.level, ...(store.get('bk_utm') || {}) })
   }
 

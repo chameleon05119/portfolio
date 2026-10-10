@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <title>ボキコツ 広告バナーの元データ</title>
     <!-- 広告バナーの元データ。render.mjs が .banner を 1 枚ずつ PNG に書き出す（このファイル自体は公開しない）
-         訴求 A = 時間（1日15分・スマホで）／訴求 B = 価格（期間限定 20%OFF）。同じサイズで A/B を比べられるように 2 案ずつ作る
-         文言・色を変えたら `npm run banners` で全サイズを作り直す -->
+         訴求 A = 時間（1本15分・スマホで）／訴求 B = 価格（10/31 までの 20%OFF）。同じサイズで A/B を比べられるように 2 案ずつ作る
+         文言・色を変えたら `npm run banners` で全サイズを作り直す
+         キャンペーンの締切（10/31）は LP の data-deadline（src/index.html）と同じ日にする。締切を変えたら両方を直す -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@700;800&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=block" />
@@ -584,18 +585,18 @@
       }
       .b.s320 .off {
         position: absolute;
-        top: 30px;
+        top: 32px;
         left: 12px;
-        font-size: 52px;
+        font-size: 50px;
       }
       .b.s320 .off small {
-        font-size: 24px;
+        font-size: 22px;
       }
       .b.s320 .lead {
         position: absolute;
         top: 36px;
-        left: 136px;
-        font-size: 13px;
+        left: 134px;
+        font-size: 12px;
         font-weight: 900;
         line-height: 1.4;
       }
@@ -618,7 +619,7 @@
     <div class="banner a s1080" data-name="a-1080x1080">
       <p class="logo"><svg><use href="#logo" /></svg>ボキコツ</p>
       <p class="lead">忙しい社会人のオンライン簿記講座</p>
-      <h1><span class="mk">1日15分</span>、<br />スマホで。<br />働きながら<br />簿記2級。</h1>
+      <h1><span class="mk">1本15分</span>、<br />スマホで。<br />働きながら<br />簿記2級へ。</h1>
       <div class="phone"><div class="scr"><div class="vid"><span class="play"></span></div><div class="bar"><span></span></div><div class="card"><div class="line"></div><div class="line" style="width: 70%"></div><div class="line" style="width: 85%"></div><p class="ok"><i></i>正解！</p></div></div></div>
       <a class="btn">3日間 無料でためす</a>
     </div>
@@ -626,7 +627,7 @@
     <div class="banner a s1200" data-name="a-1200x628">
       <p class="logo"><svg><use href="#logo" /></svg>ボキコツ</p>
       <p class="lead">忙しい社会人のオンライン簿記講座</p>
-      <h1><span class="mk">1日15分</span>、スマホで。<br />働きながら簿記2級。</h1>
+      <h1><span class="mk">1本15分</span>、スマホで。<br />働きながら簿記2級へ。</h1>
       <div class="phone"><div class="scr"><div class="vid"><span class="play"></span></div><div class="bar"><span></span></div><div class="card"><div class="line"></div><div class="line" style="width: 70%"></div><div class="line" style="width: 85%"></div><p class="ok"><i></i>正解！</p></div></div></div>
       <div class="chips"><span class="chip">▶ 1本15分の講義</span><span class="chip">↻ 自動で復習</span></div>
       <a class="btn">3日間 無料でためす</a>
@@ -634,15 +635,15 @@
 
     <div class="banner a s300" data-name="a-300x250">
       <p class="logo"><svg><use href="#logo" /></svg>ボキコツ</p>
-      <h1><span class="mk">1日15分</span>で<br />簿記2級へ。</h1>
-      <p class="sub">通勤電車で学ぶ<br />オンライン講座</p>
+      <h1><span class="mk">1本15分</span>の<br />講義で簿記。</h1>
+      <p class="sub">通勤電車で学ぶ<br />オンライン簿記講座</p>
       <div class="phone"><div class="scr"><div class="vid"><span class="play"></span></div><div class="bar"><span></span></div><div class="card"><div class="line"></div><div class="line" style="width: 70%"></div><p class="ok"><i></i>正解</p></div></div></div>
       <a class="btn">3日間 無料でためす</a>
     </div>
 
     <div class="banner a s320" data-name="a-320x100">
       <p class="logo"><svg><use href="#logo" /></svg>ボキコツ</p>
-      <h1><span class="mk">1日15分</span>、<br />スマホで簿記。</h1>
+      <h1><span class="mk">1本15分</span>、<br />スマホで簿記。</h1>
       <a class="btn">無料でためす</a>
     </div>
 
@@ -650,7 +651,7 @@
     <div class="banner b s1080" data-name="b-1080x1080">
       <span class="ring r1"></span>
       <p class="logo"><svg><use href="#logo-w" /></svg>ボキコツ</p>
-      <p class="tag">期間限定キャンペーン</p>
+      <p class="tag">10/31（土）までのキャンペーン</p>
       <p class="lead">オンライン簿記講座の<br />受講料が</p>
       <p class="off num">20<small>%OFF</small></p>
       <p class="price">3級コース <span class="num">7,840</span> 円〜（税込）</p>
@@ -660,7 +661,7 @@
     <div class="banner b s1200" data-name="b-1200x628">
       <span class="ring r1"></span>
       <p class="logo"><svg><use href="#logo-w" /></svg>ボキコツ</p>
-      <p class="tag">期間限定キャンペーン</p>
+      <p class="tag">10/31（土）までのキャンペーン</p>
       <p class="lead">オンライン簿記講座の<br />受講料が</p>
       <p class="off num">20<small>%OFF</small></p>
       <p class="price">3級コース <span class="num">7,840</span> 円〜（税込）</p>
@@ -670,8 +671,8 @@
     <div class="banner b s300" data-name="b-300x250">
       <span class="ring r1"></span>
       <p class="logo"><svg><use href="#logo-w" /></svg>ボキコツ</p>
-      <p class="tag">期間限定</p>
-      <p class="lead">簿記講座が</p>
+      <p class="tag">10/31（土）まで</p>
+      <p class="lead">簿記講座の受講料が</p>
       <p class="off num">20<small>%OFF</small></p>
       <p class="price">3級 <span class="num">7,840</span> 円〜（税込）</p>
       <a class="btn">まずは無料体験</a>
@@ -681,7 +682,7 @@
       <span class="ring r1"></span>
       <p class="logo"><svg><use href="#logo-w" /></svg>ボキコツ</p>
       <p class="off num">20<small>%OFF</small></p>
-      <p class="lead">簿記講座<br />期間限定</p>
+      <p class="lead">受講料<br />10/31まで</p>
       <a class="btn">無料体験</a>
     </div>
   </body>

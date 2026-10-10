@@ -764,6 +764,17 @@
     }
   }
 
+  // 受講期間を超えるペースのときの案内
+  &__warn {
+    margin-top: 10px;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    background: var(--color-yellow);
+    color: var(--color-text);
+    font-size: rem(13);
+    font-weight: 700;
+  }
+
   &__example {
     margin-top: 8px;
     font-size: rem(13);
