@@ -1,0 +1,275 @@
+@use '../foundation/mixins' as *;
+
+// ===== 個人情報の取り扱いなど、文章だけのページ =====
+.p-doc-text {
+  padding-bottom: var(--section-space);
+
+  &__demo {
+    padding: 14px 18px;
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-sub);
+    font-size: rem(14);
+  }
+
+  h2 {
+    margin: 40px 0 10px;
+    font-size: rem(19);
+  }
+
+  p {
+    color: var(--color-text-sub);
+  }
+
+  a,
+  &__link {
+    color: var(--color-primary);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+// 特定商取引法に基づく表記の表
+.p-doc-text__table {
+  width: 100%;
+  margin-top: 28px;
+  border-collapse: collapse;
+  font-size: rem(14.5);
+
+  th,
+  td {
+    padding: 14px 12px;
+    border-bottom: 1px solid var(--color-border);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  th {
+    width: 11em;
+    font-weight: 700;
+  }
+
+  td {
+    color: var(--color-text-sub);
+  }
+
+  @media (max-width: 599px) {
+    th,
+    td {
+      display: block;
+      width: auto;
+    }
+
+    th {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+  }
+}
+
+// ===== 申し込みの完了ページ =====
+.p-thanks {
+  padding-block: 56px var(--section-space);
+  text-align: center;
+
+  &__icon {
+    display: grid;
+    place-items: center;
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: #fff;
+
+    svg {
+      width: 36px;
+      height: 36px;
+    }
+  }
+
+  h1 {
+    font-size: clamp(rem(24), 3.4vw, rem(32));
+    font-weight: 900;
+  }
+
+  &__lead {
+    margin-top: 14px;
+    color: var(--color-text-sub);
+
+    strong {
+      color: var(--color-text);
+    }
+  }
+
+  &__steps {
+    display: grid;
+    gap: 12px;
+    margin: 36px 0 24px;
+    text-align: left;
+
+    li {
+      display: flex;
+      gap: 16px;
+      padding: 18px 20px;
+      border-radius: var(--radius);
+      background: var(--color-bg-sub);
+    }
+
+    h2 {
+      font-size: rem(17);
+      font-weight: 900;
+    }
+
+    p {
+      color: var(--color-text-sub);
+      font-size: rem(14);
+    }
+  }
+
+  &__no {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: #fff;
+    font-family: var(--font-num);
+    font-size: rem(18);
+    font-weight: 800;
+  }
+
+  &__help,
+  &__demo {
+    color: var(--color-text-sub);
+    font-size: rem(13.5);
+  }
+
+  &__demo {
+    margin-bottom: 28px;
+  }
+}
+
+main:has(.p-thanks) + .l-footer {
+  margin-top: 0;
+}
+
+// ===== 広告バナーの一覧（ポートフォリオ用） =====
+.p-banners {
+  padding-bottom: var(--section-space);
+
+  &__intro {
+    max-width: 46em;
+    margin: 0 auto 48px;
+    padding: 20px 24px;
+    border-radius: var(--radius);
+    background: var(--color-bg-sub);
+    font-size: rem(15);
+
+    p + p {
+      margin-top: 10px;
+    }
+  }
+
+  code {
+    padding: 1px 6px;
+    border-radius: 5px;
+    background: #fff;
+    font-size: 0.88em;
+    letter-spacing: 0;
+    word-break: break-all;
+  }
+
+  &__size + &__size {
+    margin-top: 56px;
+  }
+
+  h2 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 14px;
+    margin-bottom: 18px;
+    font-family: var(--font-num);
+    font-size: rem(24);
+    font-weight: 800;
+
+    small {
+      color: var(--color-text-sub);
+      font-family: var(--font-base);
+      font-size: rem(14);
+      font-weight: 700;
+    }
+  }
+
+  &__pair {
+    display: grid;
+    gap: 24px;
+
+    @include md {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    // 小さいサイズは等倍で並べる（拡大するとぼやけて実際の見え方と変わるため）
+    &--300x250,
+    &--320x100 {
+      grid-template-columns: repeat(auto-fill, minmax(320px, max-content));
+    }
+  }
+
+  &__item {
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      box-shadow: 0 0 0 1px var(--color-border), var(--shadow);
+      transition: transform var(--duration);
+    }
+
+    a:hover img {
+      transform: translateY(-3px);
+    }
+
+    figcaption {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px 10px;
+      margin-top: 10px;
+      font-size: rem(13);
+    }
+
+    code {
+      background: var(--color-bg-sub);
+    }
+  }
+
+  &__variant {
+    padding: 1px 10px;
+    border-radius: var(--radius-pill);
+    font-weight: 800;
+
+    &--a {
+      background: #e2f3ea;
+      color: var(--color-primary-deep);
+    }
+
+    &--b {
+      background: #fff1c9;
+      color: #7a4b00;
+    }
+  }
+
+  &__note {
+    margin-top: 48px;
+    color: var(--color-text-sub);
+    font-size: rem(13.5);
+    text-align: center;
+  }
+}
+
+main:has(.p-banners) + .l-footer {
+  margin-top: 0;
+}

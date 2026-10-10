@@ -1,0 +1,59 @@
+@use 'mixins' as *;
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 16px); // ページ内リンクの移動先がヘッダーに隠れないように
+
+  // モーダルを開いて背面のスクロールを止めたとき、スクロールバーの分だけ横にずれないように。
+  // スマホ（スクロールバーが重なって出る）では不要で、ヘッドレスのブラウザでは幅を取ってしまうので PC 幅だけ
+  @include md {
+    scrollbar-gutter: stable;
+  }
+}
+
+body {
+  font-family: var(--font-base);
+  font-size: rem(15);
+  line-height: 1.85;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+
+  @include md {
+    font-size: rem(16);
+  }
+}
+
+// em の letter-spacing は宣言した要素で px に計算されてから継承される。
+// body にだけ書くと見出しも本文と同じ px 幅になるので、各要素で指定し直す
+:where(body, body *) {
+  letter-spacing: var(--letter-spacing);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-head);
+  line-height: 1.45;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// hidden 属性は、display を指定した要素でも必ず隠す（キャンペーンの帯など、JS で出し入れするもの）
+[hidden] {
+  display: none !important;
+}

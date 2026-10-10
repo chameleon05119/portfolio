@@ -1,0 +1,52 @@
+// デザイントークン（「深緑 × オレンジ × クリーム」: 落ち着いた学びの緑に、申し込みボタンだけオレンジを使う）
+:root {
+  // 色（文字と背景のコントラストは 4.5:1 以上。黄色はマーカーと飾りだけに使う）
+  --color-text: #1d2b3a;
+  --color-text-sub: #536273;
+  --color-bg: #fff;
+  --color-bg-sub: #f3f8f5; // 交互のセクション
+  --color-cream: #fff8e6; // お悩み・料金などの暖かい面
+  --color-card: #fff;
+  --color-border: #dce7e1;
+  --color-border-input: #7c8b98; // 入力欄・選択肢の枠（白地で 3:1 以上）
+  --color-primary: #0b6e4f; // ブランドの緑（見出しのラベル・アイコン・リンク）
+  --color-primary-deep: #0a4f3b; // 緑の面（白文字 8:1 以上）
+  --color-on-primary: #fff;
+  --color-cta: #c74800; // 申し込みボタンだけに使うオレンジ（白文字 4.8:1）
+  --color-cta-hover: #a93d00;
+  --color-marker: #ffe066; // 文字の下に引くマーカー
+  --color-yellow: #ffc83d;
+  --color-price: #d1242f; // キャンペーン価格・締切（太字でだけ使う）
+  --color-error: #c81e3a;
+
+  // 文字
+  --font-base: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', YuGothic, 'Noto Sans JP', Meiryo, sans-serif; // 本文は OS のフォント
+  --font-head: 'Zen Kaku Gothic New', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+  --font-num: 'Barlow', 'Helvetica Neue', Arial, sans-serif; // 数字・英字ラベル
+  --letter-spacing: 0.03em;
+
+  // レイアウト
+  --container-width: 1080px;
+  --container-padding: 20px;
+  --header-height: 60px;
+  --section-space: 72px;
+
+  // 角丸・影・動き
+  --radius-sm: 10px;
+  --radius: 18px;
+  --radius-panel: 28px;
+  --radius-pill: 999px;
+  --shadow: 0 18px 40px -22px rgb(29 43 58 / 0.35);
+  --shadow-card: 0 0 0 1px var(--color-border), 0 12px 30px -24px rgb(29 43 58 / 0.35);
+  --shadow-cta: 0 6px 0 #8a3200; // 押せるボタンに見える下の厚み
+  --duration: 0.25s;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --container-padding: 40px;
+    --header-height: 68px;
+    --section-space: 104px;
+  }
+}

@@ -177,6 +177,11 @@
 .d-shots { display:grid; grid-template-columns:minmax(0,3fr) minmax(0,1fr); gap:20px; align-items:start; margin-top:16px; }
 .d-shots figure { margin:0; }
 .d-shots figcaption { font-size:13px; color:var(--sub); margin-top:8px; text-align:center; }
+.d-gallery { list-style:none; padding:0; margin:16px 0 0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px 20px; align-items:end; }
+.d-gallery li { margin:0; }
+.d-gallery img { display:block; width:100%; height:auto; border-radius:6px; box-shadow:var(--shadow); }
+.d-gallery li.is-small img { width:auto; max-width:100%; }
+.d-gallery span { display:block; margin-top:8px; font-size:13px; color:var(--sub); }
 .scroller { height:560px; overflow:auto; border-radius:var(--radius); background:var(--surface); box-shadow:var(--shadow); overscroll-behavior:contain; }
 .scroller:focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
 .scroller img { width:100%; height:auto; display:block; }

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- include: head.html -->
+    <title>お申し込みありがとうございます | ボキコツ（デモサイト）</title>
+    <meta name="description" content="ボキコツ（デモサイト）の無料体験のお申し込みが完了しました。" />
+    <meta property="og:title" content="お申し込みありがとうございます | ボキコツ（デモサイト）" />
+    <meta property="og:description" content="ボキコツ（デモサイト）の無料体験のお申し込みが完了しました。" />
+  </head>
+  <!-- 申し込みの完了ページ。main.js がここで generate_lead（コンバージョン）を 1 回だけ送る -->
+  <body data-page="thanks" data-thanks>
+    <!-- include: icons.html -->
+    <!-- include: header.html -->
+    <main id="main">
+      <div class="l-container l-container--narrow">
+        <div class="p-thanks">
+          <p class="p-thanks__icon" aria-hidden="true"><svg><use href="#i-check" /></svg></p>
+          <h1>お申し込みありがとうございます</h1>
+          <p class="p-thanks__lead">ご登録のメールアドレスに、体験用のログイン URL をお送りしました。<br class="u-pc-only" /><span data-thanks-level hidden>まずは<strong data-thanks-level-name></strong>の第1回から始めてみましょう。</span></p>
+          <ol class="p-thanks__steps">
+            <li><span class="p-thanks__no">1</span><div><h2>メールの URL を開く</h2><p>届いたメールの「体験をはじめる」を押すと、すぐに講義が見られます。</p></div></li>
+            <li><span class="p-thanks__no">2</span><div><h2>ホーム画面に追加する</h2><p>スマホのホーム画面に追加しておくと、通勤中にすぐ開けます。</p></div></li>
+            <li><span class="p-thanks__no">3</span><div><h2>1日15分、3日間ためす</h2><p>体験の 3 日目に、学習の記録をまとめたメールをお送りします。</p></div></li>
+          </ol>
+          <p class="p-thanks__help">メールが届かないときは、迷惑メールのフォルダもご確認ください。</p>
+          <p class="p-thanks__demo">デモのため、メールは実際には送られません。</p>
+          <a class="c-button c-button--ghost" href="index.html">トップへ戻る</a>
+        </div>
+      </div>
+    </main>
+    <!-- include: footer.html -->
+  </body>
+</html>

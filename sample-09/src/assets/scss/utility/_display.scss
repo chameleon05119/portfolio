@@ -1,0 +1,16 @@
+@use '../foundation/mixins' as *;
+
+// 改行をスマホだけ・PC だけにする
+.u-sp-only {
+  @include md {
+    display: none;
+  }
+}
+
+.u-pc-only {
+  display: none;
+
+  @include md {
+    display: inline;
+  }
+}
