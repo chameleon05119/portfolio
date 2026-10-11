@@ -1,0 +1,10 @@
+@use '../foundation/mixins' as *;
+
+// 改行を PC 幅だけにする
+.u-md-only {
+  display: none;
+
+  @include md {
+    display: inline;
+  }
+}

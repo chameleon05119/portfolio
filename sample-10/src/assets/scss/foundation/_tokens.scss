@@ -1,0 +1,51 @@
+// デザイントークン（「紺 × 若葉の緑 × 生成り」: 信頼感の紺に、事務所名の木の緑。予約ボタンだけ朱色）
+:root {
+  // 色（文字と背景のコントラストは 4.5:1 以上。黄色は星の飾りだけに使う）
+  --color-text: #1f2a33;
+  --color-text-sub: #55626d;
+  --color-bg: #fffdf8;
+  --color-bg-sub: #f5f1e7; // 交互のセクション（生成り）
+  --color-green-soft: #e7f0e4;
+  --color-card: #fff;
+  --color-border: #e4ded0;
+  --color-border-input: #7d8790; // 入力欄・選択肢の枠（白地で 3:1 以上）
+  --color-primary: #173f5f; // 紺（見出し・リンク・面）
+  --color-primary-hover: #0f2f48;
+  --color-on-primary: #fff;
+  --color-green: #286b42; // チェック・ラベル（白地で 4.5:1 以上）
+  --color-cta: #c24914; // 予約ボタンだけに使う朱色（白文字 4.5:1 以上）
+  --color-cta-hover: #a33c0f;
+  --color-cta-shadow: #7f2e0b;
+  --color-star: #f2b33d;
+  --color-error: #c81e3a;
+
+  // 文字
+  --font-base: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', YuGothic, 'Noto Sans JP', Meiryo, sans-serif; // 本文は OS のフォント
+  --font-head: 'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+  --font-num: 'Outfit', 'Helvetica Neue', Arial, sans-serif; // 数字・英字ラベル
+  --letter-spacing: 0.04em;
+
+  // レイアウト
+  --container-width: 1080px;
+  --container-padding: 20px;
+  --header-height: 64px;
+  --section-space: 72px;
+
+  // 角丸・影・動き
+  --radius-sm: 10px;
+  --radius: 16px;
+  --radius-panel: 28px;
+  --radius-pill: 999px;
+  --shadow: 0 18px 40px -22px rgb(23 63 95 / 0.35);
+  --shadow-card: 0 0 0 1px var(--color-border), 0 12px 30px -24px rgb(23 63 95 / 0.4);
+  --duration: 0.25s;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --container-padding: 40px;
+    --header-height: 76px;
+    --section-space: 112px;
+  }
+}

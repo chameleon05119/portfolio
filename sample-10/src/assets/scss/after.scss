@@ -1,0 +1,28 @@
+// リニューアル後のサイト（after/）のスタイル。FLOCSS をベースにした構成
+//   foundation: リセット・トークン・ベース要素
+//   layout (l-): ヘッダー・フッター・コンテナ・スマホの固定バーなどページ骨格
+//   component (c-): ボタン・見出し・チェックの箇条書き・FAQ・フォーム
+//   project (p-): トップページのセクションと、個人情報のページ
+//   utility (u-): 1つの役割だけを持つ補助クラス
+@use 'foundation/reset';
+@use 'foundation/tokens';
+@use 'foundation/base';
+
+@use 'layout/container';
+@use 'layout/header';
+@use 'layout/footer';
+@use 'layout/bottom-bar';
+@use 'layout/page-head';
+
+@use 'component/button';
+@use 'component/section-head';
+@use 'component/checks';
+@use 'component/faq';
+@use 'component/form';
+
+@use 'project/top';
+
+@use 'utility/visually-hidden';
+@use 'utility/reveal';
+@use 'utility/nowrap';
+@use 'utility/display';

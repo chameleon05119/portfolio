@@ -60,7 +60,7 @@ const no = String(index + 1).padStart(2, '0');
             {w.gallery.note && <p class="d-note">{w.gallery.note}</p>}
             <ul class="d-gallery">
               {w.gallery.items.map(([src, width, height, label]) => (
-                <li class={width <= 320 ? 'is-small' : ''}><img src={`${base}${src}`} width={width} height={height} alt={`${w.gallery.title}（${label}）`} loading="lazy" decoding="async" /><span>{label}</span></li>
+                <li class={width <= 320 ? 'is-small' : height > width ? 'is-tall' : ''}><img src={`${base}${src}`} width={width} height={height} alt={`${w.gallery.title}（${label}）`} loading="lazy" decoding="async" /><span>{label}</span></li>
               ))}
             </ul>
           </>

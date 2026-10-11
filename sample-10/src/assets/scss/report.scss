@@ -1,0 +1,538 @@
+// 比較ページ（src/index.html）のスタイル。作品の説明なので、事務所のサイトとは別の落ち着いた見た目にする
+@use 'foundation/reset';
+@use 'foundation/mixins' as *;
+
+:root {
+  --r-text: #1f2328;
+  --r-sub: #59636e;
+  --r-bg: #fff;
+  --r-panel: #f6f7f9;
+  --r-line: #d8dde3;
+  --r-accent: #173f5f;
+  --r-before: #8a5a00;
+  --r-after: #1f7a44;
+}
+
+body {
+  font-family: system-ui, -apple-system, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', sans-serif;
+  font-size: rem(16);
+  line-height: 1.85;
+  color: var(--r-text);
+  background: var(--r-bg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--r-accent);
+  outline-offset: 3px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.r-page {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 48px 20px 64px;
+
+  @include md {
+    padding: 72px 40px 80px;
+  }
+}
+
+.r-hero {
+  &__label {
+    color: var(--r-sub);
+    font-size: rem(13);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  &__title {
+    margin-top: 8px;
+    font-size: clamp(rem(26), 4vw, rem(40));
+    line-height: 1.4;
+  }
+
+  &__lead {
+    max-width: 44em;
+    margin-top: 16px;
+    color: var(--r-sub);
+
+    strong {
+      color: var(--r-text);
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
+  }
+}
+
+.r-btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 46px;
+  padding: 8px 20px;
+  border: 1.5px solid var(--r-line);
+  border-radius: 8px;
+  color: var(--r-accent);
+  font-weight: 700;
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: var(--r-accent);
+  }
+
+  &--main {
+    border-color: var(--r-accent);
+    background: var(--r-accent);
+    color: #fff;
+  }
+}
+
+.r-section {
+  margin-top: 64px;
+
+  @include md {
+    margin-top: 88px;
+  }
+
+  &__title {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--r-text);
+    font-size: clamp(rem(21), 2.6vw, rem(26));
+    line-height: 1.5;
+  }
+}
+
+.r-text {
+  margin-bottom: 20px;
+  color: var(--r-sub);
+}
+
+.r-note {
+  margin-top: 10px;
+  color: var(--r-sub);
+  font-size: rem(13.5);
+}
+
+// ---------- PC / スマホの切り替え ----------
+.r-tabs {
+  display: inline-flex;
+  margin-bottom: 16px;
+  padding: 4px;
+  border-radius: 10px;
+  background: var(--r-panel);
+
+  button {
+    min-width: 96px;
+    min-height: 40px;
+    padding: 4px 16px;
+    border-radius: 8px;
+    color: var(--r-sub);
+    font-weight: 700;
+
+    &[aria-selected='true'] {
+      background: #fff;
+      color: var(--r-text);
+      box-shadow: 0 1px 3px rgb(0 0 0 / 0.15);
+    }
+  }
+}
+
+// ---------- 重ねて比べるスライダー ----------
+.r-slider {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--r-line);
+  border-radius: 10px;
+  user-select: none;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  // リニューアル前の画像を、つまみの位置で切り取る
+  &__before {
+    position: absolute;
+    inset: 0;
+    clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+
+    // 境目の線
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: var(--pos);
+      width: 3px;
+      margin-left: -1.5px;
+      background: #fff;
+      box-shadow: 0 0 0 1px rgb(0 0 0 / 0.25);
+    }
+  }
+
+  &__tag {
+    position: absolute;
+    top: 12px;
+    padding: 2px 12px;
+    border-radius: 999px;
+    color: #fff;
+    font-size: rem(13);
+    font-weight: 700;
+    pointer-events: none;
+
+    &--before {
+      left: 12px;
+      background: var(--r-before);
+    }
+
+    &--after {
+      right: 12px;
+      background: var(--r-after);
+    }
+  }
+
+  // つまみ。画像全体に重ねた range をそのまま操作する（キーボードの左右キーでも動く）
+  &__range {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background: transparent;
+    cursor: ew-resize;
+    touch-action: pan-y; // スマホでは、画像の上でも縦のスクロールを妨げない
+    appearance: none;
+
+    &::-webkit-slider-runnable-track {
+      height: 100%;
+      background: transparent;
+    }
+
+    &::-moz-range-track {
+      height: 100%;
+      background: transparent;
+    }
+
+    // つまみ自体は見せず、上の __handle を見た目にする（トラックのどこを押しても、つまみがそこへ動く）
+    &::-webkit-slider-thumb {
+      width: 44px;
+      height: 44px;
+      opacity: 0;
+      appearance: none;
+    }
+
+    &::-moz-range-thumb {
+      width: 44px;
+      height: 44px;
+      border: 0;
+      opacity: 0;
+    }
+
+    &:focus-visible {
+      outline: 3px solid var(--r-accent);
+      outline-offset: -3px;
+    }
+  }
+
+  // 境目の丸いつまみ（見た目だけ）
+  &__handle {
+    position: absolute;
+    top: 50%;
+    left: var(--pos);
+    width: 44px;
+    height: 44px;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    background: var(--r-accent)
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m9 7-5 5 5 5M15 7l5 5-5 5' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+      center / 22px no-repeat;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.35);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+}
+
+// ---------- スマホの画面を並べる ----------
+.r-phones {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 300px));
+  justify-content: center;
+  gap: 16px;
+
+  @include md {
+    gap: 48px;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--r-line);
+    border-radius: 18px;
+  }
+
+  figcaption {
+    margin-top: 10px;
+    color: var(--r-sub);
+    font-size: rem(13.5);
+    line-height: 1.6;
+
+    b {
+      margin-right: 6px;
+      padding: 0 8px;
+      border-radius: 999px;
+      color: #fff;
+      font-size: rem(12);
+    }
+  }
+
+  figure:first-child b {
+    background: var(--r-before);
+  }
+
+  figure:last-child b {
+    background: var(--r-after);
+  }
+}
+
+// ---------- 数字の表 ----------
+.r-table-wrap {
+  overflow-x: auto;
+}
+
+.r-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: rem(13.5);
+
+  @include md {
+    font-size: rem(14.5);
+  }
+
+  th,
+  td {
+    padding: 10px 8px;
+    border-bottom: 1px solid var(--r-line);
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  thead th {
+    color: var(--r-sub);
+    font-size: rem(13);
+  }
+
+  tbody th {
+    width: 32%;
+  }
+
+  td:nth-child(2) {
+    color: var(--r-sub);
+  }
+
+  b {
+    color: var(--r-after);
+  }
+}
+
+// ---------- 課題と改善 ----------
+.r-issues {
+  display: grid;
+  gap: 48px;
+}
+
+.r-issue {
+  &__title {
+    display: flex;
+    gap: 12px;
+    font-size: rem(18);
+    line-height: 1.55;
+
+    @include md {
+      font-size: rem(20);
+    }
+
+    span {
+      flex: none;
+      color: var(--r-accent);
+      font-variant-numeric: tabular-nums;
+    }
+  }
+
+  &__compare {
+    display: grid;
+    gap: 12px;
+    margin-top: 16px;
+    padding: 16px;
+    border-radius: 10px;
+    background: var(--r-panel);
+
+    @include md {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 20px;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--r-line);
+      border-radius: 6px;
+      background: #fff;
+    }
+
+    figcaption {
+      display: inline-block;
+      margin-bottom: 6px;
+      padding: 0 10px;
+      border-radius: 999px;
+      color: #fff;
+      font-size: rem(12);
+      font-weight: 700;
+    }
+
+    figure:first-child figcaption {
+      background: var(--r-before);
+    }
+
+    figure:last-child figcaption {
+      background: var(--r-after);
+    }
+  }
+
+  &__text {
+    margin-top: 14px;
+    color: var(--r-sub);
+
+    b {
+      color: var(--r-text);
+    }
+  }
+}
+
+// ---------- 構成の比較 ----------
+.r-structure {
+  display: grid;
+  gap: 16px;
+
+  @include md {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  &__col {
+    padding: 20px 22px;
+    border-radius: 10px;
+    background: var(--r-panel);
+
+    h3 {
+      margin-bottom: 8px;
+      color: var(--r-before);
+      font-size: rem(16);
+    }
+
+    ol {
+      padding-left: 1.4em;
+      list-style: decimal;
+    }
+
+    li {
+      padding: 6px 0;
+      border-bottom: 1px solid var(--r-line);
+
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+
+    small {
+      display: block;
+      color: var(--r-sub);
+      font-size: rem(13);
+      line-height: 1.4;
+    }
+
+    &--after {
+      background: #eef6f0;
+
+      h3 {
+        color: var(--r-after);
+      }
+    }
+  }
+}
+
+// ---------- 進め方 ----------
+.r-process {
+  display: grid;
+  gap: 12px;
+  counter-reset: step;
+
+  li {
+    position: relative;
+    padding: 16px 18px 16px 60px;
+    border-radius: 10px;
+    background: var(--r-panel);
+    color: var(--r-sub);
+    counter-increment: step;
+
+    &::before {
+      content: counter(step);
+      position: absolute;
+      top: 16px;
+      left: 18px;
+      display: grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--r-accent);
+      color: #fff;
+      font-size: rem(14);
+      font-weight: 700;
+    }
+  }
+
+  b {
+    display: block;
+    color: var(--r-text);
+  }
+}
+
+// ---------- 概要 ----------
+.r-spec {
+  div {
+    display: grid;
+    gap: 2px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--r-line);
+
+    @include md {
+      grid-template-columns: 7em 1fr;
+      gap: 16px;
+    }
+  }
+
+  dt {
+    color: var(--r-sub);
+    font-weight: 700;
+  }
+}
+
+.r-footer {
+  margin-top: 64px;
+  padding: 16px 18px;
+  border-radius: 10px;
+  background: var(--r-panel);
+  color: var(--r-sub);
+  font-size: rem(13.5);
+}
