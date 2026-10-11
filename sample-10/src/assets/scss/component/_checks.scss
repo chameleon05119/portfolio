@@ -1,0 +1,26 @@
+@use '../foundation/mixins' as *;
+
+// チェックの付いた箇条書き
+.c-checks {
+  display: grid;
+  gap: 6px;
+
+  li {
+    position: relative;
+    padding-left: 28px;
+    line-height: 1.6;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0.2em;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--color-green-soft)
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m6 12.5 4 4 8-9' fill='none' stroke='%23286b42' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+        center / 14px no-repeat;
+    }
+  }
+}

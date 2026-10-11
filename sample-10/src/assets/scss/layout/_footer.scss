@@ -1,0 +1,57 @@
+@use '../foundation/mixins' as *;
+
+.l-footer {
+  padding: 56px 0 28px;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: rem(14);
+
+  &__cols {
+    display: grid;
+    gap: 32px;
+
+    @include md {
+      grid-template-columns: 1fr auto;
+      align-items: start;
+    }
+  }
+
+  &__address {
+    margin-top: 16px;
+    color: rgb(255 255 255 / 0.85);
+    font-size: rem(13.5);
+  }
+
+  &__nav {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px 32px;
+
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__demo {
+    margin-top: 36px;
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    background: rgb(255 255 255 / 0.1);
+    font-size: rem(13);
+  }
+
+  &__copy {
+    margin-top: 24px;
+    color: rgb(255 255 255 / 0.75);
+    text-align: center;
+  }
+}
+
+// 画面下の固定バーでフッターの最後が隠れないように
+body:has(.l-bottom-bar) .l-footer {
+  padding-bottom: 104px;
+
+  @include md {
+    padding-bottom: 28px;
+  }
+}

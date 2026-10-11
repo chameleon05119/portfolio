@@ -1,0 +1,61 @@
+@use '../foundation/mixins' as *;
+
+// セクションの見出し（英字の小さなラベル＋見出し＋リード文）
+.c-section-head {
+  margin-bottom: 36px;
+  text-align: center;
+
+  @include md {
+    margin-bottom: 52px;
+  }
+
+  &__en {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    color: var(--color-green);
+    font-family: var(--font-num);
+    font-size: rem(14);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+
+    // 事務所名にちなんだ小さな星
+    &::before {
+      content: '';
+      width: 12px;
+      height: 12px;
+      background: var(--color-star);
+      clip-path: polygon(50% 0, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+  }
+
+  &__title {
+    color: var(--color-primary);
+    font-size: clamp(rem(24), 3.2vw, rem(34));
+  }
+
+  &__lead {
+    max-width: 40em;
+    margin: 14px auto 0;
+    color: var(--color-text-sub);
+  }
+
+  &--left {
+    text-align: left;
+  }
+
+  &--light {
+    .c-section-head__en {
+      color: #bfe3c8;
+    }
+
+    .c-section-head__title {
+      color: #fff;
+    }
+
+    .c-section-head__lead {
+      color: rgb(255 255 255 / 0.85);
+    }
+  }
+}

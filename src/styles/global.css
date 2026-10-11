@@ -181,6 +181,8 @@
 .d-gallery li { margin:0; }
 .d-gallery img { display:block; width:100%; height:auto; border-radius:6px; box-shadow:var(--shadow); }
 .d-gallery li.is-small img { width:auto; max-width:100%; }
+.d-gallery li.is-tall img { width:auto; max-width:100%; max-height:520px; margin-inline:auto; } /* スマホの縦長の画面 */
+.d-gallery li.is-tall span { text-align:center; }
 .d-gallery span { display:block; margin-top:8px; font-size:13px; color:var(--sub); }
 .scroller { height:560px; overflow:auto; border-radius:var(--radius); background:var(--surface); box-shadow:var(--shadow); overscroll-behavior:contain; }
 .scroller:focus-visible { outline:2px solid var(--accent); outline-offset:3px; }

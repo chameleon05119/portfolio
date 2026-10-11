@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>税理士事務所サイトのトップページ リニューアル（前後の比較）</title>
+    <meta name="description" content="古い税理士事務所のトップページを、スマホで読める・料金が分かる・夜や休日も予約できるサイトにリニューアルした作品。リニューアル前後の画面、課題と改善、数値の比較をまとめています。" />
+    <link rel="icon" href="favicon.svg" />
+    <link rel="stylesheet" href="assets/scss/report.scss" />
+    <script src="assets/js/report.js" defer></script>
+  </head>
+  <body>
+    <main class="r-page">
+      <header class="r-hero">
+        <p class="r-hero__label">WORKS ／ サイトのリニューアル</p>
+        <h1 class="r-hero__title">税理士事務所サイトの<br />トップページ リニューアル</h1>
+        <p class="r-hero__lead">7年以上更新が止まっていた、架空の税理士事務所「ほしの木税理士事務所」のトップページを、<strong>スマホで読めて、料金が分かり、夜や休日にも予約できる</strong>サイトに作り直しました。課題の整理・構成・デザイン・コーディングまで担当しています。</p>
+        <ul class="r-hero__links">
+          <li><a class="r-btn r-btn--main" href="after/index.html">リニューアル後のサイトを見る</a></li>
+          <li><a class="r-btn" href="before/index.html">リニューアル前のサイトを見る</a></li>
+        </ul>
+      </header>
+
+      <!-- 前後を重ねて比べる。つまみ（range）を動かすと、左がリニューアル前・右が後 -->
+      <section class="r-section" aria-labelledby="h-compare">
+        <h2 class="r-section__title" id="h-compare">最初の画面を比べる</h2>
+        <div class="r-tabs" role="tablist" aria-label="画面の幅">
+          <button type="button" role="tab" id="tab-pc" aria-controls="panel-pc" aria-selected="true">PC</button>
+          <button type="button" role="tab" id="tab-sp" aria-controls="panel-sp" aria-selected="false" tabindex="-1">スマホ</button>
+        </div>
+        <div class="r-panel" id="panel-pc" role="tabpanel" aria-labelledby="tab-pc">
+          <div class="r-slider" data-slider style="--pos: 50%">
+            <img src="shots/after-pc.jpg" width="1280" height="800" alt="リニューアル後の PC の最初の画面。「はじめての確定申告も、開業の税金も。まず、無料で相談できます。」の見出しと、無料相談・オンライン・料金公開の3つの特長、予約ボタン" />
+            <div class="r-slider__before">
+              <img src="shots/before-pc.jpg" width="1280" height="800" alt="リニューアル前の PC の最初の画面。「ようこそ！」の一文と「親切・丁寧・迅速」の画像、左のメニュー、2019年で止まった新着情報" />
+            </div>
+            <span class="r-slider__tag r-slider__tag--before" aria-hidden="true">前</span>
+            <span class="r-slider__tag r-slider__tag--after" aria-hidden="true">後</span>
+            <span class="r-slider__handle" aria-hidden="true"></span>
+            <input class="r-slider__range" type="range" min="0" max="100" step="5" value="50" aria-label="リニューアル前の画面を表示する幅（%）" />
+          </div>
+          <p class="r-note">つまみを左右に動かすと、リニューアル前（左）と後（右）を重ねて比べられます。</p>
+        </div>
+        <div class="r-panel" id="panel-sp" role="tabpanel" aria-labelledby="tab-sp" hidden>
+          <div class="r-phones">
+            <figure>
+              <img src="shots/before-sp.jpg" width="780" height="1688" alt="リニューアル前をスマホで開いた画面。PC の画面がそのまま縮小され、文字が読めないほど小さい" loading="lazy" />
+              <figcaption><b>前</b>PC の画面がそのまま縮小され、本文は約 4.8px。拡大しないと読めない</figcaption>
+            </figure>
+            <figure>
+              <img src="shots/after-sp.jpg" width="780" height="1688" alt="リニューアル後をスマホで開いた画面。見出しと特長、予約ボタンが読める大きさで並ぶ" loading="lazy" />
+              <figcaption><b>後</b>スマホ用のレイアウト。本文 16px、予約ボタンは親指で押せる大きさ</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="r-section" aria-labelledby="h-numbers">
+        <h2 class="r-section__title" id="h-numbers">数字で比べる</h2>
+        <div class="r-table-wrap">
+          <table class="r-table">
+            <thead>
+              <tr><th scope="col">項目</th><th scope="col">前</th><th scope="col">後</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">スマホで見たときの本文の文字</th><td>約 4.8px（12px × 390 ÷ 980）</td><td><b>16px</b></td></tr>
+              <tr><th scope="row">料金の掲載</th><td>なし（「お問い合わせください」）</td><td><b>3プラン＋サービスごとの目安</b></td></tr>
+              <tr><th scope="row">予約・問い合わせの手段</th><td>電話・FAX・メール（平日 9〜17時）</td><td><b>予約フォーム（24時間）</b>＋電話</td></tr>
+              <tr><th scope="row">お知らせの最終更新</th><td>2019年4月</td><td><b>2026年10月</b></td></tr>
+              <tr><th scope="row">スマホ表示の指定（viewport）</th><td>なし</td><td><b>あり</b></td></tr>
+              <tr><th scope="row">Lighthouse アクセシビリティ</th><td>88（color-contrast・landmark-one-main で減点）</td><td><b>100</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="r-note">Lighthouse 13.5 のモバイル設定で 2 回計測し、同じ値でした（2026年10月）。ベストプラクティスは前後とも 100。表示の速さは、どちらも写真を使っていないため差が出ず、計測のたびに揺れるので載せていません。SEO の点は、デモとして検索に載せない設定（noindex）にしているので比べていません。</p>
+      </section>
+
+      <section class="r-section" aria-labelledby="h-issues">
+        <h2 class="r-section__title" id="h-issues">課題と、どう直したか</h2>
+        <ol class="r-issues">
+          <li class="r-issue">
+            <h3 class="r-issue__title"><span>01</span>最初の画面で、何をしてくれる事務所か分からない</h3>
+            <div class="r-issue__compare">
+              <figure><figcaption>前</figcaption><img src="shots/before-message.jpg" alt="前: 「親切・丁寧・迅速」「地域の皆様の頼れるパートナーとして」とだけ書かれた画像" loading="lazy" /></figure>
+              <figure><figcaption>後</figcaption><img src="shots/after-message.jpg" alt="後: 対象（個人事業主・フリーランス・小さな会社）と、無料相談・オンライン・料金公開の特長、予約ボタン" loading="lazy" /></figure>
+            </div>
+            <p class="r-issue__text">「親切・丁寧・迅速」はどの事務所にも当てはまり、選ぶ理由になりません。<b>誰のための事務所か（個人事業主・フリーランス・小さな会社）と、相談のしやすさ（無料・オンライン・料金公開）</b>を最初の画面に置き、予約ボタンをすぐ押せるようにしました。</p>
+          </li>
+          <li class="r-issue">
+            <h3 class="r-issue__title"><span>02</span>料金が書かれておらず、問い合わせをためらう</h3>
+            <div class="r-issue__compare">
+              <figure><figcaption>前</figcaption><img src="shots/before-price.jpg" alt="前: 「料金はお客様の業種、規模、業務内容等により異なりますので、お気軽にお問い合わせください」の一文だけ" loading="lazy" /></figure>
+              <figure><figcaption>後</figcaption><img src="shots/after-price.jpg" alt="後: 確定申告だけ 33,000円〜、個人の顧問 月9,900円〜、法人の顧問 月22,000円〜の3つのプラン" loading="lazy" /></figure>
+            </div>
+            <p class="r-issue__text">税理士を探す人がいちばん気にするのは費用です。料金の目安を3つのプランで載せ、<b>条件（記帳済みかどうか・税込）と「追加の費用は作業前に説明する」</b>ことを明記しました。迷う人のために「どれを選べばいい？」の図も付けています。</p>
+          </li>
+          <li class="r-issue">
+            <h3 class="r-issue__title"><span>03</span>業務内容が専門用語の羅列で、自分に関係あるか分からない</h3>
+            <div class="r-issue__compare">
+              <figure><figcaption>前</figcaption><img src="shots/before-service.jpg" alt="前: 法人税・消費税・地方税の申告書作成、法定調書合計表など、専門用語が並ぶ箇条書き" loading="lazy" /></figure>
+              <figure><figcaption>後</figcaption><img src="shots/after-service.jpg" alt="後: 個人事業主・これから開業する方・小さな会社・ご家族のこと、の4つの立場ごとのカード" loading="lazy" /></figure>
+            </div>
+            <p class="r-issue__text">業務の名前ではなく、<b>相談する人の立場（個人事業主・開業前・会社・家族）</b>で入口を分け、それぞれにできることと料金の目安を添えました。その前に「こんなことで困っていませんか？」を置き、自分のことだと気づける流れにしています。</p>
+          </li>
+          <li class="r-issue">
+            <h3 class="r-issue__title"><span>04</span>連絡手段が電話・FAX中心で、平日の日中しか受け付けていない</h3>
+            <div class="r-issue__compare">
+              <figure><figcaption>前</figcaption><img src="shots/before-contact.jpg" alt="前: 「お問い合わせ・ご相談は、お電話またはFAXにて承っております」の文章とメールアドレス" loading="lazy" /></figure>
+              <figure><figcaption>後</figcaption><img src="shots/after-contact.jpg" alt="後: 24時間受け付ける無料相談の予約フォームと、電話番号・相談できる時間の一覧" loading="lazy" /></figure>
+            </div>
+            <p class="r-issue__text">お客さんの多くは、日中に電話しづらい会社員や個人事業主です。<b>24時間受け付ける予約フォーム</b>を置き、前のサイトに書かれていなかった「オンライン相談は平日19時まで・土曜もできる」という強みを、前面に出しました（ヒアリングで聞き出す想定）。スマホでは画面の下に「電話・予約」のボタンが常に出ます。</p>
+          </li>
+          <li class="r-issue">
+            <h3 class="r-issue__title"><span>05</span>更新が止まって見え、人柄も伝わらない</h3>
+            <div class="r-issue__compare">
+              <figure><figcaption>前</figcaption><img src="shots/before-news.jpg" alt="前: 2019年4月で止まった新着情報" loading="lazy" /></figure>
+              <figure><figcaption>後</figcaption><img src="shots/after-news.jpg" alt="後: 2026年の最新のお知らせ3件だけを、ページの下に表示" loading="lazy" /></figure>
+            </div>
+            <p class="r-issue__text">2019年で止まった新着情報がページの一番上にあると、「今も営業しているのか」と不安になります。お知らせはページの下に<b>最新の3件だけ</b>を出すようにし、約 280 字のあいさつ文は、<b>税理士の顔と約 120 字の短いメッセージ</b>に変えました。</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="r-section" aria-labelledby="h-structure">
+        <h2 class="r-section__title" id="h-structure">ページの構成を、読む人の疑問の順に</h2>
+        <p class="r-text">前のサイトは「事務所が言いたい順」に並んでいました。リニューアル後は、相談を考えている人の頭に浮かぶ疑問の順に並べ替えています。</p>
+        <div class="r-structure">
+          <div class="r-structure__col">
+            <h3>前</h3>
+            <ol>
+              <li>新着情報（2019年で停止）</li>
+              <li>ごあいさつ（長い文章）</li>
+              <li>業務内容（専門用語の箇条書き）</li>
+              <li>料金について（「お問い合わせください」）</li>
+              <li>事務所概要</li>
+              <li>お問い合わせ（電話・FAX）</li>
+            </ol>
+          </div>
+          <div class="r-structure__col r-structure__col--after">
+            <h3>後</h3>
+            <ol>
+              <li>最初の画面<small>誰のための事務所？</small></li>
+              <li>お悩み<small>自分に関係ある？</small></li>
+              <li>3つの約束<small>ほかとどう違う？</small></li>
+              <li>サービス<small>何をしてくれる？</small></li>
+              <li>料金の目安<small>いくらかかる？</small></li>
+              <li>ご依頼の流れ<small>どう進む？</small></li>
+              <li>税理士の紹介・お客様の声<small>どんな人？</small></li>
+              <li>よくある質問・お知らせ<small>残った不安</small></li>
+              <li>無料相談の予約・アクセス<small>予約する</small></li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="r-section" aria-labelledby="h-process">
+        <h2 class="r-section__title" id="h-process">リニューアルの進め方</h2>
+        <ol class="r-process">
+          <li><b>今のサイトの確認</b>スマホでの表示・表示の速さ・問い合わせまでの導線を確認し、課題を一覧にします。</li>
+          <li><b>ヒアリング</b>お客さんの層、よく受ける質問、料金、ほかの事務所との違いをお聞きします。サイトに書かれていない強みが見つかることが多いです。</li>
+          <li><b>構成案</b>どの順番で何を伝えるかを、文章の入ったワイヤーフレームで確認していただきます。</li>
+          <li><b>デザイン・コーディング</b>スマホとPCの両方で作ります。お知らせなどをご自身で更新したい場合は、WordPress 化も別途対応できます。</li>
+          <li><b>公開前のチェック</b>全ページ・全幅の表示、リンク切れ、フォームの動き、文字のコントラストを確認してから公開します。</li>
+        </ol>
+      </section>
+
+      <section class="r-section" aria-labelledby="h-spec">
+        <h2 class="r-section__title" id="h-spec">制作の概要</h2>
+        <dl class="r-spec">
+          <div><dt>種類</dt><dd>既存サイトのトップページ リニューアル（デザイン変更・構成の見直し・スマホ対応）</dd></div>
+          <div><dt>業種</dt><dd>士業（税理士事務所）</dd></div>
+          <div><dt>担当</dt><dd>課題の整理・構成・文章・デザイン・コーディング</dd></div>
+          <div><dt>技術</dt><dd>HTML / SCSS（FLOCSS）/ JavaScript / Vite</dd></div>
+          <div><dt>対応</dt><dd>レスポンシブ、予約フォームの入力チェック、スマホの「電話・予約」固定バー、よくある質問の開閉、個人情報の取り扱いページ</dd></div>
+        </dl>
+      </section>
+
+      <footer class="r-footer">
+        <p>※ ポートフォリオ用の架空の作品です。事務所・人物・料金・お客様の声・住所・電話番号はすべて架空です。リニューアル前のサイトも、よくある古いサイトを再現するために作ったものです。写真は使わず、イラストは SVG で作成しています。</p>
+      </footer>
+    </main>
+  </body>
+</html>

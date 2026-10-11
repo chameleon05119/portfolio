@@ -9,6 +9,7 @@
 //   _site/sample-07/  ← sample-07（WordPress テーマ）の入口ページ・テーマの zip・初期データ・Playground の起動手順
 //   _site/sample-08/  ← sample-08 を Vite でビルドしたもの
 //   _site/sample-09/  ← sample-09 を Vite でビルドしたもの（広告バナーの PNG も含む）
+//   _site/sample-10/  ← sample-10 を Vite でビルドしたもの（比較ページ・リニューアル前 before/・後 after/）
 import { cp, rm } from 'node:fs/promises';
 import { execSync } from 'node:child_process';
 
@@ -49,4 +50,8 @@ await cp('sample-08/dist', '_site/sample-08', { recursive: true });
 run('npm ci --no-audit --no-fund', 'sample-09');
 run('npm run build', 'sample-09');
 await cp('sample-09/dist', '_site/sample-09', { recursive: true });
+
+run('npm ci --no-audit --no-fund', 'sample-10');
+run('npm run build', 'sample-10');
+await cp('sample-10/dist', '_site/sample-10', { recursive: true });
 console.log('assembled _site/');

@@ -1,0 +1,22 @@
+@use 'sass:math';
+
+// ブレークポイント。カンプの SP/PC 幅に合わせて変える
+$bp-md: 768px;
+$bp-lg: 1024px;
+
+@mixin md {
+  @media (min-width: $bp-md) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: $bp-lg) {
+    @content;
+  }
+}
+
+// カンプの px 値をそのまま書けるようにする（rem(24) → 1.5rem）
+@function rem($px) {
+  @return math.div($px, 16) * 1rem;
+}
