@@ -1,0 +1,63 @@
+@use '../foundation/mixins' as *;
+
+.c-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: rem(8);
+  min-height: rem(52);
+  max-width: 100%;
+  padding: rem(10) rem(28);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-btn);
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform var(--duration),
+    box-shadow var(--duration);
+
+  @media (hover: hover) {
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linejoin: round;
+  }
+}
+
+.c-button--line {
+  background-color: var(--color-bg);
+  color: var(--color-primary-text);
+}
+
+.c-button--white {
+  border-color: var(--color-bg);
+  background-color: var(--color-bg);
+  color: var(--color-primary-text);
+}
+
+.c-button--sm {
+  min-height: rem(44);
+  padding: rem(6) rem(20);
+  font-size: rem(14);
+}

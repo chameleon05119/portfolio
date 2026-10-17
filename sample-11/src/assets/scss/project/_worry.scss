@@ -1,0 +1,145 @@
+@use '../foundation/mixins' as *;
+
+.p-worry,
+.p-numbers,
+.p-points,
+.p-day,
+.p-sim,
+.p-voices,
+.p-welcome,
+.p-requirements,
+.p-faq,
+.p-entry {
+  padding-block: rem(56);
+
+  @include md {
+    padding-block: rem(88);
+  }
+}
+
+.p-worry__grid {
+  display: grid;
+  gap: rem(12);
+  max-width: 960px;
+  margin-inline: auto;
+
+  @include md {
+    grid-template-columns: 1fr 56px 1fr;
+    align-items: stretch;
+    gap: rem(16);
+  }
+
+  > * {
+    min-width: 0;
+  }
+}
+
+.p-worry__q,
+.p-worry__a {
+  display: grid;
+  gap: rem(10);
+  list-style: none;
+}
+
+.p-worry__q button {
+  display: flex;
+  align-items: center;
+  gap: rem(12);
+  width: 100%;
+  min-height: rem(60);
+  padding: rem(12) rem(16);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background-color: var(--color-bg);
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color var(--duration);
+
+  &::before {
+    content: '';
+    flex: 0 0 22px;
+    height: 22px;
+    border: 2px solid var(--color-text-sub);
+    border-radius: 6px;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--color-primary);
+    }
+  }
+
+  &[aria-pressed='true'] {
+    border-color: var(--color-primary);
+
+    &::before {
+      border-color: var(--color-primary);
+      background: var(--color-primary) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12l5 5 9-10' fill='none' stroke='%23fff' stroke-width='3'/%3E%3C/svg%3E") center / 16px no-repeat;
+    }
+  }
+
+  // JS が動かないときは押しても何も起きないので、ただの一覧として見せる
+  html:not(.js) & {
+    cursor: default;
+  }
+}
+
+.p-worry__arrow {
+  width: 40px;
+  margin: 0 auto;
+  color: var(--color-primary-text);
+  transform: rotate(90deg);
+
+  @include md {
+    align-self: center;
+    width: 48px;
+    transform: none;
+  }
+}
+
+.p-worry__a a {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: rem(4) rem(12);
+  min-height: rem(60);
+  height: 100%;
+  padding: rem(12) rem(16);
+  border: 2px solid transparent;
+  border-radius: var(--radius-card);
+  background-color: var(--color-bg);
+  text-decoration: none;
+  transition:
+    background-color var(--duration),
+    border-color var(--duration),
+    transform var(--duration);
+
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--color-primary);
+    }
+  }
+}
+
+.p-worry__a li.is-hit a {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-primary); // 色だけでなく枠の太さでも分かるようにする
+  background-color: var(--color-primary-soft);
+  transform: translateX(4px);
+}
+
+.p-worry__pt {
+  padding: 1px 10px;
+  border-radius: 999px;
+  background-color: var(--color-primary-soft);
+  color: var(--color-primary-text);
+  font-family: var(--font-num);
+  font-size: rem(12);
+  font-weight: 700;
+  white-space: nowrap;
+
+  .is-hit & {
+    background-color: var(--color-bg);
+  }
+}

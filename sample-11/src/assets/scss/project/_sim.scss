@@ -1,0 +1,117 @@
+@use '../foundation/mixins' as *;
+
+.p-sim__grid {
+  display: grid;
+  gap: rem(16);
+  max-width: 960px;
+  margin-inline: auto;
+
+  @include md {
+    grid-template-columns: 1.1fr 1fr;
+    gap: rem(24);
+  }
+
+  > * {
+    min-width: 0;
+  }
+}
+
+.p-sim__panel {
+  padding: rem(20);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background-color: var(--color-bg);
+
+  @include md {
+    padding: rem(28);
+  }
+}
+
+.p-sim__field {
+  border: 0;
+
+  & + & {
+    margin-top: rem(20);
+  }
+
+  legend,
+  .p-sim__label {
+    display: block;
+    margin-bottom: rem(8);
+    font-size: rem(14);
+    font-weight: 700;
+  }
+
+  output {
+    font-family: var(--font-num);
+    font-size: rem(18);
+    color: var(--color-primary-text);
+  }
+
+  input[type='range'] {
+    width: 100%;
+    height: 32px;
+    accent-color: var(--color-primary);
+    cursor: pointer;
+  }
+}
+
+.p-sim__hint {
+  font-size: rem(12);
+  color: var(--color-text-sub);
+}
+
+.p-sim__result {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  padding: rem(24) rem(20);
+  border-radius: var(--radius-card);
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  text-align: center;
+}
+
+.p-sim__total {
+  line-height: 1.1;
+
+  span {
+    font-size: rem(56);
+
+    @include md {
+      font-size: rem(64);
+    }
+  }
+
+  small {
+    margin-left: 4px;
+    font-size: rem(20);
+    font-weight: 700;
+  }
+}
+
+.p-sim__breakdown {
+  margin-block: rem(12);
+  list-style: none;
+  font-size: rem(13);
+  text-align: left;
+}
+
+.p-sim__note {
+  font-size: rem(12);
+}
+
+.p-sim__result .c-button {
+  margin-top: rem(16);
+}
+
+.p-sim__nojs {
+  margin-top: rem(12);
+  font-size: rem(13);
+  color: var(--color-text-sub);
+  text-align: center;
+
+  .js & {
+    display: none;
+  }
+}

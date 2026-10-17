@@ -1,0 +1,52 @@
+@use '../foundation/mixins' as *;
+
+.l-footer {
+  padding-block: rem(48) rem(120);
+  background-color: var(--color-bg-deep);
+  font-size: rem(14);
+
+  @include md {
+    padding-bottom: rem(40);
+  }
+
+  address {
+    font-style: normal;
+  }
+}
+
+.l-footer__grid {
+  display: grid;
+  gap: rem(24);
+
+  @include md {
+    grid-template-columns: 1fr 320px;
+    align-items: center;
+    gap: rem(48);
+  }
+}
+
+.l-footer__name {
+  margin-bottom: rem(8);
+  font-family: var(--font-head);
+  font-size: rem(18);
+  font-weight: 700;
+}
+
+.l-footer__note {
+  margin-top: rem(12);
+  font-size: rem(12);
+  color: var(--color-text-sub);
+}
+
+.l-footer__map {
+  width: 100%;
+  max-width: 400px;
+}
+
+.l-footer__bottom {
+  margin-top: rem(32);
+  padding-top: rem(16);
+  border-top: 1px solid rgb(31 58 54 / 0.15);
+  font-size: rem(12);
+  color: var(--color-text-sub);
+}

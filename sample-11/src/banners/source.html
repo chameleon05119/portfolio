@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1200" />
+    <title>広告バナーの原稿（書き出し用）｜ひより訪問看護ステーション（架空のデモ）</title>
+    <meta name="description" content="広告バナーを PNG に書き出すための原稿ページ（実寸）。架空の事業所のデモです。" />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="../favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800&family=Outfit:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/scss/style.scss" />
+    <style>
+      /* 書き出し用のページ。バナーを実寸で縦に並べる（scripts/banners.mjs が要素ごとに撮影する） */
+      body { background: #e8ecea; padding: 40px; }
+      .stack { display: grid; gap: 40px; justify-items: start; }
+    </style>
+  </head>
+  <body>
+    <h1 class="u-visually-hidden">広告バナーの原稿（書き出し用・実寸）</h1>
+    <div class="stack">
+      <div class="p-banner p-banner--square" id="banner-square">
+        <img class="p-banner__photo" src="../assets/images/mv-1200w.webp" alt="" />
+        <div class="p-banner__body">
+          <p class="p-banner__label">訪問看護の看護師 募集中</p>
+          <p class="p-banner__title">はじめての訪問看護、<br /><span class="p-banner__mark">3か月の同行</span>から。</p>
+          <p class="p-banner__chips"><span>月給31万円〜</span><span>年間休日125日</span><span>見学OK</span></p>
+          <p class="p-banner__name">ひより訪問看護ステーション</p>
+        </div>
+      </div>
+
+      <div class="p-banner p-banner--wide" id="banner-wide">
+        <div class="p-banner__body">
+          <p class="p-banner__label">看護師 募集中（常勤・パート）</p>
+          <p class="p-banner__title">その人の暮らしに、<br /><span class="p-banner__mark">いちばん近い看護</span>を。</p>
+          <p class="p-banner__chips"><span>同行研修3か月</span><span>オンコール希望制</span></p>
+          <p class="p-banner__cta">見学に申し込む</p>
+        </div>
+        <img class="p-banner__photo" src="../assets/images/visit-640w.webp" alt="" />
+      </div>
+
+      <div class="p-banner p-banner--sp" id="banner-sp">
+        <img class="p-banner__photo" src="../assets/images/visit-320w.webp" alt="" />
+        <div class="p-banner__body">
+          <p class="p-banner__title">訪問看護の看護師募集</p>
+          <p class="p-banner__sub">月給31万円〜・見学OK</p>
+          <p class="p-banner__name">ひより訪問看護ステーション</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

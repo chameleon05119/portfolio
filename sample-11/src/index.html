@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>看護師 採用サイト｜ひより訪問看護ステーション（架空のデモ）</title>
+    <meta name="description" content="はじめての訪問看護でも、3か月の同行訪問から。ひより訪問看護ステーションの看護師（常勤・パート）採用ページです。※制作サンプルとして作った架空の事業所です。" />
+    <meta name="robots" content="noindex" />
+    <meta property="og:title" content="看護師 採用サイト｜ひより訪問看護ステーション（架空のデモ）" />
+    <meta property="og:description" content="はじめての訪問看護でも、3か月の同行訪問から。※制作サンプルとして作った架空の事業所です。" />
+    <meta property="og:type" content="website" />
+    <!-- 公開先の絶対 URL。実際の案件では、そのサイトの URL に差し替える -->
+    <meta property="og:url" content="https://chameleon05119.github.io/portfolio/sample-11/" />
+    <meta property="og:image" content="https://chameleon05119.github.io/portfolio/sample-11/ogp.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="利用者さんのお宅で笑顔で話す看護師の写真と、ひより訪問看護ステーション 看護師採用の文字" />
+    <meta name="twitter:image" content="https://chameleon05119.github.io/portfolio/sample-11/ogp.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#1f7a6a" />
+    <link rel="icon" href="./favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- 書体は描画を止めないように後から読み込む（読み込むまでは OS の書体で表示）。本文は OS のゴシックで、Web フォントは見出し・数字・英字だけ -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800&family=Kalam:wght@700&family=Outfit:wght@600;700&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800&family=Kalam:wght@700&family=Outfit:wght@600;700&display=swap" /></noscript>
+    <script>
+      // JS が動く環境の目印。アニメーションで要素を隠すときは .js 配下に限定する（描画前に付けてちらつきを防ぐ）
+      // main.js が読み込めなかったとき（アップロード漏れ・ブロックなど）に本文が隠れたままにならないよう、3秒で外す
+      document.documentElement.classList.add('js')
+      setTimeout(function () {
+        if (!window.siteReady) document.documentElement.classList.remove('js')
+      }, 3000)
+    </script>
+    <link rel="stylesheet" href="./assets/scss/style.scss" />
+    <script src="./assets/js/main.js" defer onerror="document.documentElement.classList.remove('js')"></script>
+  </head>
+  <body data-page="home">
+    <a class="u-skip" href="#main">本文へ移動</a>
+    <p class="p-demo-bar">これは制作サンプルとして作った<strong>架空の事業所</strong>の採用ページです。給与・人物・写真は実在しません。</p>
+    <!-- include: header.html -->
+
+    <main id="main">
+      <!-- ===== 最初の画面 ===== -->
+      <section class="p-hero" aria-labelledby="hero-title">
+        <div class="l-container p-hero__grid">
+          <div class="p-hero__body">
+            <p class="p-hero__label">看護師 募集中（常勤・パート）</p>
+            <p class="p-hero__hand" lang="en" aria-hidden="true">Nursing, close to home.</p>
+            <h1 class="p-hero__title" id="hero-title">その人の暮らしに、<br /><span class="p-hero__mark">いちばん近い看護</span>を。</h1>
+            <p class="p-hero__lead">病棟の経験は、おうちでもっと生きる。<br class="u-md-only" />はじめての訪問看護でも、3か月の同行訪問からスタートできます。</p>
+            <ul class="p-hero__badges" aria-label="おもな条件">
+              <li><span>月給</span><b><span class="u-num">31</span><small>万円〜</small></b></li>
+              <li><span>年間休日</span><b><span class="u-num">125</span><small>日</small></b></li>
+              <li><span>オンコール</span><b class="p-hero__badge-word">希望制</b></li>
+              <li><span>同行研修</span><b><span class="u-num">3</span><small>か月</small></b></li>
+            </ul>
+            <div class="p-hero__actions">
+              <a class="c-button" href="#entry">まずは見学に申し込む</a>
+              <a class="c-button c-button--line" href="#requirements">募集要項を見る</a>
+            </div>
+          </div>
+          <div class="p-hero__photos">
+            <img
+              class="p-hero__photo-main"
+              src="./assets/images/mv-960w.webp"
+              srcset="./assets/images/mv-640w.webp 640w, ./assets/images/mv-960w.webp 960w, ./assets/images/mv-1200w.webp 1200w"
+              sizes="(min-width: 1024px) 520px, (min-width: 768px) 46vw, 88vw"
+              width="1200"
+              height="900"
+              alt="利用者さんのお宅で、聴診器をあてながら笑顔で話す看護師"
+              fetchpriority="high"
+            />
+            <img
+              class="p-hero__photo-sub"
+              src="./assets/images/visit-320w.webp"
+              srcset="./assets/images/visit-320w.webp 320w, ./assets/images/visit-640w.webp 640w"
+              sizes="(min-width: 768px) 240px, 36vw"
+              width="800"
+              height="800"
+              alt="玄関で訪問のあいさつをする看護師"
+            />
+            <p class="p-hero__bubble">看護師12名中 <b class="u-num">10</b>名が<br />病院・クリニックから転職</p>
+          </div>
+        </div>
+        <nav class="l-container p-hero__toc" aria-label="このページの目次">
+          <ul>
+            <li><a href="#worry">お悩み</a></li>
+            <li><a href="#numbers">数字で見る</a></li>
+            <li><a href="#style">働き方</a></li>
+            <li><a href="#day">1日の流れ</a></li>
+            <li><a href="#sim">給与の目安</a></li>
+            <li><a href="#voice">先輩の声</a></li>
+            <li><a href="#requirements">募集要項</a></li>
+            <li><a href="#entry">応募</a></li>
+          </ul>
+        </nav>
+      </section>
+
+      <!-- ===== お悩み → 解消 ===== -->
+      <section class="p-worry u-bg-sub" id="worry" aria-labelledby="worry-title">
+        <div class="l-container">
+          <div class="c-heading js-reveal">
+            <p class="c-heading__en" lang="en" aria-hidden="true">Worries</p>
+            <h2 class="c-heading__title" id="worry-title">訪問看護、気になるけれど…</h2>
+            <p class="c-heading__lead">あてはまるものを押すと、ひよりでの答えが光ります</p>
+          </div>
+          <div class="p-worry__grid js-reveal">
+            <ul class="p-worry__q" aria-label="よくあるお悩み">
+              <li><button type="button" class="js-worry" aria-pressed="false" data-target="ans-1">ひとりで訪問するのが不安</button></li>
+              <li><button type="button" class="js-worry" aria-pressed="false" data-target="ans-2">夜中のオンコールがたいへんそう</button></li>
+              <li><button type="button" class="js-worry" aria-pressed="false" data-target="ans-3">ブランクがあって自信がない</button></li>
+              <li><button type="button" class="js-worry" aria-pressed="false" data-target="ans-4">子育てと両立できるか心配</button></li>
+            </ul>
+            <svg class="p-worry__arrow" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 24h30m-10-10 10 10-10 10" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            <ul class="p-worry__a" aria-label="ひよりでの答え">
+              <li id="ans-1"><a href="#point-1"><span class="p-worry__pt">POINT 01</span>3か月の同行訪問。ひとりで回り始めてからも、電話で相談できる体制です</a></li>
+              <li id="ans-2"><a href="#point-2"><span class="p-worry__pt">POINT 02</span>オンコールは希望制・月4回まで</a></li>
+              <li id="ans-3"><a href="#point-3"><span class="p-worry__pt">POINT 03</span>事業所で練習してから現場へ</a></li>
+              <li id="ans-4"><a href="#point-4"><span class="p-worry__pt">POINT 04</span>9〜16時のパート。急な休みはチームで</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 数字で見る ===== -->
+      <section class="p-numbers" id="numbers" aria-labelledby="numbers-title">
+        <div class="l-container">
+          <div class="c-heading js-reveal">
+            <p class="c-heading__en" lang="en" aria-hidden="true">Numbers</p>
+            <h2 class="c-heading__title" id="numbers-title">数字で見る、ひより</h2>
+          </div>
+          <ul class="p-numbers__list js-reveal">
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3" /><circle cx="17" cy="9" r="2.5" /><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6M15 14.5c3 0 6 1.8 6 5.5" /></svg>
+              <p>スタッフ</p>
+              <b><span class="u-num js-count" data-to="14">14</span><small>名</small></b>
+              <p class="p-numbers__note">看護師12・理学療法士2</p>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3" /><path d="M3 10h18M8 3v4M16 3v4M8 15l2.5 2.5L16 13" /></svg>
+              <p>有休取得率</p>
+              <b><span class="u-num js-count" data-to="92">92</span><small>%</small></b>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>
+              <p>残業（月平均）</p>
+              <b><span class="u-num js-count" data-to="3.5" data-decimals="1">3.5</span><small>時間</small></b>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z" /></svg>
+              <p>子育て中のスタッフ</p>
+              <b><span class="u-num js-count" data-to="6">6</span><small>名</small></b>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11 12 4l8 7v9H4z" /><path d="M10 20v-5h4v5" /></svg>
+              <p>1日の訪問</p>
+              <b><span class="u-num">4〜5</span><small>件</small></b>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17h4l3-8 4 12 3-7h4" /></svg>
+              <p>病院・クリニックから転職</p>
+              <b><span class="u-num js-count" data-to="10">10</span><small>名</small></b>
+              <p class="p-numbers__note">看護師12名中</p>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" /><path d="M5 21c0-4 3-7 7-7s7 3 7 7" /></svg>
+              <p>平均年齢</p>
+              <b><span class="u-num js-count" data-to="38">38</span><small>歳</small></b>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="17" r="3" /><circle cx="18" cy="17" r="3" /><path d="M6 17l4-8h5l3 8M10 9 8.5 6H6" /></svg>
+              <p>訪問先まで</p>
+              <b><span class="u-num js-count" data-to="15">15</span><small>分圏内</small></b>
+            </li>
+          </ul>
+          <p class="p-numbers__caption">2026年10月時点（架空の数字です）</p>
+        </div>
+      </section>
+
+      <!-- ===== 働き方 POINT ===== -->
+      <section class="p-points u-bg-sub" id="style" aria-labelledby="style-title">
+        <div class="l-container">
+          <div class="c-heading js-reveal">
+            <p class="c-heading__en" lang="en" aria-hidden="true">Our Style</p>
+            <h2 class="c-heading__title" id="style-title">ひよりの働き方</h2>
+            <p class="c-heading__lead">不安をひとつずつ、仕組みで減らしています</p>
+          </div>
+          <div class="p-points__list">
+            <article class="p-points__item js-reveal" id="point-1" aria-labelledby="point-1-title">
+              <div class="p-points__photo"><img src="./assets/images/point-1-960w.webp" srcset="./assets/images/point-1-480w.webp 480w, ./assets/images/point-1-960w.webp 960w" sizes="(min-width: 768px) 46vw, 92vw" width="1200" height="900" alt="先輩の看護師と2人で、利用者さんのお話を聞きながら記録する様子" loading="lazy" /></div>
+              <div class="p-points__body">
+                <p class="p-points__no" aria-hidden="true"><span lang="en">Point</span><b class="u-num">01</b></p>
+                <h3 id="point-1-title">3か月の同行訪問から</h3>
+                <p>最初の3か月は、先輩と2人で訪問します。ひとりで回るのは、本人と管理者が「大丈夫」と思えてから。ひとりで訪問するようになってからも、迷ったときは事業所に電話で相談できる体制にしています。</p>
+              </div>
+            </article>
+            <article class="p-points__item js-reveal" id="point-2" aria-labelledby="point-2-title">
+              <div class="p-points__photo"><img src="./assets/images/point-2-960w.webp" srcset="./assets/images/point-2-480w.webp 480w, ./assets/images/point-2-960w.webp 960w" sizes="(min-width: 768px) 46vw, 92vw" width="1200" height="900" alt="夕方、自宅のソファでくつろぎながらスマートフォンを見る看護師" loading="lazy" /></div>
+              <div class="p-points__body">
+                <p class="p-points__no" aria-hidden="true"><span lang="en">Point</span><b class="u-num">02</b></p>
+                <h3 id="point-2-title">オンコールは希望制</h3>
+                <p>オンコールの担当は希望者だけ、月4回まで。1回3,000円の手当に、出動したときは出動手当がつきます。夜の電話の多くは、ご家族からの相談だけで終わります。</p>
+              </div>
+            </article>
+            <article class="p-points__item js-reveal" id="point-3" aria-labelledby="point-3-title">
+              <div class="p-points__photo"><img src="./assets/images/point-3-960w.webp" srcset="./assets/images/point-3-480w.webp 480w, ./assets/images/point-3-960w.webp 960w" sizes="(min-width: 768px) 46vw, 92vw" width="1200" height="900" alt="事業所で、先輩のアドバイスを受けながら採血の練習をする看護師" loading="lazy" /></div>
+              <div class="p-points__body">
+                <p class="p-points__no" aria-hidden="true"><span lang="en">Point</span><b class="u-num">03</b></p>
+                <h3 id="point-3-title">ブランクがあっても</h3>
+                <p>採血・点滴・在宅で使う医療機器の扱いを、事業所で練習してから現場へ出ます。ブランクのあとに復職した先輩が4名います。わからないことは、何度でも聞いてください。</p>
+              </div>
+            </article>
+            <article class="p-points__item js-reveal" id="point-4" aria-labelledby="point-4-title">
+              <div class="p-points__photo"><img src="./assets/images/point-4-960w.webp" srcset="./assets/images/point-4-480w.webp 480w, ./assets/images/point-4-960w.webp 960w" sizes="(min-width: 768px) 46vw, 92vw" width="1200" height="900" alt="ヘルメットをかぶり、自転車で住宅街を訪問先へ向かう看護師" loading="lazy" /></div>
+              <div class="p-points__body">
+                <p class="p-points__no" aria-hidden="true"><span lang="en">Point</span><b class="u-num">04</b></p>
+                <h3 id="point-4-title">家庭と両立できる時間</h3>
+                <p>パートは9〜16時・週3日から。訪問先へ直接行って直接帰る「直行直帰」もできます。子どもの急な発熱などで休むときは、チームで訪問を振り分けます。</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 1日の流れ ===== -->
+      <section class="p-day" id="day" aria-labelledby="day-title">
+        <div class="l-container">
+          <div class="c-heading js-reveal">
+            <p class="c-heading__en" lang="en" aria-hidden="true">One Day</p>
+            <h2 class="c-heading__title" id="day-title">1日の流れ</h2>
+          </div>
+          <div class="c-tabs js-tabs">
+            <div class="c-tabs__list" role="tablist" aria-label="働き方" hidden>
+              <button type="button" role="tab" id="day-tab-full" aria-controls="day-full" aria-selected="true">常勤</button>
+              <button type="button" role="tab" id="day-tab-part" aria-controls="day-part" aria-selected="false" tabindex="-1">パート（9〜16時）</button>
+              <button type="button" role="tab" id="day-tab-new" aria-controls="day-new" aria-selected="false" tabindex="-1">入職1か月目</button>
+            </div>
+            <div class="c-tabs__panel" id="day-full" role="tabpanel" tabindex="0" aria-labelledby="day-tab-full">
+              <h3 class="c-tabs__fallback">常勤</h3>
+              <div class="p-day__grid">
+                <ol class="p-day__timeline">
+                  <li><time datetime="08:45">8:45</time><div><b>朝のミーティング</b><span>その日の訪問先と注意点を共有</span></div></li>
+                  <li><time datetime="09:15">9:15</time><div><b>1件目の訪問</b><span>入浴の介助・体調の確認</span></div></li>
+                  <li><time datetime="10:45">10:45</time><div><b>2件目の訪問</b><span>点滴の管理</span></div></li>
+                  <li><time datetime="12:00">12:00</time><div><b>お昼休み</b><span>事業所に戻って休憩</span></div></li>
+                  <li><time datetime="13:00">13:00</time><div><b>3件目・4件目の訪問</b><span>リハビリの立ち会い・お薬の確認</span></div></li>
+                  <li><time datetime="16:00">16:00</time><div><b>記録・連絡</b><span>タブレットで記録し、主治医やケアマネジャーに連絡</span></div></li>
+                  <li><time datetime="17:30">17:30</time><div><b>退勤</b></div></li>
+                </ol>
+                <img class="p-day__photo" src="./assets/images/bp-960w.webp" srcset="./assets/images/bp-480w.webp 480w, ./assets/images/bp-960w.webp 960w" sizes="(min-width: 1024px) 400px, 40vw" width="1024" height="768" alt="利用者さんの血圧を測る看護師" loading="lazy" />
+              </div>
+            </div>
+            <div class="c-tabs__panel" id="day-part" role="tabpanel" tabindex="0" aria-labelledby="day-tab-part">
+              <h3 class="c-tabs__fallback">パート（9〜16時）</h3>
+              <div class="p-day__grid">
+                <ol class="p-day__timeline">
+                  <li><time datetime="09:00">9:00</time><div><b>出勤・ミーティング</b><span>直行の日は、そのまま1件目へ</span></div></li>
+                  <li><time datetime="09:30">9:30</time><div><b>1件目の訪問</b><span>体調の確認・お薬の確認</span></div></li>
+                  <li><time datetime="11:00">11:00</time><div><b>2件目の訪問</b><span>床ずれのケア</span></div></li>
+                  <li><time datetime="12:15">12:15</time><div><b>お昼休み</b></div></li>
+                  <li><time datetime="13:15">13:15</time><div><b>3件目の訪問</b><span>入浴の介助</span></div></li>
+                  <li><time datetime="15:00">15:00</time><div><b>記録</b><span>タブレットで入力</span></div></li>
+                  <li><time datetime="16:00">16:00</time><div><b>退勤</b><span>保育園のお迎えに間に合う時間です</span></div></li>
+                </ol>
+                <img class="p-day__photo" src="./assets/images/point-4-960w.webp" srcset="./assets/images/point-4-480w.webp 480w, ./assets/images/point-4-960w.webp 960w" sizes="(min-width: 1024px) 400px, 40vw" width="1200" height="900" alt="" loading="lazy" />
+              </div>
+            </div>
+            <div class="c-tabs__panel" id="day-new" role="tabpanel" tabindex="0" aria-labelledby="day-tab-new">
+              <h3 class="c-tabs__fallback">入職1か月目</h3>
+              <div class="p-day__grid">
+                <ol class="p-day__timeline">
+                  <li><time datetime="08:45">8:45</time><div><b>朝のミーティング</b><span>担当の先輩と1日の予定を確認</span></div></li>
+                  <li><time datetime="09:15">9:15</time><div><b>先輩と同行訪問</b><span>先輩のケアを見ながら、できるところから一緒に</span></div></li>
+                  <li><time datetime="12:00">12:00</time><div><b>お昼休み</b></div></li>
+                  <li><time datetime="13:00">13:00</time><div><b>先輩と同行訪問</b><span>血圧・脈拍などの測定を担当</span></div></li>
+                  <li><time datetime="16:00">16:00</time><div><b>振り返り</b><span>先輩と、今日の訪問を振り返る</span></div></li>
+                  <li><time datetime="16:30">16:30</time><div><b>記録の練習</b><span>タブレットの入力を覚える</span></div></li>
+                  <li><time datetime="17:30">17:30</time><div><b>退勤</b></div></li>
+                </ol>
+                <img class="p-day__photo" src="./assets/images/point-1-960w.webp" srcset="./assets/images/point-1-480w.webp 480w, ./assets/images/point-1-960w.webp 960w" sizes="(min-width: 1024px) 400px, 40vw" width="1200" height="900" alt="" loading="lazy" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 給与の目安 ===== -->
+      <section class="p-sim u-bg-sub" id="sim" aria-labelledby="sim-title">
+        <div class="l-container">
+          <div class="c-heading js-reveal">
+            <p class="c-heading__en" lang="en" aria-hidden="true">Simulation</p>
+            <h2 class="c-heading__title" id="sim-title">給与の目安を計算</h2>
+            <p class="c-heading__lead">働き方を選ぶと、月収の目安が出ます</p>
+          </div>
+          <form class="p-sim__grid js-reveal js-sim" aria-label="給与の目安の計算">
+            <div class="p-sim__panel">
+              <fieldset class="p-sim__field">
+                <legend>働き方</legend>
+                <div class="c-choice">
+                  <label><input type="radio" name="type" value="full" checked /><span>常勤</span></label>
+                  <label><input type="radio" name="type" value="part" /><span>パート</span></label>
+                </div>
+              </fieldset>
+              <fieldset class="p-sim__field">
+                <legend>看護師の経験</legend>
+                <div class="c-choice">
+                  <label><input type="radio" name="exp" value="0" /><span>〜3年</span></label>
+                  <label><input type="radio" name="exp" value="1" checked /><span>4〜9年</span></label>
+                  <label><input type="radio" name="exp" value="2" /><span>10年〜</span></label>
+                </div>
+              </fieldset>
+              <div class="p-sim__field js-sim-days" hidden>
+                <label class="p-sim__label" for="sim-days">週の勤務日数：<span class="js-sim-days-out">3</span>日</label>
+                <input type="range" id="sim-days" name="days" min="3" max="5" value="3" />
+              </div>
+              <div class="p-sim__field">
+                <label class="p-sim__label" for="sim-oncall">オンコール（月）：<span class="js-sim-oncall-out">2</span>回</label>
+                <input type="range" id="sim-oncall" name="oncall" min="0" max="4" value="2" />
+                <p class="p-sim__hint">0回（担当しない）〜4回</p>
+              </div>
+            </div>
+            <div class="p-sim__result">
+              <p>月収の目安（額面）</p>
+              <p class="p-sim__total"><span class="u-num js-sim-total">33.9</span><small>万円</small></p>
+              <ul class="p-sim__breakdown js-sim-breakdown">
+                <li>基本給：30.0万円</li>
+                <li>訪問手当：3.0万円</li>
+                <li>オンコール手当：0.6万円</li>
+                <li>出動手当（目安）：0.3万円</li>
+              </ul>
+              <p class="p-sim__note">架空の目安で、実際の給与ではありません</p>
+              <a class="c-button c-button--white js-sim-go" href="#entry">この条件で見学を申し込む</a>
+            </div>
+            <p class="u-visually-hidden js-sim-live" aria-live="polite" aria-atomic="true"></p>
+          </form>
+          <p class="p-sim__nojs">（JavaScript を有効にすると、条件を変えて計算できます）</p>
+        </div>
+      </section>
+
+      <!-- ===== 先輩の声 ===== -->
+      <section class="p-voices" id="voice" aria-labelledby="voice-title">
+        <div class="l-container">
+          <div class="c-heading js-reveal">
+            <p class="c-heading__en" lang="en" aria-hidden="true">Voices</p>
+            <h2 class="c-heading__title" id="voice-title">先輩の声</h2>
+            <p class="c-heading__lead">※ 架空の人物です。写真はイメージです</p>
+          </div>
+          <div class="p-voices__wrap js-voices">
+            <ul class="p-voices__list js-voices-list" role="list" tabindex="0" aria-label="先輩の声（横にスクロールできます）">
+              <li class="p-voices__item">
+                <img src="./assets/images/voice-1-240w.webp" srcset="./assets/images/voice-1-240w.webp 240w, ./assets/images/voice-1-360w.webp 360w" sizes="96px" width="360" height="360" alt="" loading="lazy" />
+                <h3>「家に帰れてよかった」と言われた日</h3>
+                <p class="p-voices__tags"><span>K.Mさん</span><span>2023年入職</span><span>前職：急性期病棟</span></p>
+                <p>病棟では、退院したあとの暮らしが見えませんでした。今は、その人の台所や庭の話をしながら看護ができます。「家に帰れてよかった」と言われた日のことは、ずっと覚えています。</p>
+              </li>
+              <li class="p-voices__item">
+                <img src="./assets/images/voice-2-240w.webp" srcset="./assets/images/voice-2-240w.webp 240w, ./assets/images/voice-2-360w.webp 360w" sizes="96px" width="360" height="360" alt="" loading="lazy" />
+                <h3>ブランク7年からの復職</h3>
+                <p class="p-voices__tags"><span>S.Tさん</span><span>2024年入職・パート</span><span>2児の母</span></p>
+                <p>採血の練習から付き合ってもらえたので、怖さがなくなりました。16時に上がれるので、保育園のお迎えにも間に合います。子どもの熱で休むときも、気持ちよく送り出してもらえます。</p>
+              </li>
+              <li class="p-voices__item">
+                <img src="./assets/images/voice-3-240w.webp" srcset="./assets/images/voice-3-240w.webp 240w, ./assets/images/voice-3-360w.webp 360w" sizes="96px" width="360" height="360" alt="" loading="lazy" />
+                <h3>オンコールは月2回だけ</h3>
+                <p class="p-voices__tags"><span>Y.Hさん</span><span>2022年入職</span><span>前職：クリニック</span></p>
+                <p>オンコールの回数を自分で決められるので、無理がありません。夜の電話は、ご家族からの相談で終わることが多いです。困ったときに相談できる人がいるのは心強いです。</p>
+              </li>
+              <li class="p-voices__item">
+                <svg class="p-voices__icon" viewBox="0 0 96 96" aria-hidden="true"><circle cx="48" cy="48" r="48" /><path d="M24 54a24 24 0 0 1 48 0" /><path d="M48 18v8M26 28l6 6M70 28l-6 6" /></svg>
+                <h3>管理者から</h3>
+                <p class="p-voices__tags"><span>管理者</span><span>訪問看護の経験15年</span></p>
+                <p>訪問看護は、ひとりで判断する仕事だと思われがちです。ひよりでは「迷ったら電話する・帰ってきたら話す」をいちばん大切にしています。まずは見学で、私たちの雰囲気を見に来てください。</p>
+              </li>
+            </ul>
+            <div class="p-voices__nav" hidden>
+              <button type="button" class="js-voices-prev" aria-label="前の先輩の声へ">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+              </button>
+              <button type="button" class="js-voices-next" aria-label="次の先輩の声へ">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== こんな方を歓迎 ===== -->
+      <section class="p-welcome u-bg-sub" aria-labelledby="welcome-title">
+        <div class="l-container">
+          <div class="c-heading js-reveal">
+            <p class="c-heading__en" lang="en" aria-hidden="true">Welcome</p>
+            <h2 class="c-heading__title" id="welcome-title">こんな方を歓迎します</h2>
+          </div>
+          <ul class="p-welcome__list js-reveal">
+            <li>病棟の経験を、もっと「その人の暮らし」に生かしたい</li>
+            <li>子育てや介護と両立できる働き方を探している</li>
+            <li>ブランクがあるけれど、看護の仕事に戻りたい</li>
+            <li>ひとりの利用者さんと、長く関わりたい</li>
+            <li>夜勤のない働き方にしたい</li>
+            <li>訪問看護は、はじめて</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ===== 募集要項 ===== -->
+      <section class="p-requirements" id="requirements" aria-labelledby="req-title">
+        <div class="l-container">
+          <div class="c-heading js-reveal">
+            <p class="c-heading__en" lang="en" aria-hidden="true">Requirements</p>
+            <h2 class="c-heading__title" id="req-title">募集要項</h2>
+          </div>
+          <div class="c-tabs js-tabs">
+            <div class="c-tabs__list" role="tablist" aria-label="雇用形態" hidden>
+              <button type="button" role="tab" id="req-tab-full" aria-controls="req-full" aria-selected="true">看護師（常勤）</button>
+              <button type="button" role="tab" id="req-tab-part" aria-controls="req-part" aria-selected="false" tabindex="-1">看護師（パート）</button>
+            </div>
+            <div class="c-tabs__panel" id="req-full" role="tabpanel" tabindex="0" aria-labelledby="req-tab-full">
+              <h3 class="c-tabs__fallback">看護師（常勤）</h3>
+              <table class="p-requirements__table">
+                <tr><th scope="row">雇用形態</th><td>正社員（試用期間3か月・期間中の条件は同じ）</td></tr>
+                <tr><th scope="row">募集人数</th><td>2名</td></tr>
+                <tr><th scope="row">仕事内容</th><td>ご自宅への訪問看護（健康状態の確認、医療処置、リハビリ、ご家族への助言など）</td></tr>
+                <tr><th scope="row">給与</th><td>月給31万円〜35万円（訪問手当3万円を含む。経験により決定）<br />別途オンコール手当 1回3,000円・出動手当<br />賞与 年2回</td></tr>
+                <tr><th scope="row">勤務時間</th><td>8:45〜17:30（休憩60分）</td></tr>
+                <tr><th scope="row">休日</th><td>土日祝・年末年始（年間休日125日）、有給休暇</td></tr>
+                <tr><th scope="row">資格</th><td>看護師・准看護師<br />普通自動車免許（AT限定可。自転車だけで回るエリアもあります）</td></tr>
+                <tr><th scope="row">待遇</th><td>社会保険完備、交通費全額支給、電動自転車・社用車の貸与、資格取得の支援</td></tr>
+                <tr><th scope="row">勤務地</th><td>ひより訪問看護ステーション（架空）<br />架空市ひより町2-3-4（ひより駅から徒歩8分）</td></tr>
+                <tr><th scope="row">受動喫煙対策</th><td>屋内禁煙</td></tr>
+                <tr><th scope="row">運営</th><td>株式会社ひよりケア（架空）</td></tr>
+              </table>
+            </div>
+            <div class="c-tabs__panel" id="req-part" role="tabpanel" tabindex="0" aria-labelledby="req-tab-part">
+              <h3 class="c-tabs__fallback">看護師（パート）</h3>
+              <table class="p-requirements__table">
+                <tr><th scope="row">雇用形態</th><td>パート（試用期間3か月・期間中の条件は同じ）</td></tr>
+                <tr><th scope="row">募集人数</th><td>2名</td></tr>
+                <tr><th scope="row">仕事内容</th><td>ご自宅への訪問看護（健康状態の確認、医療処置、リハビリ、ご家族への助言など）</td></tr>
+                <tr><th scope="row">給与</th><td>時給1,900円〜2,150円＋訪問手当<br />オンコールは希望する方のみ</td></tr>
+                <tr><th scope="row">勤務時間</th><td>9:00〜16:00の間で相談（週3日・1日5時間から）</td></tr>
+                <tr><th scope="row">休日</th><td>土日祝・年末年始。シフトは月ごとに相談</td></tr>
+                <tr><th scope="row">資格</th><td>看護師・准看護師<br />普通自動車免許（AT限定可。自転車だけで回るエリアもあります）</td></tr>
+                <tr><th scope="row">待遇</th><td>交通費全額支給、電動自転車の貸与、条件を満たす方は社会保険に加入</td></tr>
+                <tr><th scope="row">勤務地</th><td>ひより訪問看護ステーション（架空）<br />架空市ひより町2-3-4（ひより駅から徒歩8分）</td></tr>
+                <tr><th scope="row">受動喫煙対策</th><td>屋内禁煙</td></tr>
+                <tr><th scope="row">運営</th><td>株式会社ひよりケア（架空）</td></tr>
+              </table>
+            </div>
+          </div>
+
+          <h3 class="p-requirements__flow-title js-reveal">見学から入職までの流れ</h3>
+          <ol class="p-requirements__flow js-reveal">
+            <li><b>見学のお申し込み</b><span>このページのフォームか、お電話で</span></li>
+            <li><b>見学</b><span>1時間ほど。訪問への同行もできます</span></li>
+            <li><b>ご応募・面接</b><span>見学の日にそのままでも大丈夫です</span></li>
+            <li><b>内定</b><span>面接から原則1週間以内にご連絡します</span></li>
+            <li><b>入職</b><span>同行訪問からスタートします</span></li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ===== よくある質問 ===== -->
+      <section class="p-faq u-bg-sub" id="faq" aria-labelledby="faq-title">
+        <div class="l-container">
+          <div class="c-heading js-reveal">
+            <p class="c-heading__en" lang="en" aria-hidden="true">FAQ</p>
+            <h2 class="c-heading__title" id="faq-title">よくある質問</h2>
+          </div>
+          <div class="p-faq__list js-reveal">
+            <details>
+              <summary>訪問看護は未経験でも大丈夫ですか？</summary>
+              <div><p>はい。今いる看護師12名のうち10名が、病院やクリニックからの転職です。最初の3か月は先輩と同行で訪問し、ひとりで回る時期は本人と相談して決めます。</p></div>
+            </details>
+            <details>
+              <summary>車の運転に自信がありません</summary>
+              <div><p>事業所から近いエリアは、電動自転車で回っています。車で回る場合も、最初は先輩が運転する車で道を覚えてもらいます。</p></div>
+            </details>
+            <details>
+              <summary>オンコールで夜に出ることは、どのくらいありますか？</summary>
+              <div><p>月に1〜2回ほどです（担当が月4回の場合）。夜の電話の多くは、ご家族の相談を聞いてアドバイスするだけで終わります。オンコールを担当しない働き方もできます。</p></div>
+            </details>
+            <details>
+              <summary>見学だけでも大丈夫ですか？</summary>
+              <div><p>もちろんです。応募するかどうかは、見学のあとにゆっくり決めてください。服装も普段着で大丈夫です。</p></div>
+            </details>
+            <details>
+              <summary>子どもの急な発熱のときは、どうしていますか？</summary>
+              <div><p>その日の訪問は、ほかのスタッフで振り分けます。子育て中のスタッフが6名いるので、お互いさまの雰囲気です。</p></div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 応募フォーム ===== -->
+      <section class="p-entry" id="entry" aria-labelledby="entry-title">
+        <div class="l-container">
+          <div class="c-heading js-reveal">
+            <p class="c-heading__en" lang="en" aria-hidden="true">Entry</p>
+            <h2 class="c-heading__title" id="entry-title">見学・応募のお申し込み</h2>
+            <p class="c-heading__lead">見学だけでも歓迎です。2営業日以内に、お電話でご連絡します</p>
+          </div>
+          <ol class="p-entry__steps js-entry-steps" aria-label="お申し込みの手順">
+            <li aria-current="step">入力</li>
+            <li>確認</li>
+            <li>完了</li>
+          </ol>
+          <div class="p-entry__box">
+            <form class="p-entry__form js-entry-form" action="#" method="post">
+              <p class="p-entry__demo">デモのため、実際には送信されません</p>
+              <p class="p-entry__summary js-entry-summary" role="alert"></p>
+              <fieldset class="p-entry__field">
+                <legend>お申し込みの内容<span class="p-entry__req">必須</span></legend>
+                <div class="c-choice">
+                  <label><input type="radio" name="kind" value="見学したい" checked /><span>見学したい</span></label>
+                  <label><input type="radio" name="kind" value="応募したい" /><span>応募したい</span></label>
+                  <label><input type="radio" name="kind" value="まず相談したい" /><span>相談したい</span></label>
+                </div>
+              </fieldset>
+              <fieldset class="p-entry__field">
+                <legend>希望の働き方<span class="p-entry__req">必須</span></legend>
+                <div class="c-choice">
+                  <label><input type="radio" name="style" value="常勤" checked /><span>常勤</span></label>
+                  <label><input type="radio" name="style" value="パート" /><span>パート</span></label>
+                  <label><input type="radio" name="style" value="未定" /><span>未定</span></label>
+                </div>
+              </fieldset>
+              <div class="p-entry__row">
+                <div class="p-entry__field">
+                  <label for="entry-name">お名前<span class="p-entry__req">必須</span></label>
+                  <input type="text" id="entry-name" name="name" autocomplete="name" required aria-describedby="entry-name-error" />
+                  <p class="p-entry__error" aria-live="polite" id="entry-name-error"></p>
+                </div>
+                <div class="p-entry__field">
+                  <label for="entry-kana">ふりがな</label>
+                  <input type="text" id="entry-kana" name="kana" />
+                </div>
+              </div>
+              <div class="p-entry__row">
+                <div class="p-entry__field">
+                  <label for="entry-tel">電話番号<span class="p-entry__req">必須</span></label>
+                  <input type="tel" id="entry-tel" name="tel" autocomplete="tel" inputmode="tel" required aria-describedby="entry-tel-hint entry-tel-error" />
+                  <p class="p-entry__hint" id="entry-tel-hint">ハイフンはあってもなくても大丈夫です</p>
+                  <p class="p-entry__error" aria-live="polite" id="entry-tel-error"></p>
+                </div>
+                <div class="p-entry__field">
+                  <label for="entry-mail">メールアドレス</label>
+                  <input type="email" id="entry-mail" name="mail" autocomplete="email" aria-describedby="entry-mail-error" />
+                  <p class="p-entry__error" aria-live="polite" id="entry-mail-error"></p>
+                </div>
+              </div>
+              <fieldset class="p-entry__field">
+                <legend>連絡のつきやすい時間</legend>
+                <div class="c-choice">
+                  <label><input type="checkbox" name="time" value="午前" /><span>午前</span></label>
+                  <label><input type="checkbox" name="time" value="午後" /><span>午後</span></label>
+                  <label><input type="checkbox" name="time" value="18時以降" /><span>18時以降</span></label>
+                </div>
+              </fieldset>
+              <div class="p-entry__field">
+                <label for="entry-msg">ご質問・ご希望</label>
+                <textarea id="entry-msg" name="msg" rows="4"></textarea>
+              </div>
+              <div class="p-entry__actions">
+                <button class="c-button" type="submit" disabled>入力内容を確認する</button>
+              </div>
+            </form>
+            <div class="p-entry__confirm js-entry-confirm" hidden>
+              <h3 tabindex="-1">入力内容のご確認</h3>
+              <dl class="js-entry-list"></dl>
+              <div class="p-entry__actions">
+                <button class="c-button c-button--line js-entry-back" type="button">修正する</button>
+                <button class="c-button js-entry-send" type="button">この内容で送る</button>
+              </div>
+            </div>
+            <div class="p-entry__done js-entry-done" hidden>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M7 12.5l3 3 7-7" /></svg>
+              <h3 tabindex="-1">お申し込みありがとうございます</h3>
+              <p>2営業日以内に、お電話でご連絡します。<br /><small>（デモのため、実際には送信されていません）</small></p>
+              <p class="p-entry__actions"><button class="c-button c-button--line js-entry-reset" type="button">入力画面に戻る</button></p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- include: footer.html -->
+
+    <div class="p-fixbar js-fixbar">
+      <a class="c-button c-button--line" href="tel:0000000000" aria-label="電話（デモ用の番号です）">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h3l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 4 5a2 2 0 0 1 2-2z" /></svg>電話
+      </a>
+      <a class="c-button" href="#entry">見学・応募する</a>
+    </div>
+  </body>
+</html>

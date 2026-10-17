@@ -1,0 +1,66 @@
+@use '../foundation/mixins' as *;
+
+.p-numbers__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: rem(10);
+  list-style: none;
+
+  @include md {
+    grid-template-columns: repeat(4, 1fr);
+    gap: rem(16);
+  }
+
+  li {
+    padding: rem(18) rem(8);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    text-align: center;
+  }
+
+  svg {
+    width: 34px;
+    height: 34px;
+    margin: 0 auto rem(4);
+    fill: none;
+    stroke: var(--color-primary);
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  p {
+    font-size: rem(13);
+    font-weight: 700;
+    color: var(--color-text-sub);
+  }
+
+  b {
+    display: block;
+    color: var(--color-primary-text);
+    font-size: rem(34);
+    line-height: 1.2;
+
+    @include md {
+      font-size: rem(44);
+    }
+
+    small {
+      margin-left: 2px;
+      color: var(--color-text);
+      font-size: rem(14);
+    }
+  }
+}
+
+.p-numbers__note {
+  font-weight: 400 !important;
+  font-size: rem(12) !important;
+}
+
+.p-numbers__caption {
+  margin-top: rem(12);
+  font-size: rem(12);
+  color: var(--color-text-sub);
+  text-align: right;
+}

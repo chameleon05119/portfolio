@@ -1,0 +1,97 @@
+@use '../foundation/mixins' as *;
+
+.p-points__list {
+  display: grid;
+  gap: rem(48);
+
+  @include md {
+    gap: rem(80);
+  }
+}
+
+.p-points__item {
+  display: grid;
+  gap: rem(20);
+
+  @include md {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: rem(56);
+  }
+
+  > * {
+    min-width: 0;
+  }
+
+  &:nth-child(even) .p-points__photo {
+    @include md {
+      order: 2;
+    }
+  }
+}
+
+// 写真の後ろに、少しずらした面を置く
+.p-points__photo {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 16px -10px -12px 16px;
+    border-radius: var(--radius-photo);
+    background-color: var(--color-accent-soft);
+
+    @include md {
+      inset: 24px -20px -20px 24px;
+    }
+  }
+
+  .p-points__item:nth-child(even) &::before {
+    inset: 16px 16px -12px -10px;
+    background-color: var(--color-primary-soft);
+
+    @include md {
+      inset: 24px 24px -20px -20px;
+    }
+  }
+
+  img {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-photo);
+  }
+}
+
+.p-points__no {
+  font-family: var(--font-hand);
+  font-size: rem(20);
+  color: var(--color-accent-text);
+
+  b {
+    margin-left: 6px;
+    color: var(--color-primary);
+    font-size: rem(48);
+    line-height: 1;
+
+    @include md {
+      font-size: rem(56);
+    }
+  }
+}
+
+.p-points__body {
+  h3 {
+    margin-block: rem(4) rem(10);
+    font-size: rem(21);
+
+    @include md {
+      font-size: rem(24);
+    }
+  }
+
+  p:last-child {
+    color: var(--color-text-sub);
+  }
+}

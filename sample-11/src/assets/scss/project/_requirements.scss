@@ -1,0 +1,86 @@
+@use '../foundation/mixins' as *;
+
+.p-requirements__table {
+  width: 100%;
+  max-width: 880px;
+  margin-inline: auto;
+  border-collapse: collapse;
+  border-top: 2px solid var(--color-primary);
+  font-size: rem(14);
+
+  @include md {
+    font-size: rem(15);
+  }
+
+  th,
+  td {
+    padding: rem(12) rem(10);
+    border-bottom: 1px solid var(--color-border);
+    text-align: left;
+    vertical-align: top;
+
+    @include md {
+      padding: rem(16) rem(20);
+    }
+  }
+
+  th {
+    width: 6.5em;
+    background-color: var(--color-bg-sub);
+    white-space: nowrap;
+
+    @include md {
+      width: 9em;
+    }
+  }
+}
+
+.p-requirements__flow-title {
+  margin-block: rem(56) rem(20);
+  font-size: rem(20);
+  text-align: center;
+}
+
+.p-requirements__flow {
+  display: grid;
+  gap: rem(10);
+  list-style: none;
+  counter-reset: step;
+
+  @include md {
+    grid-template-columns: repeat(5, 1fr);
+    gap: rem(12);
+  }
+
+  li {
+    position: relative;
+    padding: rem(14) rem(16);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    background-color: var(--color-bg);
+    counter-increment: step;
+
+    @include md {
+      text-align: center;
+    }
+
+    &::before {
+      content: 'STEP ' counter(step);
+      display: block;
+      font-family: var(--font-num);
+      font-size: rem(12);
+      font-weight: 700;
+      color: var(--color-primary-text);
+    }
+  }
+
+  b {
+    display: block;
+  }
+
+  span {
+    display: block;
+    font-size: rem(13);
+    color: var(--color-text-sub);
+  }
+}

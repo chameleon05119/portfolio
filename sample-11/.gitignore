@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.env
+.env.*
+# Figma から取得したカンプ画像・データ（クライアントの資産なので repo に入れない）
+design/
+compare/

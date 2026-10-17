@@ -1,0 +1,103 @@
+@use '../foundation/mixins' as *;
+
+.p-day__grid {
+  display: grid;
+  gap: rem(32);
+  max-width: 1000px;
+  margin-inline: auto;
+
+  @include md {
+    grid-template-columns: 1.4fr 1fr;
+    align-items: start;
+    gap: rem(48);
+  }
+
+  > * {
+    min-width: 0;
+  }
+}
+
+.p-day__timeline {
+  position: relative;
+  list-style: none;
+
+  // 縦の線
+  &::before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    bottom: 12px;
+    left: 63px;
+    width: 2px;
+    background-color: var(--color-border);
+  }
+
+  li {
+    position: relative;
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    gap: rem(36);
+    padding-bottom: rem(18);
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 57px;
+      width: 14px;
+      height: 14px;
+      border: 3px solid var(--color-primary);
+      border-radius: 50%;
+      background-color: var(--color-bg);
+    }
+  }
+
+  time {
+    font-family: var(--font-num);
+    font-weight: 600;
+    color: var(--color-primary-text);
+    text-align: right;
+  }
+
+  b {
+    display: block;
+  }
+
+  span {
+    display: block;
+    font-size: rem(14);
+    color: var(--color-text-sub);
+  }
+}
+
+// タブを切り替えたとき、上から順に現れる
+@media (prefers-reduced-motion: no-preference) {
+  .js .p-day__timeline.is-animating li {
+    animation: day-in 0.45s both;
+
+    @for $i from 1 through 8 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{($i - 1) * 60}ms;
+      }
+    }
+  }
+}
+
+@keyframes day-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+.p-day__photo {
+  display: none;
+
+  @include md {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-photo);
+  }
+}

@@ -1,0 +1,45 @@
+// デザイントークン（B案「そよかぜミント」。pj-chameleon/20_design/portfolio/demo-f/tokens.md）
+:root {
+  // 色
+  --color-bg: #fff;
+  --color-bg-sub: #effaf6;
+  --color-bg-deep: #d9f2ea;
+  --color-text: #1f3a36;
+  --color-text-sub: #4f6763;
+  --color-border: #d5ebe4;
+  --color-primary: #1f7a6a; // 白文字 5.18:1
+  --color-on-primary: #fff;
+  --color-primary-text: #1b6e5f; // bg-sub 上 5.72:1
+  --color-primary-soft: #d3f0e7;
+  --color-accent: #f5c53d;
+  --color-accent-soft: #fff4cc;
+  --color-accent-text: #7a5a00; // bg-sub 上 5.98:1
+  --color-error: #b3261e;
+
+  // 文字
+  --font-base: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, sans-serif;
+  --font-head: 'M PLUS Rounded 1c', var(--font-base);
+  --font-num: 'Outfit', var(--font-base);
+  --font-hand: 'Kalam', cursive;
+  --letter-spacing: 0.02em;
+
+  // レイアウト
+  --container-width: 1120px;
+  --container-padding: 16px;
+  --header-height: 60px;
+
+  // 角丸・影・動き
+  --radius-card: 16px;
+  --radius-btn: 14px;
+  --radius-photo: 20px 80px 20px 20px;
+  --shadow: 0 16px 36px -20px rgb(31 122 106 / 0.45);
+  --duration: 0.25s;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --container-padding: 24px;
+    --header-height: 72px;
+    --radius-photo: 24px 120px 24px 24px;
+  }
+}

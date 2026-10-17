@@ -1,0 +1,36 @@
+@use '../foundation/mixins' as *;
+
+// スマホの画面下に固定する「電話」「見学・応募する」。応募フォームが見えている間は隠す
+.p-fixbar {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 15;
+  display: grid;
+  grid-template-columns: 1fr 1.7fr;
+  gap: rem(8);
+  padding: rem(10) rem(12) calc(rem(10) + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--color-border);
+  background-color: rgb(255 255 255 / 0.96);
+  transition:
+    transform 0.3s,
+    visibility 0s;
+
+  @include md {
+    display: none;
+  }
+
+  .c-button {
+    min-height: rem(48);
+    padding-inline: rem(10);
+  }
+
+  &.is-hidden {
+    visibility: hidden;
+    transform: translateY(110%);
+    transition:
+      transform 0.3s,
+      visibility 0s 0.3s;
+  }
+}

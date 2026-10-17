@@ -1,0 +1,58 @@
+@use '../foundation/mixins' as *;
+
+// タブ。JS が動かないときはタブの列を出さず、パネルを見出しつきで全部並べる
+.c-tabs__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: rem(8);
+  margin-bottom: rem(28);
+
+  [role='tab'] {
+    min-height: rem(44);
+    padding: rem(8) rem(20);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-btn);
+    background-color: var(--color-bg);
+    font-size: rem(14);
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+      background-color var(--duration),
+      border-color var(--duration);
+
+    @media (hover: hover) {
+      &:hover {
+        border-color: var(--color-primary);
+      }
+    }
+
+    &[aria-selected='true'] {
+      border-color: var(--color-primary);
+      background-color: var(--color-primary);
+      color: var(--color-on-primary);
+    }
+  }
+}
+
+.c-tabs__fallback {
+  margin-bottom: rem(16);
+  font-size: rem(18);
+
+  .js & {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+}
+
+.c-tabs__panel + .c-tabs__panel {
+  margin-top: rem(40);
+
+  .js & {
+    margin-top: 0;
+  }
+}

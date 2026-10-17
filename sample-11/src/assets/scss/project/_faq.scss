@@ -1,0 +1,83 @@
+@use '../foundation/mixins' as *;
+
+.p-faq__list {
+  display: grid;
+  gap: rem(10);
+  max-width: 800px;
+  margin-inline: auto;
+
+  details {
+    border-radius: var(--radius-card);
+    background-color: var(--color-bg);
+  }
+
+  summary {
+    position: relative;
+    display: block;
+    padding: rem(16) rem(52) rem(16) rem(52);
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::before {
+      content: 'Q';
+      position: absolute;
+      top: rem(14);
+      left: rem(16);
+      font-family: var(--font-num);
+      font-size: rem(20);
+      color: var(--color-primary);
+    }
+
+    // ＋ → − の印
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: rem(18);
+      width: 16px;
+      height: 16px;
+      margin-top: -8px;
+      background:
+        linear-gradient(var(--color-primary), var(--color-primary)) center / 16px 2.5px no-repeat,
+        linear-gradient(var(--color-primary), var(--color-primary)) center / 2.5px 16px no-repeat;
+      transition: transform var(--duration);
+    }
+  }
+
+  details[open] summary::after {
+    background:
+      linear-gradient(var(--color-primary), var(--color-primary)) center / 16px 2.5px no-repeat;
+    transform: rotate(180deg);
+  }
+
+  details > div {
+    padding: 0 rem(20) rem(18) rem(52);
+    color: var(--color-text-sub);
+  }
+}
+
+// 開閉をなめらかに（対応ブラウザだけ）
+@supports (interpolate-size: allow-keywords) {
+  @media (prefers-reduced-motion: no-preference) {
+    .p-faq__list {
+      interpolate-size: allow-keywords;
+
+      details::details-content {
+        height: 0;
+        overflow: clip;
+        transition:
+          height 0.3s ease,
+          content-visibility 0.3s allow-discrete;
+      }
+
+      details[open]::details-content {
+        height: auto;
+      }
+    }
+  }
+}

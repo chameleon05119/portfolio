@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>広告バナー｜ひより訪問看護ステーション（架空のデモ）</title>
+    <meta name="description" content="採用LPと同じトーンで作った広告バナー 3 サイズ（架空の事業所のデモ）。" />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="../favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- 書体は描画を止めないように後から読み込む（読み込むまでは OS の書体で表示）。本文は OS のゴシックで、Web フォントは見出し・数字・英字だけ -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800&family=Kalam:wght@700&family=Outfit:wght@600;700&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800&family=Kalam:wght@700&family=Outfit:wght@600;700&display=swap" /></noscript>
+    <link rel="stylesheet" href="../assets/scss/style.scss" />
+  </head>
+  <body>
+    <p class="p-demo-bar">これは制作サンプルとして作った<strong>架空の事業所</strong>の広告バナーです。</p>
+    <main class="p-banner-gallery">
+      <div class="l-container">
+        <p class="c-heading__en" lang="en" aria-hidden="true">Banners</p>
+        <h1>採用LPと同じトーンの広告バナー</h1>
+        <p>LP と同じ色・文字・写真で、よく使う 3 サイズを作りました。HTML と CSS で組み、スクリプトで PNG に書き出しています（文言や写真を変えても、書き出し直すだけで 3 サイズがそろいます）。</p>
+        <p><a href="../index.html">採用LPを見る</a></p>
+        <ul class="p-banner-gallery__list">
+          <li>
+            <figure>
+              <img src="/banners/square-1080x1080.png" width="1080" height="1080" alt="正方形のバナー。看護師の写真の下に「はじめての訪問看護、3か月の同行から。」「月給31万円〜」「年間休日125日」「見学OK」" style="width: min(100%, 540px)" />
+              <figcaption>1080×1080（Instagram・Facebook のフィード）— <a href="./square-1080x1080.png" download>PNG をダウンロード</a></figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img src="/banners/wide-1200x628.png" width="1200" height="628" alt="横長のバナー。「その人の暮らしに、いちばん近い看護を。」「同行研修3か月」「オンコール希望制」「見学に申し込む」と写真" style="width: min(100%, 720px)" />
+              <figcaption>1200×628（ディスプレイ広告・SNS でシェアされたときの画像）— <a href="./wide-1200x628.png" download>PNG をダウンロード</a></figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img src="/banners/sp-320x100@2x.png" width="320" height="100" alt="スマホ用の小さなバナー。「訪問看護の看護師募集」「月給31万円〜・見学OK」" />
+              <figcaption>320×100（スマホ用。高解像度の画面向けに 640×200 も用意）— <a href="./sp-320x100.png" download>320×100</a> ／ <a href="./sp-320x100@2x.png" download>640×200</a></figcaption>
+            </figure>
+          </li>
+        </ul>
+      </div>
+    </main>
+  </body>
+</html>
