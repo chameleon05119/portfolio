@@ -63,6 +63,7 @@ def write_html(path: Path, cfg: Config, groups: list[Group], result: Result) -> 
     html = f"""<!doctype html>
 <html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
+<link rel="icon" href="data:,">
 <meta name="description" content="{e(cfg.organization)}の{e(cfg.title)}（{e(cfg.period)}）。集計した回答 {total.count} 件、満足度の平均 {_fmt(total.average, '.1f')}。">
 <title>{e(cfg.title)}（{e(cfg.period)}）｜{e(cfg.organization)}</title><style>{CSS}</style></head>
 <body><main>
