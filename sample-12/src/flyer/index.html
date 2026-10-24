@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ja" data-fit-width="840">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>冬期講習チラシ（A4 両面・印刷用の原稿）｜個別指導 ことのは塾（架空のデモ）</title>
+    <meta name="description" content="冬期講習の A4 両面チラシの原稿ページ。scripts/export.mjs が PDF と画像に書き出します。架空の塾のデモです。" />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="../favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/tokens.css" />
+    <link rel="stylesheet" href="../assets/css/flyer.css" />
+    <script src="../fit.js" defer></script>
+  </head>
+  <body>
+    <!-- 表面 -->
+    <section class="sheet" id="flyer-front" aria-label="チラシ 表面">
+      <div class="trim front">
+        <header class="front__head">
+          <p class="brand"><img src="../assets/images/logo-mark.svg" alt="" width="40" height="40" /><span><small>中学生・高校生の個別指導</small>ことのは塾 さくら台校</span></p>
+          <p class="front__season"><span>2026</span>冬期講習<b>受付中</b></p>
+        </header>
+
+        <div class="front__hero">
+          <h1 class="front__title">この冬、<br />苦手は<em>さかのぼって</em><br />取り戻す。</h1>
+          <p class="front__lead">「どこからわからないのか」を最初の30分で一緒に探し、<br />つまずいた単元まで戻ってから、今の学年の内容へ進みます。</p>
+          <svg class="front__deco" viewBox="0 0 200 200" aria-hidden="true">
+            <circle cx="100" cy="100" r="92" fill="#ffcf4a" />
+            <path d="M52,132 L122,62 L140,80 L70,150 L46,156 Z" fill="#2563a8" />
+            <path d="M122,62 L132,52 Q136,48 141,52 L150,61 Q154,66 150,70 L140,80 Z" fill="#f2711c" />
+            <path d="M52,132 L46,156 L70,150 Z" fill="#fffaf2" />
+            <path d="M60,60 C70,46 86,40 100,42 M146,118 C142,136 128,148 112,152" stroke="#fff" stroke-width="6" stroke-linecap="round" fill="none" />
+          </svg>
+        </div>
+
+        <ul class="worries" aria-label="こんなお悩みはありませんか">
+          <li>2学期の数学、<br />途中からわからない</li>
+          <li>冬休み、何から<br />手をつければいい？</li>
+          <li>部活があっても<br />通える時間がある？</li>
+        </ul>
+
+        <div class="offer">
+          <p class="offer__when"><b>12/19<small>(土)</small></b>までのお申し込みで</p>
+          <ul class="offer__list">
+            <li><span>入塾金</span><strong>0<small>円</small></strong><span class="offer__note">通常 22,000円。期間中に入塾手続きをした方</span></li>
+            <li><span>冬期講習の授業</span><strong>2<small>回 無料体験</small></strong><span class="offer__note">中3は5教科、ほかの学年は数学・英語から</span></li>
+          </ul>
+        </div>
+
+        <ol class="features">
+          <li>
+            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8,34 L20,22 L28,30 L40,16" stroke="#2563a8" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round" /><path d="M8,40 H40" stroke="#ffcf4a" stroke-width="5" stroke-linecap="round" /></svg>
+            <h2>苦手単元の診断つき</h2>
+            <p>小テストでつまずいた単元を見つけ、冬休みの計画表を作ります。</p>
+          </li>
+          <li>
+            <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="17" cy="16" r="7" fill="#2563a8" /><circle cx="34" cy="20" r="6" fill="#f2711c" /><path d="M5,40 C5,32 10,27 17,27 S29,32 29,40 Z M25,40 C26,33 29,29 34,29 S43,33 43,40 Z" fill="#2563a8" opacity=".85" /></svg>
+            <h2>講師1人に生徒2人まで</h2>
+            <p>解いている手元が見える距離で教えます。質問はその場で、何度でも。</p>
+          </li>
+          <li>
+            <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="10" width="36" height="30" rx="4" fill="#2563a8" /><path d="M6,18 H42" stroke="#fff" stroke-width="3" /><path d="M15,6 V14 M33,6 V14" stroke="#f2711c" stroke-width="4" stroke-linecap="round" /><circle cx="17" cy="28" r="3" fill="#ffcf4a" /><circle cx="31" cy="28" r="3" fill="#fff" /></svg>
+            <h2>自習室も使える</h2>
+            <p>講習のある日は 14:00〜21:30 に開放。わからないところは先生に聞けます。</p>
+          </li>
+        </ol>
+
+        <footer class="contact">
+          <div class="contact__text">
+            <p class="contact__label">無料体験・学習相談のお申し込み</p>
+            <p class="contact__tel"><span>TEL</span>000-000-0000</p>
+            <p class="contact__time">受付 月〜土 14:00〜21:30（日曜・祝日は休み）</p>
+          </div>
+          <div class="contact__qr">
+            <img src="../assets/images/qr.svg" alt="Web で申し込む（QR コード）" width="96" height="96" />
+            <p>Web は24時間<br />受け付け</p>
+          </div>
+        </footer>
+        <p class="demo-note">※ 架空の塾のデモです。名称・電話番号・料金・日程はすべて架空です。</p>
+      </div>
+    </section>
+
+    <!-- 裏面 -->
+    <section class="sheet" id="flyer-back" aria-label="チラシ 裏面">
+      <div class="trim back">
+        <h2 class="back__title"><span>冬期講習</span>コースと日程</h2>
+
+        <div class="courses">
+          <article class="course">
+            <p class="course__grade">中1・中2</p>
+            <h3>総復習コース</h3>
+            <p class="course__desc">2学期までの数学・英語を、つまずいた単元から復習します。</p>
+            <p class="course__price"><span>80分 × 8コマ</span><strong>22,000<small>円</small></strong></p>
+          </article>
+          <article class="course course--main">
+            <p class="course__grade">中3</p>
+            <h3>入試対策コース</h3>
+            <p class="course__desc">5教科の総まとめと過去問演習。志望校に合わせて配分を決めます。</p>
+            <p class="course__price"><span>80分 × 16コマ</span><strong>41,600<small>円</small></strong></p>
+          </article>
+          <article class="course">
+            <p class="course__grade">高校生</p>
+            <h3>苦手科目コース</h3>
+            <p class="course__desc">数学・英語から1科目。学年末テストの範囲を先取りします。</p>
+            <p class="course__price"><span>80分 × 6コマ</span><strong>19,800<small>円</small></strong></p>
+          </article>
+        </div>
+        <p class="note">料金はすべて税込・教材費込み。コマ数の追加・教科の組み合わせは学習相談で決められます。</p>
+
+        <div class="back__grid">
+          <section class="calendar" aria-labelledby="cal-title">
+            <h3 id="cal-title">講習の日程 <small>12/22(火)〜1/7(木)</small></h3>
+            <table>
+              <thead><tr><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th><th>日</th></tr></thead>
+              <tbody>
+                <tr><td>21</td><td class="on">22</td><td class="on">23</td><td class="on">24</td><td class="on">25</td><td class="on">26</td><td class="off">27</td></tr>
+                <tr><td class="on">28</td><td class="on">29</td><td class="off">30</td><td class="off">31</td><td class="off"><span class="m">1/</span>1</td><td class="off">2</td><td class="off">3</td></tr>
+                <tr><td class="on">4</td><td class="on">5</td><td class="on">6</td><td class="on">7</td><td>8</td><td>9</td><td>10</td></tr>
+              </tbody>
+            </table>
+            <p class="calendar__legend"><span class="on"></span>講習日（14:00〜21:30 から選択）<span class="off"></span>休み<span class="na"></span>講習期間外</p>
+          </section>
+
+          <section class="steps" aria-labelledby="steps-title">
+            <h3 id="steps-title">体験までの流れ</h3>
+            <ol>
+              <li><b>お申し込み</b>電話か Web で。希望の日時を伺います。</li>
+              <li><b>学習相談（約30分）</b>小テストで苦手単元を見つけ、計画表をお渡しします。</li>
+              <li><b>体験授業（2回）</b>実際の講習に入って、教え方と雰囲気を確かめてください。</li>
+              <li><b>ご家庭で検討</b>その場での入塾のお返事は不要です。</li>
+            </ol>
+          </section>
+        </div>
+
+        <div class="back__grid back__grid--bottom">
+          <section class="voices" aria-labelledby="voice-title">
+            <h3 id="voice-title">通っている人の声</h3>
+            <blockquote><p>「一次関数がわからない理由が、中1の比例だとわかってすっきりしました。」</p><cite>中2・Aさん</cite></blockquote>
+            <blockquote><p>「計画表があるので、家でも何をやればいいか迷わなくなりました。」</p><cite>中3の保護者さま</cite></blockquote>
+            <p class="voices__note">※個人の感想です</p>
+          </section>
+
+          <section class="access" aria-labelledby="access-title">
+            <h3 id="access-title">アクセス</h3>
+            <svg class="access__map" viewBox="0 0 240 130" role="img" aria-label="さくら台駅北口から徒歩3分。駅前通りを北へ進み、2つ目の角の左手">
+              <rect width="240" height="130" rx="8" fill="#e6f0fa" />
+              <path d="M0,98 H240" stroke="#9fb4c8" stroke-width="10" />
+              <path d="M0,98 H240" stroke="#fff" stroke-width="2" stroke-dasharray="8,6" />
+              <path d="M120,0 V130" stroke="#fff" stroke-width="12" />
+              <path d="M40,0 V130" stroke="#fff" stroke-width="6" />
+              <rect x="150" y="104" width="70" height="20" rx="4" fill="#2563a8" />
+              <text x="185" y="118" font-size="10" fill="#fff" text-anchor="middle" font-family="sans-serif">さくら台駅</text>
+              <rect x="74" y="30" width="34" height="26" rx="4" fill="#c2410c" />
+              <text x="91" y="47" font-size="9" fill="#fff" text-anchor="middle" font-family="sans-serif">塾</text>
+              <path d="M170,104 C150,94 130,90 120,74 S114,54 108,50" stroke="#f2711c" stroke-width="3" stroke-dasharray="4,4" fill="none" />
+              <text x="128" y="20" font-size="9" fill="#5a6876" font-family="sans-serif">駅前通り</text>
+            </svg>
+            <p>さくら台駅 北口から徒歩3分<br />さくら台中央ビル 2F（1F はパン屋さん）<br />駐輪場あり</p>
+          </section>
+        </div>
+
+        <footer class="contact contact--back">
+          <div class="contact__text">
+            <p class="contact__label">12/19(土)までのお申し込みで 入塾金 0円・冬期講習の授業 2回 無料体験</p>
+            <p class="contact__tel"><span>TEL</span>000-000-0000</p>
+            <p class="contact__time">受付 月〜土 14:00〜21:30 ／ 個別指導 ことのは塾 さくら台校</p>
+          </div>
+          <div class="contact__qr">
+            <img src="../assets/images/qr.svg" alt="Web で申し込む（QR コード）" width="96" height="96" />
+            <p>Web は24時間<br />受け付け</p>
+          </div>
+        </footer>
+        <p class="demo-note">※ 架空の塾のデモです。名称・電話番号・料金・日程・声はすべて架空です。</p>
+      </div>
+    </section>
+  </body>
+</html>

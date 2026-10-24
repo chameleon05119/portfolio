@@ -1,0 +1,235 @@
+/*
+  A4 両面チラシ
+  - .sheet = 塗り足し 3mm を含む 216×303mm。.trim = 仕上がり 210×297mm（文字は内側 10mm より内に置く）
+  - 入稿用 PDF は .sheet の大きさで、確認用 PDF は html.is-trim を付けて仕上がりの大きさで書き出す（scripts/export.mjs）
+  - 単位は mm / pt（印刷の大きさで組む）
+*/
+@page { size: 216mm 303mm; margin: 0; }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  margin: 0;
+  background: #cfd8e0;
+  color: var(--c-text);
+  font-family: var(--f-body);
+  font-size: 9pt;
+  line-height: 1.6;
+  font-feature-settings: 'palt';
+}
+h1, h2, h3, p, ol, ul, blockquote { margin: 0; padding: 0; }
+ol, ul { list-style: none; }
+img, svg { display: block; }
+
+.sheet {
+  position: relative;
+  width: 216mm;
+  height: 303mm;
+  margin: 10mm auto;
+  overflow: hidden;
+  background: var(--c-cream);
+  break-after: page;
+}
+.sheet:last-child { break-after: auto; }
+/* 上の帯は塗り足しまで伸ばす */
+.sheet::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: calc(3mm + 6mm);
+  background: var(--c-blue);
+}
+.trim {
+  position: absolute;
+  inset: 3mm;
+  padding: 14mm 10mm 8mm;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 確認用（仕上がりの大きさ）。塗り足しの外側を切り落とした見た目にする */
+html.is-trim body { background: #fff; }
+html.is-trim .sheet { width: 210mm; height: 297mm; margin: 0; }
+html.is-trim .sheet::before { height: 6mm; }
+html.is-trim .trim { inset: 0; }
+
+@media print {
+  body { background: none; }
+  .sheet { margin: 0; }
+}
+
+/* ---------- 共通 ---------- */
+.brand { display: flex; align-items: center; gap: 2.5mm; font-family: var(--f-head); font-weight: 900; font-size: 15pt; line-height: 1.2; color: var(--c-blue-dark); }
+.brand img { width: 11mm; height: 11mm; }
+.brand small { display: block; font-size: 7.5pt; font-weight: 700; color: var(--c-sub); }
+
+.demo-note { margin-top: auto; padding-top: 2mm; font-size: 6.5pt; color: var(--c-sub); text-align: right; }
+
+.contact {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6mm;
+  padding: 5mm 7mm;
+  border-radius: 4mm;
+  background: var(--c-blue);
+  color: var(--c-white);
+}
+.contact__label { font-family: var(--f-head); font-weight: 700; font-size: 10.5pt; }
+.contact__tel { font-family: var(--f-head); font-weight: 900; font-size: 27pt; line-height: 1.15; letter-spacing: .02em; }
+.contact__tel span { display: inline-block; margin-right: 2mm; padding: .6mm 2mm; border-radius: 1mm; background: var(--c-yellow); color: var(--c-blue-dark); font-size: 11pt; vertical-align: .55em; }
+.contact__time { font-size: 8pt; opacity: .92; }
+.contact__qr { display: flex; align-items: center; gap: 2.5mm; font-size: 8pt; font-weight: 700; line-height: 1.4; }
+.contact__qr img { width: 22mm; height: 22mm; padding: 1.5mm; border-radius: 1.5mm; background: #fff; }
+
+/* ---------- 表面 ---------- */
+.front__head { display: flex; align-items: center; justify-content: space-between; }
+.front__season {
+  display: flex; align-items: center; gap: 2mm;
+  font-family: var(--f-head); font-weight: 900; font-size: 15pt; color: var(--c-blue-dark);
+}
+.front__season span { font-size: 10pt; color: var(--c-orange); }
+.front__season b { padding: 1.2mm 3mm; border-radius: 99mm; background: var(--c-orange); color: #fff; font-size: 10pt; }
+
+.front__hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 46mm;
+  align-items: center;
+  gap: 4mm;
+  margin-top: 9mm;
+}
+.front__title {
+  font-family: var(--f-head);
+  font-weight: 900;
+  font-size: 42pt;
+  line-height: 1.22;
+  letter-spacing: .01em;
+  color: var(--c-blue-dark);
+}
+.front__title em {
+  font-style: normal;
+  white-space: nowrap;
+  color: var(--c-orange);
+  background: linear-gradient(transparent 68%, rgba(255, 207, 74, .7) 68%);
+}
+.front__lead { grid-column: 1 / -1; font-size: 10pt; font-weight: 500; line-height: 1.75; }
+.front__deco { grid-column: 2; grid-row: 1; width: 46mm; height: 46mm; }
+
+.worries { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; margin-top: 7mm; }
+.worries li {
+  position: relative;
+  padding: 3mm 2mm;
+  border-radius: 3mm;
+  background: var(--c-blue-pale);
+  font-weight: 700; font-size: 9pt; line-height: 1.5; text-align: center; color: var(--c-blue-dark);
+}
+.worries li::after {
+  content: '';
+  position: absolute; left: 50%; bottom: -2.4mm;
+  border: 2.5mm solid transparent; border-bottom: 0; border-top-color: var(--c-blue-pale);
+  transform: translateX(-50%);
+}
+
+.offer {
+  margin-top: 7mm;
+  padding: 5mm 6mm 6mm;
+  border: .8mm solid var(--c-orange);
+  border-radius: 4mm;
+  background: #fff;
+}
+.offer__when { font-family: var(--f-head); font-weight: 700; font-size: 12pt; text-align: center; }
+.offer__when b { font-size: 17pt; color: var(--c-orange); }
+.offer__when small { font-size: 10pt; }
+.offer__list { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; margin-top: 3mm; }
+.offer__list li {
+  display: grid;
+  justify-items: center;
+  padding: 3mm 2mm;
+  border-radius: 3mm;
+  background: var(--c-orange-pale);
+  text-align: center;
+}
+.offer__list span { font-weight: 700; font-size: 10pt; }
+.offer__list strong { font-family: var(--f-head); font-weight: 900; font-size: 36pt; line-height: 1.1; color: var(--c-orange); }
+.offer__list strong small { font-size: 14pt; margin-left: .5mm; }
+.offer__note { font-size: 7.5pt !important; font-weight: 400 !important; color: var(--c-sub); }
+
+.features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; margin: 8mm 0 0; counter-reset: f; }
+.front .contact { margin-top: auto; }
+.front .demo-note { margin-top: 0; }
+.features li { position: relative; padding: 5mm 4mm 4mm; border-radius: 3mm; background: #fff; box-shadow: 0 0 0 .3mm var(--c-line); }
+.features li::before {
+  counter-increment: f;
+  content: counter(f);
+  position: absolute; top: -2.5mm; left: 4mm;
+  width: 6mm; height: 6mm; border-radius: 50%;
+  background: var(--c-blue); color: #fff;
+  font-family: var(--f-head); font-weight: 900; font-size: 9pt; line-height: 6mm; text-align: center;
+}
+.features svg { width: 12mm; height: 12mm; margin-bottom: 2mm; }
+.features h2 { font-family: var(--f-head); font-weight: 900; font-size: 11.5pt; line-height: 1.35; color: var(--c-blue-dark); }
+.features p { margin-top: 1.5mm; font-size: 8.3pt; line-height: 1.65; }
+
+/* ---------- 裏面 ---------- */
+.back__title { font-family: var(--f-head); font-weight: 900; font-size: 22pt; color: var(--c-blue-dark); }
+.back__title span { display: inline-block; margin-right: 3mm; padding: 1mm 3.5mm; border-radius: 2mm; background: var(--c-orange); color: #fff; font-size: 13pt; vertical-align: .35em; }
+
+.courses { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; margin-top: 5mm; }
+.course { display: flex; flex-direction: column; padding: 4mm; border-radius: 3mm; background: #fff; box-shadow: 0 0 0 .3mm var(--c-line); }
+.course--main { box-shadow: 0 0 0 .7mm var(--c-orange); }
+.course__grade { align-self: flex-start; padding: .5mm 2.5mm; border-radius: 99mm; background: var(--c-blue-pale); color: var(--c-blue-dark); font-weight: 700; font-size: 8pt; }
+.course--main .course__grade { background: var(--c-orange); color: #fff; }
+.course h3 { margin-top: 2mm; font-family: var(--f-head); font-weight: 900; font-size: 13pt; color: var(--c-blue-dark); }
+.course__desc { margin-top: 1.5mm; font-size: 8.2pt; line-height: 1.6; }
+.course__price { display: flex; align-items: baseline; justify-content: space-between; margin-top: auto; padding-top: 3mm; border-top: .3mm dashed var(--c-line); }
+.course__price span { font-size: 7.5pt; color: var(--c-sub); }
+.course__price strong { font-family: var(--f-head); font-weight: 900; font-size: 17pt; color: var(--c-orange); }
+.course__price small { font-size: 9pt; }
+.note { margin-top: 2mm; font-size: 7.2pt; color: var(--c-sub); }
+
+.back__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; margin-top: 6mm; }
+.back__grid h3 { margin-bottom: 2.5mm; padding-left: 2.5mm; border-left: 1.2mm solid var(--c-orange); font-family: var(--f-head); font-weight: 900; font-size: 12pt; line-height: 1.3; color: var(--c-blue-dark); }
+.back__grid h3 small { font-size: 8.5pt; color: var(--c-sub); }
+
+.calendar table { width: 100%; border-collapse: separate; border-spacing: 1mm; table-layout: fixed; }
+.calendar th { font-size: 7.5pt; color: var(--c-sub); font-weight: 700; }
+.calendar th:nth-child(6) { color: var(--c-blue); }
+.calendar th:nth-child(7) { color: var(--c-orange); }
+.calendar td { height: 9mm; border-radius: 1.5mm; background: #fff; font-family: var(--f-head); font-weight: 700; font-size: 10pt; text-align: center; color: #9aa7b3; }
+.calendar td.on { background: var(--c-blue); color: #fff; }
+.calendar td.off { background: #e4e8ec; color: #8a96a2; }
+.calendar .m { font-size: 7pt; }
+.calendar__legend { display: flex; align-items: center; gap: 1.5mm; margin-top: 1.5mm; font-size: 7.2pt; color: var(--c-sub); }
+.calendar__legend span { width: 3mm; height: 3mm; border-radius: .7mm; background: var(--c-blue); }
+.calendar__legend span.off { margin-left: 2mm; background: #e4e8ec; }
+.calendar__legend span.na { margin-left: 2mm; background: #fff; box-shadow: inset 0 0 0 .2mm #b5bfc8; }
+.voices__note { margin-top: 1.5mm; font-size: 7pt; color: var(--c-sub); text-align: right; }
+
+.steps ol { counter-reset: s; display: grid; gap: 2mm; }
+.steps li { position: relative; padding: 2mm 3mm 2mm 10mm; border-radius: 2mm; background: #fff; font-size: 8.2pt; line-height: 1.55; }
+.steps li::before {
+  counter-increment: s; content: counter(s);
+  position: absolute; left: 2.5mm; top: 2.3mm;
+  width: 5.5mm; height: 5.5mm; border-radius: 50%;
+  background: var(--c-orange); color: #fff;
+  font-family: var(--f-head); font-weight: 900; font-size: 8.5pt; line-height: 5.5mm; text-align: center;
+}
+.steps b { display: block; font-size: 9pt; color: var(--c-blue-dark); }
+
+.voices blockquote { padding: 3mm 4mm; border-radius: 3mm; background: var(--c-orange-pale); }
+.voices blockquote + blockquote { margin-top: 2.5mm; }
+.voices p { font-size: 8.8pt; font-weight: 500; line-height: 1.6; }
+.voices cite { display: block; margin-top: 1mm; font-style: normal; font-size: 7.5pt; color: var(--c-sub); text-align: right; }
+
+.access__map { width: 100%; height: auto; border-radius: 2mm; }
+.access p { margin-top: 2mm; font-size: 8.3pt; line-height: 1.6; }
+
+.contact--back { margin-top: auto; padding: 4mm 7mm; }
+.contact--back .contact__tel { font-size: 22pt; }
+.contact--back .contact__qr img { width: 19mm; height: 19mm; }
+
+.back .demo-note { margin-top: 0; }
+.back__grid--bottom { margin-bottom: 6mm; }
+
+.offer__list strong small { font-family: var(--f-body); font-weight: 700; }

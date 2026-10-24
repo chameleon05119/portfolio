@@ -1,0 +1,52 @@
+# 教室ごとの回答ファイルの読み方
+# 教室が増えたり、フォームの質問文が変わったりしたら、このファイルだけを直す（プログラムは直さない）
+#
+# [[sources]] 1 つ = 回答ファイル 1 つ
+#   name        … 教室名（レポートに出る名前）
+#   file        … ファイルの場所（このファイルからの相対パス）。.csv / .xlsx
+#   encoding    … CSV の文字コード（utf-8-sig / cp932 など）
+#   header_row  … 見出しの行番号（1 から数える。Excel で上にタイトル行があるときに使う）
+#   [sources.columns] … 「レポートの項目 = ファイルの見出し」の対応
+
+[report]
+title = "体験レッスン アンケート集計"
+organization = "キッチンスタジオ こむぎ"
+period = "2026年10月"
+
+[[sources]]
+name = "みなと教室"
+file = "sample_data/minato_google-form.csv"
+encoding = "utf-8-sig"
+header_row = 1
+[sources.columns]
+date = "タイムスタンプ"
+age = "年代を教えてください"
+satisfaction = "今日のレッスンの満足度を教えてください"
+again = "また参加したいですか？"
+channel = "このレッスンを何で知りましたか？（複数選択可）"
+comment = "ご意見・ご感想"
+
+[[sources]]
+name = "さくら教室"
+file = "sample_data/sakura_handwritten.xlsx"
+header_row = 3
+[sources.columns]
+date = "日付"
+age = "年齢"
+satisfaction = "満足度(1〜5)"
+again = "再参加"
+channel = "きっかけ"
+comment = "感想"
+
+[[sources]]
+name = "ひがし教室"
+file = "sample_data/higashi_paper.csv"
+encoding = "cp932"
+header_row = 1
+[sources.columns]
+date = "記入日"
+age = "年代"
+satisfaction = "満足度"
+again = "またの参加"
+channel = "知ったきっかけ"
+comment = "コメント"

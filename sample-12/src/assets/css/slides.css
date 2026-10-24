@@ -1,0 +1,136 @@
+/*
+  保護者説明会の資料（16:9・1280×720px を 1 枚とする）
+  - 画面では縦に並べて表示、印刷（PDF 書き出し）では 1 枚 1 ページ
+  - 文字は離れた席からも読めるよう、本文 22px 以上
+*/
+@page { size: 1280px 720px; margin: 0; }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  margin: 0;
+  padding: 20px 0;
+  background: #cfd8e0;
+  color: var(--c-text);
+  font-family: var(--f-body);
+  font-size: 22px;
+  line-height: 1.6;
+  font-feature-settings: 'palt';
+  counter-reset: slide;
+}
+h1, h2, h3, p, ol, ul, dl, dd { margin: 0; padding: 0; }
+ol, ul { list-style: none; }
+img, svg { display: block; }
+em { font-style: normal; color: var(--c-orange); font-weight: 700; }
+
+.slide {
+  position: relative;
+  width: 1280px;
+  height: 720px;
+  margin: 0 auto 20px;
+  padding: 64px 88px 56px;
+  overflow: hidden;
+  background: var(--c-cream);
+  break-after: page;
+  counter-increment: slide;
+}
+.slide:last-child { break-after: auto; }
+/* 左上の色の帯と右下のページ表示（表紙以外） */
+.slide:not(.slide--cover)::before { content: ''; position: absolute; inset: 0 auto 0 0; width: 14px; background: var(--c-blue); }
+.slide:not(.slide--cover)::after {
+  content: 'ことのは塾 さくら台校　' counter(slide) ' / 8';
+  position: absolute; right: 40px; bottom: 22px;
+  font-size: 13px; color: var(--c-sub); letter-spacing: .05em;
+}
+/* 全ページの左下に、架空のデモであることを入れる（画像だけ転載されても分かるように） */
+.slide > .slide__no::after, .slide--cover::after {
+  content: '※ 架空の塾のデモです。名称・電話番号・料金・日程はすべて架空です';
+  position: absolute; left: 88px; bottom: 22px;
+  font-family: var(--f-body); font-weight: 400; font-size: 13px; letter-spacing: 0; color: var(--c-sub);
+}
+.slide--cover::after { left: 110px; color: #fff; opacity: .9; }
+@media print {
+  body { padding: 0; background: none; }
+  .slide { margin: 0; }
+}
+
+.slide__no { font-family: var(--f-head); font-weight: 900; font-size: 22px; color: var(--c-orange); letter-spacing: .1em; }
+.slide h2 { margin-top: 4px; font-family: var(--f-head); font-weight: 900; font-size: 46px; line-height: 1.3; color: var(--c-blue-dark); }
+.lead { margin-top: 28px; font-size: 28px; font-weight: 500; }
+.caption { position: absolute; left: 88px; right: 88px; bottom: 60px; font-size: 20px; color: var(--c-sub); }
+
+/* 表紙 */
+.slide--cover { display: flex; flex-direction: column; justify-content: center; padding-left: 110px; background: var(--c-blue); color: #fff; }
+.slide--cover .brand { position: absolute; top: 56px; left: 110px; display: flex; align-items: center; gap: 14px; font-family: var(--f-head); font-weight: 900; font-size: 26px; line-height: 1.25; }
+.slide--cover .brand img { width: 56px; height: 56px; padding: 6px; border-radius: 12px; background: #fff; }
+.slide--cover .brand small { display: block; font-size: 15px; font-weight: 700; opacity: .85; }
+.slide--cover h1 { font-family: var(--f-head); font-weight: 900; font-size: 76px; line-height: 1.2; }
+.cover__sub { margin-top: 18px; display: inline-block; align-self: flex-start; padding: 6px 22px; border-radius: 99px; background: var(--c-yellow); color: var(--c-blue-dark); font-family: var(--f-head); font-weight: 900; font-size: 28px; }
+.cover__date { margin-top: 36px; font-size: 22px; opacity: .9; }
+.cover__deco { position: absolute; right: -40px; bottom: -40px; width: 380px; height: 380px; }
+
+/* 01 さかのぼり */
+.flow { display: flex; align-items: center; gap: 22px; margin-top: 72px; }
+.flow__item { flex: 1; display: grid; gap: 10px; padding: 48px 24px; border-radius: 20px; background: #fff; box-shadow: 0 0 0 2px var(--c-line); text-align: center; }
+.flow__item b { font-size: 20px; color: var(--c-sub); }
+.flow__item span { font-family: var(--f-head); font-weight: 900; font-size: 30px; color: var(--c-blue-dark); }
+.flow__item--root { background: var(--c-orange-pale); box-shadow: 0 0 0 3px var(--c-orange); }
+.flow__item--root span { color: var(--c-orange); }
+.flow__arrow { font-size: 40px; font-weight: 700; color: var(--c-orange); }
+
+/* 02 コース */
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 40px; }
+.cards article { display: flex; flex-direction: column; gap: 10px; padding: 30px 28px; border-radius: 20px; background: #fff; box-shadow: 0 0 0 2px var(--c-line); }
+.cards .is-main { box-shadow: 0 0 0 4px var(--c-orange); }
+.cards .tag { align-self: flex-start; padding: 2px 14px; border-radius: 99px; background: var(--c-blue-pale); color: var(--c-blue-dark); font-weight: 700; font-size: 18px; }
+.cards .is-main .tag { background: var(--c-orange); color: #fff; }
+.cards h3 { font-family: var(--f-head); font-weight: 900; font-size: 32px; color: var(--c-blue-dark); }
+.cards p { font-size: 20px; line-height: 1.6; }
+.cards .num { margin-top: auto; padding-top: 12px; border-top: 2px dashed var(--c-line); font-family: var(--f-head); font-weight: 700; font-size: 22px; color: var(--c-orange); }
+
+/* 03 日程 */
+.two { display: grid; grid-template-columns: 1.3fr 1fr; gap: 56px; margin-top: 36px; align-items: start; }
+.big { font-family: var(--f-head); font-weight: 900; font-size: 54px; color: var(--c-orange); line-height: 1.2; }
+.big small { font-size: 26px; }
+.dots { display: grid; gap: 12px; margin-top: 28px; }
+.dots li { position: relative; padding-left: 30px; }
+.dots li::before { content: ''; position: absolute; left: 4px; top: .55em; width: 14px; height: 14px; border-radius: 50%; background: var(--c-blue); }
+.timetable { width: 100%; border-collapse: collapse; overflow: hidden; border-radius: 16px; background: #fff; box-shadow: 0 0 0 2px var(--c-line); font-size: 22px; }
+.timetable th, .timetable td { padding: 12px 22px; border-bottom: 2px solid var(--c-line); text-align: left; }
+.timetable thead th { background: var(--c-blue); color: #fff; font-size: 18px; }
+.timetable tbody th { width: 80px; font-family: var(--f-head); font-weight: 900; color: var(--c-blue); }
+.timetable tr:last-child > * { border-bottom: 0; }
+
+/* 04 授業の流れ（幅 = 時間の長さ） */
+.timeline { display: flex; gap: 10px; margin-top: 60px; }
+.timeline li { flex: var(--w) 1 0; display: grid; align-content: start; gap: 8px; min-height: 210px; padding: 26px 20px; border-radius: 18px; background: var(--c-blue-pale); font-size: 20px; line-height: 1.5; }
+.timeline li:nth-child(2), .timeline li:nth-child(3) { background: #fff; box-shadow: 0 0 0 2px var(--c-line); }
+.timeline b { font-family: var(--f-head); font-weight: 900; font-size: 34px; color: var(--c-blue-dark); }
+
+/* 05 料金 */
+.price { width: 100%; margin-top: 36px; border-collapse: collapse; overflow: hidden; border-radius: 18px; background: #fff; box-shadow: 0 0 0 2px var(--c-line); font-size: 24px; }
+.price th, .price td { padding: 18px 28px; border-bottom: 2px solid var(--c-line); text-align: left; }
+.price thead th { background: var(--c-blue); color: #fff; font-size: 19px; }
+.price td:last-child { font-family: var(--f-head); font-weight: 900; font-size: 30px; color: var(--c-orange); text-align: right; }
+.price thead th:last-child { text-align: right; }
+.price tr:last-child > * { border-bottom: 0; }
+.offer-line { margin-top: 32px; padding: 20px 28px; border-radius: 16px; background: var(--c-orange-pale); box-shadow: inset 0 0 0 3px var(--c-orange); font-size: 22px; }
+.offer-line b { color: var(--c-orange); }
+
+/* 06 よくある質問 */
+.faq { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 32px; margin-top: 36px; }
+.faq div { padding: 22px 26px; border-radius: 18px; background: #fff; box-shadow: 0 0 0 2px var(--c-line); }
+.faq dt { font-family: var(--f-head); font-weight: 900; font-size: 24px; color: var(--c-blue-dark); }
+.faq dt::before { content: 'Q. '; color: var(--c-orange); }
+.faq dd { margin-top: 8px; font-size: 20px; line-height: 1.6; }
+
+/* 07 申し込み */
+.end { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; margin-top: 36px; align-items: center; }
+.end__steps { display: grid; gap: 16px; counter-reset: e; }
+.end__steps li { position: relative; padding: 20px 24px 20px 82px; border-radius: 16px; background: #fff; box-shadow: 0 0 0 2px var(--c-line); font-size: 22px; font-weight: 500; }
+.end__steps li::before { counter-increment: e; content: counter(e); position: absolute; left: 22px; top: 50%; translate: 0 -50%; width: 42px; height: 42px; border-radius: 50%; background: var(--c-orange); color: #fff; font-family: var(--f-head); font-weight: 900; font-size: 22px; line-height: 42px; text-align: center; }
+.end__contact { display: grid; justify-items: center; gap: 6px; padding: 28px; border-radius: 22px; background: var(--c-blue); color: #fff; text-align: center; font-size: 18px; }
+.end__tel { font-family: var(--f-head); font-weight: 900; font-size: 44px; line-height: 1.2; }
+.end__tel span { display: inline-block; margin-right: 10px; padding: 2px 10px; border-radius: 6px; background: var(--c-yellow); color: var(--c-blue-dark); font-size: 20px; vertical-align: .45em; }
+.end__contact img { width: 140px; height: 140px; margin-top: 10px; padding: 8px; border-radius: 10px; background: #fff; }
+

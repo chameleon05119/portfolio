@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>アンケート集計の自動化（Python）｜形式のちがう CSV・Excel をまとめて Excel レポートに（架空のデモ）</title>
+    <meta name="description" content="3 教室から届く形式のばらばらなアンケート回答（Google フォームの CSV・手入力の Excel・Shift_JIS の CSV）を、コマンド 1 つでグラフ付きの Excel レポートにまとめる Python ツール。※制作サンプルとして作った架空の料理教室です。" />
+    <meta name="robots" content="noindex" />
+    <meta property="og:title" content="アンケート集計の自動化（Python）｜架空のデモ" />
+    <meta property="og:description" content="形式のちがう CSV・Excel をまとめて、グラフ付きの Excel レポートに。※架空の料理教室のデモです。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://chameleon05119.github.io/portfolio/sample-13/" />
+    <meta property="og:image" content="https://chameleon05119.github.io/portfolio/sample-13/ogp.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#2f6b5a" />
+    <link rel="icon" href="./favicon.svg" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="inner">
+        <p class="eyebrow">業務の自動化 ／ Python</p>
+        <h1>形式のばらばらなアンケートを、<br />コマンド 1 つで Excel レポートに</h1>
+        <p class="lead">架空の料理教室「キッチンスタジオ こむぎ」の 3 教室から届く体験レッスンのアンケート。毎月スタッフが手で転記していた集計を、Python のツールにしました。</p>
+        <ul class="facts">
+          <li><b>3 形式</b>Google フォームの CSV・手入力の Excel・Shift_JIS の CSV</li>
+          <li><b>119 件</b>をまとめて集計、確認が必要な <b>4 件</b>を一覧に</li>
+          <li><b>4 シート</b>サマリー（グラフ 3 つ）・回答一覧・自由記述・要確認</li>
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <section class="block">
+        <div class="inner">
+          <p class="no">01</p>
+          <h2>届くファイルは、教室ごとに形がちがう</h2>
+          <p>同じアンケートでも、見出しの言葉・満足度の書き方（「5 (とても満足)」「４」「やや満足」）・文字コードがばらばら。空行や二重入力、範囲外の値、電話番号入りのご意見も混ざります。各ファイルの先頭 6 行です。</p>
+          <div class="inputs">
+            <figure class="input"><figcaption><b>みなと教室</b><span>CSV・文字コード UTF-8</span><a href="files/minato_google-form.csv" download>ファイル</a></figcaption><div class="scroll" tabindex="0"><table><thead><tr><th>タイムスタンプ</th><th>年代を教えてください</th><th>今日のレッスンの満足度を教えてください</th><th>また参加したいですか？</th><th>このレッスンを何で知りましたか？（複数選択可）</th><th>ご意見・ご感想</th></tr></thead><tbody><tr><td>2026/10/03 12:23:15</td><td>20代</td><td>2</td><td>いいえ</td><td>知人の紹介</td><td>人数が多くて先生に質問しにくかったです。</td></tr><tr><td>2026/10/03 12:31:31</td><td>40代</td><td>4</td><td>はい</td><td>Web検索</td><td>時間どおりに終わったので予定が立てやすかったです。</td></tr><tr><td>2026/10/03 14:00:03</td><td>40代</td><td>4</td><td>未定</td><td>チラシ</td><td></td></tr><tr><td>2026/10/03 19:11:39</td><td>30代</td><td>4</td><td>はい</td><td>知人の紹介</td><td>子どもと一緒に参加できてうれしかったです。</td></tr><tr><td>2026/10/04 19:09:43</td><td>40代</td><td>5 (とても満足)</td><td>未定</td><td>知人の紹介, チラシ</td><td>子どもと一緒に参加できてうれしかったです。</td></tr><tr><td>2026/10/04 13:43:33</td><td>30代</td><td>3</td><td>はい</td><td>Web検索</td><td></td></tr></tbody></table></div></figure>
+<figure class="input"><figcaption><b>さくら教室</b><span>Excel・1 行目にタイトル「10月 体験レッスン アンケート（さくら教室）」、見出しは 3 行目</span><a href="files/sakura_handwritten.xlsx" download>ファイル</a></figcaption><div class="scroll" tabindex="0"><table><thead><tr><th>日付</th><th>年齢</th><th>満足度(1〜5)</th><th>再参加</th><th>きっかけ</th><th>感想</th></tr></thead><tbody><tr><td>2026/10/03</td><td>33</td><td>3</td><td>△</td><td>ネット</td><td></td></tr><tr><td>2026/10/04</td><td>54</td><td>4</td><td>○</td><td>チラシ</td><td></td></tr><tr><td>2026/10/07</td><td>49</td><td>４</td><td>○</td><td>友人</td><td></td></tr><tr><td>2026/10/07</td><td>36</td><td>５</td><td>○</td><td>インスタ</td><td>道具がそろっていて手ぶらで来られました。</td></tr><tr><td>2026/10/10</td><td>36</td><td>５</td><td>△</td><td>友人</td><td>次はパンのコースにも出てみたいです。</td></tr><tr><td>2026/10/10</td><td>34</td><td>4</td><td>△</td><td>ネット</td><td></td></tr></tbody></table></div></figure>
+<figure class="input"><figcaption><b>ひがし教室</b><span>CSV・文字コード Shift_JIS</span><a href="files/higashi_paper.csv" download>ファイル</a></figcaption><div class="scroll" tabindex="0"><table><thead><tr><th>記入日</th><th>年代</th><th>満足度</th><th>またの参加</th><th>知ったきっかけ</th><th>コメント</th></tr></thead><tbody><tr><td>10/3</td><td>20代</td><td>やや満足</td><td>したい</td><td>知り合い</td><td>子どもと一緒に参加できてうれしかったです。</td></tr><tr><td>10/7</td><td>30代</td><td>満足</td><td>したい</td><td>チラシ</td><td>先生の説明がわかりやすく、家でも作れそうです。</td></tr><tr><td>10/7</td><td>40代</td><td>満足</td><td>したい</td><td>チラシ</td><td></td></tr><tr><td>10/7</td><td>20代</td><td>やや不満</td><td>しない</td><td>チラシ</td><td>開始が10分ほど遅れました。</td></tr><tr><td>10/10</td><td>20代</td><td>やや満足</td><td>したい</td><td>チラシ</td><td>次はパンのコースにも出てみたいです。</td></tr><tr><td>10/10</td><td>40代</td><td>普通</td><td>したい</td><td>知り合い</td><td></td></tr></tbody></table></div></figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="block block--alt">
+        <div class="inner">
+          <p class="no">02</p>
+          <h2>コマンド 1 つで、まとめて集計</h2>
+          <pre class="term"><code><span class="prompt">$</span> uv run survey-report
+みなと教室　 回答  46 件　満足度 4.0
+さくら教室　 回答  38 件　満足度 3.8
+ひがし教室　 回答  35 件　満足度 4.1
+全体　　　　 回答 119 件　満足度 4.0
+集計から外した行 2 件・要確認 4 件・空行 1 行（Excel の「要確認」シート）
+書き出し: out/report.xlsx / out/report.html</code></pre>
+          <div class="cols">
+            <div>
+              <h3>表記ゆれは自動でそろえる</h3>
+              <ul class="map">
+                <li><span>「5 (とても満足)」「５」「満足」</span><b>5</b></li>
+                <li><span>「○」「したい」</span><b>はい</b></li>
+                <li><span>「インスタ」「インスタグラム」</span><b>Instagram</b></li>
+                <li><span>「友人」「知り合い」「Web 検索」</span><b>知人の紹介・Web検索</b></li>
+                <li><span>年齢「34」</span><b>30代</b></li>
+                <li><span>「10/5」（年なし）</span><b>2026/10/5</b></li>
+              </ul>
+            </div>
+            <div>
+              <h3>読めない行は、黙って捨てない</h3>
+              <p>確認が必要な行は、<b>理由・ファイル名・行番号つき</b>で「要確認」シートに一覧にします。元のファイルを開いて、すぐ直せます。</p>
+              <ul class="rules">
+                <li><b>集計から外す</b>満足度が空欄・読めない（「4.5」「5段階中4」は推測しない）・1〜5 の範囲外</li>
+                <li><b>集計に入れて知らせる</b>年代・日付・「また参加したいか」が読めない（「不明」「未回答」として数える）、直前の行とまったく同じ回答（二重入力の疑い）、対象の月以外の日付</li>
+                <li><b>伏せて知らせる</b>ご意見の中の電話番号・メールアドレス（HTML レポートでは伏せ字）</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="block">
+        <div class="inner">
+          <p class="no">03</p>
+          <h2>できあがるレポート</h2>
+          <p>Excel（グラフ付き）と、メールやブラウザで見られる HTML の 2 つを書き出します。</p>
+          <figure class="shot">
+            <img src="./files/report-summary.png" alt="Excel レポートのサマリーシート。教室別の回答数・満足度の平均・満足度の内訳・また参加したい割合の表、知ったきっかけと年代の表" width="1400" height="1046" loading="lazy" />
+            <figcaption>Excel の「サマリー」シート（表の部分）。シートの右側には、教室別の満足度・内訳・きっかけのグラフ 3 つが並びます</figcaption>
+          </figure>
+          <ul class="files">
+            <li><a href="./files/report.xlsx" download>Excel レポート<span>report.xlsx・4 シート</span></a></li>
+            <li><a href="./files/report.html">HTML レポートを開く<span>report.html・ブラウザで表示</span></a></li>
+            <li><a href="https://github.com/chameleon05119/portfolio/tree/main/sample-13">ソースコード<span>GitHub・テスト 76 件</span></a></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="block block--alt">
+        <div class="inner">
+          <p class="no">04</p>
+          <h2>教室が増えても、設定ファイルを直すだけ</h2>
+          <p>どのファイルの、どの見出しが、どの項目か。教室ごとの違いは設定ファイル（config.toml）にまとめているので、教室が増えたり質問文が変わったりしても、プログラムは直しません。見出しが見つからないときは、どの教室のどの見出しかを日本語で表示して止まります。</p>
+          <pre class="code"><code>[[sources]] 1 つ = 回答ファイル 1 つ
+#   name        … 教室名（レポートに出る名前）
+#   file        … ファイルの場所（このファイルからの相対パス）。.csv / .xlsx
+#   encoding    … CSV の文字コード（utf-8-sig / cp932 など）
+#   header_row  … 見出しの行番号（1 から数える。Excel で上にタイトル行があるときに使う）
+#   [sources.columns] … 「レポートの項目 = ファイルの見出し」の対応
+
+[report]
+title = &quot;体験レッスン アンケート集計&quot;
+organization = &quot;キッチンスタジオ こむぎ&quot;
+period = &quot;2026年10月&quot;</code></pre>
+          <p class="small"><a href="./files/config.toml">設定ファイル全体（3 教室ぶん）</a></p>
+        </div>
+      </section>
+
+      <section class="block">
+        <div class="inner">
+          <h2>制作のポイント</h2>
+          <dl class="points">
+            <div><dt>毎月の手作業をなくす</dt><dd>3 つのファイルを開いて転記・集計・グラフ作成していた作業が、ファイルを置いてコマンドを実行するだけになります。</dd></div>
+            <div><dt>まちがいを見つけやすく</dt><dd>確認が必要な行は理由・ファイル名・行番号つきで残し、満足度の内訳の合計が回答数と合うか、エラーのときに日本語で止まるかをテストで確かめています。</dd></div>
+            <div><dt>読む人に合わせた並び</dt><dd>自由記述は満足度の低い順に並べ、直すべきことが先に目に入るようにしました。</dd></div>
+            <div><dt>Excel が苦手な人にも</dt><dd>同じ集計を HTML 1 枚にも書き出すので、メールに添付したりブラウザで見たりできます。ご意見の中の電話番号・メールアドレスは伏せ字にします。</dd></div>
+          </dl>
+          <p class="small">技術: Python 3.12 / openpyxl / pytest、実行環境は uv。</p>
+          <h3 class="sub">使う人の環境に合わせた渡し方</h3>
+          <ul class="rules">
+            <li><b>コマンドで実行</b>Python（uv）を入れた PC で <code>uv run survey-report</code>。手順書をつけてお渡しします</li>
+            <li><b>ダブルクリックで実行</b>設定ファイルと回答ファイルを同じフォルダに置いて、起動用のファイルを開くだけにする形（ご相談）</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div class="inner">
+        <p>架空の料理教室のデモです。回答の中身はすべてスクリプトで作った架空のものです。</p>
+        <p><a href="https://chameleon05119.github.io/portfolio/">← 作品集に戻る</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

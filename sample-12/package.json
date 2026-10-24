@@ -1,0 +1,20 @@
+{
+  "name": "sample-12-kotonoha-print",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "export": "node scripts/export.mjs",
+    "check": "vite build && node scripts/check-flows.mjs"
+  },
+  "volta": {
+    "node": "24.21.0"
+  },
+  "devDependencies": {
+    "playwright": "^1.63.0",
+    "qrcode": "^1.5.4",
+    "vite": "^8.3.2"
+  }
+}

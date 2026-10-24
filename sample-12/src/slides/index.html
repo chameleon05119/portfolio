@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ja" data-fit-width="1300">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>冬期講習 保護者説明会資料（16:9・PDF の原稿）｜個別指導 ことのは塾（架空のデモ）</title>
+    <meta name="description" content="保護者説明会で使う 16:9 の説明資料（8枚）の原稿ページ。scripts/export.mjs が PDF と画像に書き出します。架空の塾のデモです。" />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="../favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/tokens.css" />
+    <link rel="stylesheet" href="../assets/css/slides.css" />
+    <script src="../fit.js" defer></script>
+  </head>
+  <body>
+    <!-- 1 表紙 -->
+    <section class="slide slide--cover" id="slide-1">
+      <p class="brand"><img src="../assets/images/logo-mark.svg" alt="" width="56" height="56" /><span><small>中学生・高校生の個別指導</small>ことのは塾 さくら台校</span></p>
+      <h1>2026 冬期講習のご案内</h1>
+      <p class="cover__sub">保護者説明会 資料</p>
+      <p class="cover__date">2026年11月29日（日）14:00〜 ／ さくら台校 2F 教室</p>
+      <svg class="cover__deco" viewBox="0 0 200 200" aria-hidden="true">
+        <circle cx="100" cy="100" r="92" fill="#ffcf4a" />
+        <path d="M52,132 L122,62 L140,80 L70,150 L46,156 Z" fill="#2563a8" />
+        <path d="M122,62 L132,52 Q136,48 141,52 L150,61 Q154,66 150,70 L140,80 Z" fill="#f2711c" />
+        <path d="M52,132 L46,156 L70,150 Z" fill="#fffaf2" />
+      </svg>
+    </section>
+
+    <!-- 2 この冬にやること -->
+    <section class="slide" id="slide-2">
+      <p class="slide__no">01</p>
+      <h2>この冬にやることは、ひとつだけ</h2>
+      <p class="lead">2学期までの「わからない」を、<em>つまずいた単元までさかのぼって</em>減らしていきます。</p>
+      <div class="flow">
+        <div class="flow__item"><b>今わからない</b><span>中2「一次関数」</span></div>
+        <div class="flow__arrow" aria-hidden="true">←</div>
+        <div class="flow__item"><b>原因の単元</b><span>中1「比例・反比例」</span></div>
+        <div class="flow__arrow" aria-hidden="true">←</div>
+        <div class="flow__item flow__item--root"><b>さらにその前</b><span>小6「割合」</span></div>
+      </div>
+      <p class="caption">小テストで原因の単元を見つけ、そこから今の学年の内容まで順に戻ってきます（例）。</p>
+    </section>
+
+    <!-- 3 コース -->
+    <section class="slide" id="slide-3">
+      <p class="slide__no">02</p>
+      <h2>学年別のコース</h2>
+      <div class="cards">
+        <article><p class="tag">中1・中2</p><h3>総復習コース</h3><p>2学期までの数学・英語を、つまずいた単元から復習します。</p><p class="num">80分 × 8コマ</p></article>
+        <article class="is-main"><p class="tag">中3</p><h3>入試対策コース</h3><p>5教科の総まとめと過去問演習。志望校に合わせて配分を決めます。</p><p class="num">80分 × 16コマ</p></article>
+        <article><p class="tag">高校生</p><h3>苦手科目コース</h3><p>数学・英語から1科目。学年末テストの範囲を先取りします。</p><p class="num">80分 × 6コマ</p></article>
+      </div>
+      <p class="caption">コマ数の追加・教科の組み合わせは、学習相談でご家庭と一緒に決めます。</p>
+    </section>
+
+    <!-- 4 日程 -->
+    <section class="slide" id="slide-4">
+      <p class="slide__no">03</p>
+      <h2>日程と時間割</h2>
+      <div class="two">
+        <div>
+          <p class="big">12/22<small>(火)</small> 〜 1/7<small>(木)</small></p>
+          <ul class="dots">
+            <li>講習日は11日間。12/27(日)と 12/30〜1/3 は休み</li>
+            <li>1日に1〜2コマ。部活や家庭の予定に合わせて選べます</li>
+            <li>欠席した回は、講習期間内に振り替えられます</li>
+          </ul>
+        </div>
+        <table class="timetable">
+          <thead><tr><th>コマ</th><th>時間</th></tr></thead>
+          <tbody>
+            <tr><th>1</th><td>14:00〜15:20</td></tr>
+            <tr><th>2</th><td>15:30〜16:50</td></tr>
+            <tr><th>3</th><td>17:00〜18:20</td></tr>
+            <tr><th>4</th><td>18:30〜19:50</td></tr>
+            <tr><th>5</th><td>20:10〜21:30</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 5 1回の授業 -->
+    <section class="slide" id="slide-5">
+      <p class="slide__no">04</p>
+      <h2>80分の授業の流れ</h2>
+      <ol class="timeline">
+        <li style="--w: 12.5"><b>10分</b>前回の確認テスト</li>
+        <li style="--w: 37.5"><b>30分</b>解説と例題（講師1人に生徒2人まで）</li>
+        <li style="--w: 37.5"><b>30分</b>演習。手が止まったらその場で質問</li>
+        <li style="--w: 12.5"><b>10分</b>宿題と次回の確認</li>
+      </ol>
+      <p class="caption">講習のある日は自習室（14:00〜21:30）も使えるので、その日の宿題を済ませてから帰れます。</p>
+    </section>
+
+    <!-- 6 料金 -->
+    <section class="slide" id="slide-6">
+      <p class="slide__no">05</p>
+      <h2>料金</h2>
+      <table class="price">
+        <thead><tr><th>コース</th><th>コマ数</th><th>講習費（税込・教材費込み）</th></tr></thead>
+        <tbody>
+          <tr><th>中1・中2 総復習コース</th><td>8コマ</td><td>22,000円</td></tr>
+          <tr><th>中3 入試対策コース</th><td>16コマ</td><td>41,600円</td></tr>
+          <tr><th>高校生 苦手科目コース</th><td>6コマ</td><td>19,800円</td></tr>
+        </tbody>
+      </table>
+      <p class="offer-line"><b>12/19(土)までのお申し込み</b>で、入塾金 0円（通常 22,000円。期間中に入塾手続きをした方）・冬期講習の授業 2回 無料体験</p>
+    </section>
+
+    <!-- 7 よくある質問 -->
+    <section class="slide" id="slide-7">
+      <p class="slide__no">06</p>
+      <h2>よくあるご質問</h2>
+      <dl class="faq">
+        <div><dt>講習だけの参加もできますか？</dt><dd>できます。講習後に通常授業へ進むかは、ご家庭で決めていただけます。</dd></div>
+        <div><dt>学校の教科書に合わせてもらえますか？</dt><dd>学校ごとの教科書と進み具合に合わせて、教材を選びます。</dd></div>
+        <div><dt>送り迎えができない日があります。</dt><dd>21:30 までの授業は、終了時に保護者さまへメールでお知らせします。</dd></div>
+        <div><dt>体験のあとに勧誘はありますか？</dt><dd>その場で入塾のお返事をいただくことはありません。</dd></div>
+      </dl>
+    </section>
+
+    <!-- 8 申し込み -->
+    <section class="slide slide--end" id="slide-8">
+      <p class="slide__no">07</p>
+      <h2>お申し込み方法</h2>
+      <div class="end">
+        <ol class="end__steps">
+          <li>電話か Web で、学習相談の日時を予約</li>
+          <li>学習相談（約30分）で苦手単元と計画表を確認</li>
+          <li>体験授業（2回）のあと、ご家庭で検討</li>
+        </ol>
+        <div class="end__contact">
+          <p class="end__tel"><span>TEL</span>000-000-0000</p>
+          <p>受付 月〜土 14:00〜21:30</p>
+          <img src="../assets/images/qr.svg" alt="Web で申し込む（QR コード）" width="140" height="140" />
+          <p>Web は24時間受け付け</p>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

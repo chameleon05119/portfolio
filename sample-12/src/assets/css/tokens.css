@@ -1,0 +1,17 @@
+/* ことのは塾の共通の色・文字（チラシ・資料・バナー・紹介ページで同じものを使う） */
+:root {
+  --c-blue: #2563a8;
+  --c-blue-dark: #1b4a80;
+  --c-blue-pale: #e6f0fa;
+  --c-orange: #c2410c; /* 文字・ボタン用（白文字・クリーム地とも 4.5:1 以上） */
+  --c-orange-bright: #f2711c; /* 飾り用（文字には使わない） */
+  --c-orange-pale: #fff1e4;
+  --c-yellow: #ffcf4a;
+  --c-cream: #fffaf2;
+  --c-text: #23303d;
+  --c-sub: #5a6876;
+  --c-line: #d9e2ea;
+  --c-white: #fff;
+  --f-head: 'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', sans-serif;
+  --f-body: 'Noto Sans JP', 'Hiragino Sans', sans-serif;
+}
