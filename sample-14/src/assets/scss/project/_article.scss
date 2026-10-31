@@ -1,0 +1,270 @@
+@use '../foundation/mixins' as *;
+
+// 記事LP（架空の情報サイト「くらしの献立メモ」）。見出しは本文と同じゴシックにして、商品LP と「読み物」の差をつける
+.p-article {
+  --font-head: var(--font-base);
+}
+
+.p-pr-bar {
+  padding: rem(8) var(--container-padding);
+  background-color: var(--color-text);
+  color: #f3ebe1;
+  font-size: rem(14);
+  line-height: 1.6;
+  text-align: center;
+}
+
+.p-pr {
+  display: inline-block;
+  padding: 0 rem(6);
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  font-size: rem(11);
+  font-weight: 700;
+  line-height: 1.6;
+  vertical-align: 2px;
+}
+
+.p-article__header .l-header__logo b {
+  font-family: var(--font-base);
+  font-size: rem(17);
+  letter-spacing: 0.04em;
+}
+
+.p-article__body {
+  max-width: 760px;
+  margin-inline: auto;
+  padding: rem(28) var(--container-padding) rem(64);
+
+  @include md {
+    padding-top: rem(40);
+  }
+
+  > p {
+    margin-block: rem(16);
+  }
+
+  h1 {
+    margin: rem(8) 0 rem(16);
+    font-size: clamp(rem(22), 3.2vw, rem(30));
+    line-height: 1.55;
+  }
+
+  h2 {
+    margin: rem(56) 0 rem(16);
+    padding: rem(4) 0 rem(4) rem(14);
+    border-left: 5px solid var(--color-primary);
+    font-size: clamp(rem(19), 2.4vw, rem(23));
+    scroll-margin-top: calc(var(--header-height) + 16px);
+  }
+}
+
+.p-article__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: rem(4) rem(14);
+  font-size: rem(12);
+  color: var(--color-text-sub);
+
+  a {
+    color: var(--color-primary-text);
+  }
+}
+
+.p-article__eyecatch {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius-photo);
+}
+
+.p-toc {
+  margin: rem(28) 0;
+  padding: rem(16) rem(20);
+  border: 1px solid var(--color-frame);
+  border-radius: var(--radius-card);
+  background-color: var(--color-bg-sub);
+
+  summary {
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  ol {
+    margin-top: rem(8);
+    padding-left: 1.4em;
+    list-style: decimal;
+  }
+
+  a {
+    color: var(--color-primary-text);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+.p-tips {
+  display: grid;
+  gap: rem(12);
+
+  @include md {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  li {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 0 rem(14);
+    padding: rem(16);
+    border: 1px solid var(--color-frame);
+    border-radius: var(--radius-card);
+    background-color: var(--color-card);
+  }
+
+  svg {
+    grid-row: span 3;
+    width: 44px;
+    height: 44px;
+    fill: none;
+    stroke: var(--color-primary);
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  b {
+    font-family: var(--font-num);
+    font-size: rem(12);
+    color: var(--color-accent-text);
+    letter-spacing: 0.1em;
+  }
+
+  h3 {
+    font-size: rem(17);
+  }
+
+  p {
+    font-size: rem(14);
+    color: var(--color-text-sub);
+  }
+}
+
+// 3問の診断
+.p-quiz {
+  padding: rem(20) rem(16);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-card);
+  background-color: var(--color-card);
+
+  @include md {
+    padding: rem(24);
+  }
+
+  fieldset {
+    margin-bottom: rem(18);
+    border: 0;
+  }
+
+  legend {
+    margin-bottom: rem(8);
+    font-weight: 700;
+  }
+}
+
+.p-quiz__result {
+  padding: rem(16);
+  border-radius: var(--radius-card);
+  background-color: var(--color-bg-sub);
+
+  &:empty {
+    display: none;
+  }
+
+  b {
+    font-size: rem(18);
+    color: var(--color-primary-text);
+  }
+
+  p {
+    margin-top: rem(4);
+    font-size: rem(14);
+  }
+}
+
+// 診断の結果に合う列を目立たせる
+.p-types .is-hit {
+  background-color: var(--color-primary-soft);
+  color: var(--color-primary-text);
+  font-weight: 700;
+}
+
+.p-types thead .is-hit {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+// 記事の中の商品カード
+.p-pick {
+  display: grid;
+  gap: rem(16);
+  margin-top: rem(20);
+  padding: rem(18);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-card);
+  background-color: var(--color-card);
+
+  @include md {
+    grid-template-columns: 220px 1fr;
+    gap: rem(24);
+    align-items: center;
+    padding: rem(24);
+  }
+
+  img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: var(--radius-photo);
+  }
+
+  h3 {
+    margin: rem(4) 0;
+    font-family: var(--font-head);
+    font-size: rem(20);
+  }
+
+  ul {
+    margin: rem(8) 0 rem(14);
+    padding-left: 1.2em;
+    font-size: rem(14);
+    color: var(--color-text-sub);
+    list-style: disc;
+  }
+
+  .c-button {
+    width: 100%;
+  }
+}
+
+.p-pick__price {
+  s {
+    font-size: rem(13);
+    color: var(--color-text-sub);
+  }
+
+  b {
+    font-family: var(--font-num);
+    font-size: rem(30);
+    font-weight: 600;
+    color: var(--color-primary-text);
+  }
+}
+
+.p-article__disclaimer {
+  margin-top: rem(40);
+  padding: rem(14) rem(16);
+  border-radius: var(--radius-card);
+  background-color: var(--color-bg-sub);
+  font-size: rem(13);
+  color: var(--color-text-sub);
+}

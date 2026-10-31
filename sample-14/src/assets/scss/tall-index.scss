@@ -1,0 +1,62 @@
+// 縦長LP画像の一覧ページ
+@use 'foundation/reset';
+@use 'foundation/tokens';
+
+body {
+  background-color: var(--color-bg-sub);
+  color: var(--color-text);
+  font-family: var(--font-base);
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.demo {
+  padding: 4px 16px;
+  background-color: var(--color-accent-soft);
+  font-size: 12px;
+  text-align: center;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 16px 64px;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+a {
+  color: var(--color-primary-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.points {
+  margin: 12px 0 28px;
+  padding-left: 1.2em;
+  list-style: disc;
+  color: var(--color-text-sub);
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+
+  img {
+    width: 100%;
+    border: 1px solid var(--color-frame);
+    box-shadow: var(--shadow);
+  }
+
+  span {
+    display: block;
+    margin-top: 6px;
+    font-size: 13px;
+    color: var(--color-text-sub);
+    text-align: center;
+  }
+}

@@ -1,0 +1,29 @@
+// FLOCSS をベースにした構成
+//   foundation: リセット・トークン・ベース要素
+//   layout (l-): ヘッダー・フッター・コンテナなどページ骨格
+//   component (c-): ボタン・見出し・タブ・表など、どこでも使う部品
+//   project (p-): セクション単位のパーツ
+//   utility (u-): 1つの役割だけを持つ補助クラス
+@use 'foundation/reset';
+@use 'foundation/tokens';
+@use 'foundation/base';
+
+@use 'layout/container';
+@use 'layout/header';
+@use 'layout/footer';
+
+@use 'component/button';
+@use 'component/heading';
+@use 'component/choice';
+
+@use 'project/demo-bar';
+@use 'project/hero';
+@use 'project/sections';
+@use 'project/faq';
+@use 'project/entry';
+@use 'project/fixbar';
+@use 'project/article';
+
+@use 'utility/visually-hidden';
+@use 'utility/reveal';
+@use 'utility/misc';

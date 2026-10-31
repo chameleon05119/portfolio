@@ -1,0 +1,22 @@
+// スクロールでふわっと表示（JS が動くときだけ隠す。動きを減らす設定では最初から表示）
+@media (prefers-reduced-motion: no-preference) {
+  .js .js-reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 0.7s ease-out,
+      transform 0.7s ease-out;
+  }
+
+  .js .js-reveal.is-in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media print {
+  .js .js-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

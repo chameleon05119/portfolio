@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>縦長LP画像の元データ｜ことこと膳（架空のデモ）</title>
+    <meta name="description" content="縦長LP画像（幅750px×5枚）の元データ。HTML で組んで PNG に書き出しています。※制作サンプルとして作った架空の商品です。" />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="../favicon.svg" />
+    <!-- 画像に書き出すので、書体は描画を待ってから撮る（scripts/tall.mjs が document.fonts.ready を待つ） -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@600;700;900&family=Cormorant+Garamond:ital,wght@1,500&family=Outfit:wght@500;600&display=swap" />
+    <link rel="stylesheet" href="../assets/scss/tall.scss" />
+  </head>
+  <body class="p-tall-src">
+    <h1 class="p-tall-src__title">縦長LP画像の元データ（ことこと膳・架空）</h1>
+    <p class="p-tall-src__note">楽天の商品ページ・広告用の縦長画像（幅 750px × 5 枚）の元データです。<code>npm run tall</code> で 1 枚ずつ PNG に書き出します。商品LP と同じ原稿・写真を使っています。<a href="./">書き出した画像の一覧</a></p>
+    <div class="p-tall-src__slices">
+
+    <!-- 1 / 5 最初の画面 -->
+    <section class="t-slice t-slice--sub" id="tall-1">
+      <p class="t-label">はじめての方限定 お試し4食</p>
+      <h2 class="t-hero__title">温めるだけで、<br />主菜と<em>副菜3品</em>が<br />そろう夜。</h2>
+      <img class="t-hero__photo" src="../assets/images/mv-1000w.webp" alt="" width="1000" height="1000" />
+      <ul class="t-marks">
+        <li><b>4品</b>主菜＋副菜3</li>
+        <li><b>約6分</b>レンジで</li>
+        <li><b>縛りなし</b>1回だけOK</li>
+      </ul>
+      <div class="t-price">
+        <p><s>通常価格 3,480円</s></p>
+        <p>初回 <b>2,480</b>円<small>税込・送料込</small></p>
+      </div>
+      <p class="t-demo">※ 通常価格は2026年8〜10月の販売価格。<br />初回価格は12/31までのお申し込みが対象（架空）</p>
+    </section>
+
+    <!-- 2 / 5 お悩み → こだわり -->
+    <section class="t-slice" id="tall-2">
+      <p class="t-en">Worry</p>
+      <h2 class="t-title">平日の夕食、<br />こんなお悩みありませんか？</h2>
+      <ul class="t-worry">
+        <li>献立を考えるのが毎日しんどい</li>
+        <li>惣菜を買うと揚げ物ばかり</li>
+        <li>まとめ買いの宅配は冷凍庫に入らない</li>
+      </ul>
+      <p class="t-arrow" aria-hidden="true">▼</p>
+      <p class="t-answer">ことこと膳なら<br /><b>温めるだけで、主菜＋副菜3品。</b></p>
+      <ol class="t-points">
+        <li><img src="../assets/images/point-1-480w.webp" alt="" width="480" height="360" /><div><span>01</span><b>副菜まで、だしの味</b>だしをきかせた副菜を毎回3品</div></li>
+        <li><img src="../assets/images/point-2-480w.webp" alt="" width="480" height="360" /><div><span>02</span><b>1食ごとに数値を表示</b>エネルギー・食塩相当量など</div></li>
+        <li><img src="../assets/images/point-3-480w.webp" alt="" width="480" height="360" /><div><span>03</span><b>冷凍庫に入る薄型容器</b>4食で引き出しの3分の1ほど</div></li>
+      </ol>
+      <p class="t-demo">※ 架空のデモです。商品は実在しません。</p>
+    </section>
+
+    <!-- 3 / 5 メニュー -->
+    <section class="t-slice t-slice--sub" id="tall-3">
+      <p class="t-en">Menu</p>
+      <h2 class="t-title">お試し4食のメニュー</h2>
+      <ul class="t-menus">
+        <li><img src="../assets/images/menu-1-360w.webp" alt="" width="360" height="360" /><span>MENU 01</span><b>鶏の照り焼き</b><em>312kcal</em><em>食塩相当量 2.0g</em></li>
+        <li><img src="../assets/images/menu-2-360w.webp" alt="" width="360" height="360" /><span>MENU 02</span><b>さわらの塩焼き</b><em>298kcal</em><em>食塩相当量 1.8g</em></li>
+        <li><img src="../assets/images/menu-3-360w.webp" alt="" width="360" height="360" /><span>MENU 03</span><b>豚の生姜焼き</b><em>345kcal</em><em>食塩相当量 2.2g</em></li>
+        <li><img src="../assets/images/menu-4-360w.webp" alt="" width="360" height="360" /><span>MENU 04</span><b>鮭とさつまいもの甘煮</b><em>305kcal</em><em>食塩相当量 1.6g</em></li>
+      </ul>
+      <p class="t-small">※ 数値は架空のデモです（栄養成分は抜粋）。</p>
+    </section>
+
+    <!-- 4 / 5 セットと価格・届くまで -->
+    <section class="t-slice" id="tall-4">
+      <p class="t-en">Set &amp; Price</p>
+      <h2 class="t-title">セットと価格</h2>
+      <ul class="t-sets">
+        <li><b>お試し4食</b><strong>2,480<small>円</small></strong>1食 620円<br />1回限り</li>
+        <li class="is-pick"><b>定期 6食</b><strong>4,680<small>円</small></strong>1食 780円</li>
+        <li><b>定期 10食</b><strong>7,200<small>円</small></strong>1食 720円</li>
+      </ul>
+      <p class="t-small">すべて税込・送料込。定期便は次回お届けの5日前まで、お休み・解約できます。</p>
+      <h2 class="t-title t-title--mt">注文してから届くまで</h2>
+      <ol class="t-steps">
+        <li><span>STEP 1</span>申し込み</li>
+        <li><span>STEP 2</span>平日に発送<br />翌日お届け</li>
+        <li><span>STEP 3</span>冷凍庫へ</li>
+      </ol>
+      <div class="t-caution">
+        <b>配送・保存について</b>
+        <ul>
+          <li>冷凍便でお届けします。届いたらすぐ冷凍庫へ。</li>
+          <li>発送は平日だけ。お届けは火〜土曜です。</li>
+          <li>冷凍で約2か月保存できます。</li>
+        </ul>
+      </div>
+      <p class="t-demo">※ 架空のデモです。価格・商品・配送のルールは実在しません。</p>
+    </section>
+
+    <!-- 5 / 5 お客様の声・申し込み -->
+    <section class="t-slice t-slice--deep" id="tall-5">
+      <p class="t-en">Voice</p>
+      <h2 class="t-title">お客様の声</h2>
+      <ul class="t-voices">
+        <li><b>副菜があるのが助かります</b>主菜は作れても副菜までは無理だったので、3品ついているのがうれしいです。<span>30代・共働き</span></li>
+        <li><b>冷凍庫に収まるサイズ</b>まとめ買いの宅配は入りきらなかったけれど、4食ならちょうど入りました。<span>40代・一人暮らし</span></li>
+      </ul>
+      <p class="t-small">※ デモ用の架空の声です。</p>
+      <div class="t-cta">
+        <p>まずは、お試し4食から</p>
+        <p class="t-cta__price">初回 <b>2,480</b>円<small>税込・送料込</small></p>
+        <p class="t-cta__go">このページの「買い物かごに入れる」から<br />お申し込みください</p>
+      </div>
+      <p class="t-demo">※ 架空のデモです。価格・商品・声は実在しません。</p>
+    </section>
+    </div>
+  </body>
+</html>

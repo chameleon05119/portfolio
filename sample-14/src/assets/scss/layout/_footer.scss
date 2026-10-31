@@ -1,0 +1,38 @@
+@use '../foundation/mixins' as *;
+
+.l-footer {
+  padding: rem(40) 0 rem(104);
+  background-color: var(--color-text);
+  color: #f3ebe1;
+  font-size: rem(13);
+  text-align: center;
+
+  @include md {
+    padding-bottom: rem(40);
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: rem(4) rem(20);
+    margin-block: rem(12);
+  }
+
+  a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  small {
+    display: block;
+    margin-top: rem(12);
+    font-size: rem(12);
+  }
+}
+
+.l-footer__name {
+  font-family: var(--font-head);
+  font-size: rem(18);
+  letter-spacing: 0.08em;
+}

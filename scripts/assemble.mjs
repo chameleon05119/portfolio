@@ -13,6 +13,7 @@
 //   _site/sample-11/  ← sample-11 を Vite でビルドしたもの（広告バナーの PNG は src/public/banners/ に書き出し済みのものを使う）
 //   _site/sample-12/  ← sample-12 を Vite でビルドしたもの（PDF・画像は src/public/out/ に書き出し済みのものを使う）
 //   _site/sample-13/  ← sample-13 の site/ をそのまま（Python で組み立て済み。scripts/build_site.py）
+//   _site/sample-14/  ← sample-14 を Vite でビルドしたもの（縦長LP画像の PNG は src/public/tall/ に書き出し済みのものを使う）
 import { cp, rm } from 'node:fs/promises';
 import { execSync } from 'node:child_process';
 
@@ -67,4 +68,8 @@ run('npm run build', 'sample-12');
 await cp('sample-12/dist', '_site/sample-12', { recursive: true });
 
 await cp('sample-13/site', '_site/sample-13', { recursive: true });
+
+run('npm ci --no-audit --no-fund', 'sample-14');
+run('npm run build', 'sample-14');
+await cp('sample-14/dist', '_site/sample-14', { recursive: true });
 console.log('assembled _site/');

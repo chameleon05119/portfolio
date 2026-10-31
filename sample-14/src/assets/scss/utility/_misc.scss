@@ -1,0 +1,41 @@
+@use '../foundation/mixins' as *;
+
+.u-num {
+  font-family: var(--font-num);
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.u-bg-sub {
+  background-color: var(--color-bg-sub);
+}
+
+.u-md-only {
+  display: none;
+
+  @include md {
+    display: inline;
+  }
+}
+
+.u-skip {
+  position: absolute;
+  top: -100px;
+  left: 8px;
+  z-index: 100;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  font-weight: 700;
+
+  &:focus {
+    top: 8px;
+  }
+}
+
+.u-sp-only {
+  @include md {
+    display: none;
+  }
+}

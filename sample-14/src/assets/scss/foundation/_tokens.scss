@@ -1,0 +1,46 @@
+// デザイントークン（A案「生成りテラコッタ」。pj-chameleon/20_design/portfolio/demo-g/tokens.md）
+:root {
+  // 色
+  --color-bg: #fffdf9;
+  --color-bg-sub: #f7f0e6;
+  --color-bg-deep: #efe3d2;
+  --color-card: #fff;
+  --color-text: #3b2f28;
+  --color-text-sub: #6b5b50; // bg-sub 上 5.73:1
+  --color-border: #e8dccb;
+  --color-frame: #e1d2bd;
+  --color-primary: #a4462b; // 白文字 6.02:1
+  --color-on-primary: #fff;
+  --color-primary-text: #99412a; // bg-sub 上 5.90:1
+  --color-primary-soft: #f6e1d6;
+  --color-accent: #c9962e; // フォーカスの輪だけ（文字には使わない）
+  --color-accent-soft: #f8ecd0;
+  --color-accent-text: #7a5a12; // bg-sub 上 5.63:1
+  --color-error: #b3261e;
+
+  // 文字
+  --font-base: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, sans-serif;
+  --font-head: 'Zen Old Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  --font-en: 'Cormorant Garamond', serif;
+  --font-num: 'Outfit', var(--font-base);
+  --letter-spacing: 0.02em;
+
+  // レイアウト
+  --container-width: 1120px;
+  --container-padding: 16px;
+  --header-height: 58px;
+
+  // 角丸・影・動き
+  --radius-card: 6px;
+  --radius-btn: 6px;
+  --radius-photo: 4px;
+  --shadow: 0 18px 40px -24px rgb(91 52 30 / 0.45);
+  --duration: 0.25s;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --container-padding: 24px;
+    --header-height: 68px;
+  }
+}

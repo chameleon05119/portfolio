@@ -1,0 +1,758 @@
+@use '../foundation/mixins' as *;
+
+// セクションの余白
+.p-section {
+  padding-block: rem(64);
+
+  @include md {
+    padding-block: rem(96);
+  }
+}
+
+// チェックのついたリスト（こんな方に・お悩み → 解決）
+.p-check {
+  display: grid;
+  gap: rem(10);
+
+  li {
+    position: relative;
+    padding: rem(13) rem(16) rem(13) rem(50);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    background-color: var(--color-card);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: rem(16);
+      width: 22px;
+      height: 22px;
+      border: 2px solid var(--color-frame);
+      border-radius: 4px;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+.p-check--ok li::before {
+  border-color: var(--color-primary);
+  background: var(--color-primary) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center / 16px no-repeat;
+}
+
+.p-recommend .p-check {
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+.p-worry__body {
+  display: grid;
+  gap: rem(20);
+  align-items: center;
+
+  @include md {
+    grid-template-columns: 1fr 64px 1fr;
+  }
+
+  h3 {
+    margin-bottom: rem(12);
+    font-size: rem(18);
+    text-align: center;
+  }
+}
+
+.p-worry__arrow {
+  display: grid;
+  place-items: center;
+  justify-self: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  rotate: 90deg;
+
+  @include md {
+    width: 64px;
+    height: 64px;
+    rotate: 0deg;
+  }
+
+  svg {
+    width: 26px;
+    fill: none;
+    stroke: #fff;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
+// 3つのこだわり
+.p-points__list {
+  display: grid;
+  gap: rem(40);
+
+  @include md {
+    grid-template-columns: repeat(3, 1fr);
+    gap: rem(28);
+  }
+
+  img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-photo);
+  }
+
+  h3 {
+    margin: rem(6) 0 rem(6);
+    font-size: rem(20);
+  }
+
+  p {
+    color: var(--color-text-sub);
+  }
+}
+
+.p-points__no {
+  position: relative;
+  margin: rem(-26) 0 0 rem(16);
+  font-family: var(--font-en);
+  font-size: rem(46);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--color-accent-text);
+  letter-spacing: 0;
+}
+
+// メニュー
+.p-menu__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: rem(12);
+
+  @include lg {
+    grid-template-columns: repeat(4, 1fr);
+    gap: rem(20);
+  }
+}
+
+.p-menu__card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--color-frame);
+  border-radius: var(--radius-card);
+  background-color: var(--color-card);
+
+  img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+}
+
+.p-menu__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: rem(10) rem(12) rem(12);
+
+  @include md {
+    padding: rem(14) rem(16) rem(16);
+  }
+
+  h3 {
+    margin: rem(2) 0 rem(4);
+    font-size: rem(15);
+
+    @include md {
+      font-size: rem(17);
+    }
+  }
+
+  > p {
+    font-size: rem(13);
+    line-height: 1.6;
+    color: var(--color-text-sub);
+  }
+}
+
+.p-menu__no {
+  font-family: var(--font-num);
+  font-size: rem(12);
+  font-weight: 600;
+  color: var(--color-accent-text);
+  letter-spacing: 0.1em;
+}
+
+.p-menu__vals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: rem(10);
+
+  li {
+    padding: 1px rem(10);
+    border-radius: 99px;
+    background-color: var(--color-bg-sub);
+    font-size: rem(12);
+  }
+
+  b {
+    font-family: var(--font-num);
+    font-weight: 600;
+  }
+}
+
+// 原材料・アレルゲン（JS なしでも開ける <details>）
+.p-menu__more {
+  margin-top: auto;
+  padding-top: rem(10);
+  font-size: rem(13);
+
+  summary {
+    display: inline-flex;
+    gap: 4px;
+    align-items: center;
+    min-height: rem(32);
+    color: var(--color-primary-text);
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2px rem(8);
+    margin-top: rem(6);
+    padding-top: rem(6);
+    border-top: 1px solid var(--color-border);
+  }
+
+  dt {
+    color: var(--color-text-sub);
+    white-space: nowrap;
+  }
+}
+
+.p-menu__note {
+  margin-top: rem(16);
+  font-size: rem(12);
+  color: var(--color-text-sub);
+  text-align: center;
+}
+
+// 定期便／1回だけ の切り替え
+.p-sets__mode {
+  display: flex;
+  justify-content: center;
+  margin-bottom: rem(36);
+
+  [role='group'] {
+    display: inline-flex;
+    padding: 4px;
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-btn);
+    background-color: var(--color-card);
+  }
+
+  button {
+    min-height: rem(44);
+    padding: rem(6) rem(22);
+    border-radius: var(--radius-btn);
+    color: var(--color-text-sub);
+    font-size: rem(14);
+    font-weight: 700;
+
+    &[aria-pressed='true'] {
+      background-color: var(--color-primary);
+      color: var(--color-on-primary);
+    }
+  }
+}
+
+.p-sets__list {
+  display: grid;
+  gap: rem(28);
+
+  @include md {
+    grid-template-columns: repeat(3, 1fr);
+    gap: rem(24);
+  }
+}
+
+.p-set {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: rem(4);
+  padding: rem(28) rem(22) rem(24);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background-color: var(--color-card);
+  text-align: center;
+
+  h3 {
+    font-size: rem(20);
+  }
+
+  .c-button {
+    margin-top: auto;
+  }
+}
+
+.p-set--pick {
+  border: 2px solid var(--color-primary);
+}
+
+.p-set__rib {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  padding: 2px rem(14);
+  border-radius: var(--radius-btn);
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  font-size: rem(12);
+  font-weight: 700;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+.p-set__price {
+  font-size: rem(13);
+
+  b {
+    font-family: var(--font-num);
+    font-size: rem(38);
+    font-weight: 600;
+    color: var(--color-primary-text);
+  }
+}
+
+.p-set__per {
+  font-size: rem(13);
+  color: var(--color-text-sub);
+
+  b {
+    font-family: var(--font-num);
+    font-weight: 600;
+  }
+}
+
+.p-set__off {
+  min-height: 1.85em;
+  margin-bottom: rem(10);
+  font-size: rem(13);
+  font-weight: 700;
+  color: var(--color-accent-text);
+}
+
+// JS が動くときは「1回だけ」の価格を切り替えで見せるので、補足の1行は隠す
+.js .p-set__alt {
+  display: none;
+}
+
+.p-set__alt {
+  font-size: rem(12);
+  color: var(--color-text-sub);
+}
+
+// 比較表（記事LP と共通）
+.c-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+}
+
+.c-table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  background-color: var(--color-card);
+  font-size: rem(14);
+
+  @include md {
+    font-size: rem(15);
+  }
+
+  th,
+  td {
+    padding: rem(12) rem(10);
+    border-bottom: 1px solid var(--color-border);
+    text-align: center;
+  }
+
+  tr:last-child > * {
+    border-bottom: 0;
+  }
+
+  thead th {
+    background-color: var(--color-bg-sub);
+  }
+
+  tbody th {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    min-width: 8em;
+    background-color: var(--color-bg-sub);
+    font-weight: 500;
+    text-align: left;
+  }
+
+  .is-me {
+    background-color: var(--color-primary-soft);
+    color: var(--color-primary-text);
+    font-weight: 700;
+  }
+
+  thead .is-me {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+  }
+}
+
+.c-table-note {
+  margin-top: rem(8);
+  font-size: rem(12);
+  color: var(--color-text-sub);
+}
+
+.p-compare {
+  margin-top: rem(72);
+
+  h3 {
+    margin-bottom: rem(20);
+    font-size: rem(22);
+    text-align: center;
+  }
+}
+
+// 届くまで
+.p-steps {
+  display: grid;
+  gap: rem(12);
+  margin-bottom: rem(40);
+  counter-reset: step;
+
+  @include md {
+    grid-template-columns: repeat(3, 1fr);
+    gap: rem(20);
+  }
+
+  li {
+    padding: rem(18);
+    border: 1px solid var(--color-frame);
+    border-radius: var(--radius-card);
+    background-color: var(--color-card);
+    text-align: center;
+    counter-increment: step;
+
+    &::before {
+      content: 'STEP ' counter(step);
+      display: block;
+      font-family: var(--font-num);
+      font-size: rem(13);
+      font-weight: 600;
+      color: var(--color-accent-text);
+      letter-spacing: 0.1em;
+    }
+  }
+
+  h3 {
+    font-size: rem(18);
+  }
+
+  p {
+    font-size: rem(14);
+    color: var(--color-text-sub);
+  }
+}
+
+.p-sched {
+  padding: rem(24) rem(14);
+  border: 1px solid var(--color-frame);
+  border-radius: var(--radius-card);
+  background-color: var(--color-card);
+  box-shadow: var(--shadow);
+
+  @include md {
+    padding: rem(32);
+  }
+}
+
+.p-sched__q {
+  margin-bottom: rem(12);
+  font-weight: 700;
+  text-align: center;
+}
+
+.p-sched__days {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: rem(24);
+
+  @include md {
+    gap: rem(8);
+  }
+
+  button {
+    width: 40px;
+    height: 40px;
+    border: 1.5px solid var(--color-border);
+    border-radius: 50%;
+    background-color: var(--color-card);
+    font-weight: 700;
+
+    @include md {
+      width: 48px;
+      height: 48px;
+    }
+
+    &.is-sat {
+      color: #2f5fa8;
+    }
+
+    &.is-sun {
+      color: var(--color-error);
+    }
+
+    &[aria-pressed='true'] {
+      border-color: var(--color-primary);
+      background-color: var(--color-primary);
+      color: var(--color-on-primary);
+    }
+  }
+}
+
+.p-sched__strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+
+  @include md {
+    grid-template-columns: repeat(8, 1fr);
+  }
+
+  li {
+    padding: rem(8) 2px;
+    border-radius: 4px;
+    background-color: var(--color-bg-sub);
+    font-size: rem(13);
+    line-height: 1.4;
+    text-align: center;
+  }
+
+  b,
+  span {
+    display: block;
+  }
+
+  span {
+    min-height: 1.4em;
+    font-size: rem(12);
+    font-weight: 700;
+  }
+
+  .is-order {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+  }
+
+  .is-ship {
+    background-color: var(--color-accent-soft);
+    color: var(--color-accent-text);
+  }
+
+  .is-arrive {
+    background-color: var(--color-primary-soft);
+    color: var(--color-primary-text);
+    outline: 2px solid var(--color-primary);
+    outline-offset: -2px;
+  }
+
+  .is-off {
+    color: var(--color-text-sub);
+  }
+}
+
+.p-sched__result {
+  margin-top: rem(20);
+  font-size: rem(17);
+  text-align: center;
+
+  b {
+    font-family: var(--font-head);
+    font-size: rem(24);
+    color: var(--color-primary-text);
+  }
+}
+
+.p-sched__rule {
+  margin-top: rem(8);
+  font-size: rem(12);
+  color: var(--color-text-sub);
+  text-align: center;
+}
+
+// JS が動かないときは一覧表を開いておく
+.p-sched__table {
+  margin-top: rem(20);
+
+  summary {
+    color: var(--color-primary-text);
+    font-size: rem(14);
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .c-table-wrap {
+    margin-top: rem(12);
+  }
+
+  .c-table {
+    min-width: 0;
+  }
+}
+
+// お客様の声（横スクロール）
+.p-voices__scroll {
+  overflow-x: auto;
+  padding: 4px 4px rem(16);
+  scroll-snap-type: x mandatory;
+}
+
+.p-voices__list {
+  display: grid;
+  grid-auto-columns: minmax(280px, 1fr);
+  grid-auto-flow: column;
+  gap: rem(16);
+
+  @include md {
+    gap: rem(20);
+  }
+}
+
+.p-voice {
+  padding: rem(22);
+  border: 1px solid var(--color-frame);
+  border-radius: var(--radius-card);
+  background-color: var(--color-card);
+  scroll-snap-align: start;
+
+  h3 {
+    margin: rem(12) 0 rem(6);
+    font-size: rem(18);
+  }
+
+  > p {
+    font-size: rem(15);
+    color: var(--color-text-sub);
+  }
+}
+
+.p-voice__who {
+  display: flex;
+  gap: rem(12);
+  align-items: center;
+  font-size: rem(13);
+  color: var(--color-text-sub);
+
+  svg {
+    width: 46px;
+    height: 46px;
+    flex: none;
+  }
+}
+
+.p-voices__hint {
+  font-size: rem(12);
+  color: var(--color-text-sub);
+  text-align: center;
+}
+
+// 申し込み
+.p-order {
+  background-color: var(--color-bg-deep);
+}
+
+.p-order__offer {
+  max-width: 720px;
+  margin: 0 auto rem(40);
+}
+
+// メニューの絞り込み（押したボタンだけ色がつく。タブではなく切り替えボタン）
+.p-menu__filter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: rem(8);
+  margin-bottom: rem(28);
+
+  button {
+    min-height: rem(44);
+    padding: rem(8) rem(22);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-btn);
+    background-color: var(--color-card);
+    font-size: rem(14);
+    font-weight: 700;
+
+    &[aria-pressed='true'] {
+      border-color: var(--color-primary);
+      background-color: var(--color-primary);
+      color: var(--color-on-primary);
+    }
+  }
+}
+
+.p-menu__card[hidden] {
+  display: none !important;
+}
+
+.p-entry__total {
+  margin: 0 0 rem(20);
+  padding: rem(10) rem(14);
+  border-radius: var(--radius-card);
+  background-color: var(--color-bg-sub);
+  text-align: right;
+
+  b {
+    font-family: var(--font-num);
+    font-size: rem(26);
+    font-weight: 600;
+    color: var(--color-primary-text);
+  }
+
+  small {
+    font-size: rem(12);
+  }
+}
+
+.p-entry__label {
+  margin-bottom: rem(6);
+  font-size: rem(14);
+  font-weight: 700;
+}
+
+// 二重価格の根拠（通常価格の販売期間・初回価格の期限）
+.p-price-note {
+  margin-top: rem(10);
+  font-size: rem(12);
+  color: var(--color-text-sub);
+
+  .p-sets & {
+    margin: 0 auto rem(8);
+    text-align: center;
+  }
+
+  .p-order & {
+    max-width: 720px;
+    margin: rem(-28) auto rem(40);
+  }
+}

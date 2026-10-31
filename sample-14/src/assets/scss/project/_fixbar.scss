@@ -1,0 +1,49 @@
+@use '../foundation/mixins' as *;
+
+// スマホの画面下に固定する「初回価格」と「お試しを申し込む」。最初の画面を過ぎたら出し、申し込み欄が見えている間は隠す
+.p-fixbar {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 15;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: rem(8);
+  padding: rem(10) rem(12) calc(rem(10) + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--color-border);
+  background-color: rgb(255 253 249 / 0.96);
+  transition:
+    transform 0.3s,
+    visibility 0s;
+
+  @include md {
+    display: none;
+  }
+
+  .c-button {
+    min-height: rem(48);
+    padding-inline: rem(10);
+  }
+
+  &.is-hidden {
+    visibility: hidden;
+    transform: translateY(110%);
+    transition:
+      transform 0.3s,
+      visibility 0s 0.3s;
+  }
+
+  p {
+    font-size: rem(12);
+    line-height: 1.3;
+
+    b {
+      font-family: var(--font-num);
+      font-size: rem(20);
+      font-weight: 600;
+      color: var(--color-primary-text);
+    }
+  }
+}

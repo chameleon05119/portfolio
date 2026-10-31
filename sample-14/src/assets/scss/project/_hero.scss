@@ -1,0 +1,216 @@
+@use '../foundation/mixins' as *;
+
+// 最初の画面: 左に見出しと価格、右に料理の写真（スマホは写真が上）
+.p-hero {
+  padding: rem(28) 0 rem(56);
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--color-bg-sub), var(--color-bg));
+
+  @include md {
+    padding: rem(56) 0 rem(88);
+  }
+}
+
+.p-hero__inner {
+  display: grid;
+  gap: rem(40);
+  align-items: center;
+
+  @include lg {
+    grid-template-columns: 1fr 1.05fr;
+    gap: rem(56);
+  }
+
+  > * {
+    min-width: 0;
+  }
+}
+
+.p-hero__label {
+  display: inline-block;
+  padding: rem(3) rem(14);
+  border-radius: var(--radius-btn);
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  font-size: rem(13);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.p-hero__title {
+  margin-top: rem(16);
+  font-size: clamp(rem(29), 4.4vw, rem(48));
+  line-height: 1.5;
+
+  em {
+    font-style: normal;
+    color: var(--color-primary-text);
+  }
+}
+
+.p-hero__lead {
+  margin: rem(14) 0 rem(24);
+  color: var(--color-text-sub);
+}
+
+.p-hero__marks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: rem(10);
+  margin-bottom: rem(24);
+
+  li {
+    display: grid;
+    place-content: center;
+    width: rem(92);
+    aspect-ratio: 1;
+    border: 1px solid var(--color-frame);
+    border-radius: var(--radius-card);
+    background-color: var(--color-card);
+    font-size: rem(11);
+    line-height: 1.4;
+    color: var(--color-text-sub);
+    text-align: center;
+
+    @include md {
+      width: rem(104);
+      font-size: rem(12);
+    }
+  }
+
+  b {
+    display: block;
+    font-family: var(--font-head);
+    font-size: rem(19);
+    color: var(--color-text);
+
+    @include md {
+      font-size: rem(21);
+    }
+  }
+}
+
+.p-hero__note {
+  margin-top: rem(10);
+  font-size: rem(12);
+  color: var(--color-text-sub);
+}
+
+.p-hero__photo {
+  position: relative;
+  width: 88%;
+  max-width: 460px;
+  margin-inline: auto;
+
+  @include lg {
+    order: 1;
+    width: 100%;
+    max-width: none;
+  }
+
+  .p-hero__inner > & {
+    order: -1;
+
+    @include lg {
+      order: 1;
+    }
+  }
+}
+
+.p-hero__main {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: var(--radius-photo);
+  box-shadow: var(--shadow);
+}
+
+.p-hero__sub {
+  position: absolute;
+  bottom: -24px;
+  left: -28px;
+  width: 38%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 6px solid var(--color-bg);
+  border-radius: var(--radius-photo);
+  box-shadow: var(--shadow);
+}
+
+.p-hero__tag {
+  position: absolute;
+  top: 8%;
+  right: -6px;
+  padding: rem(8) rem(14);
+  border: 1px solid var(--color-frame);
+  border-radius: var(--radius-card);
+  background-color: var(--color-bg);
+  box-shadow: var(--shadow);
+  font-size: rem(12);
+  line-height: 1.5;
+
+  b {
+    font-family: var(--font-num);
+    font-size: rem(22);
+    font-weight: 600;
+    color: var(--color-primary-text);
+  }
+}
+
+.p-hero__tate {
+  display: none;
+
+  @include lg {
+    position: absolute;
+    top: 0;
+    right: -40px;
+    display: block;
+    font-family: var(--font-head);
+    font-size: rem(14);
+    color: var(--color-accent-text);
+    letter-spacing: 0.4em;
+    writing-mode: vertical-rl;
+  }
+}
+
+// 価格と申し込みボタン（最初の画面・最後の申し込み案内で使う）
+.p-offer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: rem(12) rem(22);
+  padding: rem(16);
+  border: 1px solid var(--color-frame);
+  border-radius: var(--radius-card);
+  background-color: var(--color-card);
+  box-shadow: var(--shadow);
+
+  @include md {
+    padding: rem(18) rem(22);
+  }
+
+  .c-button {
+    flex: 1 1 auto;
+  }
+}
+
+.p-offer__price {
+  line-height: 1.3;
+
+  s {
+    font-size: rem(14);
+    color: var(--color-text-sub);
+  }
+
+  b {
+    font-family: var(--font-num);
+    font-size: rem(40);
+    font-weight: 600;
+    color: var(--color-primary-text);
+    letter-spacing: -0.01em;
+  }
+
+  small {
+    font-size: rem(12);
+  }
+}

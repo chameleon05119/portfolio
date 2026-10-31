@@ -1,0 +1,82 @@
+@use '../foundation/mixins' as *;
+
+// 商品LP・記事LP 共通のヘッダー。スマホはロゴと申し込みボタンだけ（ページ内メニューは PC だけ）
+.l-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  border-bottom: 1px solid var(--color-border);
+  background-color: rgb(255 253 249 / 0.94);
+  backdrop-filter: blur(8px);
+}
+
+.l-header__inner {
+  display: flex;
+  align-items: center;
+  gap: rem(24);
+  height: var(--header-height);
+}
+
+.l-header__logo {
+  display: flex;
+  align-items: center;
+  gap: rem(10);
+  line-height: 1.2;
+
+  svg {
+    width: 32px;
+    height: 32px;
+    color: var(--color-primary);
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+  }
+
+  b {
+    display: block;
+    font-family: var(--font-head);
+    font-size: rem(19);
+    letter-spacing: 0.08em;
+
+    @include md {
+      font-size: rem(22);
+    }
+  }
+
+  small {
+    display: block;
+    font-size: rem(11);
+    color: var(--color-text-sub);
+    letter-spacing: 0.1em;
+  }
+}
+
+.l-header__nav {
+  display: none;
+  margin-left: auto;
+
+  @include lg {
+    display: flex;
+    gap: rem(22);
+    font-size: rem(14);
+  }
+
+  a {
+    padding-block: rem(8);
+
+    @media (hover: hover) {
+      &:hover {
+        color: var(--color-primary-text);
+      }
+    }
+  }
+}
+
+.l-header__cta {
+  margin-left: auto;
+
+  @include lg {
+    margin-left: 0;
+  }
+}

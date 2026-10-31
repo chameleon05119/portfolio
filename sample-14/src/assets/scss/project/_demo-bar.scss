@@ -1,0 +1,9 @@
+@use '../foundation/mixins' as *;
+
+.p-demo-bar {
+  padding: rem(4) var(--container-padding);
+  background-color: var(--color-accent-soft);
+  font-size: rem(12);
+  line-height: 1.6;
+  text-align: center;
+}

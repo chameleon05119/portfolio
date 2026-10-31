@@ -1,0 +1,64 @@
+@use 'mixins' as *;
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 16px);
+  scroll-padding-bottom: 88px; // スマホの固定ボタンにフォーカス中の要素が隠れないように
+
+  @include md {
+    scroll-padding-bottom: 0;
+  }
+}
+
+body {
+  font-family: var(--font-base);
+  font-size: rem(15);
+  line-height: 1.85;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+
+  @include md {
+    font-size: rem(16);
+  }
+}
+
+:where(body, body *) {
+  letter-spacing: var(--letter-spacing);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-head);
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: 0.04em;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    transition-duration: 0.01ms !important;
+  }
+}

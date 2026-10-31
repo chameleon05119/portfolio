@@ -1,0 +1,35 @@
+@use '../foundation/mixins' as *;
+
+.c-heading {
+  margin-bottom: rem(32);
+  text-align: center;
+
+  @include md {
+    margin-bottom: rem(48);
+  }
+}
+
+.c-heading__en {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  font-size: rem(20);
+  line-height: 1.2;
+  color: var(--color-accent-text);
+
+  @include md {
+    font-size: rem(24);
+  }
+}
+
+.c-heading__title {
+  margin-top: rem(4);
+  font-size: clamp(rem(23), 3vw, rem(34));
+  letter-spacing: 0.06em;
+}
+
+.c-heading__lead {
+  margin-top: rem(8);
+  color: var(--color-text-sub);
+}
